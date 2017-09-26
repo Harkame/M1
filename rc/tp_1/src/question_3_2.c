@@ -2,48 +2,44 @@
 #include <stdio.h>
 #include <pthread.h>
 
-typedef struct LOCKER
-{
-     pthread_mutex_t a_mutex;
+pthread_mutex_t g_mutex = PTHREAD_MUTEX_INITIALIZER;
 
-     pthread_cond_t a_cond;
-
-} LOCKER;
+pthread_cond_t g_cond = PTHREAD_COND_INITIALIZER;
 
 int g_event = 0;
 
 
 void* foo(void* p_param)
 {
-     LOCKER t_locker = *(struct LOCKER*) p_param;
+     //int t_time = rand();
 
-     for(int t_index = 0; t_index < 10; t_index++)
-          fprintf(stdout, "%d\n", t_index);
+     sleep(2);
 
-     //pthread_mutex_lock(&t_locker.a_mutex);
+     pthread_mutex_lock(&g_mutex);
 
      g_event = 1;
 
-     //pthread_mutex_unlock(&t_locker.a_mutex);
+     pthread_mutex_unlock(&g_mutex);
 
-     pthread_cond_broadcast(&t_locker.a_cond);
+     pthread_cond_broadcast(&g_cond);
 }
 
 int main()
 {
-     pthread_t t_thread;
+     pthread_t t_threads[2];
 
-     struct LOCKER t_locker;
+     for(int t_index = 0; t_index < 2; t_index++)
+          pthread_create(&t_threads[t_index], NULL, foo, t_index);
 
-     pthread_mutex_init(&t_locker.a_mutex, NULL);
+     pthread_mutex_lock(&g_mutex);
 
-     pthread_cond_init(&t_locker.a_cond, NULL);
+     while(g_event == 0)
+     {
+          fprintf(stdout, "Debut attente\n");
+          pthread_cond_wait(&g_cond, &g_mutex);
+     }
 
-     pthread_create(&t_thread, NULL, foo, &t_locker);
-
-     pthread_mutex_lock(&t_locker.a_mutex);
-
-     pthread_cond_wait(&t_locker.a_cond, &t_locker.a_mutex);
+     pthread_mutex_unlock(&g_mutex);
 
      fprintf(stdout, "Attente finie\n");
 
