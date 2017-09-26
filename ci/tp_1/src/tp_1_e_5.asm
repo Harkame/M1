@@ -1,26 +1,44 @@
 .data
-	value_1: .word 1
-	value_2: .word 2
-	
-.text
-	main:
-	
-	swap:
-		addi $sp, $sp, -4
-		
-		la $t0, value_1
-		sw $t0, 4($sp)
-		
-		la $t0, value_2
-		lw $t0, value_1
-		
-		la $t0, 0($sp)
-		lw $t0, value_2
-		
-		addi $sp, $sp, 4
-		
-		
+x:	.word 1
+y:	.word 1
 
-	end:
-		li $v0, 10
-		syscall
+.text
+main:	li $t0, 1	# initialization of the iables
+	la $t1, x
+	sw $t0, ($t1)
+	li $t0, 2
+	la $t1, y
+	sw $t0, ($t1)
+
+	li $v0, 1	# display of the iables
+	la $t0, x
+	lw $a0, ($t0)
+	syscall
+	li $v0, 1
+	la $t0, y
+	lw $a0, ($t0)
+	syscall	
+
+	la $a0, x	# call of the swap routine
+	la $a1, y
+	jal swap
+	
+	la $t0, x	# display of the iables (after swapping)
+	lw $a0, ($t0)
+	syscall
+	li $v0, 1
+	la $t0, y
+	lw $a0, ($t0)
+	syscall	
+	li $v0, 10	# Exit of the program
+	syscall
+
+swap:	sub $sp, $sp, 4
+	lw $t0, ($a0)
+	sw $t0, ($sp)
+	lw $t0, ($a1)
+	sw $t0, ($a0)
+	lw $t0, ($sp)
+	sw $t0, ($a1)
+	add $sp, $sp, 4
+	jr $ra
