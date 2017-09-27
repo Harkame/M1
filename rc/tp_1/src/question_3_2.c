@@ -11,7 +11,7 @@ int g_event = 0;
 
 void* foo(void* p_param)
 {
-     //int t_time = rand();
+     int t_time = rand();
 
      sleep(2);
 
