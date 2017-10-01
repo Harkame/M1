@@ -59,7 +59,7 @@ public class OrderedDictionary extends AbstractDictionary
 		 
 		t_ordered_dictionary.put("Test", "Premiere val");
 		t_ordered_dictionary.put("Truc", "Yolo").put("Machin", "grtjjhrtj").put("Test", "Nouvelle description");
-		//t_ordered_dictionary.put("Yolo", "42");
+		t_ordered_dictionary.put("Yolo", "42");
 		 
 		System.out.println(t_ordered_dictionary.toString());
 		

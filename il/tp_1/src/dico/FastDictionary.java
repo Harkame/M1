@@ -95,24 +95,25 @@ public class FastDictionary extends AbstractDictionary
 	
 	public static void main(String[] Args)
 	{
-		IDictionary t_fast_dictionary = new FastDictionary();
+		IDictionary t_ordered_dictionary = new FastDictionary();
 		
-		System.out.println(t_fast_dictionary.isEmpty());
+		System.out.println(t_ordered_dictionary.isEmpty());
 		
 		System.out.println("---");
 		 
-		t_fast_dictionary.put("Test", "Premiere val");
-		t_fast_dictionary.put("Truc", "Yolo").put("Machin", "grtjjhrtj").put("Test", "Nouvelle description").put("Yolo", "42");
+		t_ordered_dictionary.put("Test", "Premiere val");
+		t_ordered_dictionary.put("Truc", "Yolo").put("Machin", "grtjjhrtj").put("Test", "Nouvelle description");
+		t_ordered_dictionary.put("Yolo", "42");
 		 
-		System.out.println(t_fast_dictionary.toString());
+		System.out.println(t_ordered_dictionary.toString());
 		
 		System.out.println("---");
 		
-		System.out.println(t_fast_dictionary.get("Machin"));
-		System.out.println(t_fast_dictionary.get("N'existe pas"));
+		System.out.println(t_ordered_dictionary.get("Machin"));
+		System.out.println(t_ordered_dictionary.get("N'existe pas"));
 		
 		System.out.println("---");
 		
-		System.out.println(t_fast_dictionary.isEmpty());
+		System.out.println(t_ordered_dictionary.isEmpty());
 	}
 }

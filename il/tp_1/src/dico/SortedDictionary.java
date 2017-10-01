@@ -40,29 +40,47 @@ public class SortedDictionary extends AbstractDictionary
 			Object[] t_new_values = new Object[getSize() + 1];
 			
 			
-			int t_index = 0;
-			while(t_index < getSize())
+			int t_position = 0;
+			while(t_position < getSize())
 			{
-				Comparable t_value = (Comparable) getKeys()[t_index];
+				Comparable t_value = (Comparable) getKeys()[t_position];
 				
 				if(t_value.compareTo(t_key) >= 0)
 					break;
 				
-				t_index++;
+				t_position++;
 			}
-			
-			System.out.println(t_index + " - " + getSize());
-			
-			System.arraycopy(getKeys(),   0, t_new_keys,   0, t_index);
-			System.arraycopy(getValues(), 0, t_new_values, 0, t_index);
-			
-			System.arraycopy(getKeys(),   t_index, t_new_keys,   t_index, getSize());
-			System.arraycopy(getValues(), t_index, t_new_values, t_index, getSize());
+
+			int t_index;
+			if(t_position == 0)
+			{
+				for(t_index = 1; t_index < t_new_keys.length; t_index++)
+				{
+					t_new_keys[t_index] = getKeys()[t_index - 1];
+					t_new_values[t_index] = getValues()[t_index - 1];
+				}
+			}
+			else
+			{
+				for(t_index = 0; t_index < t_position; t_index++)
+				{
+					t_new_keys[t_index]  = getKeys()[t_index];
+					t_new_values[t_index] = getValues()[t_index];
+				}
+				
+				for(t_index = t_position + 1; t_index < t_new_keys.length; t_index++)
+				{
+					t_new_keys[t_index] = getKeys()[t_index - 1];
+					t_new_values[t_index] = getValues()[t_index - 1];
+				}
+			}
+
+
 			
 			setKeys(t_new_keys);
 			setValues(t_new_values);
 			
-			r_index = t_index;
+			r_index = t_position;
 		}
 		
 		return r_index;		
@@ -70,25 +88,26 @@ public class SortedDictionary extends AbstractDictionary
 	
 	public static void main(String[] Args)
 	{
-		IDictionary t_sorted_dictionary = new SortedDictionary();
+		IDictionary t_ordered_dictionary = new SortedDictionary();
 		
-		System.out.println(t_sorted_dictionary.isEmpty());
+		System.out.println(t_ordered_dictionary.isEmpty());
 		
 		System.out.println("---");
 		 
-		t_sorted_dictionary.put("Test", "Premiere val");
-		t_sorted_dictionary.put("Truc", "Yolo").put("Machin", "grtjjhrtj").put("Test", "Nouvelle description").put("Yolo", "42");
+		t_ordered_dictionary.put("Test", "Premiere val");
+		t_ordered_dictionary.put("Truc", "Yolo").put("Machin", "grtjjhrtj").put("Test", "Nouvelle description");
+		t_ordered_dictionary.put("Yolo", "42");
 		 
-		System.out.println(t_sorted_dictionary.toString());
+		System.out.println(t_ordered_dictionary.toString());
 		
 		System.out.println("---");
 		
-		System.out.println(t_sorted_dictionary.get("Machin"));
-		System.out.println(t_sorted_dictionary.get("N'existe pas"));
+		System.out.println(t_ordered_dictionary.get("Machin"));
+		System.out.println(t_ordered_dictionary.get("N'existe pas"));
 		
 		System.out.println("---");
 		
-		System.out.println(t_sorted_dictionary.isEmpty());
+		System.out.println(t_ordered_dictionary.isEmpty());
 	}
 }
 
