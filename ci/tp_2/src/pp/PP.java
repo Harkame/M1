@@ -371,12 +371,12 @@ public class PP
 		}
 	}
 
-	public class Call extends Expression
+	public class CallExpression extends Expression
 	{
 		private CallTarget		a_call_target;
 		private Expression[]	a_expressions;
 
-		public Call(CallTarget p_call_target, Expression[] p_expressions)
+		public CallExpression(CallTarget p_call_target, Expression[] p_expressions)
 		{
 			a_call_target = p_call_target;
 			a_expressions = p_expressions;
@@ -486,6 +486,100 @@ public class PP
 			System.out.print(":=");
 			a_new_value.print();
 		}
+	}
 
+	public class If extends Instruction
+	{
+		Expression	a_expression_if;
+		Expression	a_expression_then;
+		Expression	a_expression_else;
+
+		public ArrayAffectation(Variable p_expression_if, Expression p_expression_then, Expression p_expression_else)
+		{
+			a_expression_if = p_expression_if;
+			a_expression_then = p_expression_then;
+			a_expression_else = p_expression_else;
+		}
+
+		public void print()
+		{
+			System.out.print("if");
+			a_expression_if.print();
+			System.out.print("then");
+			a_expression_then.print();
+			System.out.print("else");
+			a_expression_else.print();
+		}
+	}
+
+	public class While extends Instruction
+	{
+		Expression	a_condition;
+		Expression	a_instruction;
+
+		public ArrayAffectation( Expression p_condition, Instruction p_instruction)
+		{
+			a_condition = p_condition;
+			a_instruction = p_instruction;
+		}
+
+		public void print()
+		{
+			System.out.print("while");
+			a_condition.print();
+			System.out.print("do");
+			a_instruction.print();
+		}
+	}
+
+	public class CallInstruction extends Instruction
+	{
+		private CallTarget		a_call_target;
+		private Expression[]	a_expressions;
+
+		public CallInstruction(CallTarget p_call_target, Expression[] p_expressions)
+		{
+			a_call_target = p_call_target;
+			a_expressions = p_expressions;
+		}
+
+		public void print()
+		{
+			a_call_target.print();
+
+			System.out.print("(");
+
+			for (int i = 0; i < a_expressions.length; i++)
+			{
+				a_expressions[i].print();
+				System.out.print(" ");
+			}
+
+			System.out.print(");");
+		}
+	}
+
+	public class Skip extends Instruction
+	{
+		public void print()
+		{
+			System.out.print("skip;");
+		}
+	}
+
+	public class Instructions extends Instruction
+	{
+		Instruction[] a_instructions;
+
+		public Instructions(Instruction[] p_instructions)
+		{
+			a_instructions = p_instructions;
+		}
+
+		public void print()
+		{
+			for (int t_index = 0; t_index < a_instructions.length; t_index++)
+				a_instructions[t_index].print();
+		}
 	}
 }
