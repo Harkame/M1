@@ -36,12 +36,12 @@ public class Array extends Type
 	}
 }
 
-public abstract class Constante
+public abstract class Constant
 {
 	abstract void print();
 }
 
-public class Number extends Constante
+public class Number extends Constant
 {
 	private float a_value;
 
@@ -56,15 +56,15 @@ public class Number extends Constante
 	}
 }
 
-public class True extends Constante
+public class True extends Constant
 {
 	public void print()
 	{
-		System.out.println("True);
+		System.out.println("True");
 	}
 }
 
-public class False extends Constante
+public class False extends Constant
 {
 	public void print()
 	{
