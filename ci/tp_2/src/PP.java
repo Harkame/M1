@@ -1,455 +1,491 @@
-//Les Types :
 public abstract class Type
 {
-  abstract void print();
+	abstract void print();
 }
 
-public class Int extends Type
+public class Integer extends Type
 {
-  public void print()
-  {
-    System.out.println("int");
-  }
+	public void print()
+	{
+		System.out.println("Integer");
+	}
 }
 
-public class Bool extends Type
+public class Boolean extends Type
 {
-  public void print()
-  {
-    System.out.println("boolean");
-  }
+	public void print()
+	{
+		System.out.println("Boolean");
+	}
 }
 
 public class Array extends Type
 {
-  private Type type;
-  public Array(Type t)
-  {
-    type = t;
-  }
+	private Type a_type;
 
-  public void print()
-  {
-    System.out.println("Array of ");
-    type.print();
-  }
+	public Array(Type p_type)
+	{
+		a_type = p_type;
+	}
+
+	public void print()
+	{
+		System.out.println("Array of ");
+
+		a_type.print();
+	}
 }
-
-//Les Constantes
 
 public abstract class Constante
 {
-  abstract void print();
+	abstract void print();
 }
 
-public  class Number extends Constante
+public class Number extends Constante
 {
-  private float value;
-  public Number(float n)
-  {
-    value = n;
-  }
+	private float a_value;
 
-  public void print()
-  {
-    System.out.println(value);
-  }
+	public Number(float p_value)
+	{
+		a_value = p_value;
+	}
+
+	public void print()
+	{
+		System.out.println(a_value);
+	}
 }
 
 public class True extends Constante
 {
-  private final boolean value = true;
-
-  public void print()
-  {
-    System.out.println(value);
-  }
+	public void print()
+	{
+		System.out.println("True);
+	}
 }
 
 public class False extends Constante
 {
-  private final boolean value = false;
-
-  public void print()
-  {
-    System.out.println(value);
-  }
+	public void print()
+	{
+		System.out.println("False");
+	}
 }
 
-//Expressions :
-
-abstract class Expr
+abstract class Expression
 {
-  abstract void print();
+	abstract void print();
 }
 
-
-//Opérateurs Unaires :
-public class Inv extends Expr
+public class Inverse extends Expression
 {
-  Expr e;
+	Expression a_expression;
 
-  public Inv(Expr e)
-  {
-    this.e = e;
-  }
+	public Inverse(Expression p_expression)
+	{
+		a_expression = p_expression;
+	}
 
-  public void print(){
-    println('-');
-    e.print();
-  }
+	public void print()
+	{
+		System.out.println("-");
+		a_expression.print();
+	}
 }
-// Opérateurs binaires :
-public class Add extends Expr
+
+public class Add extends Expression
 {
-  Expr e1, e2;
+	Expression	a_expression_a;
+	Expression	a_expression_b;
 
-  public Add(Expr e1, Expr e2)
-  {
-    this.e1 = e1;
-    this.e2 = e2;
-  }
+	public Add(Expression p_expression_a, Expression p_expression_b)
+	{
+		a_expression_a = p_expression_a;
+		a_expression_b = p_expression_b;
+	}
 
-  public void print(){
-    e1.print();
-    println('+');
-    e2.print();
-  }
+	public void print()
+	{
+		a_expression_a.print();
+
+		System.out.println("+");
+
+		a_expression_b.print();
+	}
 }
 
-public class Multi extends Expr
+public class Multiplicate extends Expression
 {
-  Expr e1 ,e2;
+	Expression	a_expression_a;
+	Expression	a_expression_b;
 
-  public Multi(Expr e1, Expr e2)
-  {
-    this.e1 = e1;
-    this.e2 = e2;
-  }
+	public Multiplicate(Expression p_expression_a, Expression p_expression_b)
+	{
+		a_expression_a = p_expression_a;
+		a_expression_b = p_expression_b;
+	}
 
-  public void print(){
-    e1.print();
-    println('*');
-    e2.print();
-  }
+	public void print()
+	{
+		a_expression_a.print();
+
+		System.out.println("*");
+
+		a_expression_b.print();
+	}
 }
 
-public class Divide extends Expr
+public class Divide extends Expression
 {
-  Expr e1 ,e2;
+	Expression	a_expression_a;
+	Expression	a_expression_b;
 
-  public Divide(Expr e1, Expr e2)
-  {
-    this.e1 = e1;
-    this.e2 = e2;
-  }
+	public Divide(Expression p_expression_a, Expression p_expression_b)
+	{
+		a_expression_a = p_expression_a;
+		a_expression_b = p_expression_b;
+	}
 
-  public void print(){
-    e1.print();
-    println('/');
-    e2.print();
-  }
+	public void print()
+	{
+		a_expression_a.print();
+
+		System.out.println("/");
+
+		a_expression_b.print();
+	}
 }
 
-public class And extends Expr
+public class And extends Expression
 {
-  Expr e1 ,e2;
+	Expression	a_expression_a;
+	Expression	a_expression_b;
 
-  public And(Expr e1, Expr e2)
-  {
-    this.e1 = e1;
-    this.e2 = e2;
-  }
+	public And(Expression a_expression_a, Expression a_expression_b)
+	{
+		a_expression_a = a_expression_a;
+		a_expression_b = a_expression_b;
+	}
 
-  public void print(){
-    e1.print();
-    println('AND');
-    e2.print();
-  }
+	public void print()
+	{
+		a_expression_a.print();
+
+		System.out.println("AND");
+
+		a_expression_b.print();
+	}
 }
 
-public class Or extends Expr
+public class Or extends Expression
 {
-  Expr e1 ,e2;
+	Expression	a_expression_a;
+	Expression	a_expression_b;
 
-  public Or(Expr e1, Expr e2)
-  {
-    this.e1 = e1;
-    this.e2 = e2;
-  }
+	public Or(Expression a_expression_a, Expression a_expression_b)
+	{
+		a_expression_a = a_expression_a;
+		a_expression_b = a_expression_b;
+	}
 
-  public void print(){
-    e1.print();
-    println('OR');
-    e2.print();
-  }
+	public void print()
+	{
+		a_expression_a.print();
+
+		System.out.println("OR");
+
+		a_expression_b.print();
+	}
 }
 
-public class Inf extends Expr
+public class Inf extends Expression
 {
-  Expr e1 ,e2;
+	Expression	a_expression_a;
+	Expression	a_expression_b;
 
-  public Inf(Expr e1, Expr e2)
-  {
-    this.e1 = e1;
-    this.e2 = e2;
-  }
+	public Inf(Expression a_expression_a, Expression a_expression_b)
+	{
+		a_expression_a = a_expression_a;
+		a_expression_b = a_expression_b;
+	}
 
-  public void print(){
-    e1.print();
-    println('<');
-    e2.print();
-  }
+	public void print()
+	{
+		a_expression_a.print();
+
+		System.out.println("<");
+
+		a_expression_b.print();
+	}
 }
 
-public class InfEqual extends Expr
+public class InfEqual extends Expression
 {
-  Expr e1 ,e2;
+	Expression	a_expression_a;
+	Expression	a_expression_b;
 
-  public InfEqual(Expr e1, Expr e2)
-  {
-    this.e1 = e1;
-    this.e2 = e2;
-  }
+	public InfEqual(Expression a_expression_a, Expression a_expression_b)
+	{
+		a_expression_a = a_expression_a;
+		a_expression_b = a_expression_b;
+	}
 
-  public void print(){
-    e1.print();
-    println('<=');
-    e2.print();
-  }
+	public void print()
+	{
+		a_expression_a.print();
+		System.out.println("<=");
+		a_expression_b.print();
+	}
 }
 
-public class Equal extends Expr
+public class Equal extends Expression
 {
-  Expr e1 ,e2;
+	Expression	a_expression_a;
+	Expression	a_expression_b;
 
-  public Equal(Expr e1, Expr e2)
-  {
-    this.e1 = e1;
-    this.e2 = e2;
-  }
+	public Equal(Expression a_expression_a, Expression a_expression_b)
+	{
+		a_expression_a = a_expression_a;
+		a_expression_b = a_expression_b;
+	}
 
-  public void print(){
-    e1.print();
-    println('=');
-    e2.print();
-  }
+	public void print()
+	{
+		a_expression_a.print();
+		System.out.println("=");
+		a_expression_b.print();
+	}
 }
 
-public class Dif extends Expr
+public class Dif extends Expression
 {
-  Expr e1 ,e2;
+	Expression	a_expression_a;
+	Expression	a_expression_b;
 
-  public Dif(Expr e1, Expr e2)
-  {
-    this.e1 = e1;
-    this.e2 = e2;
-  }
+	public Dif(Expression a_expression_a, Expression a_expression_b)
+	{
+		a_expression_a = a_expression_a;
+		a_expression_b = a_expression_b;
+	}
 
-  public void print(){
-    e1.print();
-    println('!=');
-    e2.print();
-  }
+	public void print()
+	{
+		a_expression_a.print();
+		System.out.println("!=");
+		a_expression_b.print();
+	}
 }
 
-public class Sup extends Expr
+public class Sup extends Expression
 {
-  Expr e1 ,e2;
+	Expression	a_expression_a;
+	Expression	a_expression_b;
 
-  public Sup(Expr e1, Expr e2)
-  {
-    this.e1 = e1;
-    this.e2 = e2;
-  }
+	public Sup(Expression a_expression_a, Expression a_expression_b)
+	{
+		a_expression_a = a_expression_a;
+		a_expression_b = a_expression_b;
+	}
 
-  public void print(){
-    e1.print();
-    println('>');
-    e2.print();
-  }
+	public void print()
+	{
+		a_expression_a.print();
+
+		System.out.println(">");
+
+		a_expression_b.print();
+	}
 }
 
-public class SupEqual extends Expr
+public class SupEqual extends Expression
 {
-  Expr e1 ,e2;
+	Expression	a_expression_a;
+	Expression	a_expression_b;
 
-  public SupEqual(Expr e1, Expr e2)
-  {
-    this.e1 = e1;
-    this.e2 = e2;
-  }
+	public SupEqual(Expression a_expression_a, Expression a_expression_b)
+	{
+		a_expression_a = a_expression_a;
+		a_expression_b = a_expression_b;
+	}
 
-  public void print(){
-    e1.print();
-    println('>=');
-    e2.print();
-  }
+	public void print()
+	{
+		a_expression_a.print();
+		System.out.println(">=");
+		a_expression_b.print();
+	}
 }
-
-// Cibles d'appels :
 
 abstract class CallTarget
 {
-    abstract void print();
+	abstract void print();
 }
 
-public class read extends CallTarget
+public class Read extends CallTarget
 {
-  public void print()
-  {
-    System.out.println("read");
-  }
+	public void print()
+	{
+		System.out.println("Read");
+	}
 }
 
-public class write extends CallTarget
+public class Write extends CallTarget
 {
-  public void print()
-  {
-    System.out.println("write");
-  }
+	public void print()
+	{
+		System.out.println("Write");
+	}
 }
 
 public class Fonction extends CallTarget
 {
-  private String name;
+	private String a_name;
 
-  public Fonction(String n)
-  {
-    name = n;
-  }
+	public Fonction(String p_name)
+	{
+		a_name = p_name;
+	}
 
-  public void print()
-  {
-    System.out.println(name);
-  }
+	public void print()
+	{
+		System.out.println(a_name);
+	}
 }
 
-//Expressions
-
-public class Var extends Expr
+public class Variable extends Expression
 {
-  private String name;
+	private String a_name;
 
-  public Var(String n){
-    name = n;
-  }
-  public void print()
-  {
-    System.out.print(name);
-  }
+	public Variable(String p_name)
+	{
+		a_name = p_name;
+	}
+
+	public void print()
+	{
+		System.out.print(a_name);
+	}
 }
 
-public class Call extends Expr
+public class Call extends Expression
 {
-  private CallTarget ca;
-  private Expr[] expressions;
+	private CallTarget		a_call_target;
+	private Expression[]	a_expressions;
 
-  public CallF(CallTarget ca, Expr[] e)
-  {
-    this.ca = ca;
-    expressions = e;
-  }
+	public Call(CallTarget a_call_target, Expression[] p_expressions)
+	{
+		a_call_target = a_call_target;
+		a_expressions = p_expressions;
+	}
 
-  public void print()
-  {
-    ca.print();
-    System.out.print('(');
-    for(int i = 0; i < expressions.length; i++)
-    {
-      expressions[i].print();
-      System.out.print(" ");
-    }
-      System.out.print(")");
-  }
+	public void print()
+	{
+		a_call_target.print();
+
+		System.out.print("(");
+
+		for (int i = 0; i < a_expressions.length; i++)
+		{
+			a_expressions[i].print();
+			System.out.print(" ");
+		}
+
+		System.out.print(")");
+	}
 }
 
 public class AccesToIndex
 {
-  private int index;
-  private Var target;
+	private int			a_index;
+	private Variable	a_target;
 
-  public AccesToIndex(int i, String n){
-    index = i;
-    target = n;
-  }
+	public AccesToIndex(int p_index, String p_target)
+	{
+		a_index = p_index;
+		a_target = p_target;
+	}
 
-  public void print()
-  {
-    target.print();
-    System.out.print("["+index+"]");
-  }
+	public void print()
+	{
+		a_index.print();
+
+		System.out.print("[" + a_target + "]");
+	}
 }
 
 public class ArrayCreation
 {
-  private Type type;
-  private Expr expression;
+	private Type		a_type;
+	private Expression	a_expression;
 
-  public ArrayCreation(Type t, Expr e)
-  {
-    type = t;
-    expression = e;
-  }
+	public ArrayCreation(Type p_type, Expression p_expression)
+	{
+		a_type = p_type;
+		a_expression = p_expression;
+	}
 
-  public void print()
-  {
-    System.out.print("new array of ");
-    type.print();
-    System.out.print("[");
-    expression.print();
-    System.out.print("]");
-  }
+	public void print()
+	{
+		System.out.print("new array of ");
+
+		a_type.print();
+
+		System.out.print("[");
+		a_expression.print();
+		System.out.print("]");
+	}
 }
-
-//Instructions :
 
 abstract class Instruction
 {
-  public void print();
+	public void print();
 }
 
 public class Affectation extends Instruction
 {
-  private Var var;
-  private Expr expression;
+	private Variable	a_variable;
+	private Expression	a_expression;
 
-  public Affectation(Var v, Expr e)
-  {
-    var = v;
-    expression = e;
-  }
+	public Affectation(Variable p_variable, Expression p_expression)
+	{
+		a_variable = p_variable;
+		a_expression = p_expression;
+	}
 
-  public void print()
-  {
-    var.print();
-    System.out.print(":=");
-    expression.print();
-  }
+	public void print()
+	{
+		Variable.print();
+		System.out.print(":=");
+		a_expression.print();
+	}
 }
 
 public class ArrayAffectation extends Instruction
 {
-  private Var var;
-  private Expr index;
-  private Expr new_value;
+	private Variable	a_variable;
+	private Expression	a_index;
+	private Expression	a_new_value;
 
-  public Affectation(Var v, Expr e, Expr nv)
-  {
-    var = v;
-    expression = e;
-    new_value = nv;
-  }
+	public ArrayAffectation(Variable p_variable, Expression p_index, Expression p_new_value)
+	{
+		a_variable = p_variable;
+		a_index = p_index;
+		a_new_value = p_new_value;
+	}
 
-  public void print()
-  {
-    var.print();
-    System.out.print("[");
-    index.print();
-    System.out.print("]");
-    System.out.print(":=");
-    new_value.print();
-  }
+	public void print()
+	{
+		a_variable.print();
+		System.out.print("[");
+		a_index.print();
+		System.out.print("]");
+		System.out.print(":=");
+		a_new_value.print();
+	}
+
 }
 
-//pour if then else 1 seule class ? 
+public static void main(String[] Args)
+{
+	int i = 2;
+}

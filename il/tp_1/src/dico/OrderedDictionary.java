@@ -2,9 +2,24 @@ package dico;
 
 public class OrderedDictionary extends AbstractDictionary
 {	
+	public OrderedDictionary()
+	{
+		setKeys(new Object[1]);
+		setValues(new Object[1]);
+	}
+
+	public OrderedDictionary(int p_size)
+	{
+		setKeys(new String[p_size]);
+		setValues(new String[p_size]);
+	}
+	
 	@Override
 	public int indexOf(Object p_key)
 	{
+		if(isEmpty())
+			return -1;
+		
 		for(int t_index = 0; t_index < getKeys().length; t_index++)
 			if(getKeys()[t_index].equals(p_key))
 				return t_index;
@@ -34,30 +49,26 @@ public class OrderedDictionary extends AbstractDictionary
 		return r_index;		
 	}
 	 
-	@Override
-	public String toString()
-	{
-		StringBuilder t_to_string = new StringBuilder();
-		 
-		for(int t_index = 0; t_index < getSize(); t_index++)
-			t_to_string.append(t_index + " - " + getKeys()[t_index].toString() + " - " + getValues()[t_index].toString() + System.getProperty("line.separator"));
-		 
-		return t_to_string.toString();
-	 }
-	 
 	public static void main(String[] Args)
 	{
 		IDictionary t_ordered_dictionary = new OrderedDictionary();
 		
 		System.out.println(t_ordered_dictionary.isEmpty());
+		
+		System.out.println("---");
 		 
 		t_ordered_dictionary.put("Test", "Premiere val");
-		t_ordered_dictionary.put("Truc", "Yolo").put("Machin", "grtjjhrtj").put("Test", "Nouvelle description").put("Yolo", "42");
+		t_ordered_dictionary.put("Truc", "Yolo").put("Machin", "grtjjhrtj").put("Test", "Nouvelle description");
+		//t_ordered_dictionary.put("Yolo", "42");
 		 
 		System.out.println(t_ordered_dictionary.toString());
 		
-		System.out.println(t_ordered_dictionary.get("Machin").toString());
-		//System.out.println(t_ordered_dictionary.get("N'existe pas").toString()); //Exception
+		System.out.println("---");
+		
+		System.out.println(t_ordered_dictionary.get("Machin"));
+		System.out.println(t_ordered_dictionary.get("N'existe pas"));
+		
+		System.out.println("---");
 		
 		System.out.println(t_ordered_dictionary.isEmpty());
 	}
