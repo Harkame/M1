@@ -99,8 +99,8 @@ public class PP
 
 	public class Add extends Expression
 	{
-		Expression	a_expression_a;
-		Expression	a_expression_b;
+		private Expression	a_expression_a;
+		private Expression	a_expression_b;
 
 		public Add(Expression p_expression_a, Expression p_expression_b)
 		{
@@ -120,8 +120,8 @@ public class PP
 
 	public class Multiplicate extends Expression
 	{
-		Expression	a_expression_a;
-		Expression	a_expression_b;
+		private Expression	a_expression_a;
+		private Expression	a_expression_b;
 
 		public Multiplicate(Expression p_expression_a, Expression p_expression_b)
 		{
@@ -141,8 +141,8 @@ public class PP
 
 	public class Divide extends Expression
 	{
-		Expression	a_expression_a;
-		Expression	a_expression_b;
+		private Expression	a_expression_a;
+		private Expression	a_expression_b;
 
 		public Divide(Expression p_expression_a, Expression p_expression_b)
 		{
@@ -162,8 +162,8 @@ public class PP
 
 	public class And extends Expression
 	{
-		Expression	a_expression_a;
-		Expression	a_expression_b;
+		private Expression	a_expression_a;
+		private Expression	a_expression_b;
 
 		public And(Expression p_expression_a, Expression p_expression_b)
 		{
@@ -183,8 +183,8 @@ public class PP
 
 	public class Or extends Expression
 	{
-		Expression	a_expression_a;
-		Expression	a_expression_b;
+		private Expression	a_expression_a;
+		private Expression	a_expression_b;
 
 		public Or(Expression p_expression_a, Expression p_expression_b)
 		{
@@ -204,8 +204,8 @@ public class PP
 
 	public class Inf extends Expression
 	{
-		Expression	a_expression_a;
-		Expression	a_expression_b;
+		private Expression	a_expression_a;
+		private Expression	a_expression_b;
 
 		public Inf(Expression p_expression_a, Expression p_expression_b)
 		{
@@ -225,8 +225,8 @@ public class PP
 
 	public class InfEqual extends Expression
 	{
-		Expression	a_expression_a;
-		Expression	a_expression_b;
+		private Expression	a_expression_a;
+		private Expression	a_expression_b;
 
 		public InfEqual(Expression p_expression_a, Expression p_expression_b)
 		{
@@ -244,8 +244,8 @@ public class PP
 
 	public class Equal extends Expression
 	{
-		Expression	a_expression_a;
-		Expression	a_expression_b;
+		private Expression	a_expression_a;
+		private Expression	a_expression_b;
 
 		public Equal(Expression p_expression_a, Expression p_expression_b)
 		{
@@ -263,8 +263,8 @@ public class PP
 
 	public class Dif extends Expression
 	{
-		Expression	a_expression_a;
-		Expression	a_expression_b;
+		private Expression	a_expression_a;
+		private Expression	a_expression_b;
 
 		public Dif(Expression p_expression_a, Expression p_expression_b)
 		{
@@ -282,8 +282,8 @@ public class PP
 
 	public class Sup extends Expression
 	{
-		Expression	a_expression_a;
-		Expression	a_expression_b;
+		private Expression	a_expression_a;
+		private Expression	a_expression_b;
 
 		public Sup(Expression p_expression_a, Expression p_expression_b)
 		{
@@ -303,8 +303,8 @@ public class PP
 
 	public class SupEqual extends Expression
 	{
-		Expression	a_expression_a;
-		Expression	a_expression_b;
+		private Expression	a_expression_a;
+		private Expression	a_expression_b;
 
 		public SupEqual(Expression p_expression_a, Expression p_expression_b)
 		{
@@ -490,11 +490,11 @@ public class PP
 
 	public class If extends Instruction
 	{
-		Expression	a_expression_if;
-		Expression	a_expression_then;
-		Expression	a_expression_else;
+		private Expression	a_expression_if;
+		private Expression	a_expression_then;
+		private Expression	a_expression_else;
 
-		public ArrayAffectation(Variable p_expression_if, Expression p_expression_then, Expression p_expression_else)
+		public If(Variable p_expression_if, Expression p_expression_then, Expression p_expression_else)
 		{
 			a_expression_if = p_expression_if;
 			a_expression_then = p_expression_then;
@@ -514,10 +514,10 @@ public class PP
 
 	public class While extends Instruction
 	{
-		Expression	a_condition;
-		Expression	a_instruction;
+		private Expression	a_condition;
+		private Expression	a_instruction;
 
-		public ArrayAffectation( Expression p_condition, Instruction p_instruction)
+		public While(Expression p_condition, Instruction p_instruction)
 		{
 			a_condition = p_condition;
 			a_instruction = p_instruction;
@@ -569,7 +569,7 @@ public class PP
 
 	public class Instructions extends Instruction
 	{
-		Instruction[] a_instructions;
+		private Instruction[] a_instructions;
 
 		public Instructions(Instruction[] p_instructions)
 		{
@@ -579,6 +579,76 @@ public class PP
 		public void print()
 		{
 			for (int t_index = 0; t_index < a_instructions.length; t_index++)
+				a_instructions[t_index].print();
+		}
+	}
+
+	public class ParametersDefinition
+	{
+		private Variable	a_variable;
+		private Type		a_type;
+
+		public ParametersDefinition(Variable p_variable, Type p_type)
+		{
+			a_variable = p_variable
+			a_type = p_type;
+		}
+
+		public void print()
+		{
+			a_variable.print();
+			System.out.println(" : ");
+			a_type.print();
+		}
+	}
+
+	public class FunctionDefinition()
+	{
+		private Function				a_function;
+		private ParametersDefinition[]	a_parameters;
+		private Type					a_return_type;
+		private Instruction[]			a_instructions;
+
+		public FunctionDefinition(Function p_function, ParametersDefinition p_parameters, Type p_return_type,
+				Instruction[] p_instructions)
+		{
+			a_function = p_function;
+			a_parameters = p_parameters;
+			a_return_type = p_return_type;
+			a_instructions = p_instructions;
+		}
+		
+		public void print()
+		{
+			a_function.print();
+			System.out.print("(");
+			
+			for(int t_index = 0; t_index < a_parameters[t_index]; t_index++)
+				a_parameters[t_index].print();
+			
+			System.out.println(")");
+			a_return_type.print();
+			
+			for(int t_index = 0; t_index < a_parameters[t_index]; t_index++)
+				a_instructions[t_index].print();
+		}
+	}
+
+	/*
+	 * TODO
+	 */
+	public class Programm
+	{
+		private Instructions[] a_instructions;
+		
+		public Programm(Instruction[] p_instructions)
+		{
+			a_instructions = p_instructions;
+		}
+		
+		public void print()
+		{
+			for(int t_index = 0; t_index < a_instructions.length; t_index++)
 				a_instructions[t_index].print();
 		}
 	}
