@@ -7,12 +7,6 @@ public class OrderedDictionary extends AbstractDictionary
 		setKeys(new Object[0]);
 		setValues(new Object[0]);
 	}
-
-	public OrderedDictionary(int p_size)
-	{
-		setKeys(new String[p_size]);
-		setValues(new String[p_size]);
-	}
 	
 	@Override
 	public int indexOf(Object p_key)
@@ -47,29 +41,5 @@ public class OrderedDictionary extends AbstractDictionary
 		}
 		
 		return r_index;		
-	}
-	 
-	public static void main(String[] Args)
-	{
-		IDictionary t_ordered_dictionary = new OrderedDictionary();
-		
-		System.out.println(t_ordered_dictionary.isEmpty());
-		
-		System.out.println("---");
-		 
-		t_ordered_dictionary.put("Test", "Premiere val");
-		t_ordered_dictionary.put("Truc", "Yolo").put("Machin", "grtjjhrtj").put("Test", "Nouvelle description");
-		t_ordered_dictionary.put("Yolo", "42");
-		 
-		System.out.println(t_ordered_dictionary.toString());
-		
-		System.out.println("---");
-		
-		System.out.println(t_ordered_dictionary.get("Machin"));
-		System.out.println(t_ordered_dictionary.get("N'existe pas"));
-		
-		System.out.println("---");
-		
-		System.out.println(t_ordered_dictionary.isEmpty());
 	}
 }

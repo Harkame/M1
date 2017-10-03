@@ -4,14 +4,8 @@ public class FastDictionary extends AbstractDictionary
 {
 	public FastDictionary()
 	{
-		setKeys(new Object[10]);
-		setValues(new Object[10]);
-	}
-
-	public FastDictionary(int p_size)
-	{
-		setKeys(new String[p_size]);
-		setValues(new String[p_size]);
+		setKeys(new Object[3]);
+		setValues(new Object[3]);
 	}
 
 	@Override
@@ -110,48 +104,5 @@ public class FastDictionary extends AbstractDictionary
 		
 		setKeys(t_new_keys);
 		setValues(t_new_values);
-	}
-	
-	@Override
-	public String toString()
-	{
-		StringBuilder t_to_string = new StringBuilder();
-		 
-		for(int t_index = 0; t_index < getKeys().length; t_index++)
-		{
-			if(getKeys()[t_index] != null)
-			{
-				t_to_string.append(t_index + " - " + getKeys()[t_index].toString() + " - " + getValues()[t_index].toString());
-			
-				if(t_index < getKeys().length - 1)
-					t_to_string.append(System.getProperty("line.separator"));
-			}
-		}
-		 
-		return t_to_string.toString();
-	 }
-	
-	public static void main(String[] Args)
-	{
-		IDictionary t_ordered_dictionary = new FastDictionary();
-		
-		System.out.println(t_ordered_dictionary.isEmpty());
-		
-		System.out.println("---");
-		 
-		t_ordered_dictionary.put("Test", "Premiere val");
-		t_ordered_dictionary.put("Truc", "Yolo").put("Machin", "grtjjhrtj").put("Test", "Nouvelle description");
-		t_ordered_dictionary.put("Yolo", "42");
-		 
-		System.out.println(t_ordered_dictionary.toString());
-		
-		System.out.println("---");
-		
-		System.out.println(t_ordered_dictionary.get("Machin"));
-		System.out.println(t_ordered_dictionary.get("N'existe pas"));
-		
-		System.out.println("---");
-		
-		System.out.println(t_ordered_dictionary.isEmpty());
 	}
 }

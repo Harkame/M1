@@ -19,16 +19,27 @@ public class TestOrderedDictionary
 	}
 	
 	@Test
-	public void testAddElement()
+	public void testEmpty()
 	{
-		assertEquals(0, a_ordered_dictionary.getSize());
 		assertTrue(a_ordered_dictionary.isEmpty());
 		
 		a_ordered_dictionary.put(g_keys_to_put[0], g_values_to_put[0]);
 		
-		assertEquals(1, a_ordered_dictionary.getSize());
-		assertTrue(a_ordered_dictionary.containsKey(g_keys_to_put[0]));
-		assertTrue(a_ordered_dictionary.get(g_keys_to_put[0]) != null);
+		assertFalse(a_ordered_dictionary.isEmpty());
+	}
+	
+	@Test
+	public void testSize()
+	{
+		assertEquals(0, a_ordered_dictionary.getSize());
+		
+		
+		for(int t_index = 0; t_index < g_keys_to_put.length; t_index++)
+		{
+			assertEquals(t_index, a_ordered_dictionary.getSize());
+			a_ordered_dictionary.put(g_keys_to_put[t_index], g_values_to_put[t_index]);
+			assertEquals(t_index + 1, a_ordered_dictionary.getSize());
+		}
 	}
 	
 	@Test
@@ -38,12 +49,43 @@ public class TestOrderedDictionary
 		assertTrue(a_ordered_dictionary.isEmpty());
 
 		
-		for(int g_index = 0; g_index < g_keys_to_put.length; g_index++)
-			a_ordered_dictionary.put(g_keys_to_put[g_index], g_values_to_put[g_index]);
+		for(int t_index = 0; t_index < g_keys_to_put.length; t_index++)
+			a_ordered_dictionary.put(g_keys_to_put[t_index], g_values_to_put[t_index]);
 		
 		assertEquals(3, a_ordered_dictionary.getSize());
 		
-		for(int g_index = 0; g_index < g_keys_to_put.length; g_index++)
-			assertTrue(a_ordered_dictionary.containsKey(g_keys_to_put[g_index]));
+		for(int t_index = 0; t_index < g_keys_to_put.length; t_index++)
+			assertTrue(a_ordered_dictionary.containsKey(g_keys_to_put[t_index]));
+	}
+	
+	@Test
+	public void testAddSameElements()
+	{
+		assertEquals(0, a_ordered_dictionary.getSize());
+		assertTrue(a_ordered_dictionary.isEmpty());
+
+		
+		for(int t_index = 0; t_index < g_keys_to_put.length; t_index++)
+			a_ordered_dictionary.put(g_keys_to_put[t_index], g_values_to_put[t_index]);
+		
+		for(int t_index = 0; t_index < g_keys_to_put.length; t_index++)
+			a_ordered_dictionary.put(g_keys_to_put[t_index], g_values_to_put[t_index]);
+		
+		assertEquals(3, a_ordered_dictionary.getSize());
+		
+		for(int t_index = 0; t_index < g_keys_to_put.length; t_index++)
+			assertTrue(a_ordered_dictionary.containsKey(g_keys_to_put[t_index]));
+	}
+	
+	@Test
+	public void testGetElement()
+	{	
+		for(int t_index = 0; t_index < g_keys_to_put.length; t_index++)
+			a_ordered_dictionary.put(g_keys_to_put[t_index], g_values_to_put[t_index]);
+
+		for(int t_index = 0; t_index < g_keys_to_put.length; t_index++)
+			assertEquals(a_ordered_dictionary.get(g_keys_to_put[t_index]), g_values_to_put[t_index]);
+		
+		assertNull(a_ordered_dictionary.get("oyotrohtrkk"));
 	}
 }

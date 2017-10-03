@@ -19,12 +19,22 @@ public class TestDictionary
 		a_test_sorted_dictionary = new TestSortedDictionary();
 	}
 	
+	
+	
 	@Test
-	public void testAddElement()
+	public void testEmpty()
 	{
-		a_test_ordered_dictionary.testAddElement();
-		a_test_fast_dictionary.testAddElement();
-		a_test_sorted_dictionary.testAddElement();
+		a_test_ordered_dictionary.testEmpty();
+		a_test_fast_dictionary.testEmpty();
+		a_test_sorted_dictionary.testEmpty();
+	}
+	
+	@Test
+	public void testSize()
+	{
+		a_test_ordered_dictionary.testSize();
+		a_test_fast_dictionary.testSize();
+		a_test_sorted_dictionary.testSize();
 	}
 	
 	@Test
@@ -34,4 +44,21 @@ public class TestDictionary
 		a_test_fast_dictionary.testAddElements();
 		a_test_sorted_dictionary.testAddElements();
 	}
+	
+	@Test
+	public void testAddSameElements()
+	{
+		a_test_ordered_dictionary.testAddSameElements();
+		a_test_fast_dictionary.testAddSameElements();
+		a_test_sorted_dictionary.testAddSameElements();
+	}
+	
+	@Test
+	public void testGetElement()
+	{	
+		a_test_ordered_dictionary.testGetElement();
+		a_test_fast_dictionary.testGetElement();
+		a_test_sorted_dictionary.testGetElement();
+	}
+	
 }
