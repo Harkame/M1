@@ -24,10 +24,11 @@ public class TestOrderedDictionary
 		assertEquals(0, a_ordered_dictionary.getSize());
 		assertTrue(a_ordered_dictionary.isEmpty());
 		
-		a_ordered_dictionary.put("clef", "Yolo");
+		a_ordered_dictionary.put(g_keys_to_put[0], g_values_to_put[0]);
 		
 		assertEquals(1, a_ordered_dictionary.getSize());
-		assertTrue(a_ordered_dictionary.containsKey("clef"));
+		assertTrue(a_ordered_dictionary.containsKey(g_keys_to_put[0]));
+		assertTrue(a_ordered_dictionary.get(g_keys_to_put[0]) != null);
 	}
 	
 	@Test

@@ -11,7 +11,7 @@ public abstract class AbstractDictionary implements IDictionary
 	public IDictionary put(Object p_key, Object p_value)
 	{
 		int t_index = indexOf(p_key);
-	
+
 		if(t_index == -1)
 		{
 			t_index = newIndexOf(p_key);
@@ -21,6 +21,8 @@ public abstract class AbstractDictionary implements IDictionary
 			a_keys[t_index]   = p_key;
 			a_values[t_index] = p_value;
 		}
+		else
+			a_keys[t_index] = p_key;
 		
 		return this;
 	}

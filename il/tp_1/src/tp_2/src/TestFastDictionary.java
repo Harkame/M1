@@ -28,6 +28,7 @@ public class TestFastDictionary
 		
 		assertEquals(1, a_fast_dictionary.getSize());
 		assertTrue(a_fast_dictionary.containsKey("clef"));
+		assertTrue(a_fast_dictionary.get(g_keys_to_put[0]) != null);
 	}
 	
 	@Test

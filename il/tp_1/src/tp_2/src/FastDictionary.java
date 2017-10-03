@@ -69,10 +69,11 @@ public class FastDictionary extends AbstractDictionary
 			while(getKeys()[r_new_index] != null)
 			{
 				
-				if(r_new_index == getKeys().length)
+				if(r_new_index == getKeys().length
+						)
 					r_new_index = 0;
-				
-				r_new_index++;
+				else
+					r_new_index++;
 			}
 			r_index = r_new_index;
 		}
