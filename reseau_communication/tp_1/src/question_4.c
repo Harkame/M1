@@ -16,17 +16,19 @@ void* foo(void* p_param)
      {
           if(t_index == 0)
           {
-               fprintf(stdout, "Activity (%d) start work on %d\n", t_index, g_positions[t_index]);
-
-               sleep(0.1);
-
-               fprintf(stdout, "Activity (%d) end work on %d\n", t_index, g_positions[t_index]);
-
                pthread_mutex_lock(&g_mutex);
 
                g_positions[t_index]++;
 
+               fprintf(stdout, "Activity (%d) start work on %d\n", t_index, g_positions[t_index]);
+
                pthread_mutex_unlock(&g_mutex);
+
+               sleep(1);
+
+               fprintf(stdout, "Activity (%d) end work on %d\n", t_index, g_positions[t_index]);
+
+
 
                pthread_cond_broadcast(&g_cond);
           }
@@ -34,22 +36,18 @@ void* foo(void* p_param)
           {
                pthread_mutex_lock(&g_mutex);
 
-               while(g_positions[t_index - 1] < g_positions[t_index] + 2)
+               while(!g_positions[t_index] >= g_positions[t_index - 1])
                     pthread_cond_wait(&g_cond, &g_mutex);
-
-               pthread_mutex_unlock(&g_mutex);
-
-               fprintf(stdout, "Activity (%d) start work on %d\n", t_index, g_positions[t_index]);
-
-               sleep(0.1);
-
-               fprintf(stdout, "Activity (%d) end work on %d\n", t_index, g_positions[t_index]);
-
-               pthread_mutex_lock(&g_mutex);
 
                g_positions[t_index]++;
 
+               fprintf(stdout, "Activity (%d) start work on %d\n", t_index, g_positions[t_index]);
+
                pthread_mutex_unlock(&g_mutex);
+
+               sleep(1);
+
+               fprintf(stdout, "Activity (%d) end work on %d\n", t_index, g_positions[t_index]);
 
                pthread_cond_broadcast(&g_cond);
           }
