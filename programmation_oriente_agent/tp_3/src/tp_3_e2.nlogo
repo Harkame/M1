@@ -2,7 +2,7 @@ breed [lapins-femelles lapin-femelle]
 breed [lapins-males lapin-male]
 breed [ loups loup ]
 
-patches-own[odeur]
+patches-own[odeur odeur-male odeur-femelle color-lapin]
 
 to setup
   __clear-all-and-reset-ticks
@@ -11,6 +11,8 @@ to setup
   ask patches
   [
    set odeur 0
+   set odeur-male 0
+   set odeur-femelle 0
   ]
 
   create-lapins-femelles nombre-lapins / 2
@@ -42,23 +44,47 @@ to go
   diffuse odeur taux-diffusion
   ask patches
   [
-    set pcolor scale-color yellow odeur 1 (max-odeur / 1.3)
+    set pcolor scale-color color-lapin odeur 1 (max-odeur / 1.3)
     set odeur odeur * (100 - taux-diffusion) / 100
+    set odeur-male odeur-male * (100 - taux-diffusion) / 100
+    set odeur-femelle odeur-femelle * (100 - taux-diffusion) / 100
    ]
 
   ask loups [go-loup]
 end
 
 to go-lapin-femelle
- set odeur odeur + 50
- agiter
- fd 1
+ let target one-of loups  in-radius 3
+
+ ifelse target != nobody
+ [
+   face target
+   rt 180
+   fd 3
+ ]
+ [
+   set odeur odeur + 50
+   set odeur-femelle odeur-femelle + 50
+   follow-odeur-male
+   set color-lapin blue
+ ]
 end
 
 to go-lapin-male
- set odeur odeur + 50
- agiter
- fd 1
+ let target one-of loups  in-radius 3
+
+ ifelse target != nobody
+ [
+   face target
+   rt 180
+   fd 3
+ ]
+ [
+   set odeur odeur + 50
+   set odeur-male odeur-male + 50
+   follow-odeur-femelle
+   set color-lapin pink
+ ]
 end
 
 to go-loup
@@ -71,40 +97,34 @@ to agiter
 end
 
 to follow-odeur-male
-   ifelse any? patches with [odeur > 0 AND pcolor = blue]
+   ifelse any? neighbors with [odeur-male > 0]
   [
-    let test max-one-of neighbors [odeur]
-    set heading towards test
-    fd 1
+    face max-one-of neighbors [odeur-male]
   ]
   [
-    fd 1
     agiter
   ]
+  fd 1
 end
 
 to follow-odeur-femelle
-   ifelse any? patches with [odeur > 0 AND pcolor = pink]
+  ifelse any? neighbors with [odeur-femelle > 0]
   [
-    let test max-one-of neighbors [odeur]
-    set heading towards test
-    fd 1
+    face max-one-of neighbors [odeur-femelle]
   ]
   [
-    fd 1
     agiter
   ]
+  fd 1
 end
 
 to follow-odeur
   ifelse any? patches with [odeur > 0]
   [
-    let test max-one-of neighbors [odeur]
-    set heading towards test
-    fd 0.8
+    face max-one-of neighbors [odeur]
   ]
   [
-    fd 0.8
     agiter
   ]
+  fd 0.8
 end

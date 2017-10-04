@@ -1,206 +1,154 @@
-breed [cows cow]
-breed [bulls bull]
-breed [trucks truck]
+breed [lapins-femelles lapin-femelle]
+breed [lapins-males lapin-male]
+breed [ loups loup ]
 
-patches-own[count_time count_time_init size_plant growing]
-cows-own[energy]
-trucks-own[energy]
+patches-own[odeur odeur-male odeur-femelle]
 
 to setup
   __clear-all-and-reset-ticks
-  
-  set-default-shape cows "cow"
-  set-default-shape bulls "cow"
-  set-default-shape trucks "truck"
-    
+  set-default-shape turtles "bug"
+
   ask patches
   [
-    set count_time_init random g_max_time_grow
-    set count_time count_time_init
-    set size_plant 0 
-    set growing true
-    
-    set pcolor black
-   ]
-  
-  create-cows g_max_count_cows
-  [
-    set color brown
-    setxy random-xcor random-ycor
-    set size 3
-    set energy 100
+   set odeur 0
+   set odeur-male 0
+   set odeur-femelle 0
   ]
-  
-  create-bulls g_max_count_cows / 5
+
+  create-lapins-femelles nombre-lapins / 2
   [
-    set color red
+    set color pink
     setxy random-xcor random-ycor
     set size 5
   ]
-  
-  create-trucks g_max_count_cows / 7
+
+  create-lapins-males nombre-lapins / 2
   [
     set color blue
     setxy random-xcor random-ycor
     set size 5
-    set energy 100
   ]
-end
 
-to go_patches
-  ifelse growing = true
+  create-loups nombre-loups
   [
-    grow
+    set color red
+    setxy random-xcor random-ycor
+    set size 10
   ]
+end
+
+to go
+  ask lapins-femelles[go-lapin-femelle]
+  ask lapins-males[go-lapin-male]
+
+  diffuse odeur taux-diffusion
+  ask patches
   [
-    dead
-  ]
-  
+    set pcolor scale-color yellow odeur 1 (max-odeur / 1.3)
+    set odeur odeur * (100 - 2) / 100
+    set odeur-male odeur-male * (100 - 2) / 100
+    set odeur-femelle odeur-femelle * (100 - 2) / 100
+   ]
+
+  ask loups [go-loup]
 end
 
-to go_turtles
-  ask cows[go_cows]
-  ask bulls[go_bulls]
-  ask trucks[go_trucks]
+to go-lapin-femelle
+ let target one-of loups  in-radius 3
+
+ ifelse target != nobody
+ [
+   face target
+   rt 180
+   fd 3
+ ]
+ [
+   ifelse any? lapins-males in-radius 1
+   [
+    agiter
+    fd 1
+   ]
+   [
+     set odeur odeur + 50
+     set odeur-femelle odeur-femelle + 50
+     follow-odeur-male
+   ]
+ ]
 end
 
-to go_cows
-  follow_bull
- 
-  eat
-  set energy energy - 1
-  update-plots
+to go-lapin-male
+ let target one-of loups in-radius 3
+
+ ifelse target != nobody
+ [
+   face target
+   rt 180
+   fd 3
+ ]
+ [
+   ifelse any? lapins-femelles in-radius 1
+   [
+    agiter
+    fd 1
+   ]
+   [
+     set odeur odeur + 50
+     set odeur-male odeur-male + 50
+     follow-odeur-femelle
+   ]
+ ]
 end
 
-to go_bulls
-
-  wiggle
- 
-  eat
-  update-plots
+to go-loup
+ follow-odeur
 end
 
-to go_trucks
-  wiggle
-  find_cows
-      
-  set energy energy - 1
-  
-  update-plots
-end
-
-to grow
-  ifelse count_time = 0
-  [
-    set size_plant size_plant + 1
-    
-    set pcolor scale-color green size_plant 0 g_max_size_plant
-    
-    set count_time count_time_init
-    
-    if size_plant = g_max_size_plant
-    [
-      set growing false
-    ]
-  ]
-  [
-    set count_time count_time - 1
-  ]
-end
-
-to dead
-  ifelse count_time = 0
-  [
-    set size_plant size_plant - 1
-    
-    set pcolor scale-color green size_plant 0 g_max_size_plant
-      
-    set count_time count_time_init
-  
-    if size_plant <= 0
-    [
-      set pcolor black
-      set growing true
-    ]
-  ]
-  [
-    set count_time count_time - 1
-  ]
-end
-
-to wiggle
-  fd 1
+to agiter
   rt random 50
   lt random 50
 end
 
-to eat
-  if size_plant > g_consumption
+to follow-odeur-male
+  ifelse any? neighbors4 with [odeur-male > 33]
   [
-    
-    set size_plant size_plant - g_consumption
-    
-    set energy energy + g_consumption
-    
-    set pcolor scale-color green size_plant 0 g_max_size_plant
-      
-    set count_time count_time_init
-  
-    if size_plant = 0
-    [
-      set pcolor black
-      set growing true
-    ]
+    face max-one-of neighbors4 [odeur-male]
   ]
-  
-end
- 
-to follow_bull
-  let target min-one-of bulls in-radius 10 [distance myself]
-  if target != nobody
   [
-    set heading towards target
-    fd 1
+    agiter
   ]
+  fd 1
 end
 
-to find_cows
-  let target min-one-of bulls in-radius 10 [distance myself]
-  if target != nobody
+to follow-odeur-femelle
+  ifelse any? neighbors4 with [odeur-femelle > 33]
   [
-    set heading towards target
-    fd 2
+    face max-one-of neighbors4 [odeur-femelle]
   ]
-  
-  set target min-one-of cows in-radius 1 [distance myself]
-  if target != nobody
   [
-    ask target[die]
-    
-    set energy energy + g_consumption
-    
-    get-away
+    agiter
   ]
+  fd 1
 end
 
-
-to get-away
-  rt random 360
-  fd 20
-end
-
-to reproduct
-  if
+to follow-odeur
+  ifelse any? patches with [odeur > 33]
+  [
+    face max-one-of neighbors4 [odeur]
+  ]
+  [
+    agiter
+  ]
+  fd 0.8
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
 315
 15
-935
-656
-30
-30
-10.0
+729
+450
+50
+50
+4.0
 1
 15
 1
@@ -210,27 +158,87 @@ GRAPHICS-WINDOW
 1
 1
 1
--30
-30
--30
-30
+-50
+50
+-50
+50
 0
 0
 0
 ticks
 30.0
 
-BUTTON
-95
-215
+SLIDER
+45
+180
+237
+213
+taux-diffusion
+taux-diffusion
+0
+1
+0.5
+0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+45
+230
 217
-248
-go_patches
-go_patches
+263
+max-odeur
+max-odeur
+0
+50
+50
+1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+45
+85
+217
+118
+nombre-lapins
+nombre-lapins
+0
+100
+8
+1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+45
+135
+217
+168
+nombre-loups
+nombre-loups
+0
+100
+3
+1
+1
+NIL
+HORIZONTAL
+
+BUTTON
+130
+310
+193
+343
+go
+go
 T
 1
 T
-PATCH
+OBSERVER
 NIL
 NIL
 NIL
@@ -238,10 +246,10 @@ NIL
 1
 
 BUTTON
-10
-270
-75
-303
+40
+310
+112
+343
 setup
 setup
 NIL
@@ -253,119 +261,6 @@ NIL
 NIL
 NIL
 1
-
-SLIDER
-10
-15
-187
-48
-g_max_time_grow
-g_max_time_grow
-0
-100
-100
-1
-1
-NIL
-HORIZONTAL
-
-SLIDER
-10
-60
-187
-93
-g_max_size_plant
-g_max_size_plant
-0
-100
-27
-1
-1
-NIL
-HORIZONTAL
-
-PLOT
-1070
-90
-1270
-240
-grass
-NIL
-NIL
-0.0
-10.0
-0.0
-10.0
-true
-false
-"" ""
-PENS
-"default" 1.0 0 -16777216 true "" "sum [size_plant] of patches"
-
-PLOT
-1145
-390
-1345
-540
-crows
-NIL
-NIL
-0.0
-10.0
-0.0
-10.0
-true
-false
-"" ""
-PENS
-"default" 1.0 0 -16777216 true "" "plot count cows * g_consumption"
-
-SLIDER
-10
-100
-202
-133
-g_max_count_cows
-g_max_count_cows
-0
-100
-15
-1
-1
-NIL
-HORIZONTAL
-
-BUTTON
-105
-275
-212
-308
-go_cows
-go_turtles
-T
-1
-T
-TURTLE
-NIL
-NIL
-NIL
-NIL
-1
-
-SLIDER
-55
-145
-227
-178
-g_consumption
-g_consumption
-0
-100
-18
-1
-1
-NIL
-HORIZONTAL
 
 @#$#@#$#@
 ## WHAT IS IT?
