@@ -370,8 +370,8 @@ class User extends Callee
 class PPFunCall extends PPExpr
 {
 
-	Callee callee;
-	ArrayList<PPExpr> args;
+	Callee				callee;
+	ArrayList<PPExpr>	args;
 
 	PPFunCall(Callee callee, ArrayList<PPExpr> args)
 	{
@@ -412,8 +412,8 @@ class PPArrayGet extends PPExpr
 class PPArrayAlloc extends PPExpr
 {
 
-	Type type;
-	PPExpr size;
+	Type	type;
+	PPExpr	size;
 
 	PPArrayAlloc(Type type, PPExpr size)
 	{
@@ -446,8 +446,8 @@ abstract class PPInst
 class PPAssign extends PPInst
 {
 
-	String name;
-	PPExpr val;
+	String	name;
+	PPExpr	val;
 
 	PPAssign(String name, PPExpr val)
 	{
@@ -487,8 +487,8 @@ class PPArraySet extends PPInst
 class PPCond extends PPInst
 {
 
-	PPExpr cond;
-	PPInst i1, i2;
+	PPExpr	cond;
+	PPInst	i1, i2;
 
 	PPCond(PPExpr cond, PPInst i1, PPInst i2)
 	{
@@ -509,8 +509,8 @@ class PPCond extends PPInst
 class PPWhile extends PPInst
 {
 
-	PPExpr cond;
-	PPInst i;
+	PPExpr	cond;
+	PPInst	i;
 
 	PPWhile(PPExpr cond, PPInst i)
 	{
@@ -528,8 +528,8 @@ class PPWhile extends PPInst
 class PPProcCall extends PPInst
 {
 
-	Callee callee;
-	ArrayList<PPExpr> args;
+	Callee				callee;
+	ArrayList<PPExpr>	args;
 
 	PPProcCall(Callee callee, ArrayList<PPExpr> args)
 	{
@@ -571,7 +571,9 @@ class PPSeq extends PPInst
 
 	UPPInst toUPP(ArrayList<String> locals)
 	{
-		UPPInst ni1 = i1.toUPP(locals), ni2 = i2.toUPP(locals);
+		UPPInst ni1 = i1.toUPP(locals);
+		UPPInst ni2 = i2.toUPP(locals);
+		
 		return new UPPSeq(ni1, ni2);
 	}// toUPP
 
@@ -584,8 +586,8 @@ class PPSeq extends PPInst
 class Pair<L, R>
 {
 
-	final L left;
-	final R right;
+	final L	left;
+	final R	right;
 
 	public Pair(L left, R right)
 	{
@@ -603,9 +605,9 @@ class Pair<L, R>
 abstract class PPDef
 {
 
-	String name;
-	ArrayList<Pair<String, Type>> args, locals;
-	PPInst code;
+	String							name;
+	ArrayList<Pair<String, Type>>	args, locals;
+	PPInst							code;
 
 	abstract UPPDef toUPP();
 
@@ -661,18 +663,26 @@ class PPProc extends PPDef
 
 	UPPDef toUPP()
 	{
-		ArrayList<String> t_args = new ArrayList<String>();
-		ArrayList<String> t_locals = new ArrayList<String>();
-
+		ArrayList<String> nargs = new ArrayList<String>();
+		ArrayList<String> nlocals = new ArrayList<String>();
+		ArrayList<String> nall = new ArrayList<String>();
+		UPPInst ncode;
 		for (Pair<String, Type> e : args)
-			t_args.add(e.left);
-
+		{
+			nargs.add(e.left);
+			nall.add(e.left);
+		} // for
+		nlocals.add(name);
+		nall.add(name);
 		for (Pair<String, Type> e : locals)
-			t_locals.add(e.left);
-
-		return new UPPProc(name, t_args, t_locals, code.toUPP(t_locals));
+		{
+			nlocals.add(e.left);
+			nall.add(e.left);
+		} // for
+		ncode = code.toUPP(nall);
+		
+		return new UPPProc(name, nargs, nlocals, ncode);
 	}// toUPP
-
 }// PPProc
 
 /************/
@@ -682,9 +692,9 @@ class PPProc extends PPDef
 class PPProg
 {
 
-	ArrayList<Pair<String, Type>> globals;
-	ArrayList<PPDef> defs;
-	PPInst code;
+	ArrayList<Pair<String, Type>>	globals;
+	ArrayList<PPDef>				defs;
+	PPInst							code;
 
 	PPProg(ArrayList<Pair<String, Type>> globals, ArrayList<PPDef> defs, PPInst code)
 	{
