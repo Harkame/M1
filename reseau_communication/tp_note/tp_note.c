@@ -10,6 +10,8 @@ void  traitement_3(int);
 typedef struct N_VERROU
 {
      int a_count_thread;
+     
+     int a_count_current_threads = 0;
 
      pthread_mutex_t a_mutex;
 
@@ -50,16 +52,40 @@ int n_verrou_lock(N_VERROU* p_n_verrou)
           return -1;
      }
 
+     if(n_verrou_lock(&g_n_verrou) != 0)
+          exit(1);
+
+     while(g_n_verrou.g_count_current_threads_traitement_2 == g_n_verrou.a_count_thread)
+     {
+          fprintf(stdout, "Thread %d is waiting for traitement_2\n", t_index);
+          pthread_cond_wait(&g_n_verrou.a_cond, &g_n_verrou.a_mutex);
+     }
+
+     p_n_verrou->a_count_current_threads2++;
+
+     pthread_mutex_unlock(p_n_verrou->a_mutex);
+
      return 0;
 }
 
-int n_verrou_unlock(struct N_VERROU* p_n_verrou)
+int n_verrou_unlock(N_VERROU* p_n_verrou)
 {
+     if(pthread_mutex_lock(&p_n_verrou->a_mutex) != 0)
+     {
+      perror("pthread_mutex_lock : ");
+      return -1;
+     }
+
+     p_n_verrou->a_current_threads;
+
      if(pthread_mutex_unlock(&p_n_verrou->a_mutex) != 0)
      {
-          perror("pthread_mutex_lock : ");
-          return -1;
+      perror("pthread_mutex_unlock : ");
+      return -1;
      }
+
+     if(pthread_cond_broadcast(&g_n_verrou.a_cond) != 0)
+          return -1;
 
      return 0;
 }
@@ -89,45 +115,18 @@ void* traitement_1(void* p_index)
      sleep(1);
      fprintf(stdout, "Thread %d end traitement 1\n", t_index);
 
-     if(n_verrou_lock(&g_n_verrou) != 0)
-          exit(1);
-
-     while(g_count_current_threads_traitement_2 == g_n_verrou.a_count_thread)
-     {
-          fprintf(stdout, "Thread %d is waiting for traitement_2\n", t_index);
-          pthread_cond_wait(&g_n_verrou.a_cond, &g_n_verrou.a_mutex);
-     }
-
-     if(n_verrou_unlock(&g_n_verrou) != 0)
-          exit(1);
+     n_verrou_lock(&g_n_verrou);
 
      traitement_2(t_index);
 }
 
 void traitement_2(int p_index)
 {
-     if(n_verrou_lock(&g_n_verrou) != 0)
-          exit(1);
-
-     g_count_current_threads_traitement_2++;
-
-     if(n_verrou_unlock(&g_n_verrou) != 0)
-          exit(1);
+      n_verrou_unlock(&g_n_verrou);
 
      fprintf(stdout, "\tThread %d start traitement 2\n", p_index);
      sleep(2);
      fprintf(stdout, "\tThread %d end traitement 2\n", p_index);
-
-     if(n_verrou_lock(&g_n_verrou) != 0)
-          exit(1);
-
-     g_count_current_threads_traitement_2--;
-
-     if(n_verrou_unlock(&g_n_verrou) != 0)
-          exit(1);
-
-     if(pthread_cond_broadcast(&g_n_verrou.a_cond) != 0)
-          exit(1);
 
      traitement_3(p_index);
 }
