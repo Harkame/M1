@@ -9,9 +9,9 @@ void  traitement_3(int);
 
 typedef struct N_VERROU
 {
-     int a_count_thread;
-     
-     int a_count_current_threads = 0;
+     int a_count_maximum_threads;
+
+     int a_count_current_threads;
 
      pthread_mutex_t a_mutex;
 
@@ -19,15 +19,13 @@ typedef struct N_VERROU
 
 } N_VERROU;
 
-int g_count_total_threads = 0;
-int g_count_current_threads_traitement_2 = 0;
-
 N_VERROU g_n_verrou;
 
-
-int n_verrou_init(N_VERROU* p_n_verrou, int p_count_thread)
+int n_verrou_init(N_VERROU* p_n_verrou, int p_count_maximum_threads)
 {
-     p_n_verrou->a_count_thread = p_count_thread; //Nombre maximum de thread sur la section critique
+     p_n_verrou->a_count_maximum_threads = p_count_maximum_threads; //Nombre maximum de thread sur la section critique
+
+     p_n_verrou->a_count_current_threads = 0;
 
      if(pthread_mutex_init(&p_n_verrou->a_mutex, NULL) != 0)
      {
@@ -44,7 +42,7 @@ int n_verrou_init(N_VERROU* p_n_verrou, int p_count_thread)
      return 0;
 }
 
-int n_verrou_lock(N_VERROU* p_n_verrou)
+int n_verrou_lock(N_VERROU* p_n_verrou, int p_index)
 {
      if(pthread_mutex_lock(&p_n_verrou->a_mutex) != 0)
      {
@@ -52,18 +50,19 @@ int n_verrou_lock(N_VERROU* p_n_verrou)
           return -1;
      }
 
-     if(n_verrou_lock(&g_n_verrou) != 0)
-          exit(1);
-
-     while(g_n_verrou.g_count_current_threads_traitement_2 == g_n_verrou.a_count_thread)
+     while(p_n_verrou->a_count_maximum_threads == p_n_verrou->a_count_current_threads)
      {
-          fprintf(stdout, "Thread %d is waiting for traitement_2\n", t_index);
-          pthread_cond_wait(&g_n_verrou.a_cond, &g_n_verrou.a_mutex);
+          fprintf(stdout, "Thread %d is waiting for traitement_2\n", p_index);
+          pthread_cond_wait(&p_n_verrou->a_cond, &p_n_verrou->a_mutex);
      }
 
-     p_n_verrou->a_count_current_threads2++;
+     p_n_verrou->a_count_current_threads++;
 
-     pthread_mutex_unlock(p_n_verrou->a_mutex);
+     if(pthread_mutex_unlock(&p_n_verrou->a_mutex) != 0)
+     {
+          perror("error on pthread_mutex_unlock : ");
+          return -1;
+     }
 
      return 0;
 }
@@ -72,16 +71,16 @@ int n_verrou_unlock(N_VERROU* p_n_verrou)
 {
      if(pthread_mutex_lock(&p_n_verrou->a_mutex) != 0)
      {
-      perror("pthread_mutex_lock : ");
-      return -1;
+          perror("pthread_mutex_lock : ");
+          return -1;
      }
 
-     p_n_verrou->a_current_threads;
+     p_n_verrou->a_count_current_threads--;
 
      if(pthread_mutex_unlock(&p_n_verrou->a_mutex) != 0)
      {
-      perror("pthread_mutex_unlock : ");
-      return -1;
+          perror("pthread_mutex_unlock : ");
+          return -1;
      }
 
      if(pthread_cond_broadcast(&g_n_verrou.a_cond) != 0)
@@ -115,18 +114,26 @@ void* traitement_1(void* p_index)
      sleep(1);
      fprintf(stdout, "Thread %d end traitement 1\n", t_index);
 
-     n_verrou_lock(&g_n_verrou);
+     if(n_verrou_lock(&g_n_verrou, t_index) != 0)
+     {
+          perror("error n_verrou_lock : ");
+          exit(1);
+     }
 
      traitement_2(t_index);
 }
 
 void traitement_2(int p_index)
 {
-      n_verrou_unlock(&g_n_verrou);
-
      fprintf(stdout, "\tThread %d start traitement 2\n", p_index);
      sleep(2);
      fprintf(stdout, "\tThread %d end traitement 2\n", p_index);
+
+     if(n_verrou_unlock(&g_n_verrou) != 0)
+     {
+          perror("error n_verrou_unlock : ");
+          exit(1);
+     }
 
      traitement_3(p_index);
 }
@@ -151,39 +158,35 @@ int main(int argc, char** argv)
           return 1;
      }
 
-     fprintf(stdout, "--- DEBUT ---\n\n");
-
-     g_count_total_threads = atoi(argv[1]);
-
      if(n_verrou_init(&g_n_verrou, atoi(argv[2])) != 0)
      {
           fprintf(stderr, "Error on n_verrou_init\n");
-          return -1;
+          return 1;
      }
 
-     pthread_t t_threads[g_count_total_threads];
+     pthread_t t_threads[atoi(argv[1])];
 
-     for(int t_index = 0; t_index < g_count_total_threads; t_index++)
+     for(int t_index = 0; t_index < atoi(argv[1]); t_index++)
           if(pthread_create(&t_threads[t_index], NULL, traitement_1, (void*) (intptr_t) t_index) != 0)
           {
                perror("pthread_create : ");
-               return -1;
+               return 1;
           }
 
-     for(int t_index = 0; t_index < g_count_total_threads; t_index++)
+     for(int t_index = 0; t_index < atoi(argv[1]); t_index++)
           if(pthread_join(t_threads[t_index], NULL) != 0)
           {
                perror("pthread_join : ");
-               return -1;
+               return 1;
           }
 
      if(n_verrou_destroy(&g_n_verrou) != 0)
      {
           fprintf(stderr, "Error on n_verrou_destroy\n");
-          return -1;
+          return 1;
      }
 
-     fprintf(stdout, "\n--- FIN ---\n");
+     fprintf(stdout, "\n--- END ---\n");
 
      return 0;
 }
