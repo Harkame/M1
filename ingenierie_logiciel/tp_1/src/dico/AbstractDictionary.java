@@ -1,4 +1,4 @@
-package dico;
+package tp_2.src;
 
 public abstract class AbstractDictionary implements IDictionary
 {
@@ -10,13 +10,19 @@ public abstract class AbstractDictionary implements IDictionary
 	@Override
 	public IDictionary put(Object p_key, Object p_value)
 	{
-		int t_index = newIndexOf(p_key);
-		
-		if(a_keys[t_index] == null)
+		int t_index = indexOf(p_key);
+
+		if(t_index == -1)
+		{
+			t_index = newIndexOf(p_key);
+			
 			a_size++;
 		
-		a_keys[t_index]   = p_key;
-		a_values[t_index] = p_value;
+			a_keys[t_index]   = p_key;
+			a_values[t_index] = p_value;
+		}
+		else
+			a_keys[t_index] = p_key;
 		
 		return this;
 	}
@@ -73,27 +79,4 @@ public abstract class AbstractDictionary implements IDictionary
 	{
 		return a_size;
 	}
-	
-	protected final void setSize(int p_new_size)
-	{
-		a_size = p_new_size;
-	}
-	/* *** */
-	
-	@Override
-	public String toString()
-	{
-		StringBuilder t_to_string = new StringBuilder();
-		 
-		for(int t_index = 0; t_index < getKeys().length; t_index++)
-		{
-			if(getKeys()[t_index] != null)
-				t_to_string.append(t_index + " - " + getKeys()[t_index].toString() + " - " + getValues()[t_index].toString());
-			
-			if(t_index < getKeys().length - 1)
-				t_to_string.append(System.getProperty("line.separator"));
-		}
-		 
-		return t_to_string.toString();
-	 }
 }

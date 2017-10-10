@@ -1,4 +1,4 @@
-package dico;
+package tp_2.src;
 
 public interface IDictionary
 {

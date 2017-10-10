@@ -1,37 +1,35 @@
-import org.junit.Before;
+import static org.junit.Assert.assertEquals;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.Mockito.when;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.junit.*;
-import org.mockito.Mockito;
+import org.powermock.api.mockito.PowerMockito;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.PowerMockRunner;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
 
-@RunWith(MockitoJUnitRunner.class) 
+@RunWith(PowerMockRunner.class)
+@PrepareForTest(C.class)
 public class TestC
 {
 	@Mock
 	private C a_mock     = new C();
 	
-	@Before
-	public void setUp()
-	{
-		when(a_mock.m2(42)).thenReturn(0); //Impossible car final
-	}
-
 	@Test
 	public void testM1()
 	{
+		PowerMockito.mockStatic(C.class);
+		when(C.m1()).thenReturn(42); //Impossible car final
 		assertEquals(C.m1(), 42);
 	}
 	
 	@Test
 	public void testM2()
 	{
-		assertEquals(a_mock.m2(3), 9);
-
-		//assertEquals(a_mock.m2(42), 0);
-		//assertEquals(a_mock.m2(42), 1764); //Le spy garde le comportement avant
+		C t_mock = PowerMockito.mock(C.class);
+		when(t_mock.m2(anyInt())).thenReturn(0); //Impossible car final
+		assertEquals(t_mock.m2(anyInt()), 0);
 	}
 }
