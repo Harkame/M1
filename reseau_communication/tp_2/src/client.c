@@ -4,8 +4,8 @@ int main(int argc, char** argv)
 {
      if(argc < 4)
      {
-                    fprintf(stderr, "Mauvais arguments\n");
-                    return 1;
+          fprintf(stderr, "Mauvais arguments\n");
+          return 1;
      }
 
      struct CALCULATRICE_REQUEST t_calculatrice_request;
