@@ -1,0 +1,24 @@
+
+*** These modified files were found in JOE when it aborted on Tue Oct 17 12:28:44 2017
+*** JOE was aborted because the terminal closed
+
+*** Fichier '/auto_home/ldaviaud/workspace/M1/.git/MERGE_MSG'
+qMerge branch 'master' of https://github.com/Harkame/M1
+
+# Veuillez entrer un message de validation pour expliquer en quoi cette fusion est
+# nécessaire, surtout si cela fusionne une branche amont mise à jour dans une branche de sujet.
+#
+# Les lignes commençant par '#' seront ignorées, et un message vide
+# abandonne la validation.
+
+*** Fichier '(Sans nom)'
+/auto_home/ldaviaud/workspace/M1/.git/MERGE_MSG
+/auto_home/ldaviaud/workspace/M1/.git/MERGE_MSG
+/auto_home/ldaviaud/workspace/M1/.git/MERGE_MSG
+/auto_home/ldaviaud/workspace/M1/.git/MERGE_MSG
+
+*** Fichier '* Startup Log *'
+Processing '/etc/joe/editorrc'...
+Processing '/etc/joe/ftyperc'...
+Finished processing /etc/joe/ftyperc
+Finished processing /etc/joe/editorrc
