@@ -1,0 +1,9 @@
+mdc1 = FM(e_commerce : [catalog] payment_method basket; catalog : (grid|list); payment_method : (credit_card|check)+; (payment_method -> basket); (basket -> payment_method);)
+
+mdc2 = FM(e_commerce : [catalog] basket; catalog : (grid|list); basket : [payment_method]; payment_method : (credit_card|check)+;)
+
+fm = FM(fm : A I M; A : [D]; D : (E|F) B [C]; I : J L [K]; M : (P|N|O)+; (!C|!E); (!J|C);)
+
+C : Faux option
+E : Morte, C -> !E mais D est un xor
+F : Obligatoire, donc D n'est pas un xor

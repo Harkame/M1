@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- prefuse TreeML Writer | Tue Oct 17 10:45:11 CEST 2017 -->
+<tree>
+  <declarations>
+    <attributeDecl name="name" type="String"/>
+    <attributeDecl name="solitary" type="Int"/>
+    <attributeDecl name="group" type="Int"/>
+  </declarations>
+
+  <branch>
+    <attribute name="name" value="mdc1"/>
+    <attribute name="solitary" value="-1"/>
+    <attribute name="group" value="-1"/>
+    <leaf>
+      <attribute name="name" value="basket"/>
+      <attribute name="solitary" value="1"/>
+      <attribute name="group" value="-1"/>
+    </leaf>
+    <branch>
+      <attribute name="name" value="paymentmethod"/>
+      <attribute name="solitary" value="1"/>
+      <attribute name="group" value="-1"/>
+      <branch>
+        <attribute name="name" value="OR19"/>
+        <attribute name="solitary" value="-1"/>
+        <attribute name="group" value="8"/>
+        <leaf>
+          <attribute name="name" value="check"/>
+          <attribute name="solitary" value="-1"/>
+          <attribute name="group" value="-1"/>
+        </leaf>
+        <leaf>
+          <attribute name="name" value="creditcard"/>
+          <attribute name="solitary" value="-1"/>
+          <attribute name="group" value="-1"/>
+        </leaf>
+      </branch>
+    </branch>
+    <branch>
+      <attribute name="name" value="catalog"/>
+      <attribute name="solitary" value="0"/>
+      <attribute name="group" value="-1"/>
+      <branch>
+        <attribute name="name" value="XOR20"/>
+        <attribute name="solitary" value="-1"/>
+        <attribute name="group" value="16"/>
+        <leaf>
+          <attribute name="name" value="list"/>
+          <attribute name="solitary" value="-1"/>
+          <attribute name="group" value="-1"/>
+        </leaf>
+        <leaf>
+          <attribute name="name" value="grid"/>
+          <attribute name="solitary" value="-1"/>
+          <attribute name="group" value="-1"/>
+        </leaf>
+      </branch>
+    </branch>
+  </branch>
+</tree>
