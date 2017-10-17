@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- prefuse TreeML Writer | Tue Oct 17 11:52:29 CEST 2017 -->
+<tree>
+  <declarations>
+    <attributeDecl name="name" type="String"/>
+    <attributeDecl name="solitary" type="Int"/>
+    <attributeDecl name="group" type="Int"/>
+  </declarations>
+
+  <branch>
+    <attribute name="name" value="mailer"/>
+    <attribute name="solitary" value="-1"/>
+    <attribute name="group" value="-1"/>
+    <branch>
+      <attribute name="name" value="etiquetage"/>
+      <attribute name="solitary" value="0"/>
+      <attribute name="group" value="-1"/>
+      <branch>
+        <attribute name="name" value="OR324"/>
+        <attribute name="solitary" value="-1"/>
+        <attribute name="group" value="8"/>
+        <branch>
+          <attribute name="name" value="personalise"/>
+          <attribute name="solitary" value="-1"/>
+          <attribute name="group" value="-1"/>
+          <leaf>
+            <attribute name="name" value="gestionnaire"/>
+            <attribute name="solitary" value="1"/>
+            <attribute name="group" value="-1"/>
+          </leaf>
+        </branch>
+        <branch>
+          <attribute name="name" value="defaut"/>
+          <attribute name="solitary" value="-1"/>
+          <attribute name="group" value="-1"/>
+          <branch>
+            <attribute name="name" value="XOR327"/>
+            <attribute name="solitary" value="-1"/>
+            <attribute name="group" value="16"/>
+            <leaf>
+              <attribute name="name" value="TRAVAIL"/>
+              <attribute name="solitary" value="-1"/>
+              <attribute name="group" value="-1"/>
+            </leaf>
+            <leaf>
+              <attribute name="name" value="PERSONNEL"/>
+              <attribute name="solitary" value="-1"/>
+              <attribute name="group" value="-1"/>
+            </leaf>
+            <leaf>
+              <attribute name="name" value="LOISIR"/>
+              <attribute name="solitary" value="-1"/>
+              <attribute name="group" value="-1"/>
+            </leaf>
+          </branch>
+        </branch>
+      </branch>
+    </branch>
+    <branch>
+      <attribute name="name" value="compactage"/>
+      <attribute name="solitary" value="0"/>
+      <attribute name="group" value="-1"/>
+      <branch>
+        <attribute name="name" value="OR325"/>
+        <attribute name="solitary" value="-1"/>
+        <attribute name="group" value="8"/>
+        <leaf>
+          <attribute name="name" value="auto"/>
+          <attribute name="solitary" value="-1"/>
+          <attribute name="group" value="-1"/>
+        </leaf>
+        <leaf>
+          <attribute name="name" value="manuel"/>
+          <attribute name="solitary" value="-1"/>
+          <attribute name="group" value="-1"/>
+        </leaf>
+      </branch>
+    </branch>
+    <branch>
+      <attribute name="name" value="boiteReception"/>
+      <attribute name="solitary" value="0"/>
+      <attribute name="group" value="-1"/>
+      <branch>
+        <attribute name="name" value="XOR326"/>
+        <attribute name="solitary" value="-1"/>
+        <attribute name="group" value="16"/>
+        <leaf>
+          <attribute name="name" value="BRSimple"/>
+          <attribute name="solitary" value="-1"/>
+          <attribute name="group" value="-1"/>
+        </leaf>
+        <leaf>
+          <attribute name="name" value="BRMultiple"/>
+          <attribute name="solitary" value="-1"/>
+          <attribute name="group" value="-1"/>
+        </leaf>
+      </branch>
+    </branch>
+    <branch>
+      <attribute name="name" value="     CONSTRAINTS:     "/>
+      <attribute name="solitary" value="-1"/>
+      <attribute name="group" value="32"/>
+      <leaf>
+        <attribute name="name" value="(BRMultiple -&gt; !Etiquetage)"/>
+        <attribute name="solitary" value="32"/>
+        <attribute name="group" value="-1"/>
+      </leaf>
+    </branch>
+  </branch>
+</tree>

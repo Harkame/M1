@@ -4,6 +4,8 @@ mdc2 = FM(e_commerce : [catalog] basket; catalog : (grid|list); basket : [paymen
 
 fm = FM(fm : A I M; A : [D]; D : (E|F) B [C]; I : J L [K]; M : (P|N|O)+; (!C|!E); (!J|C);)
 
+mailer = FM(mailer : boiteReception etiquetage compactage; boiteReception : (BRSimple|BRMultiple); etiquetage : (personalise|defaut)+; personalise : [gestionnaire]; defaut : (PERSONNEL|TRAVAIL|LOISIR); compactage : (auto|manuel)+; (!BRMultiple|!Etiquetage);)
+
 C : Faux option
 E : Morte, C -> !E mais D est un xor
 F : Obligatoire, donc D n'est pas un xor
