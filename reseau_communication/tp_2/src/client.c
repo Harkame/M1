@@ -2,6 +2,12 @@
 
 int main(int argc, char** argv)
 {
+     if(argc < 4)
+     {
+                    fprintf(stderr, "Mauvais arguments\n");
+                    return 1;
+     }
+
      struct CALCULATRICE_REQUEST t_calculatrice_request;
      struct CALCULATRICE_RESPONSE t_calculatrice_response;
 
@@ -28,6 +34,7 @@ int main(int argc, char** argv)
           perror("msgsnd : ");
           exit(1);
      }
+
      fprintf(stdout, "Result : %d\n", t_calculatrice_response.a_result);
 
      return 0;

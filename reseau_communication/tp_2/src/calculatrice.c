@@ -2,6 +2,12 @@
 
 int main(int argc, char** argv)
 {
+     if(argc < 2)
+     {
+               fprintf(stderr, "Pas d'operateur\n");
+               return 1;
+     }
+
      char t_char = argv[1][0];
 
      struct CALCULATRICE_REQUEST t_calculatrice_request;
@@ -9,7 +15,6 @@ int main(int argc, char** argv)
 
      key_t t_key = ftok(IPC_PATH, IPC_KEY);
      int t_queue_id = msgget(t_key, IPC_CREAT | 0666);
-
 
      while(1)
      {
@@ -24,6 +29,10 @@ int main(int argc, char** argv)
           sleep(2);
 
           t_calculatrice_response.a_label = t_calculatrice_request.a_pid;
+
+          fprintf(stdout, "%d %c %d\n", t_calculatrice_request.a_operand_a,
+          t_char,
+          t_calculatrice_request.a_operand_b);
 
           switch(t_char)
           {

@@ -1,4 +1,4 @@
-GCC     = gcc -W -Wall -ansi -std=gnu99 -O3
+GCC = gcc -W -Wall -ansi -std=gnu99 -O3
 
 main: e1
 
