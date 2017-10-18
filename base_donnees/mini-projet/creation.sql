@@ -142,12 +142,25 @@ NESTED TABLE personnes STORE AS personnes;
 --INSERTIONS
 INSERT INTO UE VALUES (UE_T(1,'BDA', GroupeEtudiant_T() ));
 INSERT INTO UE VALUES (UE_T(2,'Presentation des données web', GroupeEtudiant_T() ));
-INSERT INTO UE VALUES (UE_T(3,'Logique', GroupeEtudiant_T() ));
+INSERT INTO UE VALUES (UE_T(3,'Logique des propositions', GroupeEtudiant_T() ));
 INSERT INTO UE VALUES (UE_T(4,'Langages formels', GroupeEtudiant_T() ));
 INSERT INTO UE VALUES (UE_T(5,'Complexite et calculabilite', GroupeEtudiant_T() ));
 INSERT INTO UE VALUES (UE_T(6,'Compilation Interpretation', GroupeEtudiant_T() ));
 INSERT INTO UE VALUES (UE_T(7,'Programmation linéaire', GroupeEtudiant_T() ));
 INSERT INTO UE VALUES (UE_T(8,'Anglais', GroupeEtudiant_T() ));
+INSERT INTO UE VALUES (UE_T(9,'Histoire', GroupeEtudiant_T() ));
+INSERT INTO UE VALUES (UE_T(10,'Espagnol', GroupeEtudiant_T() ));
+INSERT INTO UE VALUES (UE_T(11,'Allemand', GroupeEtudiant_T() ));
+INSERT INTO UE VALUES (UE_T(12,'Graphe', GroupeEtudiant_T() ));
+INSERT INTO UE VALUES (UE_T(13,'Proba. Stat.', GroupeEtudiant_T() ));
+INSERT INTO UE VALUES (UE_T(14,'Science social', GroupeEtudiant_T() ));
+INSERT INTO UE VALUES (UE_T(15,'Gestion de projet', GroupeEtudiant_T() ));
+INSERT INTO UE VALUES (UE_T(16,'IHM', GroupeEtudiant_T() ));
+INSERT INTO UE VALUES (UE_T(16,'IA', GroupeEtudiant_T() ));
+INSERT INTO UE VALUES (UE_T(17,'Logique des predicats', GroupeEtudiant_T() ));
+INSERT INTO UE VALUES (UE_T(18,'Musique', GroupeEtudiant_T() ));
+INSERT INTO UE VALUES (UE_T(19,'Français', GroupeEtudiant_T() ));
+INSERT INTO UE VALUES (UE_T(20,'Physique. Chimie.', GroupeEtudiant_T() ));
 
 --Spécialités de Licence Info
 INSERT INTO Specialite VALUES ( Specialite_T ('L1info', 100, UEObligatoire_T(), UEOptionnelle_T() ));
@@ -179,11 +192,11 @@ UPDATE Specialite SET ueOptionnelles = UEOptionnelle_T(
 (SELECT REF(U) FROM UE U WHERE U.codeUE = '4'))
 WHERE nomSpecialite = 'AIGLE1';
 
-INSERT INTO Filiere VALUES ('INFORMATIQUE', GroupeNiveau_T(
+INSERT INTO Filiere VALUES ('INFORMATIQUE', GroupeNiveau_T( 
 Niveau_T('L1',GroupeSpecialite_T()),
 Niveau_T('L2',GroupeSpecialite_T()),
 Niveau_T('L3',GroupeSpecialite_T()),
-Niveau_T('M1',GroupeSpecialite_T()),
+Niveau_T('M1',GroupeSpecialite_T()), -- refs vers spes
 Niveau_T('M2',GroupeSpecialite_T())
 ));
 
