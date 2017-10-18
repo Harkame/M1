@@ -1,26 +1,66 @@
 --CLEAR
 DROP TABLE Etudiant;
+/
+
 DROP TABLE Filiere;
+/
+
 DROP TABLE UE;
+/
+
 DROP TABLE Specialite;
+/
+
 DROP TABLE Universite;
+/
 
 DROP TYPE Universite_T FORCE;
+/
+
 DROP TYPE Adresse_T FORCE;
+/
+
 DROP TYPE GroupePersonne_T FORCE;
+/
+
 DROP TYPE Personne_T FORCE;
+/
+
 DROP TYPE GroupeEtudiant_T FORCE;
+/
+
 DROP TYPE Etudiant_T FORCE;
+/
+
 DROP TYPE UEObligatoire_T FORCE;
+/
+
 DROP TYPE UEOptionnelle_T FORCE;
+/
+
 DROP TYPE UE_T FORCE;
+/
+
 DROP TYPE GroupeSpecialite_T FORCE;
+/
+
 DROP TYPE Specialite_T FORCE;
+/
+
 DROP TYPE Inscription_T FORCE;
+/
+
 DROP TYPE GroupeNiveau_T FORCE;
+/
+
 DROP TYPE Niveau_T FORCE;
+/
+
 DROP TYPE GroupeFiliere_T FORCE;
+/
+
 DROP TYPE Filiere_T FORCE;
+/
 
 
 --CREATIONS
