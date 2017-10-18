@@ -1,3 +1,28 @@
+--CLEAR
+DROP TABLE Etudiant;
+DROP TABLE Filiere;
+DROP TABLE UE;
+DROP TABLE Specialite;
+DROP TABLE Universite;
+
+DROP TYPE Universite_T FORCE;
+DROP TYPE Adresse_T FORCE;
+DROP TYPE GroupePersonne_T FORCE;
+DROP TYPE Personne_T FORCE;
+DROP TYPE GroupeEtudiant_T FORCE;
+DROP TYPE Etudiant_T FORCE;
+DROP TYPE UEObligatoire_T FORCE;
+DROP TYPE UEOptionnelle_T FORCE;
+DROP TYPE UE_T FORCE;
+DROP TYPE GroupeSpecialite_T FORCE;
+DROP TYPE Specialite_T FORCE;
+DROP TYPE Inscription_T FORCE;
+DROP TYPE GroupeNiveau_T FORCE;
+DROP TYPE Niveau_T FORCE;
+DROP TYPE GroupeFiliere_T FORCE;
+DROP TYPE Filiere_T FORCE;
+
+
 --CREATIONS
 
 --TYPES
@@ -13,7 +38,7 @@ CREATE OR REPLACE TYPE GroupePersonne_T AS TABLE OF REF Personne_T;
 CREATE OR REPLACE TYPE Etudiant_T UNDER Personne_T(ine NUMBER);
 /
 
-CREATE OR REPLACE TYPE GroupeEtudiant_T AS TABLE OF Etudiant_T;
+CREATE OR REPLACE TYPE GroupeEtudiant_T AS TABLE OF REF Etudiant_T;
 /
 
 CREATE OR REPLACE TYPE UE_T AS OBJECT(codeUE NUMBER, nomUE VARCHAR2(80), etudiants GroupeEtudiant_T);
@@ -121,39 +146,6 @@ Niveau_T('L3',GroupeSpecialite_T()),
 Niveau_T('M1',GroupeSpecialite_T()),
 Niveau_T('M2',GroupeSpecialite_T())
 ));
-
-/*
-Universite_T AS OBJECT (nomUniversite VARCHAR2(80), adresse Adresse_T, filieres GroupeFiliere_T, personnes GroupePersonne_T);
-GroupeFiliere_T AS TABLE of Filiere_T;
-Filiere_T AS OBJECT (nomFiliere VARCHAR2(80), nbEtuMax NUMBER, Niveaux GroupeNiveau_T);
-GroupeNiveau_T AS VARRAY(5) of Niveau_T;
-Niveau_T AS OBJECT (nomNiveau VARCHAR2(80), specialites GroupeSpecialite_T);
-GroupeSpecialite_T AS TABLE of Specialite_T;
- Specialite_T AS OBJECT (nomSpecialite VARCHAR2(80), nbEtuMax NUMBER, ueObligatoires UEObligatoire_T, ueOptionelles ueOptionnelle_T);
- */
-
-
--- On a la filière, qui a des niveaux. On veut ajouter des spécialités au niveau de cette filière
---Ajouter des specialites (ex:AIGLE1, ...) dans un niveau (ex:M1) qui est dans le groupe de niveaux d'une filiere (ex:INFORMATIQUE)
-
-INSERT INTO (
-    SELECT specialites S FROM (
-        SELECT F.Niveaux FROM Filiere F WHERE F.nomFiliere = 'INFORMATIQUE'
-    ) 
-        WHERE nomNiveau = 'M1'
-    ) VALUES (
-        (SELECT REF(S) FROM Specialite S WHERE S.nomSpecialite = 'AIGLE1'),
-        (SELECT REF(S) FROM Specialite S WHERE S.nomSpecialite = 'IMAGINA1'),
-        (SELECT REF(S) FROM Specialite S WHERE S.nomSpecialite = 'DECOL1')
-    );
-        
---ajouter des filieres(ex:INFORMATIQUE) aux groupes de filiere d'une universite(ex:Universite des sciences)
-INSERT INTO (
-    SELECT filieres FROM Universite WHERE nomUniversite = 'Universite des sciences'
-    )
-    VALUES (
-        (SELECT REF(F) FROM Filiere F WHERE  F.nomFiliere = 'INFORMATIQUE')
-    );
 
 INSERT INTO Universite VALUES (Universite_T('Paul Valery', Adresse_T('Montpellier', 34090, 54, 'Place Bataillon', NULL), GroupeFiliere_T(), GroupePersonne_T()));
 INSERT INTO Universite VALUES (Universite_T('Universite des sciences', Adresse_T('Montpellier', 34095, 545, 'Place Bataillon', NULL), GroupeFiliere_T(), GroupePersonne_T()));
