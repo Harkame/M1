@@ -1,4 +1,4 @@
-#include "./tp_3.h"
+#include "tp_3.h"
 
 int main()
 {
@@ -10,7 +10,7 @@ int main()
           return 1;
      }
 
-     int t_semaphore_id = semget(t_key, 1, IPC_CREAT|0666);
+     int t_semaphore_id = semget(t_key, 7, IPC_FLAG);
 
      if(t_semaphore_id == -1)
      {
@@ -18,22 +18,26 @@ int main()
           return 1;
      }
 
-     union semun t_semun;
-     t_semun.val = 42;
+     fprintf(stdout, "Creation OK\n");
 
-     if(semctl(t_semaphore_id, 0, SETVAL, t_semun) == -1)
+     union semun t_semun;
+
+     ushort t_array[7] = {50, 50, 50, 50, 0, 0, 0};
+     t_semun.array = t_array;
+
+     if(semctl(t_semaphore_id, 0, SETALL, t_semun) != 0)
      {
           perror("semctl");
           return 1;
      }
 
-     fprintf(stdout, "Creation OK\n");
+     fprintf(stdout, "Initialization OK\n");
 
      getchar();
 
      if(semctl(t_semaphore_id, 0, IPC_RMID) != 0)
      {
-          perror("shmctl");
+          perror("semctl");
           return 1;
      }
 
