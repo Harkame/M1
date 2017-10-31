@@ -48,7 +48,8 @@
 (1 (2 3) 4)   ;5 : (1.(((2.(3.NIL)).4)
 (1 (2) (3) 4) ;6 : (1.(((2.NIL).(3.NIL).(4.NIL))
 
-(setf l '(1 2 3 4 5 6 7))
+(setf l1 '(1 2 3 4 5 6 7))
+(setf l2 '(42 85 9 4 -4))
 
 (defun mymember (l x)
   (if(eql (car l) x)
@@ -84,12 +85,82 @@
   )
 )
 
-faites une version qui assure qu'un seul test est effectué à chaque pas de la récursion ;
-(makelist n) qui crée une liste de longueur n, contenant les entiers de 1 à n, en ordre décroissant ;
-et en ordre croissant ?
-(copylist l) qui retourne une copie au premier niveau de la liste l ;
-(remove x l) qui retourne une copie de la liste l privée des occurrences de x ;
-faire la même chose en n'enlevant que la première occurrence de x ;
-(append l1 l2) qui concatène 2 listes ;
+(defun myremove (x l)
+  (if(eql (car l) NIL)
+    ()
+    (if(eql x (car l))
+      (myremove x (cdr l))
+      (cons (car l) (myremove x (cdr l)))
+    )
+  )
+)
+
+(defun myremovefirst (x l)
+  (myremovefirstaux x l '0)
+)
+
+(defun myremovefirstaux (x l count)
+  (if(eql (car l) NIL)
+    ()
+    (if(eql count 1)
+      (
+        setf count 1
+        cons (car l) (myremovefirstaux x (cdr l) count)
+      )
+      (if (eql x (car l))
+        (myremovefirstaux x (cdr l) count)
+        (cons (car l) (myremovefirstaux x (cdr l) count))
+      )
+    )
+  )
+)
+
+
+
+
+
+(defun myappend (l1 l2)
+     (if (and (eql (cdr l1) NIL) (eql (cdr l2) NIL))
+      ()
+      ()
+     )
+
+    (if (not (eql (cdr l1) NIL))
+      (const (car l2) (myappend l1 (cdr l2)))
+      ()
+    )
+)
+
+
+
+
+
+
+(defun myappend (l1 l2)
+     (if (and (eql (car l1) NIL) (eql (car l2) NIL))
+      ()
+      (if (and (eql (car l1) NIL) (not (eql (car l2) NIL)))
+        (cons (car l2) (myappend l1 (cdr l2)))
+        (if (and (not (eql (car l1) NIL)) (not (eql (car l2) NIL)))
+          (cons (car l1) (myappend (cdr l1) l2))
+        )
+      )
+     )
+)
+
+(defun adjoin (l x)
+  adjoinaux(l x NIL)
+)
+
+(defun adjoinaux (l x result)
+     (if (eql (car l) NIL)
+      (x)
+      (if(eql (car l) x)
+        ()
+        (cons (car l) (adjoin (cdr l) x))
+      )
+    )
+)
+
 (adjoin x l) qui "ajoute" x à la liste l si x n'y est pas déjà ;
 dans la fonction appelante, que devient l ?
