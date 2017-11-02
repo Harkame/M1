@@ -148,19 +148,18 @@
      )
 )
 
-(defun adjoin (l x)
-  adjoinaux(l x NIL)
+(defun myadjoin (l x)
+     (
+          if(eql (car l) NIL)
+            (cons x l)
+            (if(eql x (car l))
+              ()
+              (cons (car l) (myadjoin (cdr l) x))
+          )
+     )
 )
 
-(defun adjoinaux (l x result)
-     (if (eql (car l) NIL)
-      (x)
-      (if(eql (car l) x)
-        ()
-        (cons (car l) (adjoin (cdr l) x))
-      )
-    )
-)
+(myadjoin l1 42)
 
 (adjoin x l) qui "ajoute" x à la liste l si x n'y est pas déjà ;
 dans la fonction appelante, que devient l ?
