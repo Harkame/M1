@@ -13,3 +13,9 @@
 )
 
 (mymember l1 n :test #'eql)
+
+(defun calcul (a op b)
+  (apply op (list a b))
+)
+
+(calcul 9 #'+ 8)
