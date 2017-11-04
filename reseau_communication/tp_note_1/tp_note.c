@@ -3,9 +3,11 @@
 #include <pthread.h>
 #include <unistd.h>
 
-void* traitement_1(void*);
-void  traitement_2(int);
-void  traitement_3(int);
+void* treatment(void*);
+
+void treatment_1(int);
+void treatment_2(int);
+void treatment_3(int);
 
 typedef struct N_VERROU
 {
@@ -30,13 +32,13 @@ int n_verrou_init(N_VERROU* p_n_verrou, int p_count_maximum_threads)
      if(pthread_mutex_init(&p_n_verrou->a_mutex, NULL) != 0)
      {
           perror("error on pthread_mutex_init");
-          return -1;
+          return -EXIT_FAILURE;
      }
 
      if(pthread_cond_init(&p_n_verrou->a_cond, NULL) != 0)
      {
           perror("error on pthread_cond_init");
-          return -1;
+          return -EXIT_FAILURE;
      }
 
      return 0;
@@ -47,12 +49,12 @@ int n_verrou_lock(N_VERROU* p_n_verrou, int p_index)
      if(pthread_mutex_lock(&p_n_verrou->a_mutex) != 0)
      {
           perror("pthread_mutex_lock : ");
-          return -1;
+          return -EXIT_FAILURE;
      }
 
      while(p_n_verrou->a_count_maximum_threads == p_n_verrou->a_count_current_threads)
      {
-          fprintf(stdout, "Thread %d is waiting for traitement_2\n", p_index);
+          fprintf(stdout, "Thread %d is waiting for treatment_2\n", p_index);
           pthread_cond_wait(&p_n_verrou->a_cond, &p_n_verrou->a_mutex);
      }
 
@@ -61,7 +63,7 @@ int n_verrou_lock(N_VERROU* p_n_verrou, int p_index)
      if(pthread_mutex_unlock(&p_n_verrou->a_mutex) != 0)
      {
           perror("error on pthread_mutex_unlock : ");
-          return -1;
+          return -EXIT_FAILURE;
      }
 
      return 0;
@@ -72,7 +74,7 @@ int n_verrou_unlock(N_VERROU* p_n_verrou)
      if(pthread_mutex_lock(&p_n_verrou->a_mutex) != 0)
      {
           perror("pthread_mutex_lock : ");
-          return -1;
+          return -EXIT_FAILURE;
      }
 
      p_n_verrou->a_count_current_threads--;
@@ -80,11 +82,11 @@ int n_verrou_unlock(N_VERROU* p_n_verrou)
      if(pthread_mutex_unlock(&p_n_verrou->a_mutex) != 0)
      {
           perror("pthread_mutex_unlock : ");
-          return -1;
+          return -EXIT_FAILURE;
      }
 
      if(pthread_cond_broadcast(&g_n_verrou.a_cond) != 0)
-          return -1;
+          return -EXIT_FAILURE;
 
      return 0;
 }
@@ -94,60 +96,67 @@ int n_verrou_destroy(N_VERROU* p_n_verrou)
      if(pthread_mutex_destroy(&p_n_verrou->a_mutex) != 0)
      {
           perror("pthread_mutex_destroy : ");
-          return -1;
+          return -EXIT_FAILURE;
      }
 
      if(pthread_cond_destroy(&p_n_verrou->a_cond) != 0)
      {
           perror("pthread_mutex_destroy : ");
-          return -1;
+          return -EXIT_FAILURE;
      }
 
      return 0;
 }
 
-void* traitement_1(void* p_index)
+void* treatment(void* p_index)
 {
      int t_index = (intptr_t) p_index;
 
-     fprintf(stdout, "Thread %d start traitement 1\n", t_index);
-     sleep(1);
-     fprintf(stdout, "Thread %d end traitement 1\n", t_index);
+     treatment_1(t_index);
 
      if(n_verrou_lock(&g_n_verrou, t_index) != 0)
      {
           perror("error n_verrou_lock : ");
-          exit(1);
+          exit(EXIT_FAILURE);
      }
 
-     traitement_2(t_index);
-}
-
-void traitement_2(int p_index)
-{
-     fprintf(stdout, "\tThread %d start traitement 2\n", p_index);
-     sleep(2);
-     fprintf(stdout, "\tThread %d end traitement 2\n", p_index);
+     treatment_2(t_index);
 
      if(n_verrou_unlock(&g_n_verrou) != 0)
      {
           perror("error n_verrou_unlock : ");
-          exit(1);
+          exit(EXIT_FAILURE);
      }
 
-     traitement_3(p_index);
+     treatment_3(t_index);
+
+     pthread_exit(NULL);
 }
 
-void traitement_3(int p_index)
+void treatment_1(int p_index)
 {
-     fprintf(stdout, "\t\tThread %d start traitement 3\n", p_index);
+     fprintf(stdout, "Thread %d start treatment 1\n", p_index);
+     sleep(1);
+     fprintf(stdout, "Thread %d end treatment 1\n", p_index);
+}
+
+void treatment_2(int p_index)
+{
+     fprintf(stdout, "\tThread %d start treatment 2\n", p_index);
+     sleep(2);
+     fprintf(stdout, "\tThread %d end treatment 2\n", p_index);
+}
+
+void treatment_3(int p_index)
+{
+     fprintf(stdout, "\t\tThread %d start treatment 3\n", p_index);
      sleep(3);
-     fprintf(stdout, "\t\tThread %d end traitement 3\n", p_index);
+     fprintf(stdout, "\t\tThread %d end treatment 3\n", p_index);
 }
 
 /*
-*    argv[1] : Nombre total de threads
-*    argv[2] : Nombre maximum de threads sur le traitement 2 en meme temps
+*    argv[1] : Number of threads
+*    argv[2] : Number of maximum threads on treatment_2
 */
 int main(int argc, char** argv)
 {
@@ -155,40 +164,42 @@ int main(int argc, char** argv)
      {
           fprintf(stderr, "Mauvais argument(s) : nombre_total_threads, nombre_maximum_threads_section_critique\n");
 
-          return 1;
+          return EXIT_FAILURE;
      }
 
      if(n_verrou_init(&g_n_verrou, atoi(argv[2])) != 0)
      {
           fprintf(stderr, "Error on n_verrou_init\n");
-          return 1;
+          return EXIT_FAILURE;
      }
 
-     pthread_t t_threads[atoi(argv[1])];
+     pthread_t t_threads[atoi(argv[EXIT_FAILURE])];
 
-     for(int t_index = 0; t_index < atoi(argv[1]); t_index++)
-          if(pthread_create(&t_threads[t_index], NULL, traitement_1, (void*) (intptr_t) t_index) != 0)
+     fprintf(stdout, "--- BEGIN ---\n\n");
+
+     for(int t_index = 0; t_index < atoi(argv[EXIT_FAILURE]); t_index++)
+          if(pthread_create(&t_threads[t_index], NULL, treatment, (void*) (intptr_t) t_index) != 0)
           {
                perror("pthread_create : ");
-               return 1;
+               return EXIT_FAILURE;
           }
 
-     for(int t_index = 0; t_index < atoi(argv[1]); t_index++)
+     for(int t_index = 0; t_index < atoi(argv[EXIT_FAILURE]); t_index++)
           if(pthread_join(t_threads[t_index], NULL) != 0)
           {
                perror("pthread_join : ");
-               return 1;
+               return EXIT_FAILURE;
           }
 
      if(n_verrou_destroy(&g_n_verrou) != 0)
      {
           fprintf(stderr, "Error on n_verrou_destroy\n");
-          return 1;
+          return EXIT_FAILURE;
      }
 
      fprintf(stdout, "\n--- END ---\n");
 
-     return 0;
+     return EXIT_SUCCESS;
 }
 
 /*
