@@ -104,7 +104,6 @@
     ()
     (if(eql count 1)
       (
-        setf count 1
         cons (car l) (myremovefirstaux x (cdr l) count)
       )
       (if (eql x (car l))
@@ -114,27 +113,6 @@
     )
   )
 )
-
-
-
-
-
-(defun myappend (l1 l2)
-     (if (and (eql (cdr l1) NIL) (eql (cdr l2) NIL))
-      ()
-      ()
-     )
-
-    (if (not (eql (cdr l1) NIL))
-      (const (car l2) (myappend l1 (cdr l2)))
-      ()
-    )
-)
-
-
-
-
-
 
 (defun myappend (l1 l2)
      (if (and (eql (car l1) NIL) (eql (car l2) NIL))

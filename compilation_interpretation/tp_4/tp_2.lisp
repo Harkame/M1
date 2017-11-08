@@ -1,9 +1,9 @@
-(defun mymember (l n &optional  &key ((:test TEST)))
-  (if (apply #'TEST (car l) NIL)
-    (NIL)
-    (if(apply #'TEST (car l) n)
-      (t)
-      (mymember (cdr l) n)
+(defun mymember (l n &key (test #'eql))
+  (if(eql l NIL)
+    NIL
+    (if(apply test (list (car l) n))
+      l
+      (mymember (cdr l) n :test test)
     )
   )
 )
@@ -14,8 +14,15 @@
 
 (mymember l1 n :test #'eql)
 
-(defun calcul (a op b)
-  (apply op (list a b))
+(setf cal '(+ 9 42))
+
+(defun calcul (e)
+  (if (atom e)
+    e
+    (
+      apply (car e) (list (nth 2 e) (nth 3 e))
+    )
+  )
 )
 
 (calcul 9 #'+ 8)
