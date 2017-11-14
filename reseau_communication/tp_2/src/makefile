@@ -1,4 +1,4 @@
-GCC = gcc -W -Wall -ansi -std=gnu99 -O3
+GCC = gcc -ansi -Wpedantic -pedantic -pedantic-errors -W -Wall -Wextra -Werror -Wfatal-errors  -std=gnu99 -O3
 
 main: e1
 

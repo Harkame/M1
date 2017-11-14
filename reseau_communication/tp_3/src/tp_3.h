@@ -3,38 +3,56 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <sys/ipc.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <sys/msg.h>
-#include <unistd.h>
-#include <sys/ipc.h>
-#include <sys/shm.h>
-#include <sys/sem.h>
-#include <sys/wait.h>
-#include <unistd.h>
-#include <sys/types.h>
 
-#define IPC_PATH "/auto_home/ldaviaud/tp_3"
-#define SEMAPHORE_PATH "/auto_home/ldaviaud/tp_3_semaphore"
+#include <sys/shm.h> //shared_memory
+#include <sys/sem.h> //semaphore
+#include <unistd.h> //sleep
 
-#define IPC_FLAG IPC_CREAT | 0666
+#define SEMAPHORE_PATH "./semaphore"
+
+#define IPC_FLAG 0600
 #define IPC_KEY  42
 
-struct sembuf t_sembuf[] =
+#define NUMBER_AREAS 4
+#define SEMAPHORE_DEFAULT_VALUE 0
+#define SEMAPHORE_DEFAULT_VALUES {0, 0, 0, 0}
+
+#define MESSAGE_START "\n--- START ---\n"
+#define MESSAGE_END "\n--- END ---\n"
+
+#define MESSAGE_SEMAPHORE_CREATION                  "Semaphore creation [OK]\n"
+#define MESSAGE_SEMAPHORE_INITIALIZATION        "Semaphore initialization [OK]\n"
+#define MESSAGE_SEMAPHORE_DESTRUCTION "Semaphore destruction [OK]\n"
+
+#define MESSAGE_INTERACTION_CONTINUE "Please, press enter to continue (destroy semaphore)\n"
+
+#define ERROR_MESSAGE_WRONG_ARGUMENTS "Wrong arguments\n"
+
+#define ERROR_MESSAGE_FTOK "ftok : "
+#define ERROR_MESSAGE_SEMGET "semget : "
+#define ERROR_MESSAGE_SEMCTL "semctl : "
+#define ERROR_MESSAGE_SEMOP "semop : "
+
+struct sembuf g_sembuf_2[] =
 {
-     {(u_short) 0, (short) +1,  0},
-     {(u_short) 1, (short) +1,  0},
-     {(u_short) 2, (short) +1,  0}
+     {0, -1, 0},
+     {0, 0, 0},
 };
 
-union semun
+struct sembuf g_sembuf_3[] =
 {
-     int val;                /* value for SETVAL */
-     struct semid_ds *buf;   /* buffer for IPC_STAT & IPC_SET */
-     ushort *array;          /* array for GETALL & SETALL */
-     struct seminfo *__buf;  /* buffer for IPC_INFO */
-     void *__pad;
+     {0, +1,  0},
+     {1, +1,  0},
+     {2, +1,  0}
 };
+
+typedef union SEMUN
+{
+     int val; //setval
+     struct semid_ds *buf;
+     ushort* array; //setall, getall
+     struct seminfo *__buf;
+     void *__pad;
+} SEMUN;
 
 #endif

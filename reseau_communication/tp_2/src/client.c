@@ -5,11 +5,11 @@ int main(int argc, char** argv)
      if(argc < 4)
      {
           fprintf(stderr, "Mauvais arguments\n");
-          return 1;
+          return EXIT_SUCCESS;
      }
 
-     struct CALCULATRICE_REQUEST t_calculatrice_request;
-     struct CALCULATRICE_RESPONSE t_calculatrice_response;
+     CALCULATRICE_REQUEST t_calculatrice_request;
+     CALCULATRICE_RESPONSE t_calculatrice_response;
 
      key_t t_key = ftok(IPC_PATH, IPC_KEY);
 
@@ -22,20 +22,21 @@ int main(int argc, char** argv)
 
      fprintf(stdout, "Send request\n");
      sleep(2);
-     if(msgsnd(t_queue_id, &t_calculatrice_request, sizeof(struct CALCULATRICE_REQUEST), 0) == -1)
+
+     if(msgsnd(t_queue_id, &t_calculatrice_request, sizeof(CALCULATRICE_REQUEST), 0) == -1)
      {
           perror("msgsnd : ");
-          exit(1);
+          return EXIT_FAILURE;
      }
 
      fprintf(stdout, "Wait response\n");
-     if(msgrcv(t_queue_id, &t_calculatrice_response, sizeof(struct CALCULATRICE_RESPONSE), getpid(), 0) == -1)
+     if(msgrcv(t_queue_id, &t_calculatrice_response, sizeof(CALCULATRICE_RESPONSE), getpid(), 0) == -1)
      {
           perror("msgsnd : ");
-          exit(1);
+          return EXIT_FAILURE;
      }
 
      fprintf(stdout, "Result : %d\n", t_calculatrice_response.a_result);
 
-     return 0;
+     return EXIT_SUCCESS;
 }

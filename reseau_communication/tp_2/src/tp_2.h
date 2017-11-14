@@ -16,7 +16,7 @@
 #define LABEL_REQUEST 43
 #define LABEL_RESPONSE 44
 
-struct CALCULATRICE_REQUEST
+typedef struct CALCULATRICE_REQUEST
 {
           long a_label;
 
@@ -26,13 +26,13 @@ struct CALCULATRICE_REQUEST
 
           int a_operand_a;
           int a_operand_b;
-};
+} CALCULATRICE_REQUEST;
 
-struct CALCULATRICE_RESPONSE
+typedef struct CALCULATRICE_RESPONSE
 {
           long a_label;
 
           int a_result;
-};
+} CALCULATRICE_RESPONSE;
 
 #endif

@@ -3,12 +3,8 @@ GCC = gcc -ansi -Wpedantic -pedantic -pedantic-errors -W -Wall -Wextra -Werror -
 main: e1
 
 e1:
-	${GCC} ./parking_creation.c -o ./parking_creation.out;
-	${GCC} ./tickets_distribution.c -o ./tickets_distribution.out;
-	${GCC} ./car_output.c -o ./car_output.out;
-	${GCC} ./meeting.c -o ./meeting.out;
-	${GCC} ./initialize_meeting.c -o ./initialize_meeting.out;
-	${GCC} ./e3_controller.c -o ./e3_controller.out;
-	${GCC} ./e3.c -o ./e3.out;
-	${GCC} ./e4_controller.c -o ./e4_controller.out;
-	${GCC} ./e4.c -o ./e4.out;
+	${GCC} ./example_shared_memory/example_shared_memory.c -o ./example_shared_memory/example_shared_memory.out
+	${GCC} ./exercice_2/exercice_2_controller.c -o ./exercice_2/exercice_2_controller.out;
+	${GCC} ./exercice_2/exercice_2.c -o ./exercice_2/exercice_2.out;
+	${GCC} ./exercice_3/exercice_3_controller.c -o ./exercice_3/exercice_3_controller.out;
+	${GCC} ./exercice_3/exercice_3.c -o ./exercice_3/exercice_3.out;

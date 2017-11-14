@@ -10,8 +10,8 @@ int main(int argc, char** argv)
 
      char t_char = argv[1][0];
 
-     struct CALCULATRICE_REQUEST t_calculatrice_request;
-     struct CALCULATRICE_RESPONSE t_calculatrice_response;
+     CALCULATRICE_REQUEST t_calculatrice_request;
+     CALCULATRICE_RESPONSE t_calculatrice_response;
 
      key_t t_key = ftok(IPC_PATH, IPC_KEY);
      int t_queue_id = msgget(t_key, IPC_CREAT | 0666);
@@ -19,10 +19,10 @@ int main(int argc, char** argv)
      while(1)
      {
           fprintf(stdout, "Wait request\n");
-          if(msgrcv(t_queue_id, &t_calculatrice_request, sizeof(struct CALCULATRICE_REQUEST), t_char, 0) == -1)
+          if(msgrcv(t_queue_id, &t_calculatrice_request, sizeof(CALCULATRICE_REQUEST), t_char, 0) == -1)
           {
                perror("mesgrcv : ");
-               exit(1);
+               return EXIT_FAILURE;
           }
 
           fprintf(stdout, "Request acquiered : start calcul\n");
@@ -55,18 +55,18 @@ int main(int argc, char** argv)
 
           fprintf(stdout, "Send response\n");
           sleep(2);
-          if(msgsnd(t_queue_id, &t_calculatrice_response, sizeof(struct CALCULATRICE_RESPONSE), 0) == -1)
+          if(msgsnd(t_queue_id, &t_calculatrice_response, sizeof(CALCULATRICE_RESPONSE), 0) == -1)
           {
                perror("mesgrcv : ");
-               exit(1);
+               return EXIT_FAILURE;
           }
      }
 
      if(msgctl(t_queue_id, IPC_RMID, NULL) == -1)
      {
                perror("msgctl : ");
-               return -1;
+               return EXIT_FAILURE;
      }
 
-     return 0;
+     return EXIT_SUCCESS;
 }

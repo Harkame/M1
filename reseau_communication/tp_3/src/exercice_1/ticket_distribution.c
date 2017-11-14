@@ -1,4 +1,4 @@
-#include "./tp_3.h"
+#include "../tp_3.h"
 
 int main()
 {
