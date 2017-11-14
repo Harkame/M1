@@ -29,12 +29,12 @@
 #define ERROR_MESSAGE_FTOK "ftok : "
 
 /* ERROR_MESSAGE_QUEUE */
-#define ERROR_MESSAGE_MSGGET"msgget :"
+#define ERROR_MESSAGE_MSGGET "msgget :"
 #define ERROR_MESSAGE_MSGSND "msgsnd :"
-#define ERROR_MESSAGE_MSGSND "msgrcv :"
+#define ERROR_MESSAGE_MSGRCV "msgrcv :"
 
 /* ERROR_MESSAGE_SHARED_MEMORY */
-#define ERROR_MESSAGE_SHMGET"shmget :"
+#define ERROR_MESSAGE_SHMGET "shmget :"
 #define ERROR_MESSAGE_SHMAT "shmat :"
 #define ERROR_MESSAGE_SHMDT "shmdt :"
 
@@ -61,7 +61,7 @@ struct sembuf g_sembuf[] =
 
 typedef struct DATA
 {
- //TODO
+ int a_value;
 } DATA;
 
 int main(int argc, char** argv)
@@ -72,14 +72,14 @@ int main(int argc, char** argv)
           return EXIT_FAILURE;
      }
 
-     key_t t_key = ftok(IPC_PATH, IPC_KEY);
+     key_t t_key = ftok(SEMAPHORE_PATH, IPC_KEY);
 
      if(t_key == -1)
      {
           perror(ERROR_MESSAGE_FTOK);
           return EXIT_FAILURE;
      }
-     
+
      //Avoid controller using
      /*
      int t_semaphore_id = semget(t_key, 2, IPC_FLAG | IPC_CREAT | IPC_EXCL );
@@ -88,7 +88,7 @@ int main(int argc, char** argv)
 		fprintf(stdout, "Semaphore alreadt created\n");
 
 		t_semaphore_id = semget(t_key, 2, IPC_FLAG);
-          
+
 		if(sem_id < 0)
           {
 			fprintf(stderr, ERROR_MESSAGE_SEMGET);
