@@ -26,6 +26,8 @@
 #define ERROR_MESSAGE_PTHREAD_JOIN      "pthread_join : "
 
 #define ERROR_MESSAGE_N_LOCKER_INITIALIZE "error on n_locker_initialize\n"
+#define ERROR_MESSAGE_N_LOCKER_LOCK "error on n_locker_lock\n"
+#define ERROR_MESSAGE_N_LOCKER_UNLOCK "error on n_locker_unlock\n"
 #define ERROR_MESSAGE_N_LOCKER_DESTROY "error on n_locker_destroy\n"
 
 typedef struct N_LOCKER
@@ -48,16 +50,16 @@ int n_locker_initialize(N_LOCKER* p_n_locker, int p_number_maximum_threads)
 
      p_n_locker->a_number_current_threads = 0;
 
-     if(pthread_mutex_init(&p_n_locker->a_mutex, NULL) != 0)
+     if(pthread_mutex_init(&p_n_locker->a_mutex, NULL) == -1)
      {
           perror(ERROR_MESSAGE_PTHREAD_MUTEX_INIT);
-          return EXIT_FAILURE;
+          return -1;
      }
 
-     if(pthread_cond_init(&p_n_locker->a_cond, NULL) != 0)
+     if(pthread_cond_init(&p_n_locker->a_cond, NULL) == -1)
      {
           perror(ERROR_MESSAGE_PTHREAD_COND_INIT);
-          return EXIT_FAILURE;
+          return -1;
      }
 
      return EXIT_SUCCESS;
@@ -65,10 +67,10 @@ int n_locker_initialize(N_LOCKER* p_n_locker, int p_number_maximum_threads)
 
 int n_locker_lock(N_LOCKER* p_n_locker, int p_index)
 {
-     if(pthread_mutex_lock(&p_n_locker->a_mutex) != 0)
+     if(pthread_mutex_lock(&p_n_locker->a_mutex) == -1)
      {
           perror(ERROR_MESSAGE_PTHREAD_MUTEX_LOCK);
-          return EXIT_FAILURE;
+          return -1;
      }
 
      while(p_n_locker->a_number_maximum_threads == p_n_locker->a_number_current_threads)
@@ -79,10 +81,10 @@ int n_locker_lock(N_LOCKER* p_n_locker, int p_index)
 
      p_n_locker->a_number_current_threads++;
 
-     if(pthread_mutex_unlock(&p_n_locker->a_mutex) != 0)
+     if(pthread_mutex_unlock(&p_n_locker->a_mutex) == -1)
      {
           perror(ERROR_MESSAGE_PTHREAD_MUTEX_UNLOCK);
-          return EXIT_FAILURE;
+          return -1;
      }
 
      return EXIT_SUCCESS;
@@ -90,38 +92,38 @@ int n_locker_lock(N_LOCKER* p_n_locker, int p_index)
 
 int n_locker_unlock(N_LOCKER* p_n_locker)
 {
-     if(pthread_mutex_lock(&p_n_locker->a_mutex) != 0)
+     if(pthread_mutex_lock(&p_n_locker->a_mutex) == -1)
      {
           perror(ERROR_MESSAGE_PTHREAD_MUTEX_LOCK);
-          return EXIT_FAILURE;
+          return -1;
      }
 
      p_n_locker->a_number_current_threads--;
 
-     if(pthread_mutex_unlock(&p_n_locker->a_mutex) != 0)
+     if(pthread_mutex_unlock(&p_n_locker->a_mutex) == -1)
      {
           perror(ERROR_MESSAGE_PTHREAD_MUTEX_UNLOCK);
-          return EXIT_FAILURE;
+          return -1;
      }
 
-     if(pthread_cond_broadcast(&g_n_locker.a_cond) != 0)
-          return EXIT_FAILURE;
+     if(pthread_cond_broadcast(&g_n_locker.a_cond) == -1)
+          return -1;
 
      return EXIT_SUCCESS;
 }
 
 int n_locker_destroy(N_LOCKER* p_n_locker)
 {
-     if(pthread_mutex_destroy(&p_n_locker->a_mutex) != 0)
+     if(pthread_mutex_destroy(&p_n_locker->a_mutex) == -1)
      {
           perror(ERROR_MESSAGE_PTHREAD_MUTEX_DESTROY);
-          return EXIT_FAILURE;
+          return -1;
      }
 
-     if(pthread_cond_destroy(&p_n_locker->a_cond) != 0)
+     if(pthread_cond_destroy(&p_n_locker->a_cond) == -1)
      {
           perror(ERROR_MESSAGE_PTHREAD_COND_DESTROY);
-          return EXIT_FAILURE;
+          return -1;
      }
 
      return EXIT_SUCCESS;
@@ -154,17 +156,17 @@ void* treatment(void* p_index)
 
      treatment_1(t_index);
 
-     if(n_locker_lock(&g_n_locker, t_index) != 0)
+     if(n_locker_lock(&g_n_locker, t_index) == -1)
      {
-          perror("error n_locker_lock : ");
+          fprintf(stderr, ERROR_MESSAGE_N_LOCKER_LOCK);
           exit(EXIT_FAILURE);
      }
 
      treatment_2(t_index);
 
-     if(n_locker_unlock(&g_n_locker) != 0)
+     if(n_locker_unlock(&g_n_locker) == -1)
      {
-          perror("error n_locker_unlock : ");
+          fprintf(stderr, ERROR_MESSAGE_N_LOCKER_UNLOCK);
           exit(EXIT_FAILURE);
      }
 
@@ -192,7 +194,7 @@ int main(int argc, char** argv)
           return EXIT_FAILURE;
      }
 
-     pthread_t t_threads[atoi(argv[EXIT_FAILURE])];
+     pthread_t t_threads[atoi(argv[1])];
 
      fprintf(stdout, MESSAGE_START);
 
