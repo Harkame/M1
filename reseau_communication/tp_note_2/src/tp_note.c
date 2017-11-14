@@ -79,6 +79,30 @@ int main(int argc, char** argv)
           perror(ERROR_MESSAGE_FTOK);
           return EXIT_FAILURE;
      }
+     
+     //Avoid controller using
+     /*
+     int t_semaphore_id = semget(t_key, 2, IPC_FLAG | IPC_CREAT | IPC_EXCL );
+	if (t_semaphore_id < 0)
+	{
+		fprintf(stdout, "Semaphore alreadt created\n");
+
+		t_semaphore_id = semget(t_key, 2, IPC_FLAG);
+          
+		if(sem_id < 0)
+          {
+			fprintf(stderr, ERROR_MESSAGE_SEMGET);
+			return EXIT_FAILURE;
+		}
+	}
+     else
+     {
+		printf("Creation Semaphore\n");
+		//intialise les semaphores
+		int sarray[2]={0,nbProcessusEmploye};
+		semctl(sem_id, 0, SETALL, sarray);
+	}
+     */
 
      return EXIT_SUCCESS;
 }
