@@ -3,11 +3,9 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <sys/ipc.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <sys/msg.h>
-#include <unistd.h>
+
+#include <sys/msg.h> //queue
+#include <unistd.h> //getpid, sleep
 
 #define IPC_PATH "/auto_home/ldaviaud/calculatrice"
 #define IPC_KEY  42
