@@ -18,13 +18,13 @@ public class GameFactoryMedium extends AbstractGameFactory
 			int t_random_index = rand.nextInt((75 - 0) + 1) + 0;
 			int count = 0;
 			int i;
-		    for (i=0x2500;i<=0x257F;i++)
-		    {
-		        if(count == t_random_index)
-		        	break;
-		        count++;
-		    }
-			
+			for (i=0x2500;i<=0x257F;i++)
+			{
+				if(count == t_random_index)
+					break;
+				count++;
+			}
+
 			r_crypted_text.append((char) i);
 		}
 		
