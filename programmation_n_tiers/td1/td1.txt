@@ -1,0 +1,43 @@
+question 1:
+  java HelloWorld.Server
+  java Helloworld.Client 1099
+
+question 2:
+  La ligne 14 cree le registre (dans la vm du serveur), il devient inutile de lancer
+  le registre avec le serveur.
+
+
+Question 3:
+
+  Server:
+    Server ready
+    Server prints : Hello, world !
+
+  Client:
+    Response : Hello, world !
+
+
+Question 4:
+  vm du serveur
+
+Question 5:
+  L'interface sert pour:
+    - Specifier les methodes appelees a distance
+    - Pour le typage du proxy cote client
+
+Question 6:
+  Types d'exception:
+    - ...getRegistry()... :
+      Si il ne tourne pas (connect)
+    - ...bind()...
+      Si le socket est deja nomme (bind), mal arrete, utiliser rebind (ecrase et remplace)
+
+
+Question 7:
+  Bind : nomme, si deja nommee -> exception
+  Rebind : nomme, si deja nommee -> ecrase
+
+Question 8:
+  (Un truc si pas meme port)
+
+Question 9:
