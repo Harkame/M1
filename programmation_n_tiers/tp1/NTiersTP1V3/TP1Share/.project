@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>RMIClient</name>
+	<name>TP1Share</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -14,16 +14,4 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>RMIServer</name>
-			<type>2</type>
-			<location>/auto_home/ldaviaud/workspace/RMIServer</location>
-		</link>
-		<link>
-			<name>RMIShare</name>
-			<type>2</type>
-			<location>/auto_home/ldaviaud/workspace/RMIShare</location>
-		</link>
-	</linkedResources>
 </projectDescription>

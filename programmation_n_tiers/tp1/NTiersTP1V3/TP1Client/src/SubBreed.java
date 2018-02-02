@@ -1,5 +1,3 @@
-package model.animal.breed.subbreed;
-
 import java.rmi.RemoteException;
 
 public class SubBreed extends Breed implements InterfaceSubBreed
