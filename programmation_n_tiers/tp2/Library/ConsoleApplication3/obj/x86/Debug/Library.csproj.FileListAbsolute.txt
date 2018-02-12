@@ -1,0 +1,5 @@
+c:\users\ldaviaud\documents\visual studio 2010\Projects\Library\ConsoleApplication3\bin\Debug\ConsoleApplication3.exe.config
+c:\users\ldaviaud\documents\visual studio 2010\Projects\Library\ConsoleApplication3\bin\Debug\ConsoleApplication3.exe
+c:\users\ldaviaud\documents\visual studio 2010\Projects\Library\ConsoleApplication3\bin\Debug\ConsoleApplication3.pdb
+c:\users\ldaviaud\documents\visual studio 2010\Projects\Library\ConsoleApplication3\obj\x86\Debug\ConsoleApplication3.exe
+c:\users\ldaviaud\documents\visual studio 2010\Projects\Library\ConsoleApplication3\obj\x86\Debug\ConsoleApplication3.pdb
