@@ -1,8 +1,0 @@
-c:\users\ldaviaud\documents\visual studio 2010\Projects\Library\ConsoleApplication3\bin\Debug\ConsoleApplication3.exe.config
-c:\users\ldaviaud\documents\visual studio 2010\Projects\Library\ConsoleApplication3\bin\Debug\ConsoleApplication3.exe
-c:\users\ldaviaud\documents\visual studio 2010\Projects\Library\ConsoleApplication3\bin\Debug\ConsoleApplication3.pdb
-c:\users\ldaviaud\documents\visual studio 2010\Projects\Library\ConsoleApplication3\obj\x86\Debug\ConsoleApplication3.exe
-c:\users\ldaviaud\documents\visual studio 2010\Projects\Library\ConsoleApplication3\obj\x86\Debug\ConsoleApplication3.pdb
-D:\workspace\M1\programmation_n_tiers\tp2\Library\ConsoleApplication3\bin\Debug\ConsoleApplication3.exe.config
-D:\workspace\M1\programmation_n_tiers\tp2\Library\ConsoleApplication3\obj\x86\Debug\ConsoleApplication3.exe
-D:\workspace\M1\programmation_n_tiers\tp2\Library\ConsoleApplication3\obj\x86\Debug\ConsoleApplication3.pdb
