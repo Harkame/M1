@@ -34,17 +34,76 @@ namespace LibraryManager
 
             Console.WriteLine("");
 
-            LibraryManagerServiceReference.Book t_book = a_proxy.SearchBookByISDN(0);
+            w:while (true)
+            {
+                Console.WriteLine();
 
-            Console.WriteLine(a_proxy.GetBookDescription(t_book));
+                Console.WriteLine("Action :");
+                Console.WriteLine("[0] : Search book by ISDN");
+                Console.WriteLine("[1] : Search book by Author");
+                Console.WriteLine("[2] : Comment book");
+                Console.WriteLine("[3] : Exit");
 
-            Console.WriteLine(a_proxy.CommentBook(t_book, t_subcriber, "ok"));
+                Console.Write("Action : ");
 
-            Console.WriteLine(a_proxy.GetBookDescription(t_book));
+                int t_action = Convert.ToInt32(Console.ReadLine());
 
-            Console.WriteLine("Please, press enter to continue");
+                Console.WriteLine();
 
-            Console.ReadLine();
+                int t_isdn;
+                String t_author;
+                LibraryManagerServiceReference.Book t_book;
+                LibraryManagerServiceReference.Book[] t_books;
+                String t_comment;
+
+                switch (t_action)
+                {
+                    case 0:
+                        Console.Write("ISDN : ");
+
+                        t_isdn = Convert.ToInt32(Console.ReadLine());
+
+                        t_book = a_proxy.SearchBookByISDN(t_isdn);
+
+                        Console.WriteLine(a_proxy.GetBookDescription(t_book));
+
+                        break;
+
+                    case 1:
+                        Console.Write("Author : ");
+
+                        t_author = Console.ReadLine();
+
+                        t_books = a_proxy.SearchBooksByAuthor(t_author);
+
+                        Console.WriteLine(t_books.Length);
+
+                        foreach (LibraryManagerServiceReference.Book t_book_iterator in t_books)
+                            Console.WriteLine(a_proxy.GetBookDescription(t_book_iterator));
+
+                        break;
+
+                    case 2:
+                        Console.Write("ISDN : ");
+
+                        t_isdn = Convert.ToInt32(Console.ReadLine());
+
+                        t_book = a_proxy.SearchBookByISDN(t_isdn);
+
+                        Console.Write("Comment : ");
+
+                        t_comment = Console.ReadLine();
+
+                        a_proxy.CommentBook(t_book, t_subcriber, t_comment);
+
+                        break;
+
+                    case 3:
+                        goto end_of_loop;
+                }
+            }
+
+            end_of_loop: {}
 
             a_proxy.Close();
         }
