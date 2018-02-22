@@ -15,6 +15,190 @@ namespace LibraryManager.LibraryManagerServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Book", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class Book : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string a_titleField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string a_authorField;
+        
+        private int a_isbnField;
+        
+        private int a_stockField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string a_editorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private LibraryManager.LibraryManagerServiceReference.Comment[] a_commentsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public string a_title {
+            get {
+                return this.a_titleField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.a_titleField, value) != true)) {
+                    this.a_titleField = value;
+                    this.RaisePropertyChanged("a_title");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string a_author {
+            get {
+                return this.a_authorField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.a_authorField, value) != true)) {
+                    this.a_authorField = value;
+                    this.RaisePropertyChanged("a_author");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=2)]
+        public int a_isbn {
+            get {
+                return this.a_isbnField;
+            }
+            set {
+                if ((this.a_isbnField.Equals(value) != true)) {
+                    this.a_isbnField = value;
+                    this.RaisePropertyChanged("a_isbn");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
+        public int a_stock {
+            get {
+                return this.a_stockField;
+            }
+            set {
+                if ((this.a_stockField.Equals(value) != true)) {
+                    this.a_stockField = value;
+                    this.RaisePropertyChanged("a_stock");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
+        public string a_editor {
+            get {
+                return this.a_editorField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.a_editorField, value) != true)) {
+                    this.a_editorField = value;
+                    this.RaisePropertyChanged("a_editor");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
+        public LibraryManager.LibraryManagerServiceReference.Comment[] a_comments {
+            get {
+                return this.a_commentsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.a_commentsField, value) != true)) {
+                    this.a_commentsField = value;
+                    this.RaisePropertyChanged("a_comments");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Comment", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class Comment : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private LibraryManager.LibraryManagerServiceReference.Subscriber a_subscriberField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string a_descriptionField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public LibraryManager.LibraryManagerServiceReference.Subscriber a_subscriber {
+            get {
+                return this.a_subscriberField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.a_subscriberField, value) != true)) {
+                    this.a_subscriberField = value;
+                    this.RaisePropertyChanged("a_subscriber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string a_description {
+            get {
+                return this.a_descriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.a_descriptionField, value) != true)) {
+                    this.a_descriptionField = value;
+                    this.RaisePropertyChanged("a_description");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Subscriber", Namespace="http://tempuri.org/")]
     [System.SerializableAttribute()]
     public partial class Subscriber : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -81,9 +265,25 @@ namespace LibraryManager.LibraryManagerServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/HelloWorld", ReplyAction="*")]
         LibraryManager.LibraryManagerServiceReference.HelloWorldResponse HelloWorld(LibraryManager.LibraryManagerServiceReference.HelloWorldRequest request);
         
+        // CODEGEN: Generating message contract since element name SearchBookByISDNResult from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/SearchBookByISDN", ReplyAction="*")]
+        LibraryManager.LibraryManagerServiceReference.SearchBookByISDNResponse SearchBookByISDN(LibraryManager.LibraryManagerServiceReference.SearchBookByISDNRequest request);
+        
+        // CODEGEN: Generating message contract since element name p_author from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/SearchBooksByAuthor", ReplyAction="*")]
+        LibraryManager.LibraryManagerServiceReference.SearchBooksByAuthorResponse SearchBooksByAuthor(LibraryManager.LibraryManagerServiceReference.SearchBooksByAuthorRequest request);
+        
         // CODEGEN: Generating message contract since element name p_password from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Authentificate", ReplyAction="*")]
         LibraryManager.LibraryManagerServiceReference.AuthentificateResponse Authentificate(LibraryManager.LibraryManagerServiceReference.AuthentificateRequest request);
+        
+        // CODEGEN: Generating message contract since element name p_book from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetBookDescription", ReplyAction="*")]
+        LibraryManager.LibraryManagerServiceReference.GetBookDescriptionResponse GetBookDescription(LibraryManager.LibraryManagerServiceReference.GetBookDescriptionRequest request);
+        
+        // CODEGEN: Generating message contract since element name p_book_to_comment from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CommentBook", ReplyAction="*")]
+        LibraryManager.LibraryManagerServiceReference.CommentBookResponse CommentBook(LibraryManager.LibraryManagerServiceReference.CommentBookRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -144,6 +344,142 @@ namespace LibraryManager.LibraryManagerServiceReference {
         
         public HelloWorldResponseBody(string HelloWorldResult) {
             this.HelloWorldResult = HelloWorldResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class SearchBookByISDNRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="SearchBookByISDN", Namespace="http://tempuri.org/", Order=0)]
+        public LibraryManager.LibraryManagerServiceReference.SearchBookByISDNRequestBody Body;
+        
+        public SearchBookByISDNRequest() {
+        }
+        
+        public SearchBookByISDNRequest(LibraryManager.LibraryManagerServiceReference.SearchBookByISDNRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class SearchBookByISDNRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int p_isbn;
+        
+        public SearchBookByISDNRequestBody() {
+        }
+        
+        public SearchBookByISDNRequestBody(int p_isbn) {
+            this.p_isbn = p_isbn;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class SearchBookByISDNResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="SearchBookByISDNResponse", Namespace="http://tempuri.org/", Order=0)]
+        public LibraryManager.LibraryManagerServiceReference.SearchBookByISDNResponseBody Body;
+        
+        public SearchBookByISDNResponse() {
+        }
+        
+        public SearchBookByISDNResponse(LibraryManager.LibraryManagerServiceReference.SearchBookByISDNResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class SearchBookByISDNResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public LibraryManager.LibraryManagerServiceReference.Book SearchBookByISDNResult;
+        
+        public SearchBookByISDNResponseBody() {
+        }
+        
+        public SearchBookByISDNResponseBody(LibraryManager.LibraryManagerServiceReference.Book SearchBookByISDNResult) {
+            this.SearchBookByISDNResult = SearchBookByISDNResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class SearchBooksByAuthorRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="SearchBooksByAuthor", Namespace="http://tempuri.org/", Order=0)]
+        public LibraryManager.LibraryManagerServiceReference.SearchBooksByAuthorRequestBody Body;
+        
+        public SearchBooksByAuthorRequest() {
+        }
+        
+        public SearchBooksByAuthorRequest(LibraryManager.LibraryManagerServiceReference.SearchBooksByAuthorRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class SearchBooksByAuthorRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string p_author;
+        
+        public SearchBooksByAuthorRequestBody() {
+        }
+        
+        public SearchBooksByAuthorRequestBody(string p_author) {
+            this.p_author = p_author;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class SearchBooksByAuthorResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="SearchBooksByAuthorResponse", Namespace="http://tempuri.org/", Order=0)]
+        public LibraryManager.LibraryManagerServiceReference.SearchBooksByAuthorResponseBody Body;
+        
+        public SearchBooksByAuthorResponse() {
+        }
+        
+        public SearchBooksByAuthorResponse(LibraryManager.LibraryManagerServiceReference.SearchBooksByAuthorResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class SearchBooksByAuthorResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public LibraryManager.LibraryManagerServiceReference.Book[] SearchBooksByAuthorResult;
+        
+        public SearchBooksByAuthorResponseBody() {
+        }
+        
+        public SearchBooksByAuthorResponseBody(LibraryManager.LibraryManagerServiceReference.Book[] SearchBooksByAuthorResult) {
+            this.SearchBooksByAuthorResult = SearchBooksByAuthorResult;
         }
     }
     
@@ -219,6 +555,143 @@ namespace LibraryManager.LibraryManagerServiceReference {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetBookDescriptionRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetBookDescription", Namespace="http://tempuri.org/", Order=0)]
+        public LibraryManager.LibraryManagerServiceReference.GetBookDescriptionRequestBody Body;
+        
+        public GetBookDescriptionRequest() {
+        }
+        
+        public GetBookDescriptionRequest(LibraryManager.LibraryManagerServiceReference.GetBookDescriptionRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class GetBookDescriptionRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public LibraryManager.LibraryManagerServiceReference.Book p_book;
+        
+        public GetBookDescriptionRequestBody() {
+        }
+        
+        public GetBookDescriptionRequestBody(LibraryManager.LibraryManagerServiceReference.Book p_book) {
+            this.p_book = p_book;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetBookDescriptionResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetBookDescriptionResponse", Namespace="http://tempuri.org/", Order=0)]
+        public LibraryManager.LibraryManagerServiceReference.GetBookDescriptionResponseBody Body;
+        
+        public GetBookDescriptionResponse() {
+        }
+        
+        public GetBookDescriptionResponse(LibraryManager.LibraryManagerServiceReference.GetBookDescriptionResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class GetBookDescriptionResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string GetBookDescriptionResult;
+        
+        public GetBookDescriptionResponseBody() {
+        }
+        
+        public GetBookDescriptionResponseBody(string GetBookDescriptionResult) {
+            this.GetBookDescriptionResult = GetBookDescriptionResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class CommentBookRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="CommentBook", Namespace="http://tempuri.org/", Order=0)]
+        public LibraryManager.LibraryManagerServiceReference.CommentBookRequestBody Body;
+        
+        public CommentBookRequest() {
+        }
+        
+        public CommentBookRequest(LibraryManager.LibraryManagerServiceReference.CommentBookRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class CommentBookRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public LibraryManager.LibraryManagerServiceReference.Book p_book_to_comment;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public LibraryManager.LibraryManagerServiceReference.Subscriber p_subscriber;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string p_description;
+        
+        public CommentBookRequestBody() {
+        }
+        
+        public CommentBookRequestBody(LibraryManager.LibraryManagerServiceReference.Book p_book_to_comment, LibraryManager.LibraryManagerServiceReference.Subscriber p_subscriber, string p_description) {
+            this.p_book_to_comment = p_book_to_comment;
+            this.p_subscriber = p_subscriber;
+            this.p_description = p_description;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class CommentBookResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="CommentBookResponse", Namespace="http://tempuri.org/", Order=0)]
+        public LibraryManager.LibraryManagerServiceReference.CommentBookResponseBody Body;
+        
+        public CommentBookResponse() {
+        }
+        
+        public CommentBookResponse(LibraryManager.LibraryManagerServiceReference.CommentBookResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class CommentBookResponseBody {
+        
+        public CommentBookResponseBody() {
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface ServiceSoapChannel : LibraryManager.LibraryManagerServiceReference.ServiceSoap, System.ServiceModel.IClientChannel {
     }
@@ -259,6 +732,32 @@ namespace LibraryManager.LibraryManagerServiceReference {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        LibraryManager.LibraryManagerServiceReference.SearchBookByISDNResponse LibraryManager.LibraryManagerServiceReference.ServiceSoap.SearchBookByISDN(LibraryManager.LibraryManagerServiceReference.SearchBookByISDNRequest request) {
+            return base.Channel.SearchBookByISDN(request);
+        }
+        
+        public LibraryManager.LibraryManagerServiceReference.Book SearchBookByISDN(int p_isbn) {
+            LibraryManager.LibraryManagerServiceReference.SearchBookByISDNRequest inValue = new LibraryManager.LibraryManagerServiceReference.SearchBookByISDNRequest();
+            inValue.Body = new LibraryManager.LibraryManagerServiceReference.SearchBookByISDNRequestBody();
+            inValue.Body.p_isbn = p_isbn;
+            LibraryManager.LibraryManagerServiceReference.SearchBookByISDNResponse retVal = ((LibraryManager.LibraryManagerServiceReference.ServiceSoap)(this)).SearchBookByISDN(inValue);
+            return retVal.Body.SearchBookByISDNResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        LibraryManager.LibraryManagerServiceReference.SearchBooksByAuthorResponse LibraryManager.LibraryManagerServiceReference.ServiceSoap.SearchBooksByAuthor(LibraryManager.LibraryManagerServiceReference.SearchBooksByAuthorRequest request) {
+            return base.Channel.SearchBooksByAuthor(request);
+        }
+        
+        public LibraryManager.LibraryManagerServiceReference.Book[] SearchBooksByAuthor(string p_author) {
+            LibraryManager.LibraryManagerServiceReference.SearchBooksByAuthorRequest inValue = new LibraryManager.LibraryManagerServiceReference.SearchBooksByAuthorRequest();
+            inValue.Body = new LibraryManager.LibraryManagerServiceReference.SearchBooksByAuthorRequestBody();
+            inValue.Body.p_author = p_author;
+            LibraryManager.LibraryManagerServiceReference.SearchBooksByAuthorResponse retVal = ((LibraryManager.LibraryManagerServiceReference.ServiceSoap)(this)).SearchBooksByAuthor(inValue);
+            return retVal.Body.SearchBooksByAuthorResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         LibraryManager.LibraryManagerServiceReference.AuthentificateResponse LibraryManager.LibraryManagerServiceReference.ServiceSoap.Authentificate(LibraryManager.LibraryManagerServiceReference.AuthentificateRequest request) {
             return base.Channel.Authentificate(request);
         }
@@ -270,6 +769,33 @@ namespace LibraryManager.LibraryManagerServiceReference {
             inValue.Body.p_password = p_password;
             LibraryManager.LibraryManagerServiceReference.AuthentificateResponse retVal = ((LibraryManager.LibraryManagerServiceReference.ServiceSoap)(this)).Authentificate(inValue);
             return retVal.Body.AuthentificateResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        LibraryManager.LibraryManagerServiceReference.GetBookDescriptionResponse LibraryManager.LibraryManagerServiceReference.ServiceSoap.GetBookDescription(LibraryManager.LibraryManagerServiceReference.GetBookDescriptionRequest request) {
+            return base.Channel.GetBookDescription(request);
+        }
+        
+        public string GetBookDescription(LibraryManager.LibraryManagerServiceReference.Book p_book) {
+            LibraryManager.LibraryManagerServiceReference.GetBookDescriptionRequest inValue = new LibraryManager.LibraryManagerServiceReference.GetBookDescriptionRequest();
+            inValue.Body = new LibraryManager.LibraryManagerServiceReference.GetBookDescriptionRequestBody();
+            inValue.Body.p_book = p_book;
+            LibraryManager.LibraryManagerServiceReference.GetBookDescriptionResponse retVal = ((LibraryManager.LibraryManagerServiceReference.ServiceSoap)(this)).GetBookDescription(inValue);
+            return retVal.Body.GetBookDescriptionResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        LibraryManager.LibraryManagerServiceReference.CommentBookResponse LibraryManager.LibraryManagerServiceReference.ServiceSoap.CommentBook(LibraryManager.LibraryManagerServiceReference.CommentBookRequest request) {
+            return base.Channel.CommentBook(request);
+        }
+        
+        public void CommentBook(LibraryManager.LibraryManagerServiceReference.Book p_book_to_comment, LibraryManager.LibraryManagerServiceReference.Subscriber p_subscriber, string p_description) {
+            LibraryManager.LibraryManagerServiceReference.CommentBookRequest inValue = new LibraryManager.LibraryManagerServiceReference.CommentBookRequest();
+            inValue.Body = new LibraryManager.LibraryManagerServiceReference.CommentBookRequestBody();
+            inValue.Body.p_book_to_comment = p_book_to_comment;
+            inValue.Body.p_subscriber = p_subscriber;
+            inValue.Body.p_description = p_description;
+            LibraryManager.LibraryManagerServiceReference.CommentBookResponse retVal = ((LibraryManager.LibraryManagerServiceReference.ServiceSoap)(this)).CommentBook(inValue);
         }
     }
 }

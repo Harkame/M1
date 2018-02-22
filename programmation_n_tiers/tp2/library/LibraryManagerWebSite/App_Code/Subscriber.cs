@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Runtime.Serialization;
+using System.Text;
 
 namespace LibraryManager
 {
@@ -35,6 +36,20 @@ namespace LibraryManager
 
             return a_id == t_subscriber.a_id &&
                 a_password.Equals(t_subscriber.a_password);
+        }
+
+        public override String ToString()
+        {
+            StringBuilder r_to_string = new StringBuilder();
+
+            r_to_string.Append("ID : ");
+            r_to_string.Append(a_id);
+            r_to_string.Append(Environment.NewLine);
+
+            r_to_string.Append("Password : ");
+            r_to_string.Append(a_password);
+
+            return r_to_string.ToString();
         }
     }
 }

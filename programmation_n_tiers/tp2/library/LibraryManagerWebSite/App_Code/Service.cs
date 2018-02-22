@@ -68,5 +68,23 @@ namespace LibraryManager
 
             return null;
         }
+
+        [WebMethod]
+        public String GetBookDescription(Book p_book)
+        {
+            foreach (Book t_book in a_library.a_books)
+                if (t_book.a_isbn == p_book.a_isbn)
+                    return t_book.ToString();
+
+            return null;
+        }
+
+        [WebMethod]
+        public void CommentBook(Book p_book_to_comment, Subscriber p_subscriber, String p_description)
+        {
+            foreach (Book t_book in a_library.a_books)
+                if (t_book.a_isbn == p_book_to_comment.a_isbn)
+                    t_book.Comment(p_subscriber, p_description);
+        }
     }
 }

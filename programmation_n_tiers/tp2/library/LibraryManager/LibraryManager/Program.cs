@@ -30,6 +30,18 @@ namespace LibraryManager
 
             Console.WriteLine("Authentification successful");
 
+            Console.WriteLine("Welcome " + t_subcriber.a_id);
+
+            LibraryManagerServiceReference.Book t_book = a_proxy.SearchBookByISDN(0);
+
+            Console.WriteLine(a_proxy.GetBookDescription(t_book));
+
+            a_proxy.CommentBook(t_book, t_subcriber, "ok");
+
+            t_book = a_proxy.SearchBookByISDN(0);
+
+            Console.WriteLine(a_proxy.GetBookDescription(t_book));
+
             Console.WriteLine("Please, press enter to continue");
 
             Console.ReadLine();

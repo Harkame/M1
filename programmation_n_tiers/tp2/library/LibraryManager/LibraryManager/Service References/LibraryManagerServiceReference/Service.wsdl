@@ -12,6 +12,66 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="SearchBookByISDN">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="p_isbn" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchBookByISDNResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchBookByISDNResult" type="tns:Book" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Book">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="a_title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="a_author" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="a_isbn" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="a_stock" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="a_editor" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="a_comments" type="tns:ArrayOfComment" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfComment">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Comment" nillable="true" type="tns:Comment" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Comment">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="a_subscriber" type="tns:Subscriber" />
+          <s:element minOccurs="0" maxOccurs="1" name="a_description" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Subscriber">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="a_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="a_password" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SearchBooksByAuthor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_author" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchBooksByAuthorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchBooksByAuthorResult" type="tns:ArrayOfBook" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfBook">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Book" nillable="true" type="tns:Book" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="Authentificate">
         <s:complexType>
           <s:sequence>
@@ -27,12 +87,32 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="Subscriber">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="a_id" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="a_password" type="s:string" />
-        </s:sequence>
-      </s:complexType>
+      <s:element name="GetBookDescription">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_book" type="tns:Book" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBookDescriptionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBookDescriptionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CommentBook">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_book_to_comment" type="tns:Book" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_subscriber" type="tns:Subscriber" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_description" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CommentBookResponse">
+        <s:complexType />
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="HelloWorldSoapIn">
@@ -41,20 +121,60 @@
   <wsdl:message name="HelloWorldSoapOut">
     <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
   </wsdl:message>
+  <wsdl:message name="SearchBookByISDNSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchBookByISDN" />
+  </wsdl:message>
+  <wsdl:message name="SearchBookByISDNSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchBookByISDNResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchBooksByAuthorSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchBooksByAuthor" />
+  </wsdl:message>
+  <wsdl:message name="SearchBooksByAuthorSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchBooksByAuthorResponse" />
+  </wsdl:message>
   <wsdl:message name="AuthentificateSoapIn">
     <wsdl:part name="parameters" element="tns:Authentificate" />
   </wsdl:message>
   <wsdl:message name="AuthentificateSoapOut">
     <wsdl:part name="parameters" element="tns:AuthentificateResponse" />
   </wsdl:message>
+  <wsdl:message name="GetBookDescriptionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBookDescription" />
+  </wsdl:message>
+  <wsdl:message name="GetBookDescriptionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBookDescriptionResponse" />
+  </wsdl:message>
+  <wsdl:message name="CommentBookSoapIn">
+    <wsdl:part name="parameters" element="tns:CommentBook" />
+  </wsdl:message>
+  <wsdl:message name="CommentBookSoapOut">
+    <wsdl:part name="parameters" element="tns:CommentBookResponse" />
+  </wsdl:message>
   <wsdl:portType name="ServiceSoap">
     <wsdl:operation name="HelloWorld">
       <wsdl:input message="tns:HelloWorldSoapIn" />
       <wsdl:output message="tns:HelloWorldSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="SearchBookByISDN">
+      <wsdl:input message="tns:SearchBookByISDNSoapIn" />
+      <wsdl:output message="tns:SearchBookByISDNSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchBooksByAuthor">
+      <wsdl:input message="tns:SearchBooksByAuthorSoapIn" />
+      <wsdl:output message="tns:SearchBooksByAuthorSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="Authentificate">
       <wsdl:input message="tns:AuthentificateSoapIn" />
       <wsdl:output message="tns:AuthentificateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBookDescription">
+      <wsdl:input message="tns:GetBookDescriptionSoapIn" />
+      <wsdl:output message="tns:GetBookDescriptionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CommentBook">
+      <wsdl:input message="tns:CommentBookSoapIn" />
+      <wsdl:output message="tns:CommentBookSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="ServiceSoap" type="tns:ServiceSoap">
@@ -68,8 +188,44 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="SearchBookByISDN">
+      <soap:operation soapAction="http://tempuri.org/SearchBookByISDN" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchBooksByAuthor">
+      <soap:operation soapAction="http://tempuri.org/SearchBooksByAuthor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="Authentificate">
       <soap:operation soapAction="http://tempuri.org/Authentificate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBookDescription">
+      <soap:operation soapAction="http://tempuri.org/GetBookDescription" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CommentBook">
+      <soap:operation soapAction="http://tempuri.org/CommentBook" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -89,8 +245,44 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="SearchBookByISDN">
+      <soap12:operation soapAction="http://tempuri.org/SearchBookByISDN" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchBooksByAuthor">
+      <soap12:operation soapAction="http://tempuri.org/SearchBooksByAuthor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="Authentificate">
       <soap12:operation soapAction="http://tempuri.org/Authentificate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBookDescription">
+      <soap12:operation soapAction="http://tempuri.org/GetBookDescription" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CommentBook">
+      <soap12:operation soapAction="http://tempuri.org/CommentBook" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

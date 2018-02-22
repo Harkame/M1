@@ -56,6 +56,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Service References\LibraryManagerServiceReference\LibraryManager.LibraryManagerServiceReference.Book.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\LibraryManagerServiceReference\LibraryManager.LibraryManagerServiceReference.Subscriber.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
