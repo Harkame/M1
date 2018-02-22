@@ -261,10 +261,6 @@ namespace LibraryManager.LibraryManagerServiceReference {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="LibraryManagerServiceReference.ServiceSoap")]
     public interface ServiceSoap {
         
-        // CODEGEN: Generating message contract since element name HelloWorldResult from namespace http://tempuri.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/HelloWorld", ReplyAction="*")]
-        LibraryManager.LibraryManagerServiceReference.HelloWorldResponse HelloWorld(LibraryManager.LibraryManagerServiceReference.HelloWorldRequest request);
-        
         // CODEGEN: Generating message contract since element name SearchBookByISDNResult from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/SearchBookByISDN", ReplyAction="*")]
         LibraryManager.LibraryManagerServiceReference.SearchBookByISDNResponse SearchBookByISDN(LibraryManager.LibraryManagerServiceReference.SearchBookByISDNRequest request);
@@ -284,67 +280,6 @@ namespace LibraryManager.LibraryManagerServiceReference {
         // CODEGEN: Generating message contract since element name p_book_to_comment from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CommentBook", ReplyAction="*")]
         LibraryManager.LibraryManagerServiceReference.CommentBookResponse CommentBook(LibraryManager.LibraryManagerServiceReference.CommentBookRequest request);
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class HelloWorldRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="HelloWorld", Namespace="http://tempuri.org/", Order=0)]
-        public LibraryManager.LibraryManagerServiceReference.HelloWorldRequestBody Body;
-        
-        public HelloWorldRequest() {
-        }
-        
-        public HelloWorldRequest(LibraryManager.LibraryManagerServiceReference.HelloWorldRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute()]
-    public partial class HelloWorldRequestBody {
-        
-        public HelloWorldRequestBody() {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class HelloWorldResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="HelloWorldResponse", Namespace="http://tempuri.org/", Order=0)]
-        public LibraryManager.LibraryManagerServiceReference.HelloWorldResponseBody Body;
-        
-        public HelloWorldResponse() {
-        }
-        
-        public HelloWorldResponse(LibraryManager.LibraryManagerServiceReference.HelloWorldResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class HelloWorldResponseBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string HelloWorldResult;
-        
-        public HelloWorldResponseBody() {
-        }
-        
-        public HelloWorldResponseBody(string HelloWorldResult) {
-            this.HelloWorldResult = HelloWorldResult;
-        }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -685,10 +620,17 @@ namespace LibraryManager.LibraryManagerServiceReference {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute()]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
     public partial class CommentBookResponseBody {
         
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string CommentBookResult;
+        
         public CommentBookResponseBody() {
+        }
+        
+        public CommentBookResponseBody(string CommentBookResult) {
+            this.CommentBookResult = CommentBookResult;
         }
     }
     
@@ -717,18 +659,6 @@ namespace LibraryManager.LibraryManagerServiceReference {
         
         public ServiceSoapClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        LibraryManager.LibraryManagerServiceReference.HelloWorldResponse LibraryManager.LibraryManagerServiceReference.ServiceSoap.HelloWorld(LibraryManager.LibraryManagerServiceReference.HelloWorldRequest request) {
-            return base.Channel.HelloWorld(request);
-        }
-        
-        public string HelloWorld() {
-            LibraryManager.LibraryManagerServiceReference.HelloWorldRequest inValue = new LibraryManager.LibraryManagerServiceReference.HelloWorldRequest();
-            inValue.Body = new LibraryManager.LibraryManagerServiceReference.HelloWorldRequestBody();
-            LibraryManager.LibraryManagerServiceReference.HelloWorldResponse retVal = ((LibraryManager.LibraryManagerServiceReference.ServiceSoap)(this)).HelloWorld(inValue);
-            return retVal.Body.HelloWorldResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -789,13 +719,14 @@ namespace LibraryManager.LibraryManagerServiceReference {
             return base.Channel.CommentBook(request);
         }
         
-        public void CommentBook(LibraryManager.LibraryManagerServiceReference.Book p_book_to_comment, LibraryManager.LibraryManagerServiceReference.Subscriber p_subscriber, string p_description) {
+        public string CommentBook(LibraryManager.LibraryManagerServiceReference.Book p_book_to_comment, LibraryManager.LibraryManagerServiceReference.Subscriber p_subscriber, string p_description) {
             LibraryManager.LibraryManagerServiceReference.CommentBookRequest inValue = new LibraryManager.LibraryManagerServiceReference.CommentBookRequest();
             inValue.Body = new LibraryManager.LibraryManagerServiceReference.CommentBookRequestBody();
             inValue.Body.p_book_to_comment = p_book_to_comment;
             inValue.Body.p_subscriber = p_subscriber;
             inValue.Body.p_description = p_description;
             LibraryManager.LibraryManagerServiceReference.CommentBookResponse retVal = ((LibraryManager.LibraryManagerServiceReference.ServiceSoap)(this)).CommentBook(inValue);
+            return retVal.Body.CommentBookResult;
         }
     }
 }

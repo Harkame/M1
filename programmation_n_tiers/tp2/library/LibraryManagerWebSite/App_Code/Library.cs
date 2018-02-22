@@ -6,17 +6,10 @@ using System.Runtime.Serialization;
 
 namespace LibraryManager
 {
-    public class Library
+    public static class Library
     {
-        public List<Book> a_books;
+        public static List<Book> a_books = new List<Book>();
 
-        public List<Subscriber> a_subscribers;
-
-        public Library()
-        {
-            a_books = new List<Book>();
-
-            a_subscribers = new List<Subscriber>();
-        }
+        public static List<Subscriber> a_subscribers = new List<Subscriber>();
     }
 }

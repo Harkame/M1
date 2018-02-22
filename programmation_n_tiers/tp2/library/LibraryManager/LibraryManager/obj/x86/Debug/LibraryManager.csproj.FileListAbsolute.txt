@@ -1,5 +1,5 @@
-c:\users\harkame\documents\visual studio 2010\Projects\LibraryManager\LibraryManager\bin\Debug\LibraryManager.exe.config
-c:\users\harkame\documents\visual studio 2010\Projects\LibraryManager\LibraryManager\bin\Debug\LibraryManager.exe
-c:\users\harkame\documents\visual studio 2010\Projects\LibraryManager\LibraryManager\bin\Debug\LibraryManager.pdb
-c:\users\harkame\documents\visual studio 2010\Projects\LibraryManager\LibraryManager\obj\x86\Debug\LibraryManager.exe
-c:\users\harkame\documents\visual studio 2010\Projects\LibraryManager\LibraryManager\obj\x86\Debug\LibraryManager.pdb
+C:\Users\Harkame\Documents\Visual Studio 2010\Projects\LibraryManager\LibraryManager\bin\Debug\LibraryManager.exe.config
+C:\Users\Harkame\Documents\Visual Studio 2010\Projects\LibraryManager\LibraryManager\bin\Debug\LibraryManager.exe
+C:\Users\Harkame\Documents\Visual Studio 2010\Projects\LibraryManager\LibraryManager\bin\Debug\LibraryManager.pdb
+C:\Users\Harkame\Documents\Visual Studio 2010\Projects\LibraryManager\LibraryManager\obj\x86\Debug\LibraryManager.exe
+C:\Users\Harkame\Documents\Visual Studio 2010\Projects\LibraryManager\LibraryManager\obj\x86\Debug\LibraryManager.pdb

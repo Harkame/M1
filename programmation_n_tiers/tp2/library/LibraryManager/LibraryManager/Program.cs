@@ -28,17 +28,17 @@ namespace LibraryManager
                 t_subcriber = a_proxy.Authentificate(t_id, t_password);
             }
 
-            Console.WriteLine("Authentification successful");
+            Console.WriteLine("");
 
-            Console.WriteLine("Welcome " + t_subcriber.a_id);
+            Console.WriteLine("Authentification successful (" + t_subcriber.a_id + ")");
+
+            Console.WriteLine("");
 
             LibraryManagerServiceReference.Book t_book = a_proxy.SearchBookByISDN(0);
 
             Console.WriteLine(a_proxy.GetBookDescription(t_book));
 
-            a_proxy.CommentBook(t_book, t_subcriber, "ok");
-
-            t_book = a_proxy.SearchBookByISDN(0);
+            Console.WriteLine(a_proxy.CommentBook(t_book, t_subcriber, "ok"));
 
             Console.WriteLine(a_proxy.GetBookDescription(t_book));
 

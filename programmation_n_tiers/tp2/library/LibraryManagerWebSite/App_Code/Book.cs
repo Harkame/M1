@@ -64,27 +64,29 @@ namespace LibraryManager
         {
             StringBuilder r_to_string = new StringBuilder();
 
-            r_to_string.Append("Title : ");
+            r_to_string.Append("Title    : ");
             r_to_string.Append(a_title);
             r_to_string.Append(Environment.NewLine);
 
-            r_to_string.Append("Author : ");
+            r_to_string.Append("Author   : ");
             r_to_string.Append(a_author);
             r_to_string.Append(Environment.NewLine);
 
-            r_to_string.Append("ISBN : ");
+            r_to_string.Append("ISBN     : ");
             r_to_string.Append(a_isbn);
             r_to_string.Append(Environment.NewLine);
 
-            r_to_string.Append("Stock : ");
+            r_to_string.Append("Stock    : ");
             r_to_string.Append(a_stock);
             r_to_string.Append(Environment.NewLine);
 
-            r_to_string.Append("Editor : ");
+            r_to_string.Append("Editor   : ");
             r_to_string.Append(a_editor);
             r_to_string.Append(Environment.NewLine);
 
-            r_to_string.Append("Comments : ");
+            r_to_string.Append("Comments (");
+            r_to_string.Append(a_comments.Count);
+            r_to_string.Append(")");
             r_to_string.Append(Environment.NewLine);
 
             foreach (Comment t_comment in a_comments)
