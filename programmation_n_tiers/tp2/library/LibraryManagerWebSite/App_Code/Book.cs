@@ -8,22 +8,92 @@ namespace LibraryManager
 {
     public class Book
     {
-        public String a_title;
+        private String a_title;
 
-        public String a_author;
+        private String a_author;
 
-        public int a_isbn;
+        private int a_isbn;
 
-        public int a_stock;
+        private int a_stock;
 
-        public String a_editor;
+        private String a_editor;
 
-        public List<Comment> a_comments;
+        private List<Comment> a_comments;
+
+        public String Title
+        {
+            get
+            {
+                return a_title;
+            }
+            set
+            {
+              a_title = value;
+            }
+        }
+
+        public String Author
+        {
+            get
+            {
+                return a_author;
+            }
+            set
+            {
+                a_author = value;
+            }
+        }
+
+        public int ISBN
+        {
+            get
+            {
+                return a_isbn;
+            }
+            set
+            {
+                a_isbn = value;
+            }
+        }
+
+        public int Stock
+        {
+            get
+            {
+                return a_stock;
+            }
+            set
+            {
+                a_stock = value;
+            }
+        }
+
+        public String Editor
+        {
+            get
+            {
+                return a_editor;
+            }
+            set
+            {
+                a_editor = value;
+            }
+        }
+
+        public List<Comment> Comments
+        {
+            get
+            {
+                return a_comments;
+            }
+            set
+            {
+                a_comments = value;
+            }
+        }
 
         public Book()
         {
-
-
         }
 
         public Book(String p_title, String p_author, int p_isbn, int p_stock, String p_editor)

@@ -12,10 +12,33 @@ namespace LibraryManager
 
         public String a_description;
 
-	    public Comment()
-	    {
-		
-	    }
+        public Subscriber Subscriber
+        {
+            get
+            {
+                return a_subscriber;
+            }
+            set
+            {
+                a_subscriber = value;
+            }
+        }
+
+        public String Description
+        {
+            get
+            {
+                return a_description;
+            }
+            set
+            {
+                a_description = value;
+            }
+        }
+
+        public Comment()
+        {
+        }
 
         public Comment(Subscriber p_subscriber, String p_description)
 	    {
@@ -28,7 +51,7 @@ namespace LibraryManager
         {
             StringBuilder r_to_string = new StringBuilder();
 
-            r_to_string.Append(a_subscriber.a_id);
+            r_to_string.Append(a_subscriber.ID);
             r_to_string.Append(" - ");
             r_to_string.Append(a_description);
 

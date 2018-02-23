@@ -19,7 +19,7 @@
         public Book SearchBookByISDN(int p_isbn)
         {
             foreach (Book t_book in Library.a_books)
-                if (t_book.a_isbn == p_isbn)
+                if (t_book.ISBN == p_isbn)
                     return t_book;
 
             return null;
@@ -31,7 +31,7 @@
             List<Book> t_books = new List<Book>();
 
             foreach (Book t_book in Library.a_books)
-                if (t_book.a_author.Equals(p_author))
+                if (t_book.Author.Equals(p_author))
                     t_books.Add(t_book);
 
             return t_books.ToArray();
@@ -41,7 +41,7 @@
         public Subscriber Authentificate(int p_id, String p_password)
         {
             foreach (Subscriber t_subscriber in Library.a_subscribers)
-                if (t_subscriber.a_id == p_id && t_subscriber.a_password.Equals(p_password))
+                if (t_subscriber.ID == p_id && t_subscriber.Password.Equals(p_password))
                     return t_subscriber;
 
             return null;
@@ -51,7 +51,7 @@
         public String GetBookDescription(Book p_book)
         {
             foreach (Book t_book in Library.a_books)
-                if (t_book.a_isbn == p_book.a_isbn)
+                if (t_book.ISBN == p_book.ISBN)
                     return t_book.ToString();
 
             return null;
@@ -61,7 +61,7 @@
         public String CommentBook(Book p_book_to_comment, Subscriber p_subscriber, String p_description)
         {
             for (int t_index = 0; t_index < Library.a_books.Count; t_index++)
-                if (Library.a_books[t_index].a_isbn == p_book_to_comment.a_isbn)
+                if (Library.a_books[t_index].ISBN == p_book_to_comment.ISBN)
                 {
                     Library.a_books[t_index].Comment(p_subscriber, p_description);
                     return Library.a_books[t_index].ToString();

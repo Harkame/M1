@@ -9,17 +9,38 @@ namespace LibraryManager
 {
     public class Subscriber
     {
-        public int a_id;
-        
-        public String a_password;
+        private int a_id;
+
+        private String a_password;
+
+        public int ID
+        {
+            get
+            {
+                return a_id;
+            }
+            set
+            {
+                a_id = value;
+            }
+        }
+
+        public String Password
+        {
+            get
+            {
+                return a_password;
+            }
+            set
+            {
+                a_password = value;
+            }
+        }
 
         public Subscriber()
         {
-            a_id = 0;
-
-            a_password = "default";
         }
-
+        
         public Subscriber(int p_id, String p_password)
         {
             a_id = p_id;

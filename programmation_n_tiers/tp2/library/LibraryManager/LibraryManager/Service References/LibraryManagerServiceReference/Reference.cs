@@ -23,20 +23,20 @@ namespace LibraryManager.LibraryManagerServiceReference {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string a_titleField;
+        private string TitleField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string a_authorField;
+        private string AuthorField;
         
-        private int a_isbnField;
+        private int ISBNField;
         
-        private int a_stockField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string a_editorField;
+        private int StockField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private LibraryManager.LibraryManagerServiceReference.Comment[] a_commentsField;
+        private string EditorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private LibraryManager.LibraryManagerServiceReference.Comment[] CommentsField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -49,79 +49,79 @@ namespace LibraryManager.LibraryManagerServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
-        public string a_title {
+        public string Title {
             get {
-                return this.a_titleField;
+                return this.TitleField;
             }
             set {
-                if ((object.ReferenceEquals(this.a_titleField, value) != true)) {
-                    this.a_titleField = value;
-                    this.RaisePropertyChanged("a_title");
+                if ((object.ReferenceEquals(this.TitleField, value) != true)) {
+                    this.TitleField = value;
+                    this.RaisePropertyChanged("Title");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
-        public string a_author {
+        public string Author {
             get {
-                return this.a_authorField;
+                return this.AuthorField;
             }
             set {
-                if ((object.ReferenceEquals(this.a_authorField, value) != true)) {
-                    this.a_authorField = value;
-                    this.RaisePropertyChanged("a_author");
+                if ((object.ReferenceEquals(this.AuthorField, value) != true)) {
+                    this.AuthorField = value;
+                    this.RaisePropertyChanged("Author");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=2)]
-        public int a_isbn {
+        public int ISBN {
             get {
-                return this.a_isbnField;
+                return this.ISBNField;
             }
             set {
-                if ((this.a_isbnField.Equals(value) != true)) {
-                    this.a_isbnField = value;
-                    this.RaisePropertyChanged("a_isbn");
+                if ((this.ISBNField.Equals(value) != true)) {
+                    this.ISBNField = value;
+                    this.RaisePropertyChanged("ISBN");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
-        public int a_stock {
+        public int Stock {
             get {
-                return this.a_stockField;
+                return this.StockField;
             }
             set {
-                if ((this.a_stockField.Equals(value) != true)) {
-                    this.a_stockField = value;
-                    this.RaisePropertyChanged("a_stock");
+                if ((this.StockField.Equals(value) != true)) {
+                    this.StockField = value;
+                    this.RaisePropertyChanged("Stock");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
-        public string a_editor {
+        public string Editor {
             get {
-                return this.a_editorField;
+                return this.EditorField;
             }
             set {
-                if ((object.ReferenceEquals(this.a_editorField, value) != true)) {
-                    this.a_editorField = value;
-                    this.RaisePropertyChanged("a_editor");
+                if ((object.ReferenceEquals(this.EditorField, value) != true)) {
+                    this.EditorField = value;
+                    this.RaisePropertyChanged("Editor");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
-        public LibraryManager.LibraryManagerServiceReference.Comment[] a_comments {
+        public LibraryManager.LibraryManagerServiceReference.Comment[] Comments {
             get {
-                return this.a_commentsField;
+                return this.CommentsField;
             }
             set {
-                if ((object.ReferenceEquals(this.a_commentsField, value) != true)) {
-                    this.a_commentsField = value;
-                    this.RaisePropertyChanged("a_comments");
+                if ((object.ReferenceEquals(this.CommentsField, value) != true)) {
+                    this.CommentsField = value;
+                    this.RaisePropertyChanged("Comments");
                 }
             }
         }
@@ -150,6 +150,12 @@ namespace LibraryManager.LibraryManagerServiceReference {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string a_descriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private LibraryManager.LibraryManagerServiceReference.Subscriber SubscriberField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -187,6 +193,32 @@ namespace LibraryManager.LibraryManagerServiceReference {
             }
         }
         
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public LibraryManager.LibraryManagerServiceReference.Subscriber Subscriber {
+            get {
+                return this.SubscriberField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SubscriberField, value) != true)) {
+                    this.SubscriberField = value;
+                    this.RaisePropertyChanged("Subscriber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
@@ -206,10 +238,10 @@ namespace LibraryManager.LibraryManagerServiceReference {
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        private int a_idField;
+        private int IDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string a_passwordField;
+        private string PasswordField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -222,27 +254,27 @@ namespace LibraryManager.LibraryManagerServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public int a_id {
+        public int ID {
             get {
-                return this.a_idField;
+                return this.IDField;
             }
             set {
-                if ((this.a_idField.Equals(value) != true)) {
-                    this.a_idField = value;
-                    this.RaisePropertyChanged("a_id");
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
-        public string a_password {
+        public string Password {
             get {
-                return this.a_passwordField;
+                return this.PasswordField;
             }
             set {
-                if ((object.ReferenceEquals(this.a_passwordField, value) != true)) {
-                    this.a_passwordField = value;
-                    this.RaisePropertyChanged("a_password");
+                if ((object.ReferenceEquals(this.PasswordField, value) != true)) {
+                    this.PasswordField = value;
+                    this.RaisePropertyChanged("Password");
                 }
             }
         }

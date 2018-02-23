@@ -30,7 +30,7 @@ namespace LibraryManager
 
             Console.WriteLine("");
 
-            Console.WriteLine("Authentification successful (" + t_subcriber.a_id + ")");
+            Console.WriteLine("Authentification successful (" + t_subcriber.ID + ")");
 
             Console.WriteLine("");
 
