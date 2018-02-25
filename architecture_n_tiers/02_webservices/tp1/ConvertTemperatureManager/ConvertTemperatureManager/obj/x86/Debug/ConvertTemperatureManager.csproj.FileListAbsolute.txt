@@ -1,0 +1,5 @@
+C:\Users\Harkame\Documents\Visual Studio 2010\Projects\ConvertTemperatureManager\ConvertTemperatureManager\bin\Debug\ConvertTemperatureManager.exe.config
+C:\Users\Harkame\Documents\Visual Studio 2010\Projects\ConvertTemperatureManager\ConvertTemperatureManager\bin\Debug\ConvertTemperatureManager.exe
+C:\Users\Harkame\Documents\Visual Studio 2010\Projects\ConvertTemperatureManager\ConvertTemperatureManager\bin\Debug\ConvertTemperatureManager.pdb
+C:\Users\Harkame\Documents\Visual Studio 2010\Projects\ConvertTemperatureManager\ConvertTemperatureManager\obj\x86\Debug\ConvertTemperatureManager.exe
+C:\Users\Harkame\Documents\Visual Studio 2010\Projects\ConvertTemperatureManager\ConvertTemperatureManager\obj\x86\Debug\ConvertTemperatureManager.pdb
