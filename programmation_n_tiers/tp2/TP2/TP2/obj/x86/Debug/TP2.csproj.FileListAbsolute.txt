@@ -1,9 +1,0 @@
-c:\users\ldaviaud\documents\visual studio 2010\Projects\TP2\TP2\bin\Debug\TP2.exe
-c:\users\ldaviaud\documents\visual studio 2010\Projects\TP2\TP2\bin\Debug\TP2.pdb
-c:\users\ldaviaud\documents\visual studio 2010\Projects\TP2\TP2\obj\x86\Debug\TP2.exe
-c:\users\ldaviaud\documents\visual studio 2010\Projects\TP2\TP2\obj\x86\Debug\TP2.pdb
-c:\users\ldaviaud\documents\visual studio 2010\Projects\TP2\TP2\obj\x86\Debug\TP2.csprojResolveAssemblyReference.cache
-c:\users\ldaviaud\documents\visual studio 2010\Projects\TP2\TP2\bin\Debug\TP2.exe.config
-D:\workspace\M1\programmation_n_tiers\tp2\TP2\TP2\bin\Debug\TP2.exe.config
-D:\workspace\M1\programmation_n_tiers\tp2\TP2\TP2\obj\x86\Debug\TP2.exe
-D:\workspace\M1\programmation_n_tiers\tp2\TP2\TP2\obj\x86\Debug\TP2.pdb
