@@ -14,6 +14,8 @@
 
         public static List<Subscriber> a_subscribers = new List<Subscriber>();
 
+        public static List<Person> a_connections = new List<Person>();
+
         static Library()
         {
             Library.a_books.Add(new Book("book1", "author1", 0, 1, "editor1"));
@@ -30,6 +32,11 @@
             Library.a_subscribers.Add(new Subscriber("yolo"));
             Library.a_subscribers.Add(new Subscriber("test"));
             Library.a_subscribers.Add(new Subscriber("password"));
+        }
+
+        public static bool IsConnected(Person p_person)
+        {
+            return a_connections.Contains(p_person);
         }
     }
 }

@@ -2,6 +2,37 @@
 <wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="Authentificate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="p_id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AuthentificateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AuthentificateResult" type="tns:Person" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Person" abstract="true">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Disconnect">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_person" type="tns:Person" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DisconnectResponse">
+        <s:complexType />
+      </s:element>
       <s:element name="SearchBookByISBN">
         <s:complexType>
           <s:sequence>
@@ -39,36 +70,6 @@
           <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
         </s:sequence>
       </s:complexType>
-      <s:complexType name="Person" abstract="true">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
-        </s:sequence>
-      </s:complexType>
-      <s:element name="GetCommands">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="p_user" type="tns:Person" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetCommandsResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetCommandsResult" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetBooks">
-        <s:complexType />
-      </s:element>
-      <s:element name="GetBooksResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetBooksResult" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
       <s:element name="SearchBooksByAuthor">
         <s:complexType>
           <s:sequence>
@@ -88,44 +89,34 @@
           <s:element minOccurs="0" maxOccurs="unbounded" name="Book" nillable="true" type="tns:Book" />
         </s:sequence>
       </s:complexType>
-      <s:element name="GetLibrarians">
+      <s:element name="GetBooks">
         <s:complexType />
       </s:element>
-      <s:element name="GetLibrariansResponse">
+      <s:element name="GetBooksResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetLibrariansResult" type="tns:ArrayOfLibrarian" />
+            <s:element minOccurs="0" maxOccurs="1" name="GetBooksResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="ArrayOfLibrarian">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="Librarian" nillable="true" type="tns:Librarian" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="Librarian">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:Person" />
-        </s:complexContent>
-      </s:complexType>
-      <s:element name="Authentificate">
+      <s:element name="GetCommands">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="p_id" type="s:int" />
-            <s:element minOccurs="0" maxOccurs="1" name="p_password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_user" type="tns:Person" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="AuthentificateResponse">
+      <s:element name="GetCommandsResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="AuthentificateResult" type="tns:Person" />
+            <s:element minOccurs="0" maxOccurs="1" name="GetCommandsResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
       <s:element name="AddBook">
         <s:complexType>
           <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_person" type="tns:Person" />
             <s:element minOccurs="0" maxOccurs="1" name="p_title" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="p_author" type="s:string" />
             <s:element minOccurs="1" maxOccurs="1" name="p_isbn" type="s:int" />
@@ -135,7 +126,11 @@
         </s:complexType>
       </s:element>
       <s:element name="AddBookResponse">
-        <s:complexType />
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddBookResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
       </s:element>
       <s:element name="GetBookDescription">
         <s:complexType>
@@ -167,25 +162,55 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetLibrarian">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetLibrarianResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLibrarianResult" type="tns:Librarian" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Librarian">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Person" />
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetSubscriber">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetSubscriberResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSubscriberResult" type="tns:Subscriber" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Subscriber">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Person" />
+        </s:complexContent>
+      </s:complexType>
     </s:schema>
   </wsdl:types>
+  <wsdl:message name="AuthentificateSoapIn">
+    <wsdl:part name="parameters" element="tns:Authentificate" />
+  </wsdl:message>
+  <wsdl:message name="AuthentificateSoapOut">
+    <wsdl:part name="parameters" element="tns:AuthentificateResponse" />
+  </wsdl:message>
+  <wsdl:message name="DisconnectSoapIn">
+    <wsdl:part name="parameters" element="tns:Disconnect" />
+  </wsdl:message>
+  <wsdl:message name="DisconnectSoapOut">
+    <wsdl:part name="parameters" element="tns:DisconnectResponse" />
+  </wsdl:message>
   <wsdl:message name="SearchBookByISBNSoapIn">
     <wsdl:part name="parameters" element="tns:SearchBookByISBN" />
   </wsdl:message>
   <wsdl:message name="SearchBookByISBNSoapOut">
     <wsdl:part name="parameters" element="tns:SearchBookByISBNResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetCommandsSoapIn">
-    <wsdl:part name="parameters" element="tns:GetCommands" />
-  </wsdl:message>
-  <wsdl:message name="GetCommandsSoapOut">
-    <wsdl:part name="parameters" element="tns:GetCommandsResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetBooksSoapIn">
-    <wsdl:part name="parameters" element="tns:GetBooks" />
-  </wsdl:message>
-  <wsdl:message name="GetBooksSoapOut">
-    <wsdl:part name="parameters" element="tns:GetBooksResponse" />
   </wsdl:message>
   <wsdl:message name="SearchBooksByAuthorSoapIn">
     <wsdl:part name="parameters" element="tns:SearchBooksByAuthor" />
@@ -193,17 +218,17 @@
   <wsdl:message name="SearchBooksByAuthorSoapOut">
     <wsdl:part name="parameters" element="tns:SearchBooksByAuthorResponse" />
   </wsdl:message>
-  <wsdl:message name="GetLibrariansSoapIn">
-    <wsdl:part name="parameters" element="tns:GetLibrarians" />
+  <wsdl:message name="GetBooksSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBooks" />
   </wsdl:message>
-  <wsdl:message name="GetLibrariansSoapOut">
-    <wsdl:part name="parameters" element="tns:GetLibrariansResponse" />
+  <wsdl:message name="GetBooksSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBooksResponse" />
   </wsdl:message>
-  <wsdl:message name="AuthentificateSoapIn">
-    <wsdl:part name="parameters" element="tns:Authentificate" />
+  <wsdl:message name="GetCommandsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCommands" />
   </wsdl:message>
-  <wsdl:message name="AuthentificateSoapOut">
-    <wsdl:part name="parameters" element="tns:AuthentificateResponse" />
+  <wsdl:message name="GetCommandsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCommandsResponse" />
   </wsdl:message>
   <wsdl:message name="AddBookSoapIn">
     <wsdl:part name="parameters" element="tns:AddBook" />
@@ -223,30 +248,42 @@
   <wsdl:message name="CommentBookSoapOut">
     <wsdl:part name="parameters" element="tns:CommentBookResponse" />
   </wsdl:message>
+  <wsdl:message name="GetLibrarianSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLibrarian" />
+  </wsdl:message>
+  <wsdl:message name="GetLibrarianSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLibrarianResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSubscriberSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSubscriber" />
+  </wsdl:message>
+  <wsdl:message name="GetSubscriberSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSubscriberResponse" />
+  </wsdl:message>
   <wsdl:portType name="ServiceSoap">
+    <wsdl:operation name="Authentificate">
+      <wsdl:input message="tns:AuthentificateSoapIn" />
+      <wsdl:output message="tns:AuthentificateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Disconnect">
+      <wsdl:input message="tns:DisconnectSoapIn" />
+      <wsdl:output message="tns:DisconnectSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="SearchBookByISBN">
       <wsdl:input message="tns:SearchBookByISBNSoapIn" />
       <wsdl:output message="tns:SearchBookByISBNSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetCommands">
-      <wsdl:input message="tns:GetCommandsSoapIn" />
-      <wsdl:output message="tns:GetCommandsSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetBooks">
-      <wsdl:input message="tns:GetBooksSoapIn" />
-      <wsdl:output message="tns:GetBooksSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="SearchBooksByAuthor">
       <wsdl:input message="tns:SearchBooksByAuthorSoapIn" />
       <wsdl:output message="tns:SearchBooksByAuthorSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetLibrarians">
-      <wsdl:input message="tns:GetLibrariansSoapIn" />
-      <wsdl:output message="tns:GetLibrariansSoapOut" />
+    <wsdl:operation name="GetBooks">
+      <wsdl:input message="tns:GetBooksSoapIn" />
+      <wsdl:output message="tns:GetBooksSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="Authentificate">
-      <wsdl:input message="tns:AuthentificateSoapIn" />
-      <wsdl:output message="tns:AuthentificateSoapOut" />
+    <wsdl:operation name="GetCommands">
+      <wsdl:input message="tns:GetCommandsSoapIn" />
+      <wsdl:output message="tns:GetCommandsSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="AddBook">
       <wsdl:input message="tns:AddBookSoapIn" />
@@ -260,29 +297,37 @@
       <wsdl:input message="tns:CommentBookSoapIn" />
       <wsdl:output message="tns:CommentBookSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetLibrarian">
+      <wsdl:input message="tns:GetLibrarianSoapIn" />
+      <wsdl:output message="tns:GetLibrarianSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSubscriber">
+      <wsdl:input message="tns:GetSubscriberSoapIn" />
+      <wsdl:output message="tns:GetSubscriberSoapOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="ServiceSoap" type="tns:ServiceSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Authentificate">
+      <soap:operation soapAction="http://tempuri.org/Authentificate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Disconnect">
+      <soap:operation soapAction="http://tempuri.org/Disconnect" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="SearchBookByISBN">
       <soap:operation soapAction="http://tempuri.org/SearchBookByISBN" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetCommands">
-      <soap:operation soapAction="http://tempuri.org/GetCommands" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetBooks">
-      <soap:operation soapAction="http://tempuri.org/GetBooks" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -299,8 +344,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetLibrarians">
-      <soap:operation soapAction="http://tempuri.org/GetLibrarians" style="document" />
+    <wsdl:operation name="GetBooks">
+      <soap:operation soapAction="http://tempuri.org/GetBooks" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -308,8 +353,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="Authentificate">
-      <soap:operation soapAction="http://tempuri.org/Authentificate" style="document" />
+    <wsdl:operation name="GetCommands">
+      <soap:operation soapAction="http://tempuri.org/GetCommands" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -344,29 +389,47 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetLibrarian">
+      <soap:operation soapAction="http://tempuri.org/GetLibrarian" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSubscriber">
+      <soap:operation soapAction="http://tempuri.org/GetSubscriber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="ServiceSoap12" type="tns:ServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Authentificate">
+      <soap12:operation soapAction="http://tempuri.org/Authentificate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Disconnect">
+      <soap12:operation soapAction="http://tempuri.org/Disconnect" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="SearchBookByISBN">
       <soap12:operation soapAction="http://tempuri.org/SearchBookByISBN" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetCommands">
-      <soap12:operation soapAction="http://tempuri.org/GetCommands" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetBooks">
-      <soap12:operation soapAction="http://tempuri.org/GetBooks" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -383,8 +446,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetLibrarians">
-      <soap12:operation soapAction="http://tempuri.org/GetLibrarians" style="document" />
+    <wsdl:operation name="GetBooks">
+      <soap12:operation soapAction="http://tempuri.org/GetBooks" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -392,8 +455,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="Authentificate">
-      <soap12:operation soapAction="http://tempuri.org/Authentificate" style="document" />
+    <wsdl:operation name="GetCommands">
+      <soap12:operation soapAction="http://tempuri.org/GetCommands" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -421,6 +484,24 @@
     </wsdl:operation>
     <wsdl:operation name="CommentBook">
       <soap12:operation soapAction="http://tempuri.org/CommentBook" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLibrarian">
+      <soap12:operation soapAction="http://tempuri.org/GetLibrarian" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSubscriber">
+      <soap12:operation soapAction="http://tempuri.org/GetSubscriber" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

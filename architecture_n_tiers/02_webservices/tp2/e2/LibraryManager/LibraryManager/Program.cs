@@ -40,6 +40,8 @@
             {
                 Console.WriteLine(t_commands);
 
+                Console.Write("Action : ");
+
                 int t_action = Convert.ToInt32(Console.ReadLine());
 
                 int t_isbn;
@@ -120,7 +122,10 @@
 
                         t_editor = Console.ReadLine();
 
-                        a_proxy.AddBook(t_title, t_author, t_isbn, t_stock, t_editor);
+                        if (a_proxy.AddBook(t_user, t_title, t_author, t_isbn, t_stock, t_editor))
+                            Console.WriteLine("Book added");
+                        else
+                            Console.WriteLine("Fail to add book");
                     break;
 
                     case 6:
@@ -129,6 +134,8 @@
             }
 
             end_of_loop: { }
+
+            a_proxy.Disconnect(t_user);
 
             a_proxy.Close();
         }

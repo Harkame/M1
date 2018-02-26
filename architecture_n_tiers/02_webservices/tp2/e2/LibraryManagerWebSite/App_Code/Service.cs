@@ -17,6 +17,32 @@
         }
 
         [WebMethod]
+        public Person Authentificate(int p_id, String p_password)
+        {
+            foreach (Librarian t_librarian in Library.a_librarians)
+                if (t_librarian.ID == p_id && t_librarian.Password.Equals(p_password))
+                {
+                    Library.a_connections.Add(t_librarian);
+                    return t_librarian;
+                }
+
+            foreach (Subscriber t_subscriber in Library.a_subscribers)
+                if (t_subscriber.ID == p_id && t_subscriber.Password.Equals(p_password))
+                {
+                    Library.a_connections.Add(t_subscriber);
+                    return t_subscriber;
+                }
+
+            return null; //Authentification failed
+        }
+
+        [WebMethod]
+        public void Disconnect(Person p_person)
+        {
+            Library.a_connections.Remove(p_person);
+        }
+
+        [WebMethod]
         public Book SearchBookByISBN(int p_isbn)
         {
             foreach (Book t_book in Library.a_books)
@@ -24,6 +50,32 @@
                     return t_book;
 
             return null;
+        }
+
+        [WebMethod]
+        public Book[] SearchBooksByAuthor(String p_author)
+        {
+            List<Book> t_books = new List<Book>();
+
+            foreach (Book t_book in Library.a_books)
+                if (t_book.Author.Equals(p_author))
+                    t_books.Add(t_book);
+
+            return t_books.ToArray();
+        }
+
+        [WebMethod]
+        public String GetBooks()
+        {
+            StringBuilder r_books = new StringBuilder();
+
+            foreach (Book t_book in Library.a_books)
+            {
+                r_books.Append(t_book.ToString());
+                r_books.Append(Environment.NewLine);
+            }
+
+            return r_books.ToString();
         }
 
         [WebMethod]
@@ -53,55 +105,15 @@
         }
 
         [WebMethod]
-        public String GetBooks()
+        public bool AddBook(Person p_person, String p_title, String p_author, int p_isbn, int p_stock, String p_editor)
         {
-            StringBuilder r_books = new StringBuilder();
-
-            foreach (Book t_book in Library.a_books)
+            if (Library.IsConnected(p_person) && p_person.GetType().Name.Equals("Librarian"))
             {
-                r_books.Append(t_book.ToString());
-                r_books.Append(Environment.NewLine);
+                Library.a_books.Add(new Book(p_title, p_author, p_isbn, p_stock, p_editor));
+                return true;
             }
-
-            return r_books.ToString();
-        }
-
-        [WebMethod]
-        public Book[] SearchBooksByAuthor(String p_author)
-        {
-            List<Book> t_books = new List<Book>();
-
-            foreach (Book t_book in Library.a_books)
-                if (t_book.Author.Equals(p_author))
-                    t_books.Add(t_book);
-
-            return t_books.ToArray();
-        }
-
-        [WebMethod]
-        public Librarian[] GetLibrarians()
-        {
-            return null;
-        }
-
-        [WebMethod]
-        public Person Authentificate(int p_id, String p_password)
-        {
-            foreach (Librarian t_librarian in Library.a_librarians)
-                if (t_librarian.ID == p_id && t_librarian.Password.Equals(p_password))
-                    return t_librarian;
-
-            foreach (Subscriber t_subscriber in Library.a_subscribers)
-                if (t_subscriber.ID == p_id && t_subscriber.Password.Equals(p_password))
-                    return t_subscriber;
-
-            return null;
-        }
-
-        [WebMethod]
-        public void AddBook(String p_title, String p_author, int p_isbn, int p_stock, String p_editor)
-        {
-            Library.a_books.Add(new Book(p_title, p_author, p_isbn, p_stock, p_editor));
+            else
+                return false;
         }
 
         [WebMethod]
@@ -124,6 +136,21 @@
                     return Library.a_books[t_index].ToString();
                 }
             return null;
+        }
+
+        /*
+         */
+
+        [WebMethod]
+        public Librarian GetLibrarian()
+        {
+            return new Librarian("gktrk");
+        }
+
+        [WebMethod]
+        public Subscriber GetSubscriber()
+        {
+            return new Subscriber("gre");
         }
     }
 }
