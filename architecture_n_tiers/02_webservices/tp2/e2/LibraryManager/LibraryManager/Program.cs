@@ -1,21 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace LibraryManager
+﻿namespace LibraryManager
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+
     class Program
     {
         private static LibraryManagerServiceReference.ServiceSoapClient a_proxy;
 
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             a_proxy = new LibraryManagerServiceReference.ServiceSoapClient();
 
-            LibraryManagerServiceReference.Subscriber t_subcriber = null;
+            LibraryManagerServiceReference.Person t_user = null;
 
-            while (t_subcriber == null)
+            while(t_user == null)
             {
                 Console.Write("ID : ");
 
@@ -25,51 +25,51 @@ namespace LibraryManager
 
                 String t_password = Console.ReadLine();
 
-                t_subcriber = a_proxy.Authentificate(t_id, t_password);
+                t_user = a_proxy.Authentificate(t_id, t_password);
             }
 
             Console.WriteLine("");
 
-            Console.WriteLine("Authentification successful (" + t_subcriber.ID + ")");
+            Console.WriteLine("Authentification successful (" + t_user.ID + " as " + t_user.GetType().Name + ")");
 
             Console.WriteLine("");
 
-            w:while (true)
+            String t_commands = a_proxy.GetCommands(t_user);
+
+            while (true)
             {
-                Console.WriteLine();
-
-                Console.WriteLine("Action :");
-                Console.WriteLine("[0] : Search book by ISDN");
-                Console.WriteLine("[1] : Search book by Author");
-                Console.WriteLine("[2] : Comment book");
-                Console.WriteLine("[3] : Exit");
-
-                Console.Write("Action : ");
+                Console.WriteLine(t_commands);
 
                 int t_action = Convert.ToInt32(Console.ReadLine());
 
-                Console.WriteLine();
-
-                int t_isdn;
+                int t_isbn;
+                String t_title;
                 String t_author;
-                LibraryManagerServiceReference.Book t_book;
-                LibraryManagerServiceReference.Book[] t_books;
+                int t_stock;
+                String t_editor;
                 String t_comment;
+                LibraryManagerServiceReference.Book[] t_books;
+
+                LibraryManagerServiceReference.Book t_book;
 
                 switch (t_action)
                 {
-                    case 0:
+                    case 1:
+                        Console.WriteLine(a_proxy.GetBooks());
+                    break;
+
+                    case 2:
                         Console.Write("ISDN : ");
 
-                        t_isdn = Convert.ToInt32(Console.ReadLine());
+                        t_isbn = Convert.ToInt32(Console.ReadLine());
 
-                        t_book = a_proxy.SearchBookByISDN(t_isdn);
+                        t_book = a_proxy.SearchBookByISBN(t_isbn);
 
                         Console.WriteLine(a_proxy.GetBookDescription(t_book));
 
-                        break;
+                    break;
 
-                    case 1:
+                    case 3:
                         Console.Write("Author : ");
 
                         t_author = Console.ReadLine();
@@ -81,29 +81,54 @@ namespace LibraryManager
                         foreach (LibraryManagerServiceReference.Book t_book_iterator in t_books)
                             Console.WriteLine(a_proxy.GetBookDescription(t_book_iterator));
 
-                        break;
+                    break;
 
-                    case 2:
-                        Console.Write("ISDN : ");
+                    case 4:
+                        Console.Write("ISBN : ");
 
-                        t_isdn = Convert.ToInt32(Console.ReadLine());
+                        t_isbn = Convert.ToInt32(Console.ReadLine());
 
-                        t_book = a_proxy.SearchBookByISDN(t_isdn);
+                        t_book = a_proxy.SearchBookByISBN(t_isbn);
 
                         Console.Write("Comment : ");
 
                         t_comment = Console.ReadLine();
 
-                        a_proxy.CommentBook(t_book, t_subcriber, t_comment);
+                        a_proxy.CommentBook(t_book, t_user, t_comment);
 
-                        break;
+                    break;
+           
 
-                    case 3:
+                    case 5:
+                        Console.Write("Title : ");
+
+                        t_title = Console.ReadLine();
+
+                        Console.Write("Author : ");
+
+                        t_author = Console.ReadLine();
+
+                        Console.Write("ISBN : ");
+
+                        t_isbn = Convert.ToInt32(Console.ReadLine());
+
+                        Console.Write("Stock : ");
+
+                        t_stock = Convert.ToInt32(Console.ReadLine());
+
+                        Console.Write("Editor : ");
+
+                        t_editor = Console.ReadLine();
+
+                        a_proxy.AddBook(t_title, t_author, t_isbn, t_stock, t_editor);
+                    break;
+
+                    case 6:
                         goto end_of_loop;
                 }
             }
 
-            end_of_loop: {}
+            end_of_loop: { }
 
             a_proxy.Close();
         }

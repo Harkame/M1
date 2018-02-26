@@ -60,7 +60,10 @@
     <None Include="Service References\LibraryManagerServiceReference\LibraryManager.LibraryManagerServiceReference.Book.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\LibraryManagerServiceReference\LibraryManager.LibraryManagerServiceReference.Subscriber.datasource">
+    <None Include="Service References\LibraryManagerServiceReference\LibraryManager.LibraryManagerServiceReference.Librarian.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LibraryManagerServiceReference\LibraryManager.LibraryManagerServiceReference.Person.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\LibraryManagerServiceReference\Service.wsdl" />

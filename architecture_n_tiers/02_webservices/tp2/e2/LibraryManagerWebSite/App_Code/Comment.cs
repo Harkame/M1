@@ -1,26 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Text;
-
-namespace LibraryManager
+﻿namespace LibraryManager
 {
+    using System;
+    using System.Linq;
+    using System.Web;
+    using System.Text;
+
     public class Comment
     {
-        public Subscriber a_subscriber;
+        public Person a_person;
 
         public String a_description;
 
-        public Subscriber Subscriber
+        public Person Person
         {
             get
             {
-                return a_subscriber;
+                return a_person;
             }
             set
             {
-                a_subscriber = value;
+                a_person = value;
             }
         }
 
@@ -40,9 +39,9 @@ namespace LibraryManager
         {
         }
 
-        public Comment(Subscriber p_subscriber, String p_description)
+        public Comment(Person p_person, String p_description)
 	    {
-            a_subscriber = p_subscriber;
+            a_person = p_person;
 
             a_description = p_description;
 	    }
@@ -51,7 +50,7 @@ namespace LibraryManager
         {
             StringBuilder r_to_string = new StringBuilder();
 
-            r_to_string.Append(a_subscriber.ID);
+            r_to_string.Append(a_person.ID);
             r_to_string.Append(" - ");
             r_to_string.Append(a_description);
 

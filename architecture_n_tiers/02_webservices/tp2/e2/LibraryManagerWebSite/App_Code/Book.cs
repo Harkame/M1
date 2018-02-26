@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Text;
-
-namespace LibraryManager
+﻿namespace LibraryManager
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web;
+    using System.Text;
+
     public class Book
     {
         private String a_title;
@@ -111,9 +111,9 @@ namespace LibraryManager
             a_comments = new List<Comment>();
         }
 
-        public void Comment(Subscriber p_subscriber, String p_comment)
+        public void Comment(Person p_person, String p_comment)
         {
-            a_comments.Add(new Comment(p_subscriber, p_comment));
+            a_comments.Add(new Comment(p_person, p_comment));
         }
 
         public override bool Equals(object p_book)

@@ -7,13 +7,13 @@
     using System.Runtime.Serialization;
     using System.Text;
 
-    public class Subscriber : Person
+    public class Librarian : Person
     {
-        public Subscriber() : base()
+        public Librarian() : base()
         {
         }
 
-        public Subscriber(String p_password) : base(p_password)
+        public Librarian(String p_password) : base(p_password)
         {
         }
     }
