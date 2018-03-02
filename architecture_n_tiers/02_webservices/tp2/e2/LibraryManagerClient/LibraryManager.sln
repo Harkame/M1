@@ -28,10 +28,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibrarianClient", "Libraria
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubscriberClient", "SubscriberClient\SubscriberClient.csproj", "{9F8A590F-826F-494D-A6AA-154AA8AD69D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestClient", "LibraryTest\TestClient.csproj", "{F5D5517A-0089-4A11-948B-EAD8CA59640A}"
-	ProjectSection(ProjectDependencies) = postProject
-		{80503440-753D-4D61-B06C-9DEF80912FDA} = {80503440-753D-4D61-B06C-9DEF80912FDA}
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestClient", "TestClient\TestClient.csproj", "{F5D5517A-0089-4A11-948B-EAD8CA59640A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
