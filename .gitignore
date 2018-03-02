@@ -3,7 +3,7 @@
 *.gch
 *.exe
 
-*.
-*/bin/*
-bin/
 .*
+*.
+
+[Bb]in
