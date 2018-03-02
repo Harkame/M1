@@ -62,7 +62,7 @@
                 switch (t_action)
                 {
                     case 1:
-                        Console.WriteLine(a_proxy.GetBooks());
+                        Console.WriteLine(a_proxy.GetBooks(t_librarian));
                         break;
 
                     case 2:

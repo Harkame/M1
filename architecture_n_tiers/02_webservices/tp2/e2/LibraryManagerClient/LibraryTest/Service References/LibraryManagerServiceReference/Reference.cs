@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace LibrarianClient.LibraryManagerServiceReference {
+namespace LibraryTest.LibraryManagerServiceReference {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -17,43 +17,43 @@ namespace LibrarianClient.LibraryManagerServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AuthentificateAsLibrarian", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        LibrarianClient.LibraryManagerServiceReference.Librarian AuthentificateAsLibrarian(int p_id, string p_password);
+        LibraryTest.LibraryManagerServiceReference.Librarian AuthentificateAsLibrarian(int p_id, string p_password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AuthentificateAsSubscriber", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        LibrarianClient.LibraryManagerServiceReference.Subscriber AuthentificateAsSubscriber(int p_id, string p_password);
+        LibraryTest.LibraryManagerServiceReference.Subscriber AuthentificateAsSubscriber(int p_id, string p_password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Disconnect", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        void Disconnect(LibrarianClient.LibraryManagerServiceReference.User p_user);
+        void Disconnect(LibraryTest.LibraryManagerServiceReference.User p_user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/SearchBookByISBN", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        LibrarianClient.LibraryManagerServiceReference.Book SearchBookByISBN(LibrarianClient.LibraryManagerServiceReference.User p_User, int p_isbn);
+        LibraryTest.LibraryManagerServiceReference.Book SearchBookByISBN(LibraryTest.LibraryManagerServiceReference.User p_User, int p_isbn);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/SearchBooksByAuthor", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        LibrarianClient.LibraryManagerServiceReference.Book[] SearchBooksByAuthor(LibrarianClient.LibraryManagerServiceReference.User p_User, string p_author);
+        LibraryTest.LibraryManagerServiceReference.Book[] SearchBooksByAuthor(LibraryTest.LibraryManagerServiceReference.User p_User, string p_author);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetBooks", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        string GetBooks(LibrarianClient.LibraryManagerServiceReference.User p_user);
+        string GetBooks(LibraryTest.LibraryManagerServiceReference.User p_user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetCommands", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        string GetCommands(LibrarianClient.LibraryManagerServiceReference.User p_user);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AddBook", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        bool AddBook(LibrarianClient.LibraryManagerServiceReference.Librarian p_librarian, string p_title, string p_author, int p_isbn, int p_stock, string p_editor);
+        string GetCommands(LibraryTest.LibraryManagerServiceReference.User p_user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetBookDescription", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        string GetBookDescription(LibrarianClient.LibraryManagerServiceReference.User p_user, int p_isbn);
+        string GetBookDescription(LibraryTest.LibraryManagerServiceReference.User p_user, int p_isbn);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AddBook", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        bool AddBook(LibraryTest.LibraryManagerServiceReference.Librarian p_librarian, string p_title, string p_author, int p_isbn, int p_stock, string p_editor);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CommentBook", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        void CommentBook(LibrarianClient.LibraryManagerServiceReference.Subscriber p_subscriber, int p_isbn, string p_description);
+        bool CommentBook(LibraryTest.LibraryManagerServiceReference.Subscriber p_subscriber, int p_isbn, string p_description);
     }
     
     /// <remarks/>
@@ -299,12 +299,12 @@ namespace LibrarianClient.LibraryManagerServiceReference {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface ServiceSoapChannel : LibrarianClient.LibraryManagerServiceReference.ServiceSoap, System.ServiceModel.IClientChannel {
+    public interface ServiceSoapChannel : LibraryTest.LibraryManagerServiceReference.ServiceSoap, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ServiceSoapClient : System.ServiceModel.ClientBase<LibrarianClient.LibraryManagerServiceReference.ServiceSoap>, LibrarianClient.LibraryManagerServiceReference.ServiceSoap {
+    public partial class ServiceSoapClient : System.ServiceModel.ClientBase<LibraryTest.LibraryManagerServiceReference.ServiceSoap>, LibraryTest.LibraryManagerServiceReference.ServiceSoap {
         
         public ServiceSoapClient() {
         }
@@ -325,44 +325,44 @@ namespace LibrarianClient.LibraryManagerServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public LibrarianClient.LibraryManagerServiceReference.Librarian AuthentificateAsLibrarian(int p_id, string p_password) {
+        public LibraryTest.LibraryManagerServiceReference.Librarian AuthentificateAsLibrarian(int p_id, string p_password) {
             return base.Channel.AuthentificateAsLibrarian(p_id, p_password);
         }
         
-        public LibrarianClient.LibraryManagerServiceReference.Subscriber AuthentificateAsSubscriber(int p_id, string p_password) {
+        public LibraryTest.LibraryManagerServiceReference.Subscriber AuthentificateAsSubscriber(int p_id, string p_password) {
             return base.Channel.AuthentificateAsSubscriber(p_id, p_password);
         }
         
-        public void Disconnect(LibrarianClient.LibraryManagerServiceReference.User p_user) {
+        public void Disconnect(LibraryTest.LibraryManagerServiceReference.User p_user) {
             base.Channel.Disconnect(p_user);
         }
         
-        public LibrarianClient.LibraryManagerServiceReference.Book SearchBookByISBN(LibrarianClient.LibraryManagerServiceReference.User p_User, int p_isbn) {
+        public LibraryTest.LibraryManagerServiceReference.Book SearchBookByISBN(LibraryTest.LibraryManagerServiceReference.User p_User, int p_isbn) {
             return base.Channel.SearchBookByISBN(p_User, p_isbn);
         }
         
-        public LibrarianClient.LibraryManagerServiceReference.Book[] SearchBooksByAuthor(LibrarianClient.LibraryManagerServiceReference.User p_User, string p_author) {
+        public LibraryTest.LibraryManagerServiceReference.Book[] SearchBooksByAuthor(LibraryTest.LibraryManagerServiceReference.User p_User, string p_author) {
             return base.Channel.SearchBooksByAuthor(p_User, p_author);
         }
         
-        public string GetBooks(LibrarianClient.LibraryManagerServiceReference.User p_user) {
+        public string GetBooks(LibraryTest.LibraryManagerServiceReference.User p_user) {
             return base.Channel.GetBooks(p_user);
         }
         
-        public string GetCommands(LibrarianClient.LibraryManagerServiceReference.User p_user) {
+        public string GetCommands(LibraryTest.LibraryManagerServiceReference.User p_user) {
             return base.Channel.GetCommands(p_user);
         }
         
-        public bool AddBook(LibrarianClient.LibraryManagerServiceReference.Librarian p_librarian, string p_title, string p_author, int p_isbn, int p_stock, string p_editor) {
-            return base.Channel.AddBook(p_librarian, p_title, p_author, p_isbn, p_stock, p_editor);
-        }
-        
-        public string GetBookDescription(LibrarianClient.LibraryManagerServiceReference.User p_user, int p_isbn) {
+        public string GetBookDescription(LibraryTest.LibraryManagerServiceReference.User p_user, int p_isbn) {
             return base.Channel.GetBookDescription(p_user, p_isbn);
         }
         
-        public void CommentBook(LibrarianClient.LibraryManagerServiceReference.Subscriber p_subscriber, int p_isbn, string p_description) {
-            base.Channel.CommentBook(p_subscriber, p_isbn, p_description);
+        public bool AddBook(LibraryTest.LibraryManagerServiceReference.Librarian p_librarian, string p_title, string p_author, int p_isbn, int p_stock, string p_editor) {
+            return base.Channel.AddBook(p_librarian, p_title, p_author, p_isbn, p_stock, p_editor);
+        }
+        
+        public bool CommentBook(LibraryTest.LibraryManagerServiceReference.Subscriber p_subscriber, int p_isbn, string p_description) {
+            return base.Channel.CommentBook(p_subscriber, p_isbn, p_description);
         }
     }
 }

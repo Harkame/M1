@@ -144,6 +144,21 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetBookDescription">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_user" type="tns:User" />
+            <s:element minOccurs="1" maxOccurs="1" name="p_isbn" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBookDescriptionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBookDescriptionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="AddBook">
         <s:complexType>
           <s:sequence>
@@ -163,21 +178,6 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetBookDescription">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="p_user" type="tns:User" />
-            <s:element minOccurs="1" maxOccurs="1" name="p_isbn" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetBookDescriptionResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetBookDescriptionResult" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
       <s:element name="CommentBook">
         <s:complexType>
           <s:sequence>
@@ -188,7 +188,11 @@
         </s:complexType>
       </s:element>
       <s:element name="CommentBookResponse">
-        <s:complexType />
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CommentBookResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
       </s:element>
     </s:schema>
   </wsdl:types>
@@ -234,17 +238,17 @@
   <wsdl:message name="GetCommandsSoapOut">
     <wsdl:part name="parameters" element="tns:GetCommandsResponse" />
   </wsdl:message>
-  <wsdl:message name="AddBookSoapIn">
-    <wsdl:part name="parameters" element="tns:AddBook" />
-  </wsdl:message>
-  <wsdl:message name="AddBookSoapOut">
-    <wsdl:part name="parameters" element="tns:AddBookResponse" />
-  </wsdl:message>
   <wsdl:message name="GetBookDescriptionSoapIn">
     <wsdl:part name="parameters" element="tns:GetBookDescription" />
   </wsdl:message>
   <wsdl:message name="GetBookDescriptionSoapOut">
     <wsdl:part name="parameters" element="tns:GetBookDescriptionResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddBookSoapIn">
+    <wsdl:part name="parameters" element="tns:AddBook" />
+  </wsdl:message>
+  <wsdl:message name="AddBookSoapOut">
+    <wsdl:part name="parameters" element="tns:AddBookResponse" />
   </wsdl:message>
   <wsdl:message name="CommentBookSoapIn">
     <wsdl:part name="parameters" element="tns:CommentBook" />
@@ -281,13 +285,13 @@
       <wsdl:input message="tns:GetCommandsSoapIn" />
       <wsdl:output message="tns:GetCommandsSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="AddBook">
-      <wsdl:input message="tns:AddBookSoapIn" />
-      <wsdl:output message="tns:AddBookSoapOut" />
-    </wsdl:operation>
     <wsdl:operation name="GetBookDescription">
       <wsdl:input message="tns:GetBookDescriptionSoapIn" />
       <wsdl:output message="tns:GetBookDescriptionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddBook">
+      <wsdl:input message="tns:AddBookSoapIn" />
+      <wsdl:output message="tns:AddBookSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="CommentBook">
       <wsdl:input message="tns:CommentBookSoapIn" />
@@ -359,8 +363,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="AddBook">
-      <soap:operation soapAction="http://tempuri.org/AddBook" style="document" />
+    <wsdl:operation name="GetBookDescription">
+      <soap:operation soapAction="http://tempuri.org/GetBookDescription" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -368,8 +372,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetBookDescription">
-      <soap:operation soapAction="http://tempuri.org/GetBookDescription" style="document" />
+    <wsdl:operation name="AddBook">
+      <soap:operation soapAction="http://tempuri.org/AddBook" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -452,8 +456,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="AddBook">
-      <soap12:operation soapAction="http://tempuri.org/AddBook" style="document" />
+    <wsdl:operation name="GetBookDescription">
+      <soap12:operation soapAction="http://tempuri.org/GetBookDescription" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -461,8 +465,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetBookDescription">
-      <soap12:operation soapAction="http://tempuri.org/GetBookDescription" style="document" />
+    <wsdl:operation name="AddBook">
+      <soap12:operation soapAction="http://tempuri.org/AddBook" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

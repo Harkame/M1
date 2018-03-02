@@ -34,9 +34,9 @@
             Library.a_subscribers.Add(new Subscriber("password"));
         }
 
-        public static bool IsConnected(User p_User)
+        public static bool IsValid(User p_user)
         {
-            return a_connections.Contains(p_User);
+            return (p_user != null) && a_connections.Contains(p_user);
         }
     }
 }

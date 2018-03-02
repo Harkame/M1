@@ -1,0 +1,5 @@
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp2\e2\LibraryManagerClient\LibraryTest\bin\Debug\LibraryTest.exe.config
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp2\e2\LibraryManagerClient\LibraryTest\bin\Debug\LibraryTest.exe
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp2\e2\LibraryManagerClient\LibraryTest\bin\Debug\LibraryTest.pdb
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp2\e2\LibraryManagerClient\LibraryTest\obj\x86\Debug\LibraryTest.exe
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp2\e2\LibraryManagerClient\LibraryTest\obj\x86\Debug\LibraryTest.pdb

@@ -25,12 +25,16 @@
          [WebMethod]
          public Librarian AuthentificateAsLibrarian(int p_id, String p_password)
          {
+             if (p_password == null)
+                 return null;
+
              foreach (Librarian t_librarian in Library.a_librarians)
                  if (t_librarian.ID == p_id && t_librarian.Password.Equals(p_password))
                  {
                      Library.a_connections.Add(t_librarian);
                      return t_librarian;
                  }
+
              return null;
          }
 
@@ -43,6 +47,9 @@
          [WebMethod]
          public Subscriber AuthentificateAsSubscriber(int p_id, String p_password)
          {
+             if (p_password == null)
+                 return null;
+
              foreach (Subscriber t_subscriber in Library.a_subscribers)
                  if (t_subscriber.ID == p_id && t_subscriber.Password.Equals(p_password))
                  {
@@ -60,7 +67,8 @@
          [WebMethod]
          public void Disconnect(User p_user)
          {
-             Library.a_connections.Remove(p_user);
+             if(Library.IsValid(p_user))
+                 Library.a_connections.Remove(p_user);
          }
 
          /// <summary>
@@ -72,12 +80,10 @@
          [WebMethod]
          public Book SearchBookByISBN(User p_User, int p_isbn)
          {
-             if (!Library.IsConnected(p_User))
-                 return null;
-
-             foreach (Book t_book in Library.a_books)
-                 if (t_book.ISBN == p_isbn)
-                     return t_book;
+             if (Library.IsValid(p_User))
+                 foreach (Book t_book in Library.a_books)
+                     if (t_book.ISBN == p_isbn)
+                         return t_book;
 
              return null;
          }
@@ -91,16 +97,18 @@
          [WebMethod]
          public Book[] SearchBooksByAuthor(User p_User, String p_author)
          {
-             if (!Library.IsConnected(p_User))
+             if (Library.IsValid(p_User))
+             {
+                 List<Book> t_books = new List<Book>();
+
+                 foreach (Book t_book in Library.a_books)
+                     if (t_book.Author.Equals(p_author))
+                         t_books.Add(t_book);
+
+                 return t_books.ToArray();
+             }
+             else
                  return null;
-
-             List<Book> t_books = new List<Book>();
-
-             foreach (Book t_book in Library.a_books)
-                 if (t_book.Author.Equals(p_author))
-                     t_books.Add(t_book);
-
-             return t_books.ToArray();
          }
 
          /// <summary>
@@ -108,17 +116,22 @@
          /// </summary>
          /// <returns>Return an array of Book, all of the List of books in the Library</returns>
          [WebMethod]
-         public String GetBooks()
+         public String GetBooks(User p_user)
          {
-             StringBuilder r_books = new StringBuilder();
-
-             foreach (Book t_book in Library.a_books)
+             if (Library.IsValid(p_user))
              {
-                 r_books.Append(t_book.ToString());
-                 r_books.Append(Environment.NewLine);
-             }
+                 StringBuilder r_books = new StringBuilder();
 
-             return r_books.ToString();
+                 foreach (Book t_book in Library.a_books)
+                 {
+                     r_books.Append(t_book.ToString());
+                     r_books.Append(Environment.NewLine);
+                 }
+
+                 return r_books.ToString();
+             }
+             else
+                 return null;
          }
 
          /// <summary>
@@ -129,7 +142,7 @@
          [WebMethod]
          public String GetCommands(User p_user)
          {
-             if (p_user == null)
+             if (!Library.IsValid(p_user))
                  return null;
 
              StringBuilder t_commands = new StringBuilder();
@@ -170,6 +183,23 @@
          }
 
          /// <summary>
+         /// Return book description (ToString method)
+         /// </summary>
+         /// <param name="p_user">User to authentificate</param>
+         /// <param name="p_isbn">ISBN of the book</param>
+         /// <returns>An String who describe the book designated by p_isbn</returns>
+         [WebMethod]
+         public String GetBookDescription(User p_user, int p_isbn)
+         {
+             if (Library.IsValid(p_user))
+                 foreach (Book t_book in Library.a_books)
+                     if (t_book.ISBN == p_isbn)
+                         return t_book.ToString();
+
+             return null;
+         }
+
+         /// <summary>
          /// Add an book designed by all of his attributs into the Library (Necessary to be authentificate as a Librarian)
          /// </summary>
          /// <param name="p_librarian">Librarian who add the book, check if he is connected</param>
@@ -182,7 +212,7 @@
          [WebMethod]
          public bool AddBook(Librarian p_librarian, String p_title, String p_author, int p_isbn, int p_stock, String p_editor)
          {
-             if (Library.IsConnected(p_librarian))
+             if (Library.IsValid(p_librarian))
              {
                  Library.a_books.Add(new Book(p_title, p_author, p_isbn, p_stock, p_editor));
                  return true;
@@ -191,34 +221,28 @@
                  return false;
          }
 
-         [WebMethod]
-         public String GetBookDescription(User p_user, int p_isbn)
-         {
-             if (!Library.IsConnected(p_user))
-                 return null;
-
-             foreach (Book t_book in Library.a_books)
-                 if (t_book.ISBN == p_isbn)
-                     return t_book.ToString();
-
-             return null;
-         }
-
          /// <summary>
-         /// Add an commented on the designated Book (Only Subscriber can commant a Book, necessary to be connected)
+         /// Add an commented on the designated Book (Only Subscriber can comment a Book, necessary to be connected)
          /// </summary>
          /// 
          /// <param name="p_subscriber">The subscriber who comment the Book</param>
          /// <param name="p_isbn">The isbn of the book to comment</param>
          /// <param name="p_description">The description of the comment</param>
+         /// <returns>True if the book was commented, else return false (unauthorised, book not found)</returns>
          [WebMethod]
-         public void CommentBook(Subscriber p_subscriber, int p_isbn, String p_description)
+         public bool CommentBook(Subscriber p_subscriber, int p_isbn, String p_description)
          {
+             if (!Library.IsValid(p_subscriber) || (p_description == null))
+                 return false;
+
              for (int t_index = 0; t_index < Library.a_books.Count; t_index++)
                  if (Library.a_books[t_index].ISBN == p_isbn)
                  {
                      Library.a_books[t_index].Comment(p_subscriber, p_description);
+                     return true;
                  }
+
+             return false;
          }
      }
  }

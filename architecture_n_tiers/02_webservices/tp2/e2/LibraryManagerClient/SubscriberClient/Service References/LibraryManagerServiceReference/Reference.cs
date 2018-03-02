@@ -37,7 +37,7 @@ namespace LibraryManager.LibraryManagerServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetBooks", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        string GetBooks();
+        string GetBooks(LibraryManager.LibraryManagerServiceReference.User p_user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetCommands", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -345,8 +345,8 @@ namespace LibraryManager.LibraryManagerServiceReference {
             return base.Channel.SearchBooksByAuthor(p_User, p_author);
         }
         
-        public string GetBooks() {
-            return base.Channel.GetBooks();
+        public string GetBooks(LibraryManager.LibraryManagerServiceReference.User p_user) {
+            return base.Channel.GetBooks(p_user);
         }
         
         public string GetCommands(LibraryManager.LibraryManagerServiceReference.User p_user) {
