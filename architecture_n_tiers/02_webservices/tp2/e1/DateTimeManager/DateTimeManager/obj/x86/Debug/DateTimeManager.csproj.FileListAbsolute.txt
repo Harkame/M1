@@ -1,5 +1,0 @@
-c:\users\harkame\documents\visual studio 2010\Projects\DateTimeManager\DateTimeManager\bin\Debug\DateTimeManager.exe
-c:\users\harkame\documents\visual studio 2010\Projects\DateTimeManager\DateTimeManager\bin\Debug\DateTimeManager.pdb
-c:\users\harkame\documents\visual studio 2010\Projects\DateTimeManager\DateTimeManager\obj\x86\Debug\DateTimeManager.exe
-c:\users\harkame\documents\visual studio 2010\Projects\DateTimeManager\DateTimeManager\obj\x86\Debug\DateTimeManager.pdb
-c:\users\harkame\documents\visual studio 2010\Projects\DateTimeManager\DateTimeManager\bin\Debug\DateTimeManager.exe.config

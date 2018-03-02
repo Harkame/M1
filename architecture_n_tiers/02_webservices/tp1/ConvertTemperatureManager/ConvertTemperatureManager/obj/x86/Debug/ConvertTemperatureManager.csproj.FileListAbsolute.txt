@@ -3,3 +3,6 @@ C:\Users\Harkame\Documents\Visual Studio 2010\Projects\ConvertTemperatureManager
 C:\Users\Harkame\Documents\Visual Studio 2010\Projects\ConvertTemperatureManager\ConvertTemperatureManager\bin\Debug\ConvertTemperatureManager.pdb
 C:\Users\Harkame\Documents\Visual Studio 2010\Projects\ConvertTemperatureManager\ConvertTemperatureManager\obj\x86\Debug\ConvertTemperatureManager.exe
 C:\Users\Harkame\Documents\Visual Studio 2010\Projects\ConvertTemperatureManager\ConvertTemperatureManager\obj\x86\Debug\ConvertTemperatureManager.pdb
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp1\ConvertTemperatureManager\ConvertTemperatureManager\bin\Debug\ConvertTemperatureManager.exe.config
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp1\ConvertTemperatureManager\ConvertTemperatureManager\obj\x86\Debug\ConvertTemperatureManager.exe
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp1\ConvertTemperatureManager\ConvertTemperatureManager\obj\x86\Debug\ConvertTemperatureManager.pdb

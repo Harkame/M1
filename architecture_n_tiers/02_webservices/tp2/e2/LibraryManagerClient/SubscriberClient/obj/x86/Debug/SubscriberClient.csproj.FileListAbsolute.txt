@@ -1,0 +1,10 @@
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp2\e2\LibraryManager\LibraryManager\obj\x86\Debug\LibraryManager.exe
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp2\e2\LibraryManager\LibraryManager\obj\x86\Debug\LibraryManager.pdb
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp2\e2\LibraryManager\LibraryManager\bin\Debug\LibraryManager.exe.config
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp2\e2\LibraryManager\LibraryManager\bin\Debug\LibraryManager.exe
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp2\e2\LibraryManager\LibraryManager\bin\Debug\LibraryManager.pdb
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp2\e2\LibraryManagerClient\SubscriberClient\bin\Debug\LibraryManager.exe.config
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp2\e2\LibraryManagerClient\SubscriberClient\bin\Debug\LibraryManager.exe
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp2\e2\LibraryManagerClient\SubscriberClient\bin\Debug\LibraryManager.pdb
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp2\e2\LibraryManagerClient\SubscriberClient\obj\x86\Debug\LibraryManager.exe
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp2\e2\LibraryManagerClient\SubscriberClient\obj\x86\Debug\LibraryManager.pdb
