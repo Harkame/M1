@@ -1,6 +1,9 @@
 *.out
 *.o
 *.gch
+*.exe
+
 *.
 */bin/*
+bin/
 .*
