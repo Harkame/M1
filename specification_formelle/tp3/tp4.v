@@ -85,6 +85,16 @@ Fixpoint sort (l : (list nat)) : (list nat) :=
     end.
 
 Theorem yolo:
-  forall (l1 l2 : (list nat)), (sort l1) = l2 -> (is_perm l1 l2) -> is_sort(l2).
+  forall (l1 l2 : (list nat)), (sort l1) = l2 -> (is_perm l1 l2) /\ is_sort(l2).
 Proof.
+induction l1.
+intros.
+split.
+simpl in H.
+rewrite <- H.
+apply is_perm_R.
+simpl in H.
+rewrite <- H.
+apply is_sort_O.
+
 
