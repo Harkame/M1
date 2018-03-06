@@ -60,7 +60,7 @@ Inductive is_sort : (list nat) -> Prop :=
   | is_sort_1 : forall n : nat, is_sort (n::nil)
   | is_sort_N : forall n m : nat, forall l : (list nat), n <= m -> is_sort(m::l) -> is_sort(n::m::l).
 
-Lemma sort : is_sort l1.
+Lemma a : is_sort l1.
 unfold l1.
 apply is_sort_N.
 omega.
@@ -78,10 +78,13 @@ Fixpoint insert (l : (list nat)) (n : nat) : (list nat):=
       end
     end.
 
-Fixpoint tri (l : (list nat)) : (list nat) :=
+Fixpoint sort (l : (list nat)) : (list nat) :=
   match l with
     | nil => nil
-    | h::t => (insert (tri t) h)
+    | h::t => (insert (sort t) h)
     end.
 
+Theorem yolo:
+  forall (l1 l2 : (list nat)), (sort l1) = l2 -> (is_perm l1 l2) -> is_sort(l2).
+Proof.
 
