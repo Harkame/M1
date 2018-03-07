@@ -65,6 +65,9 @@
     <None Include="Service References\LibraryManagerServiceReference\LibrarianClient.LibraryManagerServiceReference.Subscriber.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\LibraryManagerServiceReference\LibrarianClient.LibraryManagerServiceReference.User.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\LibraryManagerServiceReference\Service.wsdl" />
   </ItemGroup>
   <ItemGroup>

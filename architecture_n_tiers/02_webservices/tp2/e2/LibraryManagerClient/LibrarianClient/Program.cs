@@ -16,7 +16,7 @@
 
             Console.WriteLine("[Librarian client]");
 
-            Librarian t_librarian = null;
+            User t_librarian = null;
 
             while (t_librarian == null)
             {
@@ -28,7 +28,7 @@
 
                 String t_password = Console.ReadLine();
 
-                t_librarian = a_proxy.AuthentificateAsLibrarian(t_id, t_password);
+                t_librarian = a_proxy.Authentificate(t_id, t_password);
             }
 
             Console.WriteLine("");
@@ -59,6 +59,8 @@
 
                 int t_action = Convert.ToInt32(Console.ReadLine());
 
+                Console.WriteLine("");
+
                 switch (t_action)
                 {
                     case 1:
@@ -79,9 +81,11 @@
 
                         t_author = Console.ReadLine();
 
+                        Console.WriteLine("");
+
                         t_books = a_proxy.SearchBooksByAuthor(t_librarian, t_author);
 
-                        Console.WriteLine(t_books.Length);
+                        Console.WriteLine("[" + t_books.Length + "]");
 
                         foreach (Book t_book_iterator in t_books)
                             Console.WriteLine(a_proxy.GetBookDescription(t_librarian, t_book_iterator.ISBN));
@@ -108,6 +112,8 @@
                         Console.Write("Editor : ");
 
                         t_editor = Console.ReadLine();
+
+                        Console.WriteLine("");
 
                         if (a_proxy.AddBook(t_librarian, t_title, t_author, t_isbn, t_stock, t_editor))
                             Console.WriteLine("Book added");

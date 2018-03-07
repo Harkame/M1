@@ -16,7 +16,7 @@
 
             Console.WriteLine("[Subscriber client]");
 
-            Subscriber t_subscriber = null;
+            User t_subscriber = null;
 
             while(t_subscriber == null)
             {
@@ -28,7 +28,7 @@
 
                 String t_password = Console.ReadLine();
 
-                t_subscriber = a_proxy.AuthentificateAsSubscriber(t_id, t_password);
+                t_subscriber = a_proxy.Authentificate(t_id, t_password);
             }
 
             Console.WriteLine("");
@@ -46,6 +46,8 @@
                 Console.Write("Action : ");
 
                 int t_action = Convert.ToInt32(Console.ReadLine());
+
+                Console.WriteLine("");
 
                 /*
                  * All the tempory variables who can be necessary
@@ -68,6 +70,8 @@
 
                         t_isbn = Convert.ToInt32(Console.ReadLine());
 
+                        Console.WriteLine("");
+
                         Console.WriteLine(a_proxy.GetBookDescription(t_subscriber, t_isbn));
 
                     break;
@@ -76,10 +80,9 @@
                         Console.Write("Author : ");
 
                         t_author = Console.ReadLine();
-
                         t_books = a_proxy.SearchBooksByAuthor(t_subscriber, t_author);
 
-                        Console.WriteLine(t_books.Length);
+                        Console.WriteLine("[" + t_books.Length + "]");
 
                         foreach (Book t_book_iterator in t_books)
                             Console.WriteLine(a_proxy.GetBookDescription(t_subscriber, t_book_iterator.ISBN));
@@ -94,6 +97,8 @@
                         Console.Write("Comment : ");
 
                         t_comment = Console.ReadLine();
+
+                        Console.WriteLine("");
 
                         a_proxy.CommentBook(t_subscriber, t_isbn, t_comment);
 
