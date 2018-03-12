@@ -1,0 +1,24 @@
+Inductive is_fibo : nat -> nat -> Prop :=
+  | is_fibo_O : is_fibo 0 1
+  | is_fibo_S : forall n : nat, forall s : nat, is_fibo n s -> is_fibo(S n) (s * (S n)).
+
+Fixpoint fibo (n : nat) : nat :=
+    match n with
+      | 0 => 1
+      | (S n) => (fibo n * (S n))
+      end.
+
+Functional Scheme fibo_ind := Induction for fibo Sort Prop.
+
+Theorem fibo_sound:
+forall (n : nat) (r : nat), (fibo n) = r -> is_fibo n r.
+Proof.
+  intro.
+  functional induction (fibo n) using fibo_ind; intros.
+  elim H.
+  apply is_fibo_O.
+  elim H.
+  apply is_fibo_S.
+  apply (IHn0 (fibo n0)).
+  reflexivity.
+  Qed.

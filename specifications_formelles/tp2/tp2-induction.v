@@ -49,7 +49,6 @@ Ltac is_even :=
    apply is_even_0.
 
 Lemma even2 : is_even 2.
-
 is_even.
 Qed.
 
@@ -61,6 +60,17 @@ Ltac isnt_even :=
  end).
 
 Lemma isnt_even3 : ~is_even 3.
-
 isnt_even.
 
+Inductive is_mod3 : nat -> Prop :=
+  | is_mod3_O : is_mod3 0
+  | is_mod3_S : forall n : nat, is_mod3 n -> is_mod3 (S (S (S n))).
+
+Ltac is_mod3 :=
+  intros;
+  (repeat
+    apply is_mod3_S);
+    apply is_mod3_O.
+
+Lemma mod31 : is_mod3 31.
+is_mod3.
