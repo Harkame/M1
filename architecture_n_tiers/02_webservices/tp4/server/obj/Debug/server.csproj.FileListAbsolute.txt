@@ -1,0 +1,5 @@
+c:\users\ldaviaud\documents\visual studio 2010\Projects\tp4\server\bin\Debug\server.dll.config
+c:\users\ldaviaud\documents\visual studio 2010\Projects\tp4\server\bin\Debug\server.dll
+c:\users\ldaviaud\documents\visual studio 2010\Projects\tp4\server\bin\Debug\server.pdb
+c:\users\ldaviaud\documents\visual studio 2010\Projects\tp4\server\obj\Debug\server.dll
+c:\users\ldaviaud\documents\visual studio 2010\Projects\tp4\server\obj\Debug\server.pdb
