@@ -1,0 +1,4 @@
+c:\users\ldaviaud\documents\visual studio 2010\Projects\tp4\tp4\bin\tp4.dll
+c:\users\ldaviaud\documents\visual studio 2010\Projects\tp4\tp4\bin\tp4.pdb
+c:\users\ldaviaud\documents\visual studio 2010\Projects\tp4\tp4\obj\Debug\tp4.dll
+c:\users\ldaviaud\documents\visual studio 2010\Projects\tp4\tp4\obj\Debug\tp4.pdb

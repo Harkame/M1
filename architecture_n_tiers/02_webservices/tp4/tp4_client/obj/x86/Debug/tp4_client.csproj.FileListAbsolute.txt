@@ -1,0 +1,5 @@
+c:\users\ldaviaud\documents\visual studio 2010\Projects\tp4\tp4_client\bin\Debug\tp4_client.exe.config
+c:\users\ldaviaud\documents\visual studio 2010\Projects\tp4\tp4_client\bin\Debug\tp4_client.exe
+c:\users\ldaviaud\documents\visual studio 2010\Projects\tp4\tp4_client\bin\Debug\tp4_client.pdb
+c:\users\ldaviaud\documents\visual studio 2010\Projects\tp4\tp4_client\obj\x86\Debug\tp4_client.exe
+c:\users\ldaviaud\documents\visual studio 2010\Projects\tp4\tp4_client\obj\x86\Debug\tp4_client.pdb
