@@ -85,6 +85,7 @@ Proof.
   apply inter1.
   apply is_perm_C.
   apply IHl4.
+  Qed.
 
 
 Theorem yolo:
