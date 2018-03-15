@@ -1,0 +1,5 @@
+c:\users\harkame\documents\visual studio 2010\Projects\LibraryManager\LibraryManager\obj\Debug\LibraryManager.csprojResolveAssemblyReference.cache
+c:\users\harkame\documents\visual studio 2010\Projects\LibraryManager\LibraryManager\bin\LibraryManager.dll
+c:\users\harkame\documents\visual studio 2010\Projects\LibraryManager\LibraryManager\bin\LibraryManager.pdb
+c:\users\harkame\documents\visual studio 2010\Projects\LibraryManager\LibraryManager\obj\Debug\LibraryManager.dll
+c:\users\harkame\documents\visual studio 2010\Projects\LibraryManager\LibraryManager\obj\Debug\LibraryManager.pdb

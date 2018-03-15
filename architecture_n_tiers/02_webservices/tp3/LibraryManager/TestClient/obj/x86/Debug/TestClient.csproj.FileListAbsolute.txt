@@ -1,0 +1,4 @@
+c:\users\harkame\documents\visual studio 2010\Projects\LibraryManager\TestClient\bin\Debug\TestClient.exe
+c:\users\harkame\documents\visual studio 2010\Projects\LibraryManager\TestClient\bin\Debug\TestClient.pdb
+c:\users\harkame\documents\visual studio 2010\Projects\LibraryManager\TestClient\obj\x86\Debug\TestClient.exe
+c:\users\harkame\documents\visual studio 2010\Projects\LibraryManager\TestClient\obj\x86\Debug\TestClient.pdb

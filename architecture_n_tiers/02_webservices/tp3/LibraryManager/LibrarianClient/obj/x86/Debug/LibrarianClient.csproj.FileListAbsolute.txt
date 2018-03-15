@@ -1,0 +1,5 @@
+c:\users\harkame\documents\visual studio 2010\Projects\LibraryManager\LibrarianClient\bin\Debug\LibrarianClient.exe
+c:\users\harkame\documents\visual studio 2010\Projects\LibraryManager\LibrarianClient\bin\Debug\LibrarianClient.pdb
+c:\users\harkame\documents\visual studio 2010\Projects\LibraryManager\LibrarianClient\obj\x86\Debug\LibrarianClient.exe
+c:\users\harkame\documents\visual studio 2010\Projects\LibraryManager\LibrarianClient\obj\x86\Debug\LibrarianClient.pdb
+C:\Users\Harkame\Documents\Visual Studio 2010\Projects\LibraryManager\LibrarianClient\obj\x86\Debug\LibrarianClient.csprojResolveAssemblyReference.cache
