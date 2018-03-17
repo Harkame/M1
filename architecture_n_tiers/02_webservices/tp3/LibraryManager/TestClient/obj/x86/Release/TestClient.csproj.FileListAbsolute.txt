@@ -1,0 +1,4 @@
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\TestClient\bin\Release\TestClient.exe
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\TestClient\bin\Release\TestClient.pdb
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\TestClient\obj\x86\Release\TestClient.exe
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\TestClient\obj\x86\Release\TestClient.pdb

@@ -1,0 +1,4 @@
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\LibraryManager\bin\LibraryManager.dll
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\LibraryManager\bin\LibraryManager.pdb
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\LibraryManager\obj\Release\LibraryManager.dll
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\LibraryManager\obj\Release\LibraryManager.pdb

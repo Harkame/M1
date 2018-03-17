@@ -15,23 +15,23 @@ namespace LibraryManager.Controllers
         /// <param name="p_id">The ID of the Librarian</param> 
         /// <param name="p_password">The password of the Librarian</param>
         /// <returns>A object User designed by p_id and p_password, null if the authentification has failed</returns>
-        [HttpPost]
+        [HttpGet]
         public User Authentificate(int p_id, String p_password)
         {
             if (p_password == null)
                 return null;
 
-            foreach (Librarian t_librarian in Library.a_librarians)
+            foreach (Librarian t_librarian in Library.Librarians)
                 if (t_librarian.ID == p_id && t_librarian.Password.Equals(p_password))
                 {
-                    Library.a_connections.Add(t_librarian);
+                    Library.Connections.Add(t_librarian);
                     return t_librarian;
                 }
 
-            foreach (Subscriber t_subscriber in Library.a_subscribers)
+            foreach (Subscriber t_subscriber in Library.Subscribers)
                 if (t_subscriber.ID == p_id && t_subscriber.Password.Equals(p_password))
                 {
-                    Library.a_connections.Add(t_subscriber);
+                    Library.Connections.Add(t_subscriber);
                     return t_subscriber;
                 }
 
@@ -50,10 +50,10 @@ namespace LibraryManager.Controllers
             if (p_password == null)
                 return null;
 
-            foreach (Librarian t_librarian in Library.a_librarians)
+            foreach (Librarian t_librarian in Library.Librarians)
                 if (t_librarian.ID == p_id && t_librarian.Password.Equals(p_password))
                 {
-                    Library.a_connections.Add(t_librarian);
+                    Library.Connections.Add(t_librarian);
                     return t_librarian;
                 }
 
@@ -72,10 +72,10 @@ namespace LibraryManager.Controllers
             if (p_password == null)
                 return null;
 
-            foreach (Subscriber t_subscriber in Library.a_subscribers)
+            foreach (Subscriber t_subscriber in Library.Subscribers)
                 if (t_subscriber.ID == p_id && t_subscriber.Password.Equals(p_password))
                 {
-                    Library.a_connections.Add(t_subscriber);
+                    Library.Connections.Add(t_subscriber);
                     return t_subscriber;
                 }
 
@@ -87,10 +87,10 @@ namespace LibraryManager.Controllers
         /// </summary>
         /// <param name="p_User">User to disconnect</param>
         [HttpPost]
-        public void Disconnect(User p_user)
+        public void Disconnect(int p_user_id)
         {
-            if (Library.IsValid(p_user))
-                Library.a_connections.Remove(p_user);
+           // if (Library.IsValid(p_user_id))
+               // Library.Connections.Remove(p_user_id);
         }
 
         /// <summary>
@@ -98,15 +98,15 @@ namespace LibraryManager.Controllers
         /// </summary>
         /// <param name="p_user">User for check if he is connected and get his type (Librarian or Subscriber)</param>
         /// <returns>Return an String who represent possible commands for each kind of User</returns>
-        [HttpPost]
-        public String GetCommands(User p_user)
+        [HttpGet]
+        public String GetCommands(int p_user_id)
         {
-            if (!Library.IsValid(p_user))
+            if (!Library.IsValid(p_user_id))
                 return null;
 
             StringBuilder t_commands = new StringBuilder();
-
-            switch (p_user.GetType().Name)
+            /*
+            switch (1)
             {
                 case "Librarian":
                     t_commands.Append("Action :");
@@ -137,6 +137,7 @@ namespace LibraryManager.Controllers
 
             t_commands.Append("[5] : Disconnect");
             t_commands.Append(Environment.NewLine);
+             * */
 
             return t_commands.ToString();
         }

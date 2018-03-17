@@ -5,110 +5,49 @@
     using System.Linq;
     using System.Web;
     using System.Text;
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+    using System.Globalization;
+    using System.Linq;
+    using System.Web;
+    using System.Web.Mvc;
+    using System.Web.Security;
 
     public class Book
     {
-        private String a_title;
+        [Required]
+        [DisplayName("Title")]
+        public string Title { get; set; }
 
-        private String a_author;
+        [Required]
+        [DisplayName("Author")]
+        public string Author { get; set; }
 
-        private int a_isbn;
+        [Required]
+        [DisplayName("ISBN")]
+        public int ISBN { get; set; }
 
-        private int a_stock;
+        [Required]
+        [DisplayName("Stock")]
+        public int Stock { get; set; }
 
-        private String a_editor;
+        [Required]
+        [DisplayName("Editor")]
+        public string Editor { get; set; }
 
         private List<Comment> a_comments;
 
-        public String Title
-        {
-            get
-            {
-                return a_title;
-            }
-            set
-            {
-              a_title = value;
-            }
-        }
-
-        public String Author
-        {
-            get
-            {
-                return a_author;
-            }
-            set
-            {
-                a_author = value;
-            }
-        }
-
-        public int ISBN
-        {
-            get
-            {
-                return a_isbn;
-            }
-            set
-            {
-                a_isbn = value;
-            }
-        }
-
-        public int Stock
-        {
-            get
-            {
-                return a_stock;
-            }
-            set
-            {
-                a_stock = value;
-            }
-        }
-
-        public String Editor
-        {
-            get
-            {
-                return a_editor;
-            }
-            set
-            {
-                a_editor = value;
-            }
-        }
-
-        public List<Comment> Comments
-        {
-            get
-            {
-                return a_comments;
-            }
-            set
-            {
-                a_comments = value;
-            }
-        }
-
-        public Book()
-        {
-        }
-
         public Book(String p_title, String p_author, int p_isbn, int p_stock, String p_editor)
         {
-            a_title = p_title;
+            Title = p_title;
 
-            a_author = p_author;
+            Author = p_author;
 
-            a_isbn = p_isbn;
+            ISBN = p_isbn;
 
-            a_stock = p_stock;
+            Stock = p_stock;
 
-            a_editor = p_editor;
-
-            a_comments = new List<Comment>();
+            Editor = p_editor;
         }
 
         public void Comment(User p_User, String p_comment)
@@ -123,11 +62,11 @@
 
             Book t_book = p_book as Book;
 
-            return a_title.Equals(t_book.a_title) &&
-                a_author.Equals(t_book.a_author) &&
-                a_isbn == t_book.a_isbn &&
+            return Title.Equals(t_book.Title) &&
+                Author.Equals(t_book.Author) &&
+                ISBN == t_book.ISBN &&
                 //a_stock = t_book.a_stock &&
-                a_editor.Equals(t_book.a_editor);
+                Editor.Equals(t_book.Editor);
         }
 
         public override String ToString()
@@ -135,25 +74,26 @@
             StringBuilder r_to_string = new StringBuilder();
 
             r_to_string.Append("Title    : ");
-            r_to_string.Append(a_title);
+            r_to_string.Append(Title);
             r_to_string.Append(Environment.NewLine);
 
             r_to_string.Append("Author   : ");
-            r_to_string.Append(a_author);
+            r_to_string.Append(Author);
             r_to_string.Append(Environment.NewLine);
 
             r_to_string.Append("ISBN     : ");
-            r_to_string.Append(a_isbn);
+            r_to_string.Append(ISBN);
             r_to_string.Append(Environment.NewLine);
 
             r_to_string.Append("Stock    : ");
-            r_to_string.Append(a_stock);
+            r_to_string.Append(Stock);
             r_to_string.Append(Environment.NewLine);
 
             r_to_string.Append("Editor   : ");
-            r_to_string.Append(a_editor);
+            r_to_string.Append(Editor);
             r_to_string.Append(Environment.NewLine);
 
+            /*
             r_to_string.Append("Comments (");
             r_to_string.Append(a_comments.Count);
             r_to_string.Append(")");
@@ -164,6 +104,7 @@
                 r_to_string.Append(t_comment.ToString());
                 r_to_string.Append(Environment.NewLine);
             }
+             * */
 
             return r_to_string.ToString();
         }

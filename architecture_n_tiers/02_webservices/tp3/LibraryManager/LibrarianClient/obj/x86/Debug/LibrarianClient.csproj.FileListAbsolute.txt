@@ -3,3 +3,8 @@ c:\users\harkame\documents\visual studio 2010\Projects\LibraryManager\LibrarianC
 c:\users\harkame\documents\visual studio 2010\Projects\LibraryManager\LibrarianClient\obj\x86\Debug\LibrarianClient.exe
 c:\users\harkame\documents\visual studio 2010\Projects\LibraryManager\LibrarianClient\obj\x86\Debug\LibrarianClient.pdb
 C:\Users\Harkame\Documents\Visual Studio 2010\Projects\LibraryManager\LibrarianClient\obj\x86\Debug\LibrarianClient.csprojResolveAssemblyReference.cache
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\LibrarianClient\bin\Debug\LibrarianClient.exe
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\LibrarianClient\bin\Debug\LibrarianClient.pdb
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\LibrarianClient\obj\x86\Debug\LibrarianClient.csprojResolveAssemblyReference.cache
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\LibrarianClient\obj\x86\Debug\LibrarianClient.exe
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\LibrarianClient\obj\x86\Debug\LibrarianClient.pdb

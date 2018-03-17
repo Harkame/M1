@@ -3,3 +3,8 @@ c:\users\harkame\documents\visual studio 2010\Projects\LibraryManager\LibraryMan
 c:\users\harkame\documents\visual studio 2010\Projects\LibraryManager\LibraryManager\bin\LibraryManager.pdb
 c:\users\harkame\documents\visual studio 2010\Projects\LibraryManager\LibraryManager\obj\Debug\LibraryManager.dll
 c:\users\harkame\documents\visual studio 2010\Projects\LibraryManager\LibraryManager\obj\Debug\LibraryManager.pdb
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\LibraryManager\bin\LibraryManager.dll
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\LibraryManager\bin\LibraryManager.pdb
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\LibraryManager\obj\Debug\LibraryManager.csprojResolveAssemblyReference.cache
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\LibraryManager\obj\Debug\LibraryManager.dll
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\LibraryManager\obj\Debug\LibraryManager.pdb

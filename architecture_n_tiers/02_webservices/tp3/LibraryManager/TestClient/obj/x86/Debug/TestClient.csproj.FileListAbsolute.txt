@@ -2,3 +2,7 @@ c:\users\harkame\documents\visual studio 2010\Projects\LibraryManager\TestClient
 c:\users\harkame\documents\visual studio 2010\Projects\LibraryManager\TestClient\bin\Debug\TestClient.pdb
 c:\users\harkame\documents\visual studio 2010\Projects\LibraryManager\TestClient\obj\x86\Debug\TestClient.exe
 c:\users\harkame\documents\visual studio 2010\Projects\LibraryManager\TestClient\obj\x86\Debug\TestClient.pdb
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\TestClient\bin\Debug\TestClient.exe
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\TestClient\bin\Debug\TestClient.pdb
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\TestClient\obj\x86\Debug\TestClient.exe
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\TestClient\obj\x86\Debug\TestClient.pdb

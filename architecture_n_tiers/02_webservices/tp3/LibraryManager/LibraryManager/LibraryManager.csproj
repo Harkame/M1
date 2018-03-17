@@ -74,9 +74,6 @@
     <Compile Include="Models\library\Book.cs" />
     <Compile Include="Models\library\Comment.cs" />
     <Compile Include="Models\library\Library.cs" />
-    <Compile Include="Models\Service.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Models\user\Librarian.cs" />
     <Compile Include="Models\user\Subscriber.cs" />
     <Compile Include="Models\user\User.cs" />
