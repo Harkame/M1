@@ -53,6 +53,9 @@
             Subscribers.Add(new Subscriber("yolo"));
             Subscribers.Add(new Subscriber("test"));
             Subscribers.Add(new Subscriber("password"));
+
+            Connections.Add(Librarians[0]);
+            Connections.Add(Subscribers[0]);
         }
 
         public static bool IsValid(int p_user_id)
