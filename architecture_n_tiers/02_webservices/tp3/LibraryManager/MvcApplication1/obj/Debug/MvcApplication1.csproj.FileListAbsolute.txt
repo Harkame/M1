@@ -1,5 +1,0 @@
-D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\MvcApplication1\bin\MvcApplication1.dll
-D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\MvcApplication1\bin\MvcApplication1.pdb
-D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\MvcApplication1\obj\Debug\MvcApplication1.csprojResolveAssemblyReference.cache
-D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\MvcApplication1\obj\Debug\MvcApplication1.dll
-D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\MvcApplication1\obj\Debug\MvcApplication1.pdb

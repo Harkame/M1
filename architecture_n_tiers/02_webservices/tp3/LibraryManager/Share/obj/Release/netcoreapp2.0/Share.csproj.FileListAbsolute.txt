@@ -1,0 +1,10 @@
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\Share\bin\Release\netcoreapp2.0\Share.deps.json
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\Share\bin\Release\netcoreapp2.0\Share.runtimeconfig.json
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\Share\bin\Release\netcoreapp2.0\Share.runtimeconfig.dev.json
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\Share\bin\Release\netcoreapp2.0\Share.dll
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\Share\bin\Release\netcoreapp2.0\Share.pdb
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\Share\obj\Release\netcoreapp2.0\Share.csproj.CoreCompileInputs.cache
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\Share\obj\Release\netcoreapp2.0\Share.AssemblyInfoInputs.cache
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\Share\obj\Release\netcoreapp2.0\Share.AssemblyInfo.cs
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\Share\obj\Release\netcoreapp2.0\Share.dll
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\Share\obj\Release\netcoreapp2.0\Share.pdb

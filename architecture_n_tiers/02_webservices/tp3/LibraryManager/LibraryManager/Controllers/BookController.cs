@@ -2,19 +2,9 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Diagnostics.CodeAnalysis;
-    using System.Linq;
-    using System.Security.Principal;
-    using System.Web;
-    using System.Web.Mvc;
-    using System.Web.Routing;
-    using System.Web.Security;
-    using LibraryManager.Models;
+    using Microsoft.AspNetCore.Mvc;
     using System.Text;
-    using System.IO;
-    using System.Runtime.Serialization;
 
-    [HandleError]
     public class BookController : Controller
     {
         /// <summary>
@@ -22,13 +12,14 @@
         /// </summary>
         /// <returns>Return an array of Book, all of the List of books in the Library</returns>
         [HttpGet]
-        public IEnumerable<Book> GetBooks()
+        public String GetBooks()
         {
-            return new Book[]
-            {
-                new Book("book1", "author1", 0, 1, "editor1"),
-                new Book("book2", "author21", 0, 2, "editor1")
-            };
+            StringBuilder r_books = new StringBuilder();
+
+            foreach(Book t_book in Library.Books)
+                r_books.Append(t_book.ToString());
+
+            return r_books.ToString();
         }
 
         /// <summary>
@@ -38,12 +29,12 @@
         /// <param name="p_isbn">ISBN of the searched book</param>
         /// <returns>An book with ISBN p_isbn</returns>
         [HttpGet]
-        public Book SearchBookByISBN(int p_user_id, int p_isbn)
+        public String SearchBookByISBN(int p_user_id, int p_isbn)
         {
             if (Library.IsValid(p_user_id))
                 foreach (Book t_book in Library.Books)
                     if (t_book.ISBN == p_isbn)
-                        return t_book;
+                        return t_book.ToString();
 
             return null;
         }
@@ -55,7 +46,7 @@
         /// <param name="p_author">Author of the searched books</param>
         /// <returns>An array of book writted by p_author</returns>
         [HttpGet]
-        public Book[] SearchBooksByAuthor(int p_user_id, String p_author)
+        public String SearchBooksByAuthor(int p_user_id, String p_author)
         {
             if (Library.IsValid(p_user_id))
             {
@@ -65,7 +56,12 @@
                     if (t_book.Author.Equals(p_author))
                         t_books.Add(t_book);
 
-                return t_books.ToArray();
+                StringBuilder r_books = new StringBuilder();
+
+                foreach (Book t_book in t_books)
+                    r_books.Append(t_book.ToString());
+
+                return r_books.ToString();
             }
             else
                 return null;
