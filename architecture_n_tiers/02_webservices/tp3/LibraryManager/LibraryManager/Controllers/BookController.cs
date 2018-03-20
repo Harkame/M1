@@ -97,16 +97,13 @@
         [HttpPost]
         public bool AddBook(int p_librarian_id, String p_title, String p_author, int p_isbn, int p_stock, String p_editor)
         {
-            /*
-            if (Library.IsValid(p_librarian_id) && (p_librarian.GetType().Name.Equals("Librarian")))
+            if (Library.IsValidLibrarian(p_librarian_id))
             {
                 Library.Books.Add(new Book(p_title, p_author, p_isbn, p_stock, p_editor));
                 return true;
             }
             else
-             * */
-
-            return false;
+             return false;
         }
 
         /// <summary>
@@ -118,19 +115,17 @@
         /// <param name="p_description">The description of the comment</param>
         /// <returns>True if the book was commented, else return false (unauthorised, book not found)</returns>
         [HttpPost]
-        public bool CommentBook(User p_subscriber, int p_isbn, String p_description)
+        public bool CommentBook(int p_subscriber_id, int p_isbn, String p_description)
         {
-            /*
-            if (!Library.IsValid(p_subscriber) || (p_description == null) || (!p_subscriber.GetType().Name.Equals("Subscriber")))
+            if (!Library.IsValidSubscriber(p_subscriber_id) || (p_description == null))
                 return false;
 
             for (int t_index = 0; t_index < Library.Books.Count; t_index++)
                 if (Library.Books[t_index].ISBN == p_isbn)
                 {
-                    Library.Books[t_index].Comment(p_subscriber, p_description);
+                    Library.Books[t_index].Comment(p_subscriber_id, p_description);
                     return true;
                 }
-            */
             return false;
         }
     }

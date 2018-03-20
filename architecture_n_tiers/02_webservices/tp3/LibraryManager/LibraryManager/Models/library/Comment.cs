@@ -7,19 +7,19 @@
 
     public class Comment
     {
-        public User a_User;
+        private int a_user_id;
 
-        public String a_description;
+        private String a_description;
 
-        public User User
+        public int UserID
         {
             get
             {
-                return a_User;
+                return a_user_id;
             }
             set
             {
-                a_User = value;
+                a_user_id = value;
             }
         }
 
@@ -39,9 +39,9 @@
         {
         }
 
-        public Comment(User p_User, String p_description)
+        public Comment(int p_user_id, String p_description)
 	    {
-            a_User = p_User;
+            a_user_id = p_user_id;
 
             a_description = p_description;
 	    }
@@ -50,7 +50,7 @@
         {
             StringBuilder r_to_string = new StringBuilder();
 
-            r_to_string.Append(a_User.ID);
+            r_to_string.Append(UserID);
             r_to_string.Append(" - ");
             r_to_string.Append(a_description);
 

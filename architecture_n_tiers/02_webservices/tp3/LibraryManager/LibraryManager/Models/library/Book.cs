@@ -43,9 +43,9 @@
             Editor = p_editor;
         }
 
-        public void Comment(User p_User, String p_comment)
+        public void Comment(int p_user_id, String p_comment)
         {
-            a_comments.Add(new Comment(p_User, p_comment));
+            a_comments.Add(new Comment(p_user_id, p_comment));
         }
 
         public override bool Equals(object p_book)

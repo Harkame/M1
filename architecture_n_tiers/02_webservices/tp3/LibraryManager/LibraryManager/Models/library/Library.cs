@@ -59,5 +59,23 @@
 
             return false;
         }
+
+        public static bool IsValidLibrarian(int p_librarian_id)
+        {
+            foreach (User t_user in Connections)
+                if (t_user.ID == p_librarian_id && t_user.GetType().Name.Equals("Librarian"))
+                    return true;
+
+            return false;
+        }
+
+        public static bool IsValidSubscriber(int p_subscriber_id)
+        {
+            foreach (User t_user in Connections)
+                if (t_user.ID == p_subscriber_id && t_user.GetType().Name.Equals("Subscriber"))
+                    return true;
+
+            return false;
+        }
     }
 }

@@ -42,8 +42,14 @@
         [HttpPost]
         public void Disconnect(int p_user_id)
         {
-           // if (Library.IsValid(p_user_id))
-                //Library.Connections.Remove(p_user_id);
+            if (Library.IsValid(p_user_id))
+                foreach(User t_user in Library.Connections)
+                    if(t_user.ID == p_user_id)
+                    {
+                        Library.Connections.Remove(t_user);
+                        return;
+                    }
+                
         }
 
         /// <summary>
@@ -58,39 +64,36 @@
                 return null;
 
             StringBuilder t_commands = new StringBuilder();
-            /*
-            switch (1)
-            {
-                case "Librarian":
-                    t_commands.Append("Action :");
-                    t_commands.Append(Environment.NewLine);
-                    t_commands.Append("[1] : Show books");
-                    t_commands.Append(Environment.NewLine);
-                    t_commands.Append("[2] : Search book by ISBN");
-                    t_commands.Append(Environment.NewLine);
-                    t_commands.Append("[3] : Search book by Author");
-                    t_commands.Append(Environment.NewLine);
-                    t_commands.Append("[4] : Add book");
-                    t_commands.Append(Environment.NewLine);
-                    break;
 
-                case "Subscriber":
-                    t_commands.Append("Action :");
-                    t_commands.Append(Environment.NewLine);
-                    t_commands.Append("[1] : Show books");
-                    t_commands.Append(Environment.NewLine);
-                    t_commands.Append("[2] : Search book by ISBN");
-                    t_commands.Append(Environment.NewLine);
-                    t_commands.Append("[3] : Search book by Author");
-                    t_commands.Append(Environment.NewLine);
-                    t_commands.Append("[4] : Comment book");
-                    t_commands.Append(Environment.NewLine);
-                    break;
+            if (Library.IsValidLibrarian(p_user_id))
+            {
+                t_commands.Append("Action :");
+                t_commands.Append(Environment.NewLine);
+                t_commands.Append("[1] : Show books");
+                t_commands.Append(Environment.NewLine);
+                t_commands.Append("[2] : Search book by ISBN");
+                t_commands.Append(Environment.NewLine);
+                t_commands.Append("[3] : Search book by Author");
+                t_commands.Append(Environment.NewLine);
+                t_commands.Append("[4] : Add book");
+                t_commands.Append(Environment.NewLine);
+            }
+            else if (Library.IsValidSubscriber(p_user_id))
+            {
+                t_commands.Append("Action :");
+                t_commands.Append(Environment.NewLine);
+                t_commands.Append("[1] : Show books");
+                t_commands.Append(Environment.NewLine);
+                t_commands.Append("[2] : Search book by ISBN");
+                t_commands.Append(Environment.NewLine);
+                t_commands.Append("[3] : Search book by Author");
+                t_commands.Append(Environment.NewLine);
+                t_commands.Append("[4] : Comment book");
+                t_commands.Append(Environment.NewLine);
             }
 
             t_commands.Append("[5] : Disconnect");
             t_commands.Append(Environment.NewLine);
-             * */
 
             return t_commands.ToString();
         }

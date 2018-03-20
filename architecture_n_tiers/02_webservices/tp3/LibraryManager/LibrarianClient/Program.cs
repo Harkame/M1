@@ -21,6 +21,7 @@
 
             bool t_authentificated = false;
 
+            UriBuilder t_uri_builder;
             while (!t_authentificated)
             {
                 Console.Write("ID : ");
@@ -31,21 +32,16 @@
 
                 String t_password = Console.ReadLine();
 
-                UriBuilder t_uri_builder = new UriBuilder("http://localhost:49416/User/Authentificate");
-                //t_uri_builder.Query = "p_id=" + t_id + "&p_password=" + t_password;
+                t_uri_builder = new UriBuilder("http://localhost:49416/User/Authentificate");
 
                 Dictionary<String, String> t_parameters = new Dictionary<String, String>
                 {
                     { "p_user_id", g_id + ""},
                     { "p_password", t_password}
                 };
-                
-                PostRequest(t_uri_builder.Uri, new FormUrlEncodedContent(t_parameters));
 
-                t_authentificated = Convert.ToBoolean(g_response);
+                t_authentificated = Convert.ToBoolean(PostRequest(t_uri_builder.Uri, new FormUrlEncodedContent(t_parameters)).Result);
             }
-
-
 
             Console.WriteLine("");
 
@@ -53,6 +49,12 @@
 
             Console.WriteLine("");
 
+            t_uri_builder = new UriBuilder("http://localhost:49416/User/GetCommands");
+            t_uri_builder.Query = "p_user_id=" + g_id;
+
+            String t_actions = GetRequest(t_uri_builder.Uri).Result;
+
+            /*
 
 
             /*
@@ -65,9 +67,9 @@
             String t_author;
             String t_title;
 
-
             while (true)
             {
+                Console.WriteLine(t_actions);
 
                 Console.Write("Action : ");
 
@@ -78,17 +80,19 @@
                 switch (t_action)
                 {
                     case 1:
-                        UriBuilder t_uri_builder = new UriBuilder("http://localhost:49416/User/Authentificate");
+                        t_uri_builder = new UriBuilder("http://localhost:49416/Book/GetBooks");
                         t_uri_builder.Query = "p_user_id=" + g_id;
-                        GetRequest(t_uri_builder.Uri);
+                        Console.WriteLine(GetRequest(t_uri_builder.Uri).Result);
                         break;
-                   /*
+                   
                     case 2:
                         Console.Write("ISBN : ");
 
                         t_isbn = Convert.ToInt32(Console.ReadLine());
 
-                        Console.WriteLine(a_proxy.GetBookDescription(t_librarian, t_isbn));
+                        t_uri_builder = new UriBuilder("http://localhost:49416/Book/SearchBookByISBN");
+                        t_uri_builder.Query = "p_user_id=" + g_id + "&p_isbn=" + t_isbn;
+                        Console.WriteLine(GetRequest(t_uri_builder.Uri).Result);
 
                         break;
 
@@ -99,15 +103,12 @@
 
                         Console.WriteLine("");
 
-                        t_books = a_proxy.SearchBooksByAuthor(t_librarian, t_author);
-
-                        Console.WriteLine("[" + t_books.Length + "]");
-
-                        foreach (Book t_book_iterator in t_books)
-                            Console.WriteLine(a_proxy.GetBookDescription(t_librarian, t_book_iterator.ISBN));
+                        t_uri_builder = new UriBuilder("http://localhost:49416/Book/SearchBooksByAuthor");
+                        t_uri_builder.Query = "p_user_id=" + g_id + "&p_author=" + t_author;
+                        Console.WriteLine(GetRequest(t_uri_builder.Uri).Result);
 
                         break;
-
+                        
                     case 4:
                         Console.Write("Title : ");
 
@@ -131,12 +132,21 @@
 
                         Console.WriteLine("");
 
-                        if (a_proxy.AddBook(t_librarian, t_title, t_author, t_isbn, t_stock, t_editor))
-                            Console.WriteLine("Book added");
-                        else
-                            Console.WriteLine("Fail to add book");
+                        t_uri_builder = new UriBuilder("http://localhost:49416/Book/AddBook");
+
+                        Dictionary<String, String> t_parameters = new Dictionary<String, String>
+                        {
+                            {"p_librarian_id", g_id + ""},
+                            {"p_title", t_title},
+                            {"p_author", t_author},
+                            {"p_isbn", t_isbn + ""},
+                            {"p_stock", t_stock + ""},
+                            {"p_editor", t_editor }
+                        };
+
+                        Console.WriteLine(Convert.ToBoolean(PostRequest(t_uri_builder.Uri, new FormUrlEncodedContent(t_parameters)).Result));
                         break;
-                        */
+
                     case 5:
                         goto end_of_loop;
                 }
@@ -145,24 +155,29 @@
         end_of_loop: { } //To quit the loop
         }
 
-        async static void GetRequest(Uri p_uri)
+        static String SendRequest(Uri p_uri)
+        {
+            return GetRequest(p_uri).Result;
+        }
+
+        async static Task<String> GetRequest(Uri p_uri)
         {
             using (HttpResponseMessage t_response = await g_client.GetAsync(p_uri))
             {
                 using (HttpContent t_http_content = t_response.Content)
                 {
-                    g_response = await t_http_content.ReadAsStringAsync();
+                    return await t_http_content.ReadAsStringAsync();
                 }
             }
     }
 
-        async static void PostRequest(Uri p_uri, FormUrlEncodedContent p_parameters)
+        async static Task<String> PostRequest(Uri p_uri, FormUrlEncodedContent p_parameters)
         {
             using (HttpResponseMessage t_response = await g_client.PostAsync(p_uri, p_parameters))
             {
                 using (HttpContent t_http_content = t_response.Content)
                 {
-                    g_response = await t_http_content.ReadAsStringAsync();
+                    return await t_http_content.ReadAsStringAsync();
                 }
             }
         }
