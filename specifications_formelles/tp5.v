@@ -49,9 +49,23 @@ Defined.
 Recursive Extraction fact.
 
 Inductive is_map (f : nat -> nat) : (list nat) -> (list nat) -> Prop :=
-  | list_nil : is_map f nil nil
-  | list_rec : forall (l1 l2 : list nat) (a : nat),
+  | is_map_nil : is_map f nil nil
+  | is_map_rec : forall (l1 l2 : list nat) (a : nat),
                 is_map f l1 l2 ->
                 is_map f(a::l1) ((f a) :: l2).
 
-Lemma map (f : nat -> nat) : forall (l : list nat) (a : nat), {l1 : list nat | is_map f l l1}.
+Lemma map : forall (f : nat -> nat) (l : list nat) (a : nat), {l1 : list nat | is_map f l l1}.
+induction l.
+intros.
+exists nil.
+apply is_map_nil.
+intros.
+elim IHl.
+intros.
+exists ((f a)::x).
+apply is_map_rec.
+apply p.
+assumption.
+Defined.
+
+Recursive Extraction map.
