@@ -11,7 +11,6 @@
     class Program
     {
         private static readonly HttpClient g_client = new HttpClient();
-        private static String g_response;
         private static int g_id;
 
         static void Main(string[] args)
@@ -84,7 +83,7 @@
                         t_uri_builder.Query = "p_user_id=" + g_id;
                         Console.WriteLine(GetRequest(t_uri_builder.Uri).Result);
                         break;
-                   
+
                     case 2:
                         Console.Write("ISBN : ");
 
@@ -108,7 +107,7 @@
                         Console.WriteLine(GetRequest(t_uri_builder.Uri).Result);
 
                         break;
-                        
+
                     case 4:
                         Console.Write("Title : ");
 

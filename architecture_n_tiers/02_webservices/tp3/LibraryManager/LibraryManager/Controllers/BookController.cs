@@ -109,7 +109,7 @@
         /// <summary>
         /// Add an commented on the designated Book (Only Subscriber can comment a Book, necessary to be connected)
         /// </summary>
-        /// 
+        ///
         /// <param name="p_subscriber">The subscriber who comment the Book</param>
         /// <param name="p_isbn">The isbn of the book to comment</param>
         /// <param name="p_description">The description of the comment</param>
