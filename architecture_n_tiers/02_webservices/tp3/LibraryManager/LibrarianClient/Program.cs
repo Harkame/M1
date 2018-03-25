@@ -119,10 +119,6 @@
 
                         t_author = Console.ReadLine();
 
-                        Console.Write("ISBN : ");
-
-                        t_isbn = Convert.ToInt32(Console.ReadLine());
-
                         Console.Write("Stock : ");
 
                         int t_stock = Convert.ToInt32(Console.ReadLine());
@@ -140,7 +136,6 @@
                             {"p_librarian_id", g_id + ""},
                             {"p_title", t_title},
                             {"p_author", t_author},
-                            {"p_isbn", t_isbn + ""},
                             {"p_stock", t_stock + ""},
                             {"p_editor", t_editor }
                         };

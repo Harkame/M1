@@ -35,7 +35,6 @@ namespace TestClient
                 {"p_librarian_id", "0"},
                 {"p_title", "newBook"},
                 {"p_author", "author12"},
-                {"p_isbn", "89"},
                 {"p_stock", "27"},
                 {"p_editor", "editor12"}
             };
@@ -62,7 +61,6 @@ namespace TestClient
                 {"p_librarian_id", "0"},
                 {"p_title", "newBook"},
                 {"p_author", "author12"},
-                {"p_isbn", "89"},
                 {"p_stock", "27"},
                 {"p_editor", "editor12"}
             };
@@ -130,7 +128,6 @@ namespace TestClient
                 {"p_librarian_id", "2"},
                 {"p_title", "newBook"},
                 {"p_author", "author12"},
-                {"p_isbn", "89"},
                 {"p_stock", "27"},
                 {"p_editor", "editor12"}
             };

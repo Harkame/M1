@@ -73,16 +73,15 @@
         /// <param name="p_librarian">Librarian who add the book, check if he is connected</param>
         /// <param name="p_title">Title of the book who are added</param>
         /// <param name="p_author">Author of the book who are added</param>
-        /// <param name="p_isbn">ISBN of the book who are added</param>
         /// <param name="p_stock">Stock of the book who are added</param>
         /// <param name="p_editor">Editor of the book who are added</param>
         /// <returns>True if the book was added, else return false</returns>
         [HttpPost]
-        public bool AddBook(int p_librarian_id, String p_title, String p_author, int p_isbn, int p_stock, String p_editor)
+        public bool AddBook(int p_librarian_id, String p_title, String p_author, int p_stock, String p_editor)
         {
             if (Library.IsValidLibrarian(p_librarian_id))
             {
-                Library.Books.Add(new Book(p_title, p_author, p_isbn, p_stock, p_editor));
+                Library.Books.Add(new Book(p_title, p_author, p_stock, p_editor));
                 return true;
             }
             else

@@ -32,11 +32,11 @@
 
             Connections = new List<User>();
 
-            Books.Add(new Book("book1", "author1", 0, 1, "editor1"));
-            Books.Add(new Book("book2", "author1", 1, 10, "editor1"));
-            Books.Add(new Book("book3", "author2", 2, 5, "editor2"));
-            Books.Add(new Book("book4", "author3", 3, 9, "editor3"));
-            Books.Add(new Book("book5", "author4", 4, 0, "editor2"));
+            Books.Add(new Book("book1", "author1", 1, "editor1"));
+            Books.Add(new Book("book2", "author1", 10, "editor1"));
+            Books.Add(new Book("book3", "author2", 5, "editor2"));
+            Books.Add(new Book("book4", "author3", 9, "editor3"));
+            Books.Add(new Book("book5", "author4", 0, "editor2"));
 
             Librarians.Add(new Librarian("123"));
             Librarians.Add(new Librarian("toto"));

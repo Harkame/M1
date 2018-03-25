@@ -8,6 +8,8 @@
 
     public class Book
     {
+        private static int g_isbn = 0;
+
         [Required]
         [DisplayName("Title")]
         public string Title { get; set; }
@@ -32,13 +34,13 @@
         [DisplayName("Comments")]
         private Dictionary<int, String> Comments;
 
-        public Book(String p_title, String p_author, int p_isbn, int p_stock, String p_editor)
+        public Book(String p_title, String p_author, int p_stock, String p_editor)
         {
             Title = p_title;
 
             Author = p_author;
 
-            ISBN = p_isbn;
+            ISBN = g_isbn++;
 
             Stock = p_stock;
 

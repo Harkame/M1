@@ -2,41 +2,21 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Web;
     using System.Text;
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
 
     public abstract class User
     {
         private static int g_id = 0;
 
-        private int a_id;
+        [Required]
+        [DisplayName("ID")]
+        public int ID { get; set; }
 
-        private String a_password;
-
-        public int ID
-        {
-            get
-            {
-                return a_id;
-            }
-            set
-            {
-                a_id = value;
-            }
-        }
-
-        public String Password
-        {
-            get
-            {
-                return a_password;
-            }
-            set
-            {
-                a_password = value;
-            }
-        }
+        [Required]
+        [DisplayName("Password")]
+        public string Password { get; set; }
 
         public User()
         {
@@ -44,9 +24,9 @@
 
         public User(String p_password)
         {
-            a_id = g_id++;
+            ID = g_id++;
 
-            a_password = p_password;
+            Password = p_password;
         }
 
         public override bool Equals(object p_subscriber)
