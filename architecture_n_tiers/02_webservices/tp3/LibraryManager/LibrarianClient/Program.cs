@@ -1,26 +1,31 @@
 ﻿namespace LibrarianClient
 {
-    using Newtonsoft.Json;
     using System;
-    using System.IO;
-    using System.Net;
     using System.Collections.Generic;
     using System.Net.Http;
     using System.Threading.Tasks;
 
+    /*
+     * Because of problems with parsing from JSON to class (Like Book with an attribute Dictionary), all results of HTTP Request are simply String
+     */
+
     class Program
     {
-        private static readonly HttpClient g_client = new HttpClient();
-        private static int g_id;
+        private static readonly HttpClient g_client = new HttpClient(); //HTTP client who are used to send HTTP request
+        private static int g_id; //ID of the current User
 
         static void Main(string[] args)
         {
 
             Console.WriteLine("[Librarian client]");
 
-            bool t_authentificated = false;
+            /*
+            * Tempory variables who can be necessary in differend case
+            */
+            bool t_authentificated = false; //Use for the authentification
+            UriBuilder t_uri_builder; //Build of HTTP request's URI
+            Dictionary<String, String> t_parameters; //Parameters of HTTP Post request
 
-            UriBuilder t_uri_builder;
             while (!t_authentificated)
             {
                 Console.Write("ID : ");
@@ -33,7 +38,7 @@
 
                 t_uri_builder = new UriBuilder("http://localhost:49416/User/Authentificate");
 
-                Dictionary<String, String> t_parameters = new Dictionary<String, String>
+                t_parameters = new Dictionary<String, String>
                 {
                     { "p_user_id", g_id + ""},
                     { "p_password", t_password}
@@ -48,23 +53,20 @@
 
             Console.WriteLine("");
 
+            /*
+             * Get the authorised actions, according to king of User (Librarian or Subscriber)
+             */
             t_uri_builder = new UriBuilder("http://localhost:49416/User/GetCommands");
             t_uri_builder.Query = "p_user_id=" + g_id;
-
             String t_actions = GetRequest(t_uri_builder.Uri).Result;
 
             /*
-
-
-            /*
-             * All the tempory variables who can be necessary
+             * Tempory variables who can be necessary in differend case
              */
             int t_isbn;
-            int t_stock;
-
-            String t_editor;
+            
             String t_author;
-            String t_title;
+
 
             while (true)
             {
@@ -78,13 +80,13 @@
 
                 switch (t_action)
                 {
-                    case 1:
+                    case 1: //Get all books
                         t_uri_builder = new UriBuilder("http://localhost:49416/Book/GetBooks");
                         t_uri_builder.Query = "p_user_id=" + g_id;
                         Console.WriteLine(GetRequest(t_uri_builder.Uri).Result);
                         break;
 
-                    case 2:
+                    case 2: //Search book by ISBN
                         Console.Write("ISBN : ");
 
                         t_isbn = Convert.ToInt32(Console.ReadLine());
@@ -95,7 +97,7 @@
 
                         break;
 
-                    case 3:
+                    case 3: //Search books by author
                         Console.Write("Author : ");
 
                         t_author = Console.ReadLine();
@@ -108,10 +110,10 @@
 
                         break;
 
-                    case 4:
+                    case 4: //Add an new book (Librarian only)
                         Console.Write("Title : ");
 
-                        t_title = Console.ReadLine();
+                        String t_title = Console.ReadLine();
 
                         Console.Write("Author : ");
 
@@ -123,17 +125,17 @@
 
                         Console.Write("Stock : ");
 
-                        t_stock = Convert.ToInt32(Console.ReadLine());
+                        int t_stock = Convert.ToInt32(Console.ReadLine());
 
                         Console.Write("Editor : ");
 
-                        t_editor = Console.ReadLine();
+                        String t_editor = Console.ReadLine();
 
                         Console.WriteLine("");
 
                         t_uri_builder = new UriBuilder("http://localhost:49416/Book/AddBook");
 
-                        Dictionary<String, String> t_parameters = new Dictionary<String, String>
+                        t_parameters = new Dictionary<String, String>
                         {
                             {"p_librarian_id", g_id + ""},
                             {"p_title", t_title},
@@ -146,12 +148,22 @@
                         Console.WriteLine(Convert.ToBoolean(PostRequest(t_uri_builder.Uri, new FormUrlEncodedContent(t_parameters)).Result));
                         break;
 
-                    case 5:
+                    case 5: //Quit the program
                         goto end_of_loop;
                 }
             }
 
-        end_of_loop: { } //To quit the loop
+            end_of_loop: { } //To quit the loop
+
+            /*
+             * Before exit, we remove the user from connected user
+             */
+            t_uri_builder = new UriBuilder("http://localhost:49416/User/Disconnect");
+            t_parameters = new Dictionary<String, String>
+                {
+                    { "p_user_id", g_id + ""}
+                };
+            Console.WriteLine(PostRequest(t_uri_builder.Uri, new FormUrlEncodedContent(t_parameters)));
         }
 
         static String SendRequest(Uri p_uri)
@@ -159,6 +171,11 @@
             return GetRequest(p_uri).Result;
         }
 
+        /// <summary>
+        /// Method who are used to send HTTP Get request
+        /// </summary>
+        /// <param name="p_uri">The URI address where send the request (Be carrefull, the parameter need to be added directly in the URI)</param>
+        /// <returns>The Result of the request, an String (Can be json)</returns>
         async static Task<String> GetRequest(Uri p_uri)
         {
             using (HttpResponseMessage t_response = await g_client.GetAsync(p_uri))
@@ -168,8 +185,14 @@
                     return await t_http_content.ReadAsStringAsync();
                 }
             }
-    }
+        }
 
+        /// <summary>
+        /// Method who are used to send HTTP Post request
+        /// </summary>
+        /// <param name="p_uri">The URI address where send the request</param>
+        /// <param name="p_parameters">The parameters of the request</param>
+        /// <returns>The Result of the request, an String (Can be json)</returns>
         async static Task<String> PostRequest(Uri p_uri, FormUrlEncodedContent p_parameters)
         {
             using (HttpResponseMessage t_response = await g_client.PostAsync(p_uri, p_parameters))

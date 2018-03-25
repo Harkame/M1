@@ -10,7 +10,7 @@
         /// <summary>
         /// Return all books in the Library
         /// </summary>
-        /// <returns>Return an array of Book, all of the List of books in the Library</returns>
+        /// <returns>An String who represent all books in the Library</returns>
         [HttpGet]
         public String GetBooks()
         {
@@ -27,7 +27,7 @@
         /// </summary>
         /// <param name="p_User">User for check if he is connected (Librarian or Subscriber)</param>
         /// <param name="p_isbn">ISBN of the searched book</param>
-        /// <returns>An book with ISBN p_isbn</returns>
+        /// <returns>An String who describe the book with ISBN p_isbn</returns>
         [HttpGet]
         public String SearchBookByISBN(int p_user_id, int p_isbn)
         {
@@ -44,7 +44,7 @@
         /// </summary>
         /// <param name="p_User">User for check if he is connected (Librarian or Subscriber)</param>
         /// <param name="p_author">Author of the searched books</param>
-        /// <returns>An array of book writted by p_author</returns>
+        /// <returns>An String who describe all books writted by p_author</returns>
         [HttpGet]
         public String SearchBooksByAuthor(int p_user_id, String p_author)
         {
@@ -65,23 +65,6 @@
             }
             else
                 return null;
-        }
-
-        /// <summary>
-        /// Return book description (ToString method)
-        /// </summary>
-        /// <param name="p_user">User to authentificate</param>
-        /// <param name="p_isbn">ISBN of the book</param>
-        /// <returns>An String who describe the book designated by p_isbn</returns>
-        [HttpGet]
-        public String GetBookDescription(int p_user_id, int p_isbn)
-        {
-            if (Library.IsValid(p_user_id))
-                foreach (Book t_book in Library.Books)
-                    if (t_book.ISBN == p_isbn)
-                        return t_book.ToString();
-
-            return null;
         }
 
         /// <summary>

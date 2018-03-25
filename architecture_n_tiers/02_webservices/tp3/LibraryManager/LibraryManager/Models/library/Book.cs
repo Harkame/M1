@@ -28,7 +28,9 @@
         [DisplayName("Editor")]
         public string Editor { get; set; }
 
-        private List<Comment> a_comments;
+        [Required]
+        [DisplayName("Comments")]
+        private Dictionary<int, String> Comments;
 
         public Book(String p_title, String p_author, int p_isbn, int p_stock, String p_editor)
         {
@@ -41,11 +43,13 @@
             Stock = p_stock;
 
             Editor = p_editor;
+
+            Comments = new Dictionary<int, string>();
         }
 
         public void Comment(int p_user_id, String p_comment)
         {
-            a_comments.Add(new Comment(p_user_id, p_comment));
+            Comments.Add(p_user_id, p_comment);
         }
 
         public override bool Equals(object p_book)
@@ -86,18 +90,18 @@
             r_to_string.Append(Editor);
             r_to_string.Append(Environment.NewLine);
 
-            /*
             r_to_string.Append("Comments (");
-            r_to_string.Append(a_comments.Count);
+            r_to_string.Append(Comments.Count);
             r_to_string.Append(")");
             r_to_string.Append(Environment.NewLine);
 
-            foreach (Comment t_comment in a_comments)
+            foreach (KeyValuePair<int, string> t_entry in Comments)
             {
-                r_to_string.Append(t_comment.ToString());
+                r_to_string.Append(t_entry.Key + " - " + t_entry.Value);
                 r_to_string.Append(Environment.NewLine);
             }
-             * */
+
+            r_to_string.Append(Environment.NewLine);
 
             return r_to_string.ToString();
         }

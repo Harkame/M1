@@ -1,8 +1,0 @@
-c:\users\harkame\documents\visual studio 2010\Projects\LibraryManager\SubscriberClient\bin\Debug\SubscriberClient.exe
-c:\users\harkame\documents\visual studio 2010\Projects\LibraryManager\SubscriberClient\bin\Debug\SubscriberClient.pdb
-c:\users\harkame\documents\visual studio 2010\Projects\LibraryManager\SubscriberClient\obj\x86\Debug\SubscriberClient.exe
-c:\users\harkame\documents\visual studio 2010\Projects\LibraryManager\SubscriberClient\obj\x86\Debug\SubscriberClient.pdb
-D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\SubscriberClient\bin\Debug\SubscriberClient.exe
-D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\SubscriberClient\bin\Debug\SubscriberClient.pdb
-D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\SubscriberClient\obj\x86\Debug\SubscriberClient.exe
-D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\SubscriberClient\obj\x86\Debug\SubscriberClient.pdb
