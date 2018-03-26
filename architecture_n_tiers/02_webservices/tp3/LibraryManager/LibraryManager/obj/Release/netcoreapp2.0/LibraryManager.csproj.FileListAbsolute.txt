@@ -9,3 +9,6 @@ D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\LibraryMa
 D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\LibraryManager\obj\Release\netcoreapp2.0\LibraryManager.dll
 D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\LibraryManager\obj\Release\netcoreapp2.0\LibraryManager.pdb
 D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\LibraryManager\obj\Release\netcoreapp2.0\LibraryManager.csprojResolveAssemblyReference.cache
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\LibraryManager\bin\Release\netcoreapp2.0\LibraryDataBase.dll
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\LibraryManager\bin\Release\netcoreapp2.0\LibraryDataBase.pdb
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\LibraryManager\obj\Release\netcoreapp2.0\LibraryManager.csproj.CopyComplete

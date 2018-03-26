@@ -1,4 +1,3 @@
-D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\SubscriberClient\obj\Release\netcoreapp2.0\SubscriberClient.csprojResolveAssemblyReference.cache
 D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\SubscriberClient\obj\Release\netcoreapp2.0\SubscriberClient.csproj.CoreCompileInputs.cache
 D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\SubscriberClient\obj\Release\netcoreapp2.0\SubscriberClient.AssemblyInfoInputs.cache
 D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\SubscriberClient\obj\Release\netcoreapp2.0\SubscriberClient.AssemblyInfo.cs
