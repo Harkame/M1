@@ -1,5 +1,0 @@
-D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\LibraryDataBase\bin\Release\LibraryDataBase.dacpac
-D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\LibraryDataBase\bin\Release\LibraryDataBase.dll
-D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\LibraryDataBase\bin\Release\LibraryDataBase.pdb
-D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\LibraryDataBase\obj\Release\LibraryDataBase.dll
-D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\LibraryDataBase\obj\Release\LibraryDataBase.pdb
