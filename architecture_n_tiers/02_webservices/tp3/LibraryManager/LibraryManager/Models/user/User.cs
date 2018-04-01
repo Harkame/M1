@@ -1,7 +1,6 @@
 ﻿namespace LibraryManager
 {
     using System;
-    using System.Collections.Generic;
     using System.Text;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
@@ -38,6 +37,13 @@
 
             return this.ID == t_User.ID &&
                 this.Password.Equals(t_User.Password);
+        }
+
+        public override int GetHashCode()
+        {
+            // Which is preferred?
+
+            return base.GetHashCode();
         }
 
         public override String ToString()

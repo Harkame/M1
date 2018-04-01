@@ -12,4 +12,14 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\LibraryDataBase\LibraryDataBase.sqlproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Net.Http">
+      <HintPath>C:\Users\Harkame\Desktop\System.Net.Http.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

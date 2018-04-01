@@ -68,6 +68,13 @@
                 Editor.Equals(t_book.Editor);
         }
 
+        public override int GetHashCode()
+        {
+            // Which is preferred?
+
+            return base.GetHashCode();
+        }
+
         public override String ToString()
         {
             StringBuilder r_to_string = new StringBuilder();

@@ -1,0 +1,71 @@
+01/04/2018 01:07:29	Ce journal contient des informations sur l'importation du schéma dans le projet 'LibraryDataBase' sur l'ordinateur 'DESKTOP-D5CNEH6' par l'utilisateur 'Harkame'.
+01/04/2018 01:07:29	L'importation du schéma de base de données a commencé.
+01/04/2018 01:07:32	Collecte des options de la base de données
+01/04/2018 01:07:32	Collecte des utilisateurs
+01/04/2018 01:07:32	Collecte des rôles
+01/04/2018 01:07:32	Collecte des rôles d'application
+01/04/2018 01:07:32	Collecte des appartenances aux rôles
+01/04/2018 01:07:32	Collecte des groupes de fichiers
+01/04/2018 01:07:32	Collecte des catalogues de recherche en texte intégral
+01/04/2018 01:07:32	Collecte des assemblys
+01/04/2018 01:07:32	Collecte des certificats
+01/04/2018 01:07:32	Collecte des clés asymétriques
+01/04/2018 01:07:32	Collecte des clés symétriques
+01/04/2018 01:07:32	Collecte des clés symétriques chiffrées
+01/04/2018 01:07:32	Collecte des schémas
+01/04/2018 01:07:32	Collecte des collections de schémas XML
+01/04/2018 01:07:32	Collecte des types de données définis par l'utilisateur
+01/04/2018 01:07:32	Collecte des types définis par l'utilisateur
+01/04/2018 01:07:32	Collecte des types de tables
+01/04/2018 01:07:32	Collecte des clés uniques des types de tables
+01/04/2018 01:07:32	Collecte des clés primaires pour les types de tables
+01/04/2018 01:07:32	Collecte des contraintes de validation pour les types de tables
+01/04/2018 01:07:32	Collecte des contraintes par défaut pour les types de tables
+01/04/2018 01:07:32	Collecte des fonctions de partition
+01/04/2018 01:07:32	Collecte des schémas de partition
+01/04/2018 01:07:32	Collecte des fonctions
+01/04/2018 01:07:32	Collecte de fonctions cryptées
+01/04/2018 01:07:32	Collecte des agrégats
+01/04/2018 01:07:32	Collecte des procédures
+01/04/2018 01:07:32	Collecte de procédures cryptées
+01/04/2018 01:07:32	Collecte des tables
+01/04/2018 01:07:32	Collecte des clés primaires
+01/04/2018 01:07:32	Collecte des contraintes uniques
+01/04/2018 01:07:32	Collecte des clés étrangères
+01/04/2018 01:07:32	Collecte des contraintes par défaut
+01/04/2018 01:07:32	Collecte des contraintes de validation
+01/04/2018 01:07:32	Collecte des vues
+01/04/2018 01:07:32	Collecte de vues cryptées
+01/04/2018 01:07:32	Collecte des index
+01/04/2018 01:07:32	Collecte des statistiques
+01/04/2018 01:07:32	Collecte des listes de mots vides d'index de recherche en texte intégral
+01/04/2018 01:07:32	Collecte des index de recherche en texte intégral
+01/04/2018 01:07:32	Collecte des index spatiaux
+01/04/2018 01:07:32	Collecte des index XML
+01/04/2018 01:07:32	Collecte de déclencheurs cryptés
+01/04/2018 01:07:32	Collecte des déclencheurs
+01/04/2018 01:07:32	Collecte des déclencheurs chiffrés et DDL CLR
+01/04/2018 01:07:32	Collecte des DDL triggers
+01/04/2018 01:07:32	Collecte des synonymes
+01/04/2018 01:07:32	Collecte des valeurs par défaut
+01/04/2018 01:07:32	Collecte des liaisons UDDT de contrainte de données
+01/04/2018 01:07:32	Collecte des règles
+01/04/2018 01:07:32	Collecte des liaisons UDDT de contrainte de données
+01/04/2018 01:07:32	Collecte des types de messages
+01/04/2018 01:07:32	Collecte des files d'attente
+01/04/2018 01:07:32	Collecte des contrats
+01/04/2018 01:07:32	Collecte des services
+01/04/2018 01:07:32	Collecte des notifications d'événements
+01/04/2018 01:07:32	Collecte des liaisons de service distant
+01/04/2018 01:07:32	Collecte des priorités de Service Broker
+01/04/2018 01:07:32	Collecte des signatures
+01/04/2018 01:07:32	Collection des options de compression de données
+01/04/2018 01:07:32	Collection des propriétés étendues
+01/04/2018 01:07:32	Collecte des informations d'identification
+01/04/2018 01:07:32	Collecte des connexions
+01/04/2018 01:07:32	Collecte des audits du serveur
+01/04/2018 01:07:33	Analyse du projet à la recherche des éléments en double
+01/04/2018 01:07:33	Fin du traitement des éléments en double
+01/04/2018 01:07:33	Importation de la base de données terminée.
+01/04/2018 01:07:33	Un résumé de l'opération d'importation a été enregistré à l'emplacement suivant : D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\LibraryDataBase\Importer les journaux de schémas\LibraryDataBase_20180331110729.log.
+01/04/2018 01:07:33	Cliquez sur Terminer pour continuer...

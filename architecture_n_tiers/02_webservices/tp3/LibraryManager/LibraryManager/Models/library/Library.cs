@@ -49,6 +49,7 @@
                 SqlCommand command = new SqlCommand(queryString, connection);
                 command.Parameters.AddWithValue("@pricePoint", paramValue);
 
+
                 // Open the connection in a try/catch block. 
                 // Create and execute the DataReader, writing the result
                 // set to the console window.

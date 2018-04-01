@@ -3,11 +3,11 @@ D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\Librarian
 D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\LibrarianClient\bin\Release\netcoreapp2.0\LibrarianClient.runtimeconfig.dev.json
 D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\LibrarianClient\bin\Release\netcoreapp2.0\LibrarianClient.dll
 D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\LibrarianClient\bin\Release\netcoreapp2.0\LibrarianClient.pdb
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\LibrarianClient\bin\Release\netcoreapp2.0\Newtonsoft.Json.dll
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\LibrarianClient\bin\Release\netcoreapp2.0\Newtonsoft.Json.xml
 D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\LibrarianClient\obj\Release\netcoreapp2.0\LibrarianClient.csproj.CoreCompileInputs.cache
 D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\LibrarianClient\obj\Release\netcoreapp2.0\LibrarianClient.AssemblyInfoInputs.cache
 D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\LibrarianClient\obj\Release\netcoreapp2.0\LibrarianClient.AssemblyInfo.cs
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\LibrarianClient\obj\Release\netcoreapp2.0\LibrarianClient.csproj.CopyComplete
 D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\LibrarianClient\obj\Release\netcoreapp2.0\LibrarianClient.dll
 D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\LibrarianClient\obj\Release\netcoreapp2.0\LibrarianClient.pdb
-D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\LibrarianClient\bin\Release\netcoreapp2.0\Newtonsoft.Json.dll
-D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\LibrarianClient\bin\Release\netcoreapp2.0\Newtonsoft.Json.xml
-D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager\LibrarianClient\obj\Release\netcoreapp2.0\LibrarianClient.csproj.CopyComplete
