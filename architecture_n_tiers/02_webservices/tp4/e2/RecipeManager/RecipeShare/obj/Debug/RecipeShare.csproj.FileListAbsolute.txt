@@ -1,0 +1,10 @@
+C:\Users\Harkame\source\repos\RecipeManager\RecipeShare\bin\Debug\RecipeShare.dll
+C:\Users\Harkame\source\repos\RecipeManager\RecipeShare\bin\Debug\RecipeShare.pdb
+C:\Users\Harkame\source\repos\RecipeManager\RecipeShare\obj\Debug\RecipeShare.csproj.CoreCompileInputs.cache
+C:\Users\Harkame\source\repos\RecipeManager\RecipeShare\obj\Debug\RecipeShare.dll
+C:\Users\Harkame\source\repos\RecipeManager\RecipeShare\obj\Debug\RecipeShare.pdb
+D:\workspace\WCF_SAVE\RecipeManager\RecipeShare\bin\Debug\RecipeShare.dll
+D:\workspace\WCF_SAVE\RecipeManager\RecipeShare\bin\Debug\RecipeShare.pdb
+D:\workspace\WCF_SAVE\RecipeManager\RecipeShare\obj\Debug\RecipeShare.csproj.CoreCompileInputs.cache
+D:\workspace\WCF_SAVE\RecipeManager\RecipeShare\obj\Debug\RecipeShare.dll
+D:\workspace\WCF_SAVE\RecipeManager\RecipeShare\obj\Debug\RecipeShare.pdb
