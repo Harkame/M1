@@ -8,7 +8,7 @@ namespace RecipeClient
 {
     class Program
     {
-        private static RecipeServiceReference.InterfaceRecipeService g_proxy = new ChannelFactory<RecipeServiceReference.InterfaceRecipeService>("BasicHttpBinding_InterfaceRecipeService").CreateChannel();
+        private static RecipeServiceReference.InterfaceRecipeService g_proxy = new ChannelFactory<RecipeServiceReference.InterfaceRecipeService>("BasicHttpBinding").CreateChannel();
 
         static void Main(string[] args)
         {

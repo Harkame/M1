@@ -24,3 +24,16 @@ D:\workspace\WCF_SAVE\RecipeManager\RecipeClient\bin\Debug\RecipeService.pdb
 D:\workspace\WCF_SAVE\RecipeManager\RecipeClient\bin\Debug\RecipeService.dll.config
 D:\workspace\WCF_SAVE\RecipeManager\RecipeClient\bin\Debug\RecipeShare.pdb
 D:\workspace\WCF_SAVE\RecipeManager\RecipeClient\obj\Debug\RecipeClient.csproj.CopyComplete
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeClient\bin\Debug\RecipeClient.exe.config
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeClient\bin\Debug\RecipeClient.exe
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeClient\bin\Debug\RecipeClient.pdb
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeClient\bin\Debug\RecipeService.dll
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeClient\bin\Debug\RecipeShare.dll
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeClient\bin\Debug\RecipeService.pdb
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeClient\bin\Debug\RecipeService.dll.config
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeClient\bin\Debug\RecipeShare.pdb
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeClient\obj\Debug\RecipeClient.csprojResolveAssemblyReference.cache
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeClient\obj\Debug\RecipeClient.csproj.CoreCompileInputs.cache
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeClient\obj\Debug\RecipeClient.csproj.CopyComplete
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeClient\obj\Debug\RecipeClient.exe
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeClient\obj\Debug\RecipeClient.pdb
