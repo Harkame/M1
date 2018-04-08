@@ -92,6 +92,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Libray\Library.cs" />
     <Compile Include="Controllers\BooksController.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\LibrariansController.cs" />
@@ -100,14 +101,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Book\Book.cs" />
-    <Compile Include="DataBase\BookContext.cs" />
     <Compile Include="Models\Book\Comment.cs" />
-    <Compile Include="DataBase\CommentContext.cs" />
+    <Compile Include="DataBase\LibraryContext.cs" />
     <Compile Include="Models\User\Librarian.cs" />
-    <Compile Include="DataBase\LibrarianContext.cs" />
     <Compile Include="Models\User\Subscriber.cs" />
-    <Compile Include="DataBase\SubscriberContext.cs" />
-    <Compile Include="Models\User\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

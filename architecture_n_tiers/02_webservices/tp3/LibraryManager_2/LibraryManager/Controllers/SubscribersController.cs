@@ -9,24 +9,24 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
+using LibraryManager.Connections;
 using LibraryManager.Models;
-using LibraryManager.Database;
 
 namespace LibraryManager.Controllers
 {
     public class SubscribersController : ApiController
     {
-        private SubscriberContext db = new SubscriberContext();
+        private LibraryContext db = new LibraryContext();
 
-        // GET: api/Subscribers
+        [Route("api/subscribers/GetSubscribers"), HttpGet]
         public IQueryable<Subscriber> GetSubscribers()
         {
             return db.Subscribers;
         }
 
-        // GET: api/Subscribers/5
+        [Route("api/subscribers/GetSubscribersByID/{id}"), HttpGet]
         [ResponseType(typeof(Subscriber))]
-        public async Task<IHttpActionResult> GetSubscriber(int id)
+        public async Task<IHttpActionResult> GetSubscribersByID(int id)
         {
             Subscriber subscriber = await db.Subscribers.FindAsync(id);
             if (subscriber == null)
@@ -37,7 +37,7 @@ namespace LibraryManager.Controllers
             return Ok(subscriber);
         }
 
-        // PUT: api/Subscribers/5
+        [Route("api/subscribers/PutSubscriber/{id}/{subscriber}"), HttpPut]
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutSubscriber(int id, Subscriber subscriber)
         {
@@ -72,7 +72,45 @@ namespace LibraryManager.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Subscribers
+        [Route("api/subscribers/Authentificate"), HttpPut]
+        [ResponseType(typeof(Librarian))]
+        public async Task<IHttpActionResult> Authentificate(int id, string password)
+        {
+            Subscriber subscriber = await db.Subscribers.FindAsync(id);
+
+            if (subscriber == null)
+            {
+                return NotFound();
+            }
+
+            if (!subscriber.Password.ToLower().Equals(password.ToLower()))
+                return NotFound();
+
+            Library.Subscribers.Add(subscriber);
+
+            return Ok("Authentificate");
+        }
+
+        [Route("api/subscribers/Disconnect"), HttpPut]
+        [ResponseType(typeof(Librarian))]
+        public async Task<IHttpActionResult> Disconnect(int id)
+        {
+            Subscriber subscriber = await db.Subscribers.FindAsync(id);
+
+            if (subscriber == null)
+            {
+                return NotFound();
+            }
+
+            if (!Library.Subscribers.Contains(subscriber))
+                return NotFound();
+
+            Library.Subscribers.Remove(subscriber);
+
+            return Ok("Disconnected");
+        }
+
+        [Route("api/subscribers/PostSubscriber/{subscriber}"), HttpPost]
         [ResponseType(typeof(Subscriber))]
         public async Task<IHttpActionResult> PostSubscriber(Subscriber subscriber)
         {
@@ -87,7 +125,7 @@ namespace LibraryManager.Controllers
             return CreatedAtRoute("DefaultApi", new { id = subscriber.ID }, subscriber);
         }
 
-        // DELETE: api/Subscribers/5
+        [Route("api/subscribers/DeleteSubscriber/{id}"), HttpDelete]
         [ResponseType(typeof(Subscriber))]
         public async Task<IHttpActionResult> DeleteSubscriber(int id)
         {

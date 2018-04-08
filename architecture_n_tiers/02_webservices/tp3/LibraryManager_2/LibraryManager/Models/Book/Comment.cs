@@ -22,5 +22,10 @@ namespace LibraryManager.Models
         [Required]
         public int SubscriberID { get; set; }
         public Subscriber Subscriber { get; set; }
+
+        public Comment()
+        {
+        
+        }
     }
 }

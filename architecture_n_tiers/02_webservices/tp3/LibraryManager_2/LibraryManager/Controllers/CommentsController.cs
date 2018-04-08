@@ -10,23 +10,22 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using LibraryManager.Models;
-using LibraryManager.Database;
 
 namespace LibraryManager.Controllers
 {
     public class CommentsController : ApiController
     {
-        private CommentContext db = new CommentContext();
+        private LibraryContext db = new LibraryContext();
 
-        // GET: api/Comments
+        [Route("api/comments/GetComments"), HttpGet]
         public IQueryable<Comment> GetComments()
         {
             return db.Comments;
         }
 
-        // GET: api/Comments/5
+        [Route("api/comments/GetComment/{id}"), HttpGet]
         [ResponseType(typeof(Comment))]
-        public async Task<IHttpActionResult> GetComment(int id)
+        public async Task<IHttpActionResult> GetCommentByID(int id)
         {
             Comment comment = await db.Comments.FindAsync(id);
             if (comment == null)
@@ -37,7 +36,35 @@ namespace LibraryManager.Controllers
             return Ok(comment);
         }
 
-        // PUT: api/Comments/5
+        [Route("api/comments/GetCommentsByBookID/{id}"), HttpGet]
+        [ResponseType(typeof(Comment))]
+        public async Task<IHttpActionResult> GetCommentsByBookID(int id)
+        {
+            var query = db.Comments.Where(c => c.BookID.Equals(id));
+
+            if (await query.ToListAsync() == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(query.ToList());
+        }
+
+        [Route("api/comments/GetCommentsBySubscriberID/{id}"), HttpGet]
+        [ResponseType(typeof(Comment))]
+        public async Task<IHttpActionResult> GetCommentsBySubscriberID(int id)
+        {
+            var query = db.Comments.Where(c => c.SubscriberID.Equals(id));
+
+            if (await query.ToListAsync() == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(query.ToList());
+        }
+
+        [Route("api/comments/PutComment/{id}/{comment}"), HttpPut]
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutComment(int id, Comment comment)
         {
@@ -72,7 +99,7 @@ namespace LibraryManager.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Comments
+        [Route("api/comments/PostComment/{comment}"), HttpPost]
         [ResponseType(typeof(Comment))]
         public async Task<IHttpActionResult> PostComment(Comment comment)
         {
@@ -87,7 +114,7 @@ namespace LibraryManager.Controllers
             return CreatedAtRoute("DefaultApi", new { id = comment.ID }, comment);
         }
 
-        // DELETE: api/Comments/5
+        [Route("api/comments/DeleteComment/{id}"), HttpDelete]
         [ResponseType(typeof(Comment))]
         public async Task<IHttpActionResult> DeleteComment(int id)
         {

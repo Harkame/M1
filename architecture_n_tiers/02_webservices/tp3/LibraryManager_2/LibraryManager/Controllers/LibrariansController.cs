@@ -10,23 +10,23 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using LibraryManager.Models;
-using LibraryManager.Database;
+using LibraryManager.Connections;
 
 namespace LibraryManager.Controllers
 {
     public class LibrariansController : ApiController
     {
-        private LibrarianContext db = new LibrarianContext();
+        private LibraryContext db = new LibraryContext();
 
-        // GET: api/Librarians
+        [Route("api/librarians/GetLibrarians"), HttpGet]
         public IQueryable<Librarian> GetLibrarians()
         {
             return db.Librarians;
         }
 
-        // GET: api/Librarians/5
+        [Route("api/librarians/GetLibrarianByID/{id}"), HttpGet]
         [ResponseType(typeof(Librarian))]
-        public async Task<IHttpActionResult> GetLibrarian(int id)
+        public async Task<IHttpActionResult> GetLibrarianByID(int id)
         {
             Librarian librarian = await db.Librarians.FindAsync(id);
             if (librarian == null)
@@ -37,7 +37,8 @@ namespace LibraryManager.Controllers
             return Ok(librarian);
         }
 
-        // PUT: api/Librarians/5
+
+        [Route("api/librarians/PutLibrarian/{id}/{librarian}"), HttpPut]
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutLibrarian(int id, Librarian librarian)
         {
@@ -72,7 +73,48 @@ namespace LibraryManager.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Librarians
+        [Route("api/librarians/Authentificate"), HttpPut]
+        [ResponseType(typeof(Librarian))]
+        public async Task<IHttpActionResult> Authentificate(Librarian p_librarian)
+        {
+            Librarian librarian = await db.Librarians.FindAsync(p_librarian.ID);
+
+            if (librarian == null)
+            {
+                return NotFound();
+            }
+
+            if (!librarian.Password.ToLower().Equals(p_librarian.Password.ToLower()))
+                return NotFound();
+
+            if (Library.Librarians.Contains(librarian))
+                return Ok("Already connected");
+
+            Library.Librarians.Add(librarian);
+
+            return Ok("Authentificate");
+        }
+
+        [Route("api/librarians/Disconnect/{id}"), HttpPut]
+        [ResponseType(typeof(Librarian))]
+        public async Task<IHttpActionResult> Disconnect(int id)
+        {
+            Librarian librarian = await db.Librarians.FindAsync(id);
+
+            if (librarian == null)
+            {
+                return NotFound();
+            }
+
+            if (!Library.Librarians.Contains(librarian))
+                return NotFound();
+
+            Library.Librarians.Remove(librarian);
+
+            return Ok("Disconnected");
+        }
+
+        [Route("api/subscribers/Disconnect"), HttpPost]
         [ResponseType(typeof(Librarian))]
         public async Task<IHttpActionResult> PostLibrarian(Librarian librarian)
         {
@@ -87,7 +129,7 @@ namespace LibraryManager.Controllers
             return CreatedAtRoute("DefaultApi", new { id = librarian.ID }, librarian);
         }
 
-        // DELETE: api/Librarians/5
+        [Route("api/librarians/DeleteLibrarian/{id}"), HttpDelete]
         [ResponseType(typeof(Librarian))]
         public async Task<IHttpActionResult> DeleteLibrarian(int id)
         {

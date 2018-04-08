@@ -1,52 +1,33 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using LibraryManager.Models;
-using LibraryManager.Database;
-using System.Collections.Generic;
 
 namespace LibraryManager.Controllers
 {
     public class BooksController : ApiController
     {
-        private BookContext db = new BookContext();
+        private LibraryContext db = new LibraryContext();
 
-        public BooksController()
-        {
-            Book t_book = new Book { Title = "Title1", Author = "Author1", Stock = 12, Editor = "Editor1"};
-
-            db.Books.Add(t_book);
-
-            db.SaveChanges();
-        }
-
-        // GET: api/Books
+        [Route("api/books/GetBooks"), HttpGet]
         public IQueryable<Book> GetBooks()
         {
-            DbSet<Book> r_books = db.Books;
-
-            foreach(Book t_book in r_books)
-            {
-                using (CommentContext t_comment_context = new CommentContext())
-                {
-                    var query = t_comment_context.Comments.Where(c => c.BookID == t_book.ID);
-
-                    t_book.Comments = query.ToList();
-                }
-            }
-
-            return r_books;
+            return db.Books;
         }
 
-        // GET: api/Books/5
+        [Route("api/books/GetBookByID/{book_id}"), HttpGet]
         [ResponseType(typeof(Book))]
-        public async Task<IHttpActionResult> GetBook(int id)
+        public async Task<IHttpActionResult> GetBookByID(int book_id)
         {
-            Book book = await db.Books.FindAsync(id);
+            Book book = await db.Books.FindAsync(book_id);
             if (book == null)
             {
                 return NotFound();
@@ -55,11 +36,11 @@ namespace LibraryManager.Controllers
             return Ok(book);
         }
 
-        // GET: api/Books/5
+        [Route("api/books/GetBooksByAuthor/{author}"), HttpGet]
         [ResponseType(typeof(List<Book>))]
-        public async Task<IHttpActionResult> GetByAuthor(string p_author)
+        public async Task<IHttpActionResult> GetBooksByAuthor(string author)
         {
-            var query = db.Books.Where(c => c.Author.Equals(p_author));
+            var query = db.Books.Where(c => c.Author.ToLower().Equals(author.ToLower()));
 
             if (await query.ToListAsync() == null)
             {
@@ -69,7 +50,7 @@ namespace LibraryManager.Controllers
             return Ok(query.ToList());
         }
 
-        // PUT: api/Books/5
+        [Route("api/books/PutBook/{id}/{book}"), HttpPut]
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutBook(int id, Book book)
         {
@@ -104,7 +85,7 @@ namespace LibraryManager.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Books
+        [Route("api/books/PostBook/{book}"), HttpPost]
         [ResponseType(typeof(Book))]
         public async Task<IHttpActionResult> PostBook(Book book)
         {
@@ -119,7 +100,7 @@ namespace LibraryManager.Controllers
             return CreatedAtRoute("DefaultApi", new { id = book.ID }, book);
         }
 
-        // DELETE: api/Books/5
+        [Route("api/books/DeleteBook/{id}"), HttpDelete]
         [ResponseType(typeof(Book))]
         public async Task<IHttpActionResult> DeleteBook(int id)
         {
