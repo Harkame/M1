@@ -37,70 +37,53 @@ namespace LibraryManager.Controllers
             return Ok(subscriber);
         }
 
-        [Route("api/subscribers/PutSubscriber/{id}/{subscriber}"), HttpPut]
-        [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutSubscriber(int id, Subscriber subscriber)
+        [Route("api/subscribers/GetCommands/{id}"), HttpGet]
+        [ResponseType(typeof(Librarian))]
+        public IHttpActionResult GetCommands(int id)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            if (!Library.LibrarianIsConnected(id))
+                return NotFound();
 
-            if (id != subscriber.ID)
-            {
-                return BadRequest();
-            }
+            List<string> r_commands = new List<string>();
 
-            db.Entry(subscriber).State = EntityState.Modified;
+            r_commands.Add("Actions :");
+            r_commands.Add("[1] : Show books");
+            r_commands.Add("[2] : Search book by ID");
+            r_commands.Add("[3] : Search book by Author");
+            r_commands.Add("[4] : Comment book");
+            r_commands.Add("[5] : Disconnect");
 
-            try
-            {
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!SubscriberExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
+            return Ok(r_commands);
         }
 
         [Route("api/subscribers/Authentificate"), HttpPut]
-        [ResponseType(typeof(Librarian))]
-        public async Task<IHttpActionResult> Authentificate(int id, string password)
+        [ResponseType(typeof(Subscriber))]
+        public async Task<IHttpActionResult> Authentificate(Subscriber p_subscriber)
         {
-            Subscriber subscriber = await db.Subscribers.FindAsync(id);
+            Subscriber subscriber = await db.Subscribers.FindAsync(p_subscriber.ID);
 
             if (subscriber == null)
-            {
                 return NotFound();
-            }
 
-            if (!subscriber.Password.ToLower().Equals(password.ToLower()))
+            if (!subscriber.Password.ToLower().Equals(subscriber.Password.ToLower()))
                 return NotFound();
+
+            if (Library.Subscribers.Contains(subscriber))
+                return Ok("Already connected");
 
             Library.Subscribers.Add(subscriber);
 
             return Ok("Authentificate");
         }
 
-        [Route("api/subscribers/Disconnect"), HttpPut]
+        [Route("api/subscribers/Disconnect/{id}"), HttpPut]
         [ResponseType(typeof(Librarian))]
         public async Task<IHttpActionResult> Disconnect(int id)
         {
             Subscriber subscriber = await db.Subscribers.FindAsync(id);
 
             if (subscriber == null)
-            {
                 return NotFound();
-            }
 
             if (!Library.Subscribers.Contains(subscriber))
                 return NotFound();

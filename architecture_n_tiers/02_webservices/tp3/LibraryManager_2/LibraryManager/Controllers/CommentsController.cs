@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
+using LibraryManager.Connections;
 using LibraryManager.Models;
 
 namespace LibraryManager.Controllers
@@ -64,54 +65,20 @@ namespace LibraryManager.Controllers
             return Ok(query.ToList());
         }
 
-        [Route("api/comments/PutComment/{id}/{comment}"), HttpPut]
-        [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutComment(int id, Comment comment)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != comment.ID)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(comment).State = EntityState.Modified;
-
-            try
-            {
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!CommentExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
-        }
-
-        [Route("api/comments/PostComment/{comment}"), HttpPost]
+        [Route("api/comments/PostComment/{user_id}"), HttpPost]
         [ResponseType(typeof(Comment))]
-        public async Task<IHttpActionResult> PostComment(Comment comment)
+        public async Task<IHttpActionResult> PostComment(int user_id, Comment comment)
         {
+            if (!Library.SubscriberIsConnected(user_id))
+                return NotFound();
+
             if (!ModelState.IsValid)
-            {
                 return BadRequest(ModelState);
-            }
 
             db.Comments.Add(comment);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = comment.ID }, comment);
+            return Ok("Comment added");
         }
 
         [Route("api/comments/DeleteComment/{id}"), HttpDelete]
@@ -128,20 +95,6 @@ namespace LibraryManager.Controllers
             await db.SaveChangesAsync();
 
             return Ok(comment);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private bool CommentExists(int id)
-        {
-            return db.Comments.Count(e => e.ID == id) > 0;
         }
     }
 }

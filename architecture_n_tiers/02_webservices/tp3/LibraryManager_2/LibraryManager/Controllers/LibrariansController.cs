@@ -1,16 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using LibraryManager.Models;
 using LibraryManager.Connections;
+using System.Text;
+using System.Collections.Generic;
 
 namespace LibraryManager.Controllers
 {
@@ -37,40 +36,23 @@ namespace LibraryManager.Controllers
             return Ok(librarian);
         }
 
-
-        [Route("api/librarians/PutLibrarian/{id}/{librarian}"), HttpPut]
-        [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutLibrarian(int id, Librarian librarian)
+        [Route("api/librarians/GetCommands/{id}"), HttpGet]
+        [ResponseType(typeof(Librarian))]
+        public IHttpActionResult GetCommands(int id)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            if (!Library.LibrarianIsConnected(id))
+                return NotFound();
 
-            if (id != librarian.ID)
-            {
-                return BadRequest();
-            }
+            List<string> r_commands = new List<string>();
 
-            db.Entry(librarian).State = EntityState.Modified;
+            r_commands.Add("Actions :");
+            r_commands.Add("[1] : Show books");
+            r_commands.Add("[2] : Search book by ID");
+            r_commands.Add("[3] : Search book by Author");
+            r_commands.Add("[4] : Add book");
+            r_commands.Add("[5] : Disconnect");
 
-            try
-            {
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!LibrarianExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
+            return Ok(r_commands);
         }
 
         [Route("api/librarians/Authentificate"), HttpPut]
@@ -80,9 +62,7 @@ namespace LibraryManager.Controllers
             Librarian librarian = await db.Librarians.FindAsync(p_librarian.ID);
 
             if (librarian == null)
-            {
                 return NotFound();
-            }
 
             if (!librarian.Password.ToLower().Equals(p_librarian.Password.ToLower()))
                 return NotFound();
@@ -114,7 +94,7 @@ namespace LibraryManager.Controllers
             return Ok("Disconnected");
         }
 
-        [Route("api/subscribers/Disconnect"), HttpPost]
+        [Route("api/librarians/PostLibrarian"), HttpPost]
         [ResponseType(typeof(Librarian))]
         public async Task<IHttpActionResult> PostLibrarian(Librarian librarian)
         {
@@ -127,22 +107,6 @@ namespace LibraryManager.Controllers
             await db.SaveChangesAsync();
 
             return CreatedAtRoute("DefaultApi", new { id = librarian.ID }, librarian);
-        }
-
-        [Route("api/librarians/DeleteLibrarian/{id}"), HttpDelete]
-        [ResponseType(typeof(Librarian))]
-        public async Task<IHttpActionResult> DeleteLibrarian(int id)
-        {
-            Librarian librarian = await db.Librarians.FindAsync(id);
-            if (librarian == null)
-            {
-                return NotFound();
-            }
-
-            db.Librarians.Remove(librarian);
-            await db.SaveChangesAsync();
-
-            return Ok(librarian);
         }
 
         protected override void Dispose(bool disposing)

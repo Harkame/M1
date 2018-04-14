@@ -100,9 +100,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="DataBase\LibraryContext.cs" />
     <Compile Include="Models\Book\Book.cs" />
     <Compile Include="Models\Book\Comment.cs" />
-    <Compile Include="DataBase\LibraryContext.cs" />
     <Compile Include="Models\User\Librarian.cs" />
     <Compile Include="Models\User\Subscriber.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -118,6 +118,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
