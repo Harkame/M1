@@ -24,77 +24,26 @@ namespace LibraryManager.Controllers
             return db.Comments;
         }
 
-        [Route("api/comments/GetComment/{id}"), HttpGet]
+        [Route("api/comments/PostComment/{subscriber_id}"), HttpPost]
         [ResponseType(typeof(Comment))]
-        public async Task<IHttpActionResult> GetCommentByID(int id)
+        public async Task<IHttpActionResult> PostComment(int subscriber_id, Comment comment)
         {
-            Comment comment = await db.Comments.FindAsync(id);
-            if (comment == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(comment);
-        }
-
-        [Route("api/comments/GetCommentsByBookID/{id}"), HttpGet]
-        [ResponseType(typeof(Comment))]
-        public async Task<IHttpActionResult> GetCommentsByBookID(int id)
-        {
-            var query = db.Comments.Where(c => c.BookID.Equals(id));
-
-            if (await query.ToListAsync() == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(query.ToList());
-        }
-
-        [Route("api/comments/GetCommentsBySubscriberID/{id}"), HttpGet]
-        [ResponseType(typeof(Comment))]
-        public async Task<IHttpActionResult> GetCommentsBySubscriberID(int id)
-        {
-            var query = db.Comments.Where(c => c.SubscriberID.Equals(id));
-
-            if (await query.ToListAsync() == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(query.ToList());
-        }
-
-        [Route("api/comments/PostComment/{user_id}"), HttpPost]
-        [ResponseType(typeof(Comment))]
-        public async Task<IHttpActionResult> PostComment(int user_id, Comment comment)
-        {
-            if (!Library.SubscriberIsConnected(user_id))
+            if (!Library.SubscriberIsConnected(subscriber_id))
                 return NotFound();
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            db.Comments.Add(comment);
+            Comment t_comment = db.Comments.Where(c => c.BookID == comment.BookID && c.SubscriberID == comment.SubscriberID).ToArray()[0];
+
+            if (t_comment == null)
+                db.Comments.Add(comment);
+            else
+                t_comment.Description = comment.Description;
+
             await db.SaveChangesAsync();
 
             return Ok("Comment added");
-        }
-
-        [Route("api/comments/DeleteComment/{id}"), HttpDelete]
-        [ResponseType(typeof(Comment))]
-        public async Task<IHttpActionResult> DeleteComment(int id)
-        {
-            Comment comment = await db.Comments.FindAsync(id);
-            if (comment == null)
-            {
-                return NotFound();
-            }
-
-            db.Comments.Remove(comment);
-            await db.SaveChangesAsync();
-
-            return Ok(comment);
         }
     }
 }

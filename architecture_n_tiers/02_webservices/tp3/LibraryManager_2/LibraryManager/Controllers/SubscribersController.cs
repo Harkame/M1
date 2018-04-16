@@ -18,12 +18,6 @@ namespace LibraryManager.Controllers
     {
         private LibraryContext db = new LibraryContext();
 
-        [Route("api/subscribers/GetSubscribers"), HttpGet]
-        public IQueryable<Subscriber> GetSubscribers()
-        {
-            return db.Subscribers;
-        }
-
         [Route("api/subscribers/GetSubscribersByID/{id}"), HttpGet]
         [ResponseType(typeof(Subscriber))]
         public async Task<IHttpActionResult> GetSubscribersByID(int id)
@@ -38,7 +32,7 @@ namespace LibraryManager.Controllers
         }
 
         [Route("api/subscribers/GetCommands/{id}"), HttpGet]
-        [ResponseType(typeof(Librarian))]
+        [ResponseType(typeof(string))]
         public IHttpActionResult GetCommands(int id)
         {
             if (!Library.LibrarianIsConnected(id))
@@ -73,7 +67,7 @@ namespace LibraryManager.Controllers
 
             Library.Subscribers.Add(subscriber);
 
-            return Ok("Authentificate");
+            return Ok("Authentificated");
         }
 
         [Route("api/subscribers/Disconnect/{id}"), HttpPut]
@@ -93,49 +87,17 @@ namespace LibraryManager.Controllers
             return Ok("Disconnected");
         }
 
-        [Route("api/subscribers/PostSubscriber/{subscriber}"), HttpPost]
+        [Route("api/subscribers/PostSubscriber"), HttpPost]
         [ResponseType(typeof(Subscriber))]
         public async Task<IHttpActionResult> PostSubscriber(Subscriber subscriber)
         {
             if (!ModelState.IsValid)
-            {
                 return BadRequest(ModelState);
-            }
 
             db.Subscribers.Add(subscriber);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = subscriber.ID }, subscriber);
-        }
-
-        [Route("api/subscribers/DeleteSubscriber/{id}"), HttpDelete]
-        [ResponseType(typeof(Subscriber))]
-        public async Task<IHttpActionResult> DeleteSubscriber(int id)
-        {
-            Subscriber subscriber = await db.Subscribers.FindAsync(id);
-            if (subscriber == null)
-            {
-                return NotFound();
-            }
-
-            db.Subscribers.Remove(subscriber);
-            await db.SaveChangesAsync();
-
-            return Ok(subscriber);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private bool SubscriberExists(int id)
-        {
-            return db.Subscribers.Count(e => e.ID == id) > 0;
+            return Ok(subscriber); //To know the id
         }
     }
 }

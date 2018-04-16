@@ -147,40 +147,24 @@ namespace LibrarianClient
         }
 
         /// <summary>
-        /// Method who are used to send HTTP Get request
+        /// Send an Get request et return the response value
         /// </summary>
-        /// <param name="p_uri">The URI address where send the request (Be carrefull, the parameter need to be added directly in the URI)</param>
-        /// <returns>The Result of the request, an String (Can be json)</returns>
-        public async static Task<HttpStatusCode> GetRequestStatus(Uri p_uri)
-        {
-            using (HttpResponseMessage t_response = await g_client.GetAsync(p_uri))
-            {
-                return t_response.StatusCode;
-            }
-        }
-
-        /// <summary>
-        /// Method who are used to send HTTP Get request
-        /// </summary>
-        /// <param name="p_uri">The URI address where send the request (Be carrefull, the parameter need to be added directly in the URI)</param>
-        /// <returns>The Result of the request, an String (Can be json)</returns>
+        /// <param name="p_uri">URL of the request (Don't forgot to include the parameters into the URL)</param>
+        /// <returns>An Task of string, use attribute Result to get the response (JSON Format)</returns>
         public async static Task<string> GetRequestContent(Uri p_uri)
         {
             using (HttpResponseMessage t_response = await g_client.GetAsync(p_uri))
             {
-                using (var t = t_response.Content)
-                {
-                    return await t.ReadAsStringAsync();
-                }
+                return await t_response.Content.ReadAsStringAsync();
             }
         }
 
         /// <summary>
-        /// Method who are used to send HTTP Post request
+        /// Send an Post request and return the status value
         /// </summary>
-        /// <param name="p_uri">The URI address where send the request</param>
+        /// <param name="p_uri">URL of the request</param>
         /// <param name="p_parameters">The parameters of the request</param>
-        /// <returns>The Result of the request, an String (Can be json)</returns>
+        /// <returns>The status of the request</returns>
         public async static Task<HttpStatusCode> PostRequestStatus(Uri p_uri, FormUrlEncodedContent p_parameters)
         {
             using (HttpResponseMessage t_response = await g_client.PostAsync(p_uri, p_parameters))
@@ -190,11 +174,11 @@ namespace LibrarianClient
         }
 
         /// <summary>
-        /// Method who are used to send HTTP Post request
+        /// Send an Put request and return the status value
         /// </summary>
-        /// <param name="p_uri">The URI address where send the request</param>
+        /// <param name="p_uri">URL of the request</param>
         /// <param name="p_parameters">The parameters of the request</param>
-        /// <returns>The Result of the request, an String (Can be json)</returns>
+        /// <returns>The status of the request</returns>
         public static async Task<HttpStatusCode> PutRequestStatus(Uri p_uri, FormUrlEncodedContent p_parameters)
         {
             using (HttpResponseMessage t_response = await g_client.PutAsync(p_uri, p_parameters))

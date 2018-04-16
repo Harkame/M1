@@ -24,7 +24,18 @@ namespace LibraryManager.Controllers
             if (!Library.LibrarianIsConnected(user_id) && !Library.SubscriberIsConnected(user_id))
                 return null;
             else
-                return db.Books;
+            {
+                var books = db.Books;
+
+                foreach(Book book in books)
+                {
+                    var comment_query = db.Comments.Where(c => c.BookID == book.ID);
+
+                    book.Comments = comment_query.ToList();
+                }
+
+                return books;
+            }
         }
 
         [Route("api/books/GetBookByID/{user_id}/{book_id}"), HttpGet]
@@ -38,11 +49,9 @@ namespace LibraryManager.Controllers
             if (book == null)
                 return NotFound();
 
+            var comment_query = db.Comments.Where(c => c.BookID == book.ID);
 
-            var query2 = db.Comments.Where(c => c.BookID == book.ID);
-
-            book.Comments = query2.ToList();
-
+            book.Comments = comment_query.ToList();
 
             return Ok(book);
         }
@@ -59,6 +68,13 @@ namespace LibraryManager.Controllers
             if (await query.ToListAsync() == null)
             {
                 return NotFound();
+            }
+
+            foreach (Book book in query)
+            {
+                var comment_query = db.Comments.Where(c => c.BookID == book.ID);
+
+                book.Comments = comment_query.ToList();
             }
 
             return Ok(query.ToList());

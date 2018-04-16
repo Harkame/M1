@@ -17,12 +17,6 @@ namespace LibraryManager.Controllers
     {
         private LibraryContext db = new LibraryContext();
 
-        [Route("api/librarians/GetLibrarians"), HttpGet]
-        public IQueryable<Librarian> GetLibrarians()
-        {
-            return db.Librarians;
-        }
-
         [Route("api/librarians/GetLibrarianByID/{id}"), HttpGet]
         [ResponseType(typeof(Librarian))]
         public async Task<IHttpActionResult> GetLibrarianByID(int id)
@@ -37,7 +31,7 @@ namespace LibraryManager.Controllers
         }
 
         [Route("api/librarians/GetCommands/{id}"), HttpGet]
-        [ResponseType(typeof(Librarian))]
+        [ResponseType(typeof(string))]
         public IHttpActionResult GetCommands(int id)
         {
             if (!Library.LibrarianIsConnected(id))
@@ -99,28 +93,12 @@ namespace LibraryManager.Controllers
         public async Task<IHttpActionResult> PostLibrarian(Librarian librarian)
         {
             if (!ModelState.IsValid)
-            {
                 return BadRequest(ModelState);
-            }
 
             db.Librarians.Add(librarian);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = librarian.ID }, librarian);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private bool LibrarianExists(int id)
-        {
-            return db.Librarians.Count(e => e.ID == id) > 0;
+            return Ok(librarian); //To know the id
         }
     }
 }

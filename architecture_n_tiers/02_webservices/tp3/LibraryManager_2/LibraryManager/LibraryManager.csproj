@@ -92,6 +92,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\Comments1Controller.cs" />
     <Compile Include="Libray\Library.cs" />
     <Compile Include="Controllers\BooksController.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
@@ -103,6 +104,8 @@
     <Compile Include="DataBase\LibraryContext.cs" />
     <Compile Include="Models\Book\Book.cs" />
     <Compile Include="Models\Book\Comment.cs" />
+    <Compile Include="Models\LibraryManagerContext.cs" />
+    <Compile Include="Models\TestContext.cs" />
     <Compile Include="Models\User\Librarian.cs" />
     <Compile Include="Models\User\Subscriber.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
