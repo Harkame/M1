@@ -11,13 +11,25 @@ namespace RecipeShare
     public interface InterfaceRecipeService
     {
         [OperationContract]
+        int Authentificate();
+
+        [OperationContract]
+        void Disconnect(int p_user_id);
+
+        [OperationContract]
         void AddRecipe(Recipe p_recipe_to_add);
 
         [OperationContract]
-        List<Recipe> GetRecipes();
+        ICollection<Recipe> GetRecipes(int p_user_id);
 
         [OperationContract]
-        List<Recipe> GetRecipesByIngredient(string p_ingredient);
+        ICollection<Recipe> GetRecipesByIngredient(int p_user_id, string p_ingredient);
+
+        [OperationContract]
+        ICollection<Recipe> GetCurrentSelection(int p_user_id);
+
+        [OperationContract]
+        ICollection<Recipe> GetHistory(int p_user_id);
 
     }
 

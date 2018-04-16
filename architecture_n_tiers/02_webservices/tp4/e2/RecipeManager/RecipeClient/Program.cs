@@ -19,15 +19,23 @@ namespace RecipeClient
             t_actions.Append(Environment.NewLine);
             t_actions.Append("3 : GetRecipesByIngredient");
             t_actions.Append(Environment.NewLine);
-            t_actions.Append("4 : Exit");
+            t_actions.Append("4 : GetCurrentSelection");
+            t_actions.Append(Environment.NewLine);
+            t_actions.Append("5 : GetHistory");
+            t_actions.Append(Environment.NewLine);
+            t_actions.Append("6 : Exit");
             t_actions.Append(Environment.NewLine);
 
             string t_ingredient;
 
+
+            int t_user_id = g_proxy.Authentificate();
+
+            Console.WriteLine("Connected as : " + t_user_id);
+
             while (true)
             {
                 Console.WriteLine(t_actions.ToString());
-
                 Console.Write("Action : ");
                 int t_action = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine();
@@ -57,23 +65,35 @@ namespace RecipeClient
                         break;
 
                     case 2: //GetRecipes
-                        foreach (Recipe t_recipe in g_proxy.GetRecipes())
+                        foreach (Recipe t_recipe in g_proxy.GetRecipes(t_user_id))
                             Console.WriteLine(t_recipe.ToString());
                         break;
 
-                    case 3: //GetRecipesByIngredient
+                    case 3: //GetCurrentSelection
                         Console.Write("Ingredient : ");
 
                         t_ingredient = Console.ReadLine();
 
                         Console.WriteLine("");
 
-                        foreach (Recipe t_recipe in g_proxy.GetRecipesByIngredient(t_ingredient))
-
+                        foreach (Recipe t_recipe in g_proxy.GetRecipesByIngredient(t_user_id, t_ingredient))
                             Console.WriteLine(t_recipe.ToString());
+
                         break;
 
-                    case 4: //Quit the program
+                    case 4: //GetHistory
+                        foreach (Recipe t_recipe in g_proxy.GetCurrentSelection(t_user_id))
+                            Console.WriteLine(t_recipe.ToString());
+
+                        break;
+
+                    case 5: //GetRecipesByIngredient
+                        foreach (Recipe t_recipe in g_proxy.GetHistory(t_user_id))
+                            Console.WriteLine(t_recipe.ToString());
+
+                        break;
+
+                    case 6: //Quit the program
                         goto end_of_loop;
                 }   
             }

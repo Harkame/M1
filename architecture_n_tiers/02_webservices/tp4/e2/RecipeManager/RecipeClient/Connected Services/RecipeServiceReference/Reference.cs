@@ -15,6 +15,18 @@ namespace RecipeClient.RecipeServiceReference {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="RecipeServiceReference.InterfaceRecipeService")]
     public interface InterfaceRecipeService {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InterfaceRecipeService/Authentificate", ReplyAction="http://tempuri.org/InterfaceRecipeService/AuthentificateResponse")]
+        int Authentificate();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InterfaceRecipeService/Authentificate", ReplyAction="http://tempuri.org/InterfaceRecipeService/AuthentificateResponse")]
+        System.Threading.Tasks.Task<int> AuthentificateAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InterfaceRecipeService/Disconnect", ReplyAction="http://tempuri.org/InterfaceRecipeService/DisconnectResponse")]
+        void Disconnect(int p_user_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InterfaceRecipeService/Disconnect", ReplyAction="http://tempuri.org/InterfaceRecipeService/DisconnectResponse")]
+        System.Threading.Tasks.Task DisconnectAsync(int p_user_id);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InterfaceRecipeService/AddRecipe", ReplyAction="http://tempuri.org/InterfaceRecipeService/AddRecipeResponse")]
         void AddRecipe(RecipeShare.Recipe p_recipe_to_add);
         
@@ -22,16 +34,28 @@ namespace RecipeClient.RecipeServiceReference {
         System.Threading.Tasks.Task AddRecipeAsync(RecipeShare.Recipe p_recipe_to_add);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InterfaceRecipeService/GetRecipes", ReplyAction="http://tempuri.org/InterfaceRecipeService/GetRecipesResponse")]
-        RecipeShare.Recipe[] GetRecipes();
+        RecipeShare.Recipe[] GetRecipes(int p_user_id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InterfaceRecipeService/GetRecipes", ReplyAction="http://tempuri.org/InterfaceRecipeService/GetRecipesResponse")]
-        System.Threading.Tasks.Task<RecipeShare.Recipe[]> GetRecipesAsync();
+        System.Threading.Tasks.Task<RecipeShare.Recipe[]> GetRecipesAsync(int p_user_id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InterfaceRecipeService/GetRecipesByIngredient", ReplyAction="http://tempuri.org/InterfaceRecipeService/GetRecipesByIngredientResponse")]
-        RecipeShare.Recipe[] GetRecipesByIngredient(string p_ingredient);
+        RecipeShare.Recipe[] GetRecipesByIngredient(int p_user_id, string p_ingredient);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InterfaceRecipeService/GetRecipesByIngredient", ReplyAction="http://tempuri.org/InterfaceRecipeService/GetRecipesByIngredientResponse")]
-        System.Threading.Tasks.Task<RecipeShare.Recipe[]> GetRecipesByIngredientAsync(string p_ingredient);
+        System.Threading.Tasks.Task<RecipeShare.Recipe[]> GetRecipesByIngredientAsync(int p_user_id, string p_ingredient);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InterfaceRecipeService/GetCurrentSelection", ReplyAction="http://tempuri.org/InterfaceRecipeService/GetCurrentSelectionResponse")]
+        RecipeShare.Recipe[] GetCurrentSelection(int p_user_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InterfaceRecipeService/GetCurrentSelection", ReplyAction="http://tempuri.org/InterfaceRecipeService/GetCurrentSelectionResponse")]
+        System.Threading.Tasks.Task<RecipeShare.Recipe[]> GetCurrentSelectionAsync(int p_user_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InterfaceRecipeService/GetHistory", ReplyAction="http://tempuri.org/InterfaceRecipeService/GetHistoryResponse")]
+        RecipeShare.Recipe[] GetHistory(int p_user_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InterfaceRecipeService/GetHistory", ReplyAction="http://tempuri.org/InterfaceRecipeService/GetHistoryResponse")]
+        System.Threading.Tasks.Task<RecipeShare.Recipe[]> GetHistoryAsync(int p_user_id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -61,6 +85,22 @@ namespace RecipeClient.RecipeServiceReference {
                 base(binding, remoteAddress) {
         }
         
+        public int Authentificate() {
+            return base.Channel.Authentificate();
+        }
+        
+        public System.Threading.Tasks.Task<int> AuthentificateAsync() {
+            return base.Channel.AuthentificateAsync();
+        }
+        
+        public void Disconnect(int p_user_id) {
+            base.Channel.Disconnect(p_user_id);
+        }
+        
+        public System.Threading.Tasks.Task DisconnectAsync(int p_user_id) {
+            return base.Channel.DisconnectAsync(p_user_id);
+        }
+        
         public void AddRecipe(RecipeShare.Recipe p_recipe_to_add) {
             base.Channel.AddRecipe(p_recipe_to_add);
         }
@@ -69,20 +109,36 @@ namespace RecipeClient.RecipeServiceReference {
             return base.Channel.AddRecipeAsync(p_recipe_to_add);
         }
         
-        public RecipeShare.Recipe[] GetRecipes() {
-            return base.Channel.GetRecipes();
+        public RecipeShare.Recipe[] GetRecipes(int p_user_id) {
+            return base.Channel.GetRecipes(p_user_id);
         }
         
-        public System.Threading.Tasks.Task<RecipeShare.Recipe[]> GetRecipesAsync() {
-            return base.Channel.GetRecipesAsync();
+        public System.Threading.Tasks.Task<RecipeShare.Recipe[]> GetRecipesAsync(int p_user_id) {
+            return base.Channel.GetRecipesAsync(p_user_id);
         }
         
-        public RecipeShare.Recipe[] GetRecipesByIngredient(string p_ingredient) {
-            return base.Channel.GetRecipesByIngredient(p_ingredient);
+        public RecipeShare.Recipe[] GetRecipesByIngredient(int p_user_id, string p_ingredient) {
+            return base.Channel.GetRecipesByIngredient(p_user_id, p_ingredient);
         }
         
-        public System.Threading.Tasks.Task<RecipeShare.Recipe[]> GetRecipesByIngredientAsync(string p_ingredient) {
-            return base.Channel.GetRecipesByIngredientAsync(p_ingredient);
+        public System.Threading.Tasks.Task<RecipeShare.Recipe[]> GetRecipesByIngredientAsync(int p_user_id, string p_ingredient) {
+            return base.Channel.GetRecipesByIngredientAsync(p_user_id, p_ingredient);
+        }
+        
+        public RecipeShare.Recipe[] GetCurrentSelection(int p_user_id) {
+            return base.Channel.GetCurrentSelection(p_user_id);
+        }
+        
+        public System.Threading.Tasks.Task<RecipeShare.Recipe[]> GetCurrentSelectionAsync(int p_user_id) {
+            return base.Channel.GetCurrentSelectionAsync(p_user_id);
+        }
+        
+        public RecipeShare.Recipe[] GetHistory(int p_user_id) {
+            return base.Channel.GetHistory(p_user_id);
+        }
+        
+        public System.Threading.Tasks.Task<RecipeShare.Recipe[]> GetHistoryAsync(int p_user_id) {
+            return base.Channel.GetHistoryAsync(p_user_id);
         }
     }
 }

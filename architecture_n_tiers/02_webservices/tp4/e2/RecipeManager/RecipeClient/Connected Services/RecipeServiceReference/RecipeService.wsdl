@@ -8,6 +8,18 @@
       <xsd:import schemaLocation="http://localhost:20130/RecipeService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="InterfaceRecipeService_Authentificate_InputMessage">
+    <wsdl:part name="parameters" element="tns:Authentificate" />
+  </wsdl:message>
+  <wsdl:message name="InterfaceRecipeService_Authentificate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AuthentificateResponse" />
+  </wsdl:message>
+  <wsdl:message name="InterfaceRecipeService_Disconnect_InputMessage">
+    <wsdl:part name="parameters" element="tns:Disconnect" />
+  </wsdl:message>
+  <wsdl:message name="InterfaceRecipeService_Disconnect_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DisconnectResponse" />
+  </wsdl:message>
   <wsdl:message name="InterfaceRecipeService_AddRecipe_InputMessage">
     <wsdl:part name="parameters" element="tns:AddRecipe" />
   </wsdl:message>
@@ -26,7 +38,27 @@
   <wsdl:message name="InterfaceRecipeService_GetRecipesByIngredient_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetRecipesByIngredientResponse" />
   </wsdl:message>
+  <wsdl:message name="InterfaceRecipeService_GetCurrentSelection_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrentSelection" />
+  </wsdl:message>
+  <wsdl:message name="InterfaceRecipeService_GetCurrentSelection_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrentSelectionResponse" />
+  </wsdl:message>
+  <wsdl:message name="InterfaceRecipeService_GetHistory_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHistory" />
+  </wsdl:message>
+  <wsdl:message name="InterfaceRecipeService_GetHistory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHistoryResponse" />
+  </wsdl:message>
   <wsdl:portType name="InterfaceRecipeService">
+    <wsdl:operation name="Authentificate">
+      <wsdl:input wsaw:Action="http://tempuri.org/InterfaceRecipeService/Authentificate" message="tns:InterfaceRecipeService_Authentificate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/InterfaceRecipeService/AuthentificateResponse" message="tns:InterfaceRecipeService_Authentificate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Disconnect">
+      <wsdl:input wsaw:Action="http://tempuri.org/InterfaceRecipeService/Disconnect" message="tns:InterfaceRecipeService_Disconnect_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/InterfaceRecipeService/DisconnectResponse" message="tns:InterfaceRecipeService_Disconnect_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="AddRecipe">
       <wsdl:input wsaw:Action="http://tempuri.org/InterfaceRecipeService/AddRecipe" message="tns:InterfaceRecipeService_AddRecipe_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/InterfaceRecipeService/AddRecipeResponse" message="tns:InterfaceRecipeService_AddRecipe_OutputMessage" />
@@ -39,9 +71,35 @@
       <wsdl:input wsaw:Action="http://tempuri.org/InterfaceRecipeService/GetRecipesByIngredient" message="tns:InterfaceRecipeService_GetRecipesByIngredient_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/InterfaceRecipeService/GetRecipesByIngredientResponse" message="tns:InterfaceRecipeService_GetRecipesByIngredient_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetCurrentSelection">
+      <wsdl:input wsaw:Action="http://tempuri.org/InterfaceRecipeService/GetCurrentSelection" message="tns:InterfaceRecipeService_GetCurrentSelection_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/InterfaceRecipeService/GetCurrentSelectionResponse" message="tns:InterfaceRecipeService_GetCurrentSelection_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHistory">
+      <wsdl:input wsaw:Action="http://tempuri.org/InterfaceRecipeService/GetHistory" message="tns:InterfaceRecipeService_GetHistory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/InterfaceRecipeService/GetHistoryResponse" message="tns:InterfaceRecipeService_GetHistory_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_InterfaceRecipeService" type="tns:InterfaceRecipeService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Authentificate">
+      <soap:operation soapAction="http://tempuri.org/InterfaceRecipeService/Authentificate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Disconnect">
+      <soap:operation soapAction="http://tempuri.org/InterfaceRecipeService/Disconnect" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="AddRecipe">
       <soap:operation soapAction="http://tempuri.org/InterfaceRecipeService/AddRecipe" style="document" />
       <wsdl:input>
@@ -62,6 +120,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetRecipesByIngredient">
       <soap:operation soapAction="http://tempuri.org/InterfaceRecipeService/GetRecipesByIngredient" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentSelection">
+      <soap:operation soapAction="http://tempuri.org/InterfaceRecipeService/GetCurrentSelection" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHistory">
+      <soap:operation soapAction="http://tempuri.org/InterfaceRecipeService/GetHistory" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
