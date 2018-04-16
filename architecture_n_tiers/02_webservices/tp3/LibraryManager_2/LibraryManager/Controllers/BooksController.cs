@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
@@ -95,9 +91,24 @@ namespace LibraryManager.Controllers
             db.Books.Add(book);
             await db.SaveChangesAsync();
 
-            //return CreatedAtRoute("DefaultApi", new { id = book.ID }, book);
             return Ok("Book added");
         }
 
+
+        [Route("api/books/DeleteBook/{id}"), HttpDelete]
+        [ResponseType(typeof(Book))]
+        public async Task<IHttpActionResult> DeleteBook(int id)
+        {
+            Book book = await db.Books.FindAsync(id);
+            if (book == null)
+            {
+                return NotFound();
+            }
+
+            db.Books.Remove(book);
+            await db.SaveChangesAsync();
+
+            return Ok(book);
+        }
     }
 }

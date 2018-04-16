@@ -31,15 +31,14 @@ namespace LibraryManager.Controllers
             if (!Library.SubscriberIsConnected(subscriber_id))
                 return NotFound();
 
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
+            //Problem with SQL integrity, we manage it here
+            //If comment (BookID + SubscriberId) already exist, update the description, else add it
+            var t_comment = db.Comments.Where(c => c.BookID == comment.BookID && c.SubscriberID == comment.SubscriberID).ToArray();
 
-            Comment t_comment = db.Comments.Where(c => c.BookID == comment.BookID && c.SubscriberID == comment.SubscriberID).ToArray()[0];
-
-            if (t_comment == null)
+            if (t_comment.Length == 0)
                 db.Comments.Add(comment);
             else
-                t_comment.Description = comment.Description;
+                t_comment[0].Description = comment.Description;
 
             await db.SaveChangesAsync();
 

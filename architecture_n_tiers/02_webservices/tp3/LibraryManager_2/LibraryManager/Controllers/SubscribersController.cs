@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
@@ -59,7 +52,7 @@ namespace LibraryManager.Controllers
             if (subscriber == null)
                 return NotFound();
 
-            if (!subscriber.Password.ToLower().Equals(subscriber.Password.ToLower()))
+            if (!subscriber.Password.ToLower().Equals(p_subscriber.Password.ToLower()))
                 return NotFound();
 
             if (Library.Subscribers.Contains(subscriber))

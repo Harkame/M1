@@ -1,14 +1,8 @@
-﻿using System;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using LibraryManager.Models;
 using LibraryManager.Connections;
-using System.Text;
 using System.Collections.Generic;
 
 namespace LibraryManager.Controllers
