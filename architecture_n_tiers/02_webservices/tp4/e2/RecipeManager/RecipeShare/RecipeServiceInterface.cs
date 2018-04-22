@@ -8,7 +8,7 @@ using System.Text;
 namespace RecipeShare
 {
     [ServiceContract]
-    public interface InterfaceRecipeService
+    public interface RecipeServiceInterface
     {
         [OperationContract]
         int Authentificate();

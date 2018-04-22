@@ -37,3 +37,6 @@ D:\workspace\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeC
 D:\workspace\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeClient\obj\Debug\RecipeClient.csproj.CopyComplete
 D:\workspace\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeClient\obj\Debug\RecipeClient.exe
 D:\workspace\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeClient\obj\Debug\RecipeClient.pdb
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeClient\bin\Debug\RecipeHost.exe
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeClient\bin\Debug\RecipeHost.pdb
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeClient\bin\Debug\RecipeHost.exe.config

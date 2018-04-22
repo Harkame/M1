@@ -8,10 +8,12 @@ namespace RecipeClient
 {
     class Program
     {
-        private static RecipeServiceReference.InterfaceRecipeService g_proxy = new ChannelFactory<RecipeServiceReference.InterfaceRecipeService>("BasicHttpBinding").CreateChannel();
+        private static RecipeShare.RecipeServiceInterface g_proxy;
 
         static void Main(string[] args)
         {
+            g_proxy = new ChannelFactory<RecipeShare.RecipeServiceInterface>("RecipeService").CreateChannel();
+
             StringBuilder t_actions = new StringBuilder();
             t_actions.Append("1 : AddRecipes");
             t_actions.Append(Environment.NewLine);

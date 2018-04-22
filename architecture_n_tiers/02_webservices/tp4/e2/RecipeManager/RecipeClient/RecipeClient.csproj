@@ -44,61 +44,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Connected Services\RecipeServiceReference\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Connected Services\RecipeServiceReference\RecipeService.wsdl" />
-    <None Include="Connected Services\RecipeServiceReference\RecipeService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\RecipeServiceReference\RecipeService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\RecipeServiceReference\RecipeService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\RecipeServiceReference\RecipeService3.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Properties\DataSources\RecipeShare.Recipe.datasource" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RecipeService\RecipeService.csproj">
-      <Project>{ecdf466b-8ccf-4db0-bf10-2f0903cc119f}</Project>
-      <Name>RecipeService</Name>
+    <ProjectReference Include="..\RecipeHost\RecipeHost.csproj">
+      <Project>{c7f65c28-edaa-43b3-9464-e08d8f345c4f}</Project>
+      <Name>RecipeHost</Name>
     </ProjectReference>
     <ProjectReference Include="..\RecipeShare\RecipeShare.csproj">
       <Project>{225ab049-017c-49ad-b082-b992ddf88d80}</Project>
       <Name>RecipeShare</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\RecipeServiceReference\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\RecipeServiceReference\RecipeService.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\RecipeServiceReference\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\RecipeServiceReference\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\RecipeServiceReference\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

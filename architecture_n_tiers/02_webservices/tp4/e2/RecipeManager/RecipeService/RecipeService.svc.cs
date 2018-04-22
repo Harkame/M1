@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace RecipeService
 {
-    public class RecipeService : InterfaceRecipeService
+    public class RecipeServiceImplementation : RecipeServiceInterface
     {
         private static int G_ID = 0;
 

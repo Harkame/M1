@@ -1,0 +1,10 @@
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeService\obj\Debug\Recipe.csprojResolveAssemblyReference.cache
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeService\obj\Debug\Recipe.csproj.CoreCompileInputs.cache
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeService\obj\Debug\RecipeService.dll
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeService\obj\Debug\RecipeService.pdb
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeService\bin\RecipeService.dll.config
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeService\bin\RecipeService.dll
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeService\bin\RecipeService.pdb
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeService\bin\RecipeShare.dll
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeService\bin\RecipeShare.pdb
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeService\obj\Debug\Recipe.csproj.CopyComplete
