@@ -20,17 +20,19 @@ namespace RecipeShare
         void AddRecipe(Recipe p_recipe_to_add);
 
         [OperationContract]
-        ICollection<Recipe> GetRecipes(int p_user_id);
+        List<Recipe> GetRecipes(int p_user_id);
 
         [OperationContract]
-        ICollection<Recipe> GetRecipesByIngredient(int p_user_id, string p_ingredient);
+        List<Recipe> GetRecipesByIngredient(int p_user_id, string p_ingredient);
 
         [OperationContract]
-        ICollection<Recipe> GetCurrentSelection(int p_user_id);
+        List<Recipe> GetCurrentSelection(int p_user_id);
 
         [OperationContract]
-        ICollection<Recipe> GetHistory(int p_user_id);
+        List<Recipe> GetHistory(int p_user_id);
 
+        [OperationContract]
+        void AlterCurrentSelection(int p_user_id, List<Recipe> p_new_current_selection);
     }
 
     [DataContract]
@@ -50,6 +52,26 @@ namespace RecipeShare
 
             foreach (string t_ingredient in p_ingredients)
                 Ingredients.Add(t_ingredient);
+        }
+
+        public override bool Equals(Object p_object)
+        {
+            if (p_object == null)
+                return false;
+
+            Recipe t_recipe = p_object as Recipe;
+
+            return Ingredients.SequenceEqual<string>(t_recipe.Ingredients);
+        }
+
+        public override int GetHashCode()
+        {
+            int r_hashcode = 890651037;
+
+            r_hashcode = r_hashcode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Name);
+            r_hashcode = r_hashcode * -1521134295 + EqualityComparer<List<string>>.Default.GetHashCode(Ingredients);
+
+            return r_hashcode;
         }
 
         public override String ToString()

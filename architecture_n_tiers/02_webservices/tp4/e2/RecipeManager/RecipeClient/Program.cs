@@ -25,7 +25,9 @@ namespace RecipeClient
             t_actions.Append(Environment.NewLine);
             t_actions.Append("5 : GetHistory");
             t_actions.Append(Environment.NewLine);
-            t_actions.Append("6 : Exit");
+            t_actions.Append("6 : AlterCurrentSelection");
+            t_actions.Append(Environment.NewLine);
+            t_actions.Append("7 : Exit");
             t_actions.Append(Environment.NewLine);
 
             string t_ingredient;
@@ -92,10 +94,37 @@ namespace RecipeClient
                     case 5: //GetRecipesByIngredient
                         foreach (Recipe t_recipe in g_proxy.GetHistory(t_user_id))
                             Console.WriteLine(t_recipe.ToString());
+                        break;
+
+                    case 6: //AlterCurrentSelection
+                        List<Recipe> t_altered_current_selection = g_proxy.GetCurrentSelection(t_user_id);
+
+                        foreach (Recipe t_recipe in g_proxy.GetCurrentSelection(t_user_id))
+                        {
+                            Console.WriteLine(t_recipe.ToString());
+
+                            Console.WriteLine("");
+
+                            Console.WriteLine("Do you want to remove this recipe from the current selection ? (y/n)");
+
+                            switch(Console.ReadKey().KeyChar)
+                            {
+                                case 'y':
+                                    t_altered_current_selection.Remove(t_recipe);
+                                    Console.WriteLine("Removed : " + t_altered_current_selection.Count);
+                                break;
+
+                                case 'n':
+                                default:
+                                    break;
+                            }
+                        }
+
+                        g_proxy.AlterCurrentSelection(t_user_id, t_altered_current_selection);
 
                         break;
 
-                    case 6: //Quit the program
+                    case 7: //Quit the program
                         goto end_of_loop;
                 }   
             }
