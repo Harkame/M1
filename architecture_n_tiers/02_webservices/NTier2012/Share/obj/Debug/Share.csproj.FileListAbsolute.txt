@@ -1,0 +1,2 @@
+C:\Users\Harkame\source\repos\Share\Share\obj\Debug\Share.csprojResolveAssemblyReference.cache
+C:\Users\Harkame\source\repos\Share\Share\obj\Debug\Share.csproj.CoreCompileInputs.cache
