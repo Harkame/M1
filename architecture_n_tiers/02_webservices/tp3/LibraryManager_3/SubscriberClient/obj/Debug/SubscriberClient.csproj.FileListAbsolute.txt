@@ -1,0 +1,6 @@
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager_3\SubscriberClient\bin\Debug\SubscriberClient.exe.config
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager_3\SubscriberClient\bin\Debug\SubscriberClient.exe
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager_3\SubscriberClient\bin\Debug\SubscriberClient.pdb
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager_3\SubscriberClient\obj\Debug\SubscriberClient.csproj.CoreCompileInputs.cache
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager_3\SubscriberClient\obj\Debug\SubscriberClient.exe
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager_3\SubscriberClient\obj\Debug\SubscriberClient.pdb
