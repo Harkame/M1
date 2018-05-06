@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using LibraryManager.Connections;
+using LibraryManager.Database;
 using LibraryManager.Models;
 
 namespace LibraryManager.Controllers
@@ -26,13 +27,10 @@ namespace LibraryManager.Controllers
         }
 
         [Authorize(Roles = "Subscriber")]
-        [Route("api/subscribers/GetCommands/{id}"), HttpGet]
+        [Route("api/subscribers/GetCommands"), HttpGet]
         [ResponseType(typeof(string))]
-        public IHttpActionResult GetCommands(int id)
+        public IHttpActionResult GetCommands()
         {
-            if (!Library.LibrarianIsConnected(id))
-                return NotFound();
-
             List<string> r_commands = new List<string>();
 
             r_commands.Add("Actions :");
@@ -43,43 +41,6 @@ namespace LibraryManager.Controllers
             r_commands.Add("[5] : Disconnect");
 
             return Ok(r_commands);
-        }
-
-        [Route("api/subscribers/Authentificate"), HttpPut]
-        [ResponseType(typeof(Subscriber))]
-        public async Task<IHttpActionResult> Authentificate(Subscriber p_subscriber)
-        {
-            Subscriber subscriber = await db.Subscribers.FindAsync(p_subscriber.ID);
-
-            if (subscriber == null)
-                return NotFound();
-
-            if (!subscriber.Password.ToLower().Equals(p_subscriber.Password.ToLower()))
-                return NotFound();
-
-            if (Library.Subscribers.Contains(subscriber))
-                return Ok("Already connected");
-
-            Library.Subscribers.Add(subscriber);
-
-            return Ok("Authentificated");
-        }
-
-        [Route("api/subscribers/Disconnect/{id}"), HttpPut]
-        [ResponseType(typeof(Librarian))]
-        public async Task<IHttpActionResult> Disconnect(int id)
-        {
-            Subscriber subscriber = await db.Subscribers.FindAsync(id);
-
-            if (subscriber == null)
-                return NotFound();
-
-            if (!Library.Subscribers.Contains(subscriber))
-                return NotFound();
-
-            Library.Subscribers.Remove(subscriber);
-
-            return Ok("Disconnected");
         }
 
         [Authorize(Roles = "Librarian")]

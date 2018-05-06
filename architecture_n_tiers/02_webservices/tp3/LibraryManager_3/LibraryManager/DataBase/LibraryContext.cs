@@ -1,18 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity;
-using System.Linq;
-using System.Web;
 
-namespace LibraryManager.Models
+namespace LibraryManager.Database
 {
-    public class LibraryContext : DbContext
+    public class LibraryContext : IdentityDbContext
     {
-        public LibraryContext() : base("name=LibraryContext")
-        {
-            //Database.SetInitializer<LibraryContext>(new DropCreateDatabaseIfModelChanges<LibraryContext>());
-        }
-
         public System.Data.Entity.DbSet<LibraryManager.Models.Book> Books { get; set; }
 
         public System.Data.Entity.DbSet<LibraryManager.Models.Comment> Comments { get; set; }

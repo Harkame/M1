@@ -7,6 +7,7 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using LibraryManager.Models;
 using LibraryManager.Connections;
+using LibraryManager.Database;
 
 namespace LibraryManager.Controllers
 {
@@ -15,24 +16,19 @@ namespace LibraryManager.Controllers
         private LibraryContext db = new LibraryContext();
 
         [Authorize(Roles = "Librarian, Subscriber")]
-        [Route("api/books/GetBooks/{user_id}"), HttpGet]
-        public IQueryable<Book> GetBooks(int user_id)
+        [Route("api/books/GetBooks/"), HttpGet]
+        public IQueryable<Book> GetBooks()
         {
-            if (!Library.LibrarianIsConnected(user_id) && !Library.SubscriberIsConnected(user_id))
-                return null;
-            else
+            var books = db.Books;
+
+            foreach(Book book in books)
             {
-                var books = db.Books;
+                var comment_query = db.Comments.Where(c => c.BookID == book.ID);
 
-                foreach(Book book in books)
-                {
-                    var comment_query = db.Comments.Where(c => c.BookID == book.ID);
-
-                    book.Comments = comment_query.ToList();
-                }
-
-                return books;
+                book.Comments = comment_query.ToList();
             }
+
+            return books;
         }
 
         [Authorize(Roles = "Librarian, Subscriber")]
@@ -55,13 +51,10 @@ namespace LibraryManager.Controllers
         }
 
         [Authorize(Roles = "Librarian, Subscriber")]
-        [Route("api/books/GetBooksByAuthor/{user_id}/{author}"), HttpGet]
+        [Route("api/books/GetBooksByAuthor/{author}"), HttpGet]
         [ResponseType(typeof(List<Book>))]
-        public async Task<IHttpActionResult> GetBooksByAuthor(int user_id, string author)
+        public async Task<IHttpActionResult> GetBooksByAuthor(string author)
         {
-            if (!Library.LibrarianIsConnected(user_id) && !Library.SubscriberIsConnected(user_id))
-                return NotFound();
-
             var query = db.Books.Where(c => c.Author.ToLower().Equals(author.ToLower()));
 
             if (await query.ToListAsync() == null)
@@ -80,13 +73,10 @@ namespace LibraryManager.Controllers
         }
 
         [Authorize(Roles="Librarian")]
-        [Route("api/books/PostBook/{librarian_id}"), HttpPost]
+        [Route("api/books/PostBook/"), HttpPost]
         [ResponseType(typeof(Book))]
-        public async Task<IHttpActionResult> PostBook(int librarian_id, Book book)
+        public async Task<IHttpActionResult> PostBook(Book book)
         {
-            if (!Library.LibrarianIsConnected(librarian_id))
-                return NotFound();
-
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);

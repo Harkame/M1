@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
+﻿using System.Data;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using LibraryManager.Connections;
+using LibraryManager.Database;
 using LibraryManager.Models;
 
 namespace LibraryManager.Controllers
@@ -26,13 +21,10 @@ namespace LibraryManager.Controllers
         }
 
         [Authorize(Roles = "Subscriber")]
-        [Route("api/comments/PostComment/{subscriber_id}"), HttpPost]
+        [Route("api/comments/PostComment/"), HttpPost]
         [ResponseType(typeof(Comment))]
-        public async Task<IHttpActionResult> PostComment(int subscriber_id, Comment comment)
+        public async Task<IHttpActionResult> PostComment(Comment comment)
         {
-            if (!Library.SubscriberIsConnected(subscriber_id))
-                return NotFound();
-
             //Problem with SQL integrity, we manage it here
             //If comment (BookID + SubscriberId) already exist, update the description, else add it
             var t_comment = db.Comments.Where(c => c.BookID == comment.BookID && c.SubscriberID == comment.SubscriberID).ToArray();

@@ -4,6 +4,7 @@ using System.Web.Http.Description;
 using LibraryManager.Models;
 using LibraryManager.Connections;
 using System.Collections.Generic;
+using LibraryManager.Database;
 
 namespace LibraryManager.Controllers
 {
@@ -24,13 +25,10 @@ namespace LibraryManager.Controllers
             return Ok(librarian);
         }
 
-        [Route("api/librarians/GetCommands/{id}"), HttpGet]
+        [Route("api/librarians/GetCommands/"), HttpGet]
         [ResponseType(typeof(string))]
-        public IHttpActionResult GetCommands(int id)
+        public IHttpActionResult GetCommands()
         {
-            if (!Library.LibrarianIsConnected(id))
-                return NotFound();
-
             List<string> r_commands = new List<string>();
 
             r_commands.Add("Actions :");
@@ -41,45 +39,6 @@ namespace LibraryManager.Controllers
             r_commands.Add("[5] : Disconnect");
 
             return Ok(r_commands);
-        }
-
-        [Route("api/librarians/Authentificate"), HttpPut]
-        [ResponseType(typeof(Librarian))]
-        public async Task<IHttpActionResult> Authentificate(Librarian p_librarian)
-        {
-            Librarian librarian = await db.Librarians.FindAsync(p_librarian.ID);
-
-            if (librarian == null)
-                return NotFound();
-
-            if (!librarian.Password.ToLower().Equals(p_librarian.Password.ToLower()))
-                return NotFound();
-
-            if (Library.Librarians.Contains(librarian))
-                return Ok("Already connected");
-
-            Library.Librarians.Add(librarian);
-
-            return Ok("Authentificate");
-        }
-
-        [Route("api/librarians/Disconnect/{id}"), HttpPut]
-        [ResponseType(typeof(Librarian))]
-        public async Task<IHttpActionResult> Disconnect(int id)
-        {
-            Librarian librarian = await db.Librarians.FindAsync(id);
-
-            if (librarian == null)
-            {
-                return NotFound();
-            }
-
-            if (!Library.Librarians.Contains(librarian))
-                return NotFound();
-
-            Library.Librarians.Remove(librarian);
-
-            return Ok("Disconnected");
         }
 
         [Route("api/librarians/PostLibrarian"), HttpPost]

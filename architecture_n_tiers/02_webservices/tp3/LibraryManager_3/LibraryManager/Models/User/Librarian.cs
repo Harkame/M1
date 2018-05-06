@@ -13,6 +13,9 @@ namespace LibraryManager.Models
         public int ID { get; set; }
 
         [Required]
+        public string UserName {get; set;}
+
+        [Required]
         public string Password { get; set; }
 
 
@@ -21,8 +24,9 @@ namespace LibraryManager.Models
 
         }
 
-        public Librarian(int id, string password)
+        public Librarian(int id, string userName, string password)
         {
+            UserName = userName;
             ID = id;
             Password = password;
         }
@@ -35,6 +39,7 @@ namespace LibraryManager.Models
             Librarian t_librarian = p_object as Librarian;
 
             return ID == t_librarian.ID &&
+                UserName.Equals(t_librarian.UserName) &&
                 Password.Equals(t_librarian.Password);
         }
 
@@ -42,6 +47,7 @@ namespace LibraryManager.Models
         {
             var hashCode = 1964481176;
             hashCode = hashCode * -1521134295 + ID.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(UserName);
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Password);
             return hashCode;
         }
