@@ -1,0 +1,15 @@
+install-package EntityFramework
+install-package Microsoft.AspNet.Cors
+install-package Microsoft.AspNet.Identity.Core
+install-package Microsoft.AspNet.Identity.EntityFramework
+install-package Microsoft.AspNet.Identity.Owin
+install-package Microsoft.AspNet.WebApi.Cors
+install-package Microsoft.AspNet.WebApi.Owin
+install-package Microsoft.Owin.Cors
+install-package Microsoft.Owin.Security.Jwt
+install-package Microsoft.Owin.Host.SystemWeb
+install-package System.IdentityModel.Tokens.Jwt
+install-package Thinktecture.IdentityModel.Core
+
+Install-Package Microsoft.AspNet.WebApi.WebHost 
+update-package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r
