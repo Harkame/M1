@@ -1,0 +1,79 @@
+Exercice n°1 :
+Yolo.
+
+Exercice n°2 :
+
+Question n°4 : TODO
+
+Question n°5 :
+  javac -d <destination> <sources>...
+  java ./<classe> -Djava.security.policy="path/to/policy"
+
+Question n°6 :
+Il faut creer un registre sur un port donné
+On utilise la méthode bind("clée", objet) pour que l'objet soit referencer
+sur la clée.
+Utiliser rebind pour éviter les conflicts
+
+On peux créer un registre avec la commande"rmiregistry <port> afin de ne
+
+La commande rmid lance un démon, avec un registre. On pourra ensuite binder
+sur ce démon.
+
+Exercice n°3 :
+
+Question 7 :
+  .Net remoting RPC pour C#
+  RMI : RPC pour Java
+
+  (Voir photo)
+
+  http://igm.univ-mlv.fr/~dr/XPOSE2006/jabbour/pages/remoting/remoting.html
+
+  Question n°8 :
+      Necessite le fichier.
+
+Exercice n° 4 :
+
+  Question n°9 :
+
+  Fonctionnellement oui.
+  Techniquement non, par exemple pour récuperer les objets,
+  RMI utilise un registre, avec WCF il faut faire des getter pour recuperer
+  les objets.
+  RMI gère le passage par valeur et par référence, WCF valeur uniquement.
+
+  Si hérite de Remote -> référence
+  Sinon si sérializable -> Copie
+
+  Question n°10 :
+  Yolo.
+
+  Question n°11-12 :
+  (Voir 2012)
+
+  Question n°13 :
+    Activer les metadata, puis generer le fichier meta
+
+  Question n°14 :
+    (Voir 2012)
+
+  Question n°15 :
+
+  - perCall : Nouvelle instance à chaque appel
+  - perSession (default) : On instancie, puis chaque appel utilise le même
+  service
+  - Single : Une seule instance pour tous les clients.
+
+  Question n°16 :
+    REST : Pas de proxy, on utilise une classe qui envoie les requêtes HTTP au serveur
+
+    SOAP : TODO
+
+    WCF :
+    Le service est en marche et publie son WSDL (publication de
+    métadonnées) → le proxy est créé à partir du WSDL par l'outil
+    svcutil.exe (mode statique)
+    Vous ne voulez pas passer par le WDSL mais par une dll partagée
+    contenant les (interfaces de) contrats → utilisation de ChannelFactory
+    (mode dynamique)

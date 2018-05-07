@@ -1,0 +1,120 @@
+Exercice n°1 :
+
+Question n°1 : Ce code permet-il de gérer un seul cabinet vétérinaire ou plusieurs ? Justifier.
+
+Un seul cabinet car : registry.bind(”miniCab”, miniCab );
+Si en veut plusieurs, faire plusieurs bind.
+(Check rebind)
+
+Question n°2 :
+
+La méthode getDossierByOwnerName retourne une ArrayList de DossierImpl. Lors
+de l’appel de cette méthode dans le main du client, de quel type dynamique est le
+résultat obtenu ?
+Expliquer pourquoi le type reçu n’est pas le type envoyé et à quel endroit a pu avoir
+lieu le “changement
+de type”.
+
+Envoi : DossierImpl
+Reception : Proxy
+
+Car le client ne connait pas la classe DossierImpl, il n'a que l'interface Dossier.
+L'interface hérite de Remote, donc le type dynamique est Proxy generé par RMI.
+
+Question n°3 :
+
+TODO
+
+Question n°4 :
+
+Yolo.
+
+Exercice n°2 :
+
+Quesion n°5 :
+
+Donnez sous forme de signatures de méthodes les opérations décrites dans l’extrait
+de ce fichier.
+
+WordDefinition DefineInDict(string dictId, string word);
+
+Dictionary[] DictionaryList(DictionaryList);
+
+Question n°6 :
+Les définitions du mot "wsdl" dans le dictionnaire "vera"
+
+Question n°7 :
+Oui, on connait :
+  - Les paramètres (type + nom)
+  - Type de retours
+  - Documentation
+  - Disponible en HTTP et en SOAP
+
+Question n°8 :
+  1)
+  VS :
+      - Créer une réference du service sur le client.
+    Code
+      - Créer un objet du type de la reference. (Proxy)
+      - Appeller la méthode sur le proxy.
+
+  Il sera de type Service (Nom de la réference) TODO : Tester
+
+  2)
+    [OpenrationContract]
+    WordDefinition DefineInDict(string dictId, string word);
+
+    [OpenrationContract]
+    Dictionary[] DictionaryList(DictionaryList);
+
+    [DataContract]
+    ...Chaque type complexe propre au service (Exemple : Dictionary)...
+
+    Binding :
+    Exemple : basicHttp
+              TCP
+
+Exercice n°3 :
+
+Question n°9 :
+
+  a)
+
+  Valeur :
+    Copie de l'objet envoyé au client
+    Appel de méthode en local
+    Modification de l'objet en local
+    Pour modifier l'objet, le renvoyer au serveur (Possible collision)
+
+  Reference :
+    Reference de l'objet envoyé au client
+    Appel de méthode sur le réseau
+    Modification de l'objet directe
+
+  b)
+
+    Non, WCF ne gère que par copie
+
+  Question n°10 :
+
+    Plus proche de RMI
+      .Net remoting RPC pour C#
+      RMI : RPC pour Java
+
+      .net remoting utilise HTTP, TCP, and SMTP
+      WCF peut en utiliser d'autres.
+      WCF fourni la liste des methodes
+
+  Question n°11 :
+  Mode d'instanciation non défini explicitement
+  Le mode par defaut est PerSession
+
+  Question n°12 :
+    Foo -> Bar bar
+    Bar ->  int bar
+
+    a : bar.bar0
+    b : bar.bar12
+    c : 0
+    d : bar.bar : 3
+    e : barbis.bar : 0
