@@ -1,0 +1,9 @@
+https://stackoverflow.com/questions/464687/running-rmi-server-classnotfound?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+https://stackoverflow.com/questions/20084829/rmi-unmarshalexception-classnotfoundexception-server-only
+https://stackoverflow.com/questions/27096163/rmi-java-security-policy-access-denied?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+https://stackoverflow.com/questions/11011966/java-rmi-unmarshalexception-error-unmarshalling
+http://www.cs.nott.ac.uk/~pszcmg/G53ACC/java-rmi/rmi-tutorial.html
+https://stackoverflow.com/questions/7278395/rmi-with-multiple-jar-inclusion?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+https://docs.oracle.com/javase/7/docs/technotes/guides/rmi/codebase.html
+https://stackoverflow.com/questions/6322107/java-no-security-manager-rmi-class-loader-disabled?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+https://stackoverflow.com/questions/2374436/when-should-i-implement-java-io-serializable-in-rmi
