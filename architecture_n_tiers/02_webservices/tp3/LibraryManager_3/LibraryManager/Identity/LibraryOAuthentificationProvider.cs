@@ -16,14 +16,11 @@ namespace LibraryManager.Identity
         {
             context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
 
-            using (var authRepository = new AuthRepository())
+            using (var authentification = new Authentification())
             {
-                await authRepository.RegisterSubscriber(new Subscriber(42, "Librarian1", "password123"));
-                await authRepository.RegisterSubscriber(new Subscriber(42, "Subscriber1", "password321"));
+                IdentityUser user = await authentification.FindUser(context.UserName, context.Password);
 
-                IdentityUser user = await authRepository.FindUser(context.UserName, context.Password);
-
-                authRepository.SetupRoles();
+                authentification.SetupRoles();
 
                 if (user == null)
                 {

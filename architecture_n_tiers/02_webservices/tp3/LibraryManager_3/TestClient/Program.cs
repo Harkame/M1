@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -11,13 +12,20 @@ namespace TestClient
     class Program
     {
         private static readonly HttpClient g_client = new HttpClient(); //HTTP client who are used to send HTTP request
-        private const string BOOKS_CONTROLLER = "http://localhost:31101/api/books/";
-        private const string COMMENTS_CONTROLLER = "http://localhost:31101/api/comments/";
-        private const string LIBRARIANS_CONTROLLER = "http://localhost:31101/api/librarians/";
-        private const string SUBSCRIBERS_CONTROLLER = "http://localhost:31101/api/subscribers/";
+        private static readonly string SERVER_URL = "http://localhost:";
+        private static readonly int PORT = 31101;
+        private static readonly string SERVER_COMPLETE_URL = SERVER_URL + PORT + "/";
+        private static readonly string TOKEN_URL = SERVER_COMPLETE_URL + "oauth2/token";
+        private static readonly string SERVER_API_URL = SERVER_COMPLETE_URL + "api/";
+        private static readonly string BOOKS_CONTROLLER_URL = SERVER_API_URL + "books/";
+        private static readonly string COMMENTS_CONTROLLER_URL = SERVER_API_URL + "comments/";
+        private static readonly string LIBRARIANS_CONTROLLER_URL = SERVER_API_URL + "librarians/";
+        private static readonly string SUBSCRIBERS_CONTROLLER_URL = SERVER_API_URL + "subscribers/";
 
         private static UriBuilder g_uri_builder; //Build of HTTP request's URI
         private static Dictionary<String, String> g_parameters; //Parameters of HTTP Post request
+        private static string g_access_token;
+        private static HttpRequestResult g_http_request_result;
 
         static void Main(string[] args)
         {
@@ -35,157 +43,151 @@ namespace TestClient
         public static void TestLibrarian()
         {
             Console.WriteLine("GetBooks : UnAuthentified");
-            g_uri_builder = new UriBuilder(BOOKS_CONTROLLER + "GetBooks/1");
-            Console.WriteLine(GetRequestStatus(g_uri_builder.Uri).Result);
+            g_uri_builder = new UriBuilder(BOOKS_CONTROLLER_URL + "GetBooks");
+            Console.WriteLine(SendGetRequest(g_uri_builder.Uri).Result.State);
 
-            Console.WriteLine("Authentification : Wrong id/password");
-            g_parameters = new Dictionary<String, String>
-            {
-                { "ID", 1 + ""},
-                { "Password", "yolo"}
-            };
-            g_uri_builder = new UriBuilder(LIBRARIANS_CONTROLLER + "Authentificate");
-            Console.WriteLine(PutRequestStatus(g_uri_builder.Uri, new FormUrlEncodedContent(g_parameters)).Result);
-
-            Console.WriteLine("AddBook : Unauthentified");
-            g_uri_builder = new UriBuilder(BOOKS_CONTROLLER + "PostBook/7");
+            Console.WriteLine("CommentBook : Unauthentified");
+            g_uri_builder = new UriBuilder(BOOKS_CONTROLLER_URL + "PostBook");
             g_parameters = new Dictionary<String, String>
             {
                 {"ID", 0 + ""}, //If not, parse error
-                {"Title", "TitleTest"},
-                {"Author", "AuthorTest"},
-                {"Stock", 42 + ""},
-                {"Editor", "EditorTest"}
+                {"Title", "Title1"},
+                {"Author", "Author1"},
+                {"Stock", 5 + ""},
+                {"Editor", "Editor1"}
             };
-            Console.WriteLine(PostRequestStatus(g_uri_builder.Uri, new FormUrlEncodedContent(g_parameters)).Result);
 
-            Console.WriteLine("Authentification : Right id/password");
+            Console.WriteLine(SendPostRequest(g_uri_builder.Uri, new FormUrlEncodedContent(g_parameters)).Result.State);
+
+            g_uri_builder = new UriBuilder(TOKEN_URL);
+
             g_parameters = new Dictionary<String, String>
-                {
-                    { "ID", 7 + ""},
-                    { "Password", "librarian2"}
-                };
+            {
+                {"grant_type", "password"},
+                {"username", "librarian1"},
+                {"password", "password123"}
+            };
 
-            g_uri_builder = new UriBuilder(LIBRARIANS_CONTROLLER + "Authentificate");
-            Console.WriteLine(PutRequestStatus(g_uri_builder.Uri, new FormUrlEncodedContent(g_parameters)).Result);
+            g_http_request_result = SendPostRequest(g_uri_builder.Uri, new FormUrlEncodedContent(g_parameters)).Result;
+
+            var t_j_object = JObject.Parse(g_http_request_result.Content);
+            g_access_token = t_j_object["access_token"].ToString();
+
+            Console.WriteLine("Token : " + g_access_token);
+
+            g_client.DefaultRequestHeaders.Add("Authorization", "Bearer " + g_access_token);
 
             Console.WriteLine("GetBooks : Authentified");
-            g_uri_builder = new UriBuilder(BOOKS_CONTROLLER + "GetBooks/7");
-            Console.WriteLine(GetRequestStatus(g_uri_builder.Uri).Result);
+            g_uri_builder = new UriBuilder(BOOKS_CONTROLLER_URL + "GetBooks");
+            Console.WriteLine(SendGetRequest(g_uri_builder.Uri).Result.State);
 
-            Console.WriteLine("AddBook : Authentified");
-            g_uri_builder = new UriBuilder(BOOKS_CONTROLLER + "PostBook/7");
+            Console.WriteLine("PostBook : Authentified");
+            g_uri_builder = new UriBuilder(BOOKS_CONTROLLER_URL + "PostBook");
             g_parameters = new Dictionary<String, String>
             {
                 {"ID", 0 + ""}, //If not, parse error
-                {"Title", "TitleTest"},
-                {"Author", "AuthorTest"},
-                {"Stock", 42 + ""},
-                {"Editor", "EditorTest"}
+                {"Title", "Title1"},
+                {"Author", "Author1"},
+                {"Stock", 5 + ""},
+                {"Editor", "Editor1"}
             };
-            Console.WriteLine(PostRequestStatus(g_uri_builder.Uri, new FormUrlEncodedContent(g_parameters)).Result);
+
+            Console.WriteLine(SendPostRequest(g_uri_builder.Uri, new FormUrlEncodedContent(g_parameters)).Result.State);
         }
 
         public static void TestSubscriber()
         {
             Console.WriteLine("GetBooks : UnAuthentified");
-            g_uri_builder = new UriBuilder(BOOKS_CONTROLLER + "GetBooks/1");
-            Console.WriteLine(GetRequestStatus(g_uri_builder.Uri).Result);
-
-            Console.WriteLine("Authentification : Wrong id/password");
-            g_uri_builder = new UriBuilder(SUBSCRIBERS_CONTROLLER + "Authentificate");
-            g_parameters = new Dictionary<String, String>
-            {
-                { "ID", 1 + ""},
-                { "Password", "yolo"}
-            };
-            Console.WriteLine(PutRequestStatus(g_uri_builder.Uri, new FormUrlEncodedContent(g_parameters)).Result);
+            g_uri_builder = new UriBuilder(BOOKS_CONTROLLER_URL + "GetBooks");
+            Console.WriteLine(SendGetRequest(g_uri_builder.Uri).Result.State);
 
             Console.WriteLine("CommentBook : Unauthentified");
-            g_uri_builder = new UriBuilder(COMMENTS_CONTROLLER + "PostComment/5");
+            g_uri_builder = new UriBuilder(COMMENTS_CONTROLLER_URL + "PostComment/5");
             g_parameters = new Dictionary<String, String>
             {
-                {"Description", "CommentTest"}, //If not, parse error
-                {"BookID", "2"},
-                {"SubscriberID", "5"},
-            };
-            Console.WriteLine(PostRequestStatus(g_uri_builder.Uri, new FormUrlEncodedContent(g_parameters)).Result);
+                {"ID", 0 + ""}, //If not, parse error
+                {"Description", "test"},
+                {"BookID", 1 + ""}
+             };
 
-            Console.WriteLine("Authentification : Right id/password");
-            g_uri_builder = new UriBuilder(SUBSCRIBERS_CONTROLLER + "Authentificate");
+            Console.WriteLine(SendPostRequest(g_uri_builder.Uri, new FormUrlEncodedContent(g_parameters)).Result.State);
+
+            g_uri_builder = new UriBuilder(TOKEN_URL);
+
             g_parameters = new Dictionary<String, String>
-                {
-                    { "ID", 5 + ""},
-                    { "Password", "subscriber"}
-                };
-            Console.WriteLine(PutRequestStatus(g_uri_builder.Uri, new FormUrlEncodedContent(g_parameters)).Result);
+                        {
+                            {"grant_type", "password"},
+                            {"username", "subscriber3"},
+                            {"password", "password123"}
+                        };
+
+            g_http_request_result = SendPostRequest(g_uri_builder.Uri, new FormUrlEncodedContent(g_parameters)).Result;
+
+            var t_j_object = JObject.Parse(g_http_request_result.Content);
+            g_access_token = t_j_object["access_token"].ToString();
+
+            Console.WriteLine("Token : " + g_access_token);
+
+            g_client.DefaultRequestHeaders.Add("Authorization", "Bearer " + g_access_token);
 
             Console.WriteLine("GetBooks : Authentified");
-            g_uri_builder = new UriBuilder(BOOKS_CONTROLLER + "GetBooks/7");
-            Console.WriteLine(GetRequestStatus(g_uri_builder.Uri).Result);
+            g_uri_builder = new UriBuilder(BOOKS_CONTROLLER_URL + "GetBooks");
+            Console.WriteLine(SendGetRequest(g_uri_builder.Uri).Result.State);
 
             Console.WriteLine("CommentBook : Authentified");
-            g_uri_builder = new UriBuilder(COMMENTS_CONTROLLER + "PostComment/5");
+            g_uri_builder = new UriBuilder(COMMENTS_CONTROLLER_URL + "PostComment");
             g_parameters = new Dictionary<String, String>
             {
-                {"Description", "CommentTest"}, //If not, parse error
-                {"BookID", "2"},
-                {"SubscriberID", "5"},
-            };
-            Console.WriteLine(PostRequestStatus(g_uri_builder.Uri, new FormUrlEncodedContent(g_parameters)).Result);
+                {"ID", 1 + ""}, //If not, parse error
+                {"Description", "test"},
+                {"BookID", 1 + ""}
+             };
+
+            Console.WriteLine(SendPostRequest(g_uri_builder.Uri, new FormUrlEncodedContent(g_parameters)).Result.State);
+        }
+
+        public class HttpRequestResult
+        {
+            public HttpStatusCode State { get; set; }
+            public string Content { get; set; }
         }
 
         /// <summary>
-        /// Send an Get request et return the response value
+        /// Send an Get request et return the response state and content
         /// </summary>
         /// <param name="p_uri">URL of the request (Don't forgot to include the parameters into the URL)</param>
-        /// <returns>An Task of string, use attribute Result to get the response (JSON Format)</returns>
-        public async static Task<string> GetRequestContent(Uri p_uri)
+        /// <returns>An Task of HttpRequestResult</returns>
+        public async static Task<HttpRequestResult> SendGetRequest(Uri p_uri)
         {
             using (HttpResponseMessage t_response = await g_client.GetAsync(p_uri))
             {
-                return await t_response.Content.ReadAsStringAsync();
+                HttpRequestResult httpRequestResult = new HttpRequestResult();
+
+                httpRequestResult.State = t_response.StatusCode;
+
+                httpRequestResult.Content = await t_response.Content.ReadAsStringAsync();
+
+                return httpRequestResult;
             }
         }
 
         /// <summary>
-        /// Send an Get request et return the response value
+        /// Send an Get request et return the response state and content
         /// </summary>
         /// <param name="p_uri">URL of the request (Don't forgot to include the parameters into the URL)</param>
-        /// <returns>An Task of string, use attribute Result to get the response (JSON Format)</returns>
-        public async static Task<HttpStatusCode> GetRequestStatus(Uri p_uri)
-        {
-            using (HttpResponseMessage t_response = await g_client.GetAsync(p_uri))
-            {
-                return t_response.StatusCode;
-            }
-        }
-
-        /// <summary>
-        /// Send an Post request and return the status value
-        /// </summary>
-        /// <param name="p_uri">URL of the request</param>
-        /// <param name="p_parameters">The parameters of the request</param>
-        /// <returns>The status of the request</returns>
-        public async static Task<HttpStatusCode> PostRequestStatus(Uri p_uri, FormUrlEncodedContent p_parameters)
+        /// <param name="p_parameters">Parameters of the request)</param>
+        /// <returns>An Task of HttpRequestResult</returns>
+        public async static Task<HttpRequestResult> SendPostRequest(Uri p_uri, FormUrlEncodedContent p_parameters)
         {
             using (HttpResponseMessage t_response = await g_client.PostAsync(p_uri, p_parameters))
             {
-                return t_response.StatusCode;
-            }
-        }
+                HttpRequestResult httpRequestResult = new HttpRequestResult();
 
-        /// <summary>
-        /// Send an Put request and return the status value
-        /// </summary>
-        /// <param name="p_uri">URL of the request</param>
-        /// <param name="p_parameters">The parameters of the request</param>
-        /// <returns>The status of the request</returns>
-        public static async Task<HttpStatusCode> PutRequestStatus(Uri p_uri, FormUrlEncodedContent p_parameters)
-        {
-            using (HttpResponseMessage t_response = await g_client.PutAsync(p_uri, p_parameters))
-            {
-                return t_response.StatusCode;
+                httpRequestResult.State = t_response.StatusCode;
+
+                httpRequestResult.Content = await t_response.Content.ReadAsStringAsync();
+
+                return httpRequestResult;
             }
         }
     }

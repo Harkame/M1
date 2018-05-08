@@ -3,7 +3,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
-using LibraryManager.Connections;
 using LibraryManager.Database;
 using LibraryManager.Models;
 
@@ -27,12 +26,16 @@ namespace LibraryManager.Controllers
         {
             //Problem with SQL integrity, we manage it here
             //If comment (BookID + SubscriberId) already exist, update the description, else add it
+            /*
             var t_comment = db.Comments.Where(c => c.BookID == comment.BookID && c.SubscriberID == comment.SubscriberID).ToArray();
 
             if (t_comment.Length == 0)
                 db.Comments.Add(comment);
             else
                 t_comment[0].Description = comment.Description;
+            */
+
+            db.Comments.Add(comment);
 
             await db.SaveChangesAsync();
 

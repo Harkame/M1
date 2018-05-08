@@ -2,29 +2,15 @@
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
-using LibraryManager.Connections;
 using LibraryManager.Database;
 using LibraryManager.Models;
+using Microsoft.AspNet.Identity;
 
 namespace LibraryManager.Controllers
 {
     public class SubscribersController : ApiController
     {
         private LibraryContext db = new LibraryContext();
-
-        [Authorize(Roles = "Librarian")]
-        [Route("api/subscribers/GetSubscribersByID/{id}"), HttpGet]
-        [ResponseType(typeof(Subscriber))]
-        public async Task<IHttpActionResult> GetSubscribersByID(int id)
-        {
-            Subscriber subscriber = await db.Subscribers.FindAsync(id);
-            if (subscriber == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(subscriber);
-        }
 
         [Authorize(Roles = "Subscriber")]
         [Route("api/subscribers/GetCommands"), HttpGet]
@@ -43,18 +29,52 @@ namespace LibraryManager.Controllers
             return Ok(r_commands);
         }
 
-        [Authorize(Roles = "Librarian")]
+        [AllowAnonymous]
         [Route("api/subscribers/PostSubscriber"), HttpPost]
-        [ResponseType(typeof(Subscriber))]
-        public async Task<IHttpActionResult> PostSubscriber(Subscriber subscriber)
+        public async Task<IHttpActionResult> Post(Subscriber subscriber)
         {
-            if (!ModelState.IsValid)
+            using (var authRepository = new Authentification())
+            {
+                IdentityResult result = await authRepository.RegisterSubscriber(subscriber);
+
+                IHttpActionResult errorResult = GetErrorResult(result);
+
+                if (errorResult != null)
+                {
+                    return errorResult;
+                }
+
+                return Ok(subscriber);
+            }
+        }
+
+        private IHttpActionResult GetErrorResult(IdentityResult result)
+        {
+            if (result == null)
+            {
+                return InternalServerError();
+            }
+
+            if (!result.Succeeded)
+            {
+                if (result.Errors != null)
+                {
+                    foreach (string error in result.Errors)
+                    {
+                        ModelState.AddModelError("", error);
+                    }
+                }
+
+                if (ModelState.IsValid)
+                {
+                    // No ModelState errors are available to send, so just return an empty BadRequest.
+                    return BadRequest();
+                }
+
                 return BadRequest(ModelState);
+            }
 
-            db.Subscribers.Add(subscriber);
-            await db.SaveChangesAsync();
-
-            return Ok(subscriber); //To know the id
+            return null;
         }
     }
 }

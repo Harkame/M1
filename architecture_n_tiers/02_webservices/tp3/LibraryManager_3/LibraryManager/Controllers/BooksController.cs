@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using LibraryManager.Models;
-using LibraryManager.Connections;
 using LibraryManager.Database;
 
 namespace LibraryManager.Controllers
@@ -32,13 +31,10 @@ namespace LibraryManager.Controllers
         }
 
         [Authorize(Roles = "Librarian, Subscriber")]
-        [Route("api/books/GetBookByID/{user_id}/{book_id}"), HttpGet]
+        [Route("api/books/GetBookByID/{book_id}"), HttpGet]
         [ResponseType(typeof(Book))]
-        public async Task<IHttpActionResult> GetBookByID(int user_id, int book_id)
+        public async Task<IHttpActionResult> GetBookByID(int book_id)
         {
-            if (!Library.LibrarianIsConnected(user_id) && !Library.SubscriberIsConnected(user_id))
-                return NotFound();
-
             Book book = await db.Books.FindAsync(book_id);
             if (book == null)
                 return NotFound();
@@ -72,7 +68,7 @@ namespace LibraryManager.Controllers
             return Ok(query.ToList());
         }
 
-        [Authorize(Roles="Librarian")]
+        //[Authorize(Roles="Librarian")]
         [Route("api/books/PostBook/"), HttpPost]
         [ResponseType(typeof(Book))]
         public async Task<IHttpActionResult> PostBook(Book book)

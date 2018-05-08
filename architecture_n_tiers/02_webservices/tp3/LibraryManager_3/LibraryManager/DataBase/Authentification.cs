@@ -7,41 +7,40 @@ using LibraryManager.Models;
 
 namespace LibraryManager.Database
 {
-    public class AuthRepository : IDisposable
+    public class Authentification : IDisposable
     {
-        private LibraryContext libraryContext;
-
         private LibraryUserManager libraryUserManager;
 
 
-        public AuthRepository()
+        public Authentification()
         {
-            libraryContext = new LibraryContext();
             libraryUserManager = new LibraryUserManager();
-
         }
 
         public async void SetupRoles()
         {
-            var role = libraryContext.Roles.SingleOrDefault(r => r.Name == "Subscriber");
-            if (role == null)
+            using (LibraryContext libraryContext = new LibraryContext())
             {
-                libraryContext.Roles.Add(new IdentityRole { Name = "Subscriber" });
+                var role = libraryContext.Roles.SingleOrDefault(r => r.Name == "Subscriber");
+                if (role == null)
+                {
+                    libraryContext.Roles.Add(new IdentityRole { Name = "Subscriber" });
 
+                }
+
+                role = libraryContext.Roles.SingleOrDefault(r => r.Name == "Librarian");
+                if (role == null)
+                {
+                    libraryContext.Roles.Add(new IdentityRole { Name = "Librarian" });
+                }
+
+                await libraryContext.SaveChangesAsync();
             }
-
-            role = libraryContext.Roles.SingleOrDefault(r => r.Name == "Librarian");
-            if (role == null)
-            {
-                libraryContext.Roles.Add(new IdentityRole { Name = "Librarian" });
-            }
-
-            await libraryContext.SaveChangesAsync();
         }
 
-        public async Task<IdentityUser> FindUser(string nomInscrit, string mdpInscrit)
+        public async Task<IdentityUser> FindUser(string username, string password)
         {
-            IdentityUser inscrit = await libraryUserManager.FindAsync(nomInscrit, mdpInscrit);
+            IdentityUser inscrit = await libraryUserManager.FindAsync(username, password);
 
             return inscrit;
         }
@@ -49,86 +48,85 @@ namespace LibraryManager.Database
         // Inscrit méthodes
         public async Task<IdentityResult> RegisterSubscriber(Subscriber subscriber)
         {
-            IdentityUser user = new IdentityUser
+            using (LibraryContext libraryContext = new LibraryContext())
             {
-                UserName = subscriber.UserName
-            };
+                IdentityUser user = new IdentityUser
+                {
+                    UserName = subscriber.UserName,
+                    
+                };
 
+                await libraryUserManager.CreateAsync(new IdentityUser { UserName = "subscriber1" }, "password123");
+                await libraryUserManager.CreateAsync(new IdentityUser { UserName = "subscriber2" }, "password321");
 
-            var result = await libraryUserManager.CreateAsync(user, subscriber.Password);
+                var result = await libraryUserManager.CreateAsync(user, subscriber.Password);
 
-            var role = libraryContext.Roles.SingleOrDefault(r => r.Name == "Subscriber");
-            user.Roles.Add(new IdentityUserRole { RoleId = role.Id });
+                var role = libraryContext.Roles.SingleOrDefault(r => r.Name == "Subscriber");
+                user.Roles.Add(new IdentityUserRole { RoleId = role.Id });
 
-            await libraryUserManager.UpdateAsync(user);
+                await libraryUserManager.UpdateAsync(user);
 
-            if (result.Succeeded)
-            {
-                libraryContext.Subscribers.Add(subscriber);
+                await libraryContext.SaveChangesAsync();
+                return result;
             }
-
-            await libraryContext.SaveChangesAsync();
-            return result;
         }
 
-        public async Task<IdentityResult> UnRegisterInscrit(Subscriber subscriber)
+        public async Task<IdentityResult> UnRegisterSubscriber(Subscriber subscriber)
         {
-            IdentityUser user = await FindUser(subscriber.UserName, subscriber.Password);
-
-            var result = await libraryUserManager.DeleteAsync(user);
-            if (result.Succeeded)
+            using (LibraryContext libraryContext = new LibraryContext())
             {
-                libraryContext.Subscribers.Attach(subscriber);
-                libraryContext.Subscribers.Remove(subscriber);
-            }
+                IdentityUser user = await FindUser(subscriber.UserName, subscriber.Password);
 
-            await libraryContext.SaveChangesAsync();
-            return result;
+                var result = await libraryUserManager.DeleteAsync(user);
+
+                await libraryContext.SaveChangesAsync();
+                return result;
+            }
         }
 
         //Bibliothecaire méthodes
-        public async Task<IdentityResult> RegisterBibliothecaire(Librarian librarian)
+        public async Task<IdentityResult> RegisterLibrarian(Librarian librarian)
         {
-            IdentityUser user = new IdentityUser
+            using (LibraryContext libraryContext = new LibraryContext())
             {
-                UserName = librarian.UserName
-            };
+                IdentityUser user = new IdentityUser
+                {
+                    UserName = librarian.UserName
+                };
 
-            var result = await libraryUserManager.CreateAsync(user, librarian.Password);
+                var result = await libraryUserManager.CreateAsync(user, librarian.Password);
 
-            var role = libraryContext.Roles.SingleOrDefault(r => r.Name == "Librarian");
-            user.Roles.Add(new IdentityUserRole { RoleId = role.Id });
+                var role = libraryContext.Roles.SingleOrDefault(r => r.Name == "Librarian");
+                user.Roles.Add(new IdentityUserRole { RoleId = role.Id });
 
-            await libraryUserManager.UpdateAsync(user);
+                await libraryUserManager.UpdateAsync(user);
 
-            if (result.Succeeded)
-            {
-                libraryContext.Librarians.Add(librarian);
+                await libraryContext.SaveChangesAsync();
+                return result;
             }
-
-            await libraryContext.SaveChangesAsync();
-            return result;
         }
 
-        public async Task<IdentityResult> UnRegisterBibliothecaire(Librarian librarian)
+        public async Task<IdentityResult> UnRegisterLibrarian(Librarian librarian)
         {
-            IdentityUser user = await FindUser(librarian.UserName, librarian.Password);
-
-            var result = await libraryUserManager.DeleteAsync(user);
-            if (result.Succeeded)
+            using (LibraryContext libraryContext = new LibraryContext())
             {
-                libraryContext.Librarians.Attach(librarian);
-                libraryContext.Librarians.Remove(librarian);
-            }
+                IdentityUser user = await FindUser(librarian.UserName, librarian.Password);
 
-            await libraryContext.SaveChangesAsync();
-            return result;
+                var result = await libraryUserManager.DeleteAsync(user);
+
+                await libraryContext.SaveChangesAsync();
+                return result;
+            }
         }
 
 
         public void Dispose()
         {
-            libraryContext.Dispose();
+            using (LibraryContext libraryContext = new LibraryContext())
+            {
+                libraryContext.Dispose();
+            }
+
             libraryUserManager.Dispose();
 
         }

@@ -1,10 +1,10 @@
-﻿using System.Threading.Tasks;
-using System.Web.Http;
+﻿using System.Web.Http;
 using System.Web.Http.Description;
-using LibraryManager.Models;
-using LibraryManager.Connections;
 using System.Collections.Generic;
 using LibraryManager.Database;
+using LibraryManager.Models;
+using Microsoft.AspNet.Identity;
+using System.Threading.Tasks;
 
 namespace LibraryManager.Controllers
 {
@@ -12,19 +12,7 @@ namespace LibraryManager.Controllers
     {
         private LibraryContext db = new LibraryContext();
 
-        [Route("api/librarians/GetLibrarianByID/{id}"), HttpGet]
-        [ResponseType(typeof(Librarian))]
-        public async Task<IHttpActionResult> GetLibrarianByID(int id)
-        {
-            Librarian librarian = await db.Librarians.FindAsync(id);
-            if (librarian == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(librarian);
-        }
-
+        [Authorize(Roles = "Librarian")]
         [Route("api/librarians/GetCommands/"), HttpGet]
         [ResponseType(typeof(string))]
         public IHttpActionResult GetCommands()
@@ -41,17 +29,52 @@ namespace LibraryManager.Controllers
             return Ok(r_commands);
         }
 
+        [AllowAnonymous]
         [Route("api/librarians/PostLibrarian"), HttpPost]
-        [ResponseType(typeof(Librarian))]
         public async Task<IHttpActionResult> PostLibrarian(Librarian librarian)
         {
-            if (!ModelState.IsValid)
+            using (var authRepository = new Authentification())
+            {
+                IdentityResult result = await authRepository.RegisterLibrarian(librarian);
+
+                IHttpActionResult errorResult = GetErrorResult(result);
+
+                if (errorResult != null)
+                {
+                    return errorResult;
+                }
+
+                return Ok(librarian);
+            }
+        }
+
+        private IHttpActionResult GetErrorResult(IdentityResult result)
+        {
+            if (result == null)
+            {
+                return InternalServerError();
+            }
+
+            if (!result.Succeeded)
+            {
+                if (result.Errors != null)
+                {
+                    foreach (string error in result.Errors)
+                    {
+                        ModelState.AddModelError("", error);
+                    }
+                }
+
+                if (ModelState.IsValid)
+                {
+                    // No ModelState errors are available to send, so just return an empty BadRequest.
+                    return BadRequest();
+                }
+
                 return BadRequest(ModelState);
+            }
 
-            db.Librarians.Add(librarian);
-            await db.SaveChangesAsync();
-
-            return Ok(librarian); //To know the id
+            return null;
         }
     }
 }

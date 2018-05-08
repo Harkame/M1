@@ -1,7 +1,10 @@
 D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager_3\LibrarianClient\bin\Debug\LibrarianClient.exe.config
 D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager_3\LibrarianClient\bin\Debug\LibrarianClient.exe
 D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager_3\LibrarianClient\bin\Debug\LibrarianClient.pdb
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager_3\LibrarianClient\bin\Debug\Newtonsoft.Json.dll
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager_3\LibrarianClient\bin\Debug\Newtonsoft.Json.xml
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager_3\LibrarianClient\obj\Debug\LibrarianClient.csprojResolveAssemblyReference.cache
 D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager_3\LibrarianClient\obj\Debug\LibrarianClient.csproj.CoreCompileInputs.cache
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager_3\LibrarianClient\obj\Debug\LibrarianClient.csproj.CopyComplete
 D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager_3\LibrarianClient\obj\Debug\LibrarianClient.exe
 D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager_3\LibrarianClient\obj\Debug\LibrarianClient.pdb
-D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager_3\LibrarianClient\obj\Debug\LibrarianClient.csprojResolveAssemblyReference.cache
