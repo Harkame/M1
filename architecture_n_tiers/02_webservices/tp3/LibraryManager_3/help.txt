@@ -1,0 +1,53 @@
+http://localhost:31101/oauth2/token
+grant_type=password&username=subscriber1&password=password123
+
+
+http://localhost:31101/api/librarians/AddLibrarian
+{
+
+"ID" : 9,
+"UserName" : "librarian1",
+
+"Password" : "password123"
+
+}
+
+http://localhost:31101/api/subscribers/AddSubscriber
+{
+	"ID" : 4,
+	"UserName" : "subscriber3",
+	"Password" : "password123"
+}
+
+http://localhost:31101/api/books/PostBook
+
+{
+	"ID" : 5,
+	"Title" : "Book1",
+	"Author" : "Author1",
+	"Stock" : 9,
+	"Editor" : "Editor1"
+}
+
+{
+	"ID" : 8,
+	"Title" : "Book2",
+	"Author" : "Author1",
+	"Stock" : 4,
+	"Editor" : "Editor1"}
+
+{
+	"ID" : 9,
+	"Title" : "Book3",
+	"Author" : "Author2",
+	"Stock" : 9,
+	"Editor" : "Editor1"
+}
+
+sqllocaldb.exe stop v11.0
+
+sqllocaldb.exe delete v11.0
+
+Update-Database
+
+Install-Package Newtonsoft.Json
