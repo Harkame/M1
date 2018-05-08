@@ -1,7 +1,0 @@
-grant{
-	permission java.security.AllPermission;
-
- };
-
-
-grant codeBase "file:.${/}bin/" { permission java.io.FilePermission "..${/}*", "read" ; }; 
