@@ -6,7 +6,8 @@ Exercice n°2 :
 Question n°4 : TODO
 
 Question n°5 :
-  javac -d <destination> <sources>...
+  javac -d <destination> <sources1> <source2> ...
+  # rmiregistry selon implémentation
   java ./<classe> -Djava.security.manager -Djava.security.policy="path/to/file.policy" -Djava.rmi.server.codebase="path/to/codebase"
 
 Question n°6 :
