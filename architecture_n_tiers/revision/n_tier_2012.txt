@@ -3,7 +3,7 @@ Exercice n°1 :
 Question n°1 : Ce code permet-il de gérer un seul cabinet vétérinaire ou plusieurs ? Justifier.
 
 Un seul cabinet car : registry.bind(”miniCab”, miniCab );
-Si en veut plusieurs, faire plusieurs bind.
+Si pn en veut plusieurs, faire plusieurs bind, avec des clées différentes.
 (Voir rebind)
 
 Question n°2 :
