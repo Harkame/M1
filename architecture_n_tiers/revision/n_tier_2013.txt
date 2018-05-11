@@ -1,13 +1,14 @@
 Exercice n°1 :
-Yolo.
+Corba ?
 
 Exercice n°2 :
 
-Question n°4 : TODO
+Question n°4 :
+(Voir TP1)
 
 Question n°5 :
   javac -d <destination> <sources1> <source2> ...
-  # rmiregistry selon implémentation
+  # rmiregistry # selon implémentation
   java ./<classe> -Djava.security.manager -Djava.security.policy="path/to/file.policy" -Djava.rmi.server.codebase="path/to/codebase"
 
 Question n°6 :
@@ -16,10 +17,10 @@ On utilise la méthode bind("clée", objet) pour que l'objet soit referencé
 sur la clée.
 Utiliser rebind pour éviter les conflits
 
-On peux créer un registre avec la commande"rmiregistry <port>
+On peux créer un registre avec la commande : rmiregistry <port>
 
 La commande rmid lance un démon, avec un registre. On pourra ensuite binder
-sur ce démon.
+sur ce démon. (A tester)
 
 Exercice n°3 :
 
@@ -32,7 +33,9 @@ Question 7 :
   http://igm.univ-mlv.fr/~dr/XPOSE2006/jabbour/pages/remoting/remoting.html
 
   Question n°8 :
-      Necessite le fichier.
+      Inconvénient : Necessite d'avoir le fichier.
+      
+      Avantage : ?
 
 Exercice n° 4 :
 
@@ -40,15 +43,15 @@ Exercice n° 4 :
 
   Fonctionnellement oui.
   Techniquement non, par exemple pour récuperer les objets,
-  RMI utilise un registre, avec WCF il faut faire des getter pour recuperer
+  RMI utilise un registre, avec WCF il faut faire des getters pour recuperer
   les objets.
-  RMI gère le passage par valeur et par référence, WCF valeur uniquement.
+  RMI gère le passage par valeur et par référence, WCF par valeur uniquement.
 
   Si hérite de Remote -> référence
   Sinon si sérializable -> Copie
 
   Question n°10 :
-  Yolo.
+  ?
 
   Question n°11-12 :
   (Voir 2012)
@@ -60,7 +63,6 @@ Exercice n° 4 :
     (Voir 2012)
 
   Question n°15 :
-
   - perCall : Nouvelle instance à chaque appel
   - perSession (default) : On instancie, puis chaque appel utilise le même
   service
