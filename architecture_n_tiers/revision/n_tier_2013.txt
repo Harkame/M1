@@ -11,11 +11,11 @@ Question n°5 :
 
 Question n°6 :
 Il faut creer un registre sur un port donné
-On utilise la méthode bind("clée", objet) pour que l'objet soit referencer
+On utilise la méthode bind("clée", objet) pour que l'objet soit referencé
 sur la clée.
-Utiliser rebind pour éviter les conflicts
+Utiliser rebind pour éviter les conflits
 
-On peux créer un registre avec la commande"rmiregistry <port> afin de ne
+On peux créer un registre avec la commande"rmiregistry <port>
 
 La commande rmid lance un démon, avec un registre. On pourra ensuite binder
 sur ce démon.
