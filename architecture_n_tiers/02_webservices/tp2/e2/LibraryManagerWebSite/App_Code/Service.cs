@@ -2,8 +2,6 @@
  {
      using System;
      using System.Collections.Generic;
-     using System.Linq;
-     using System.Web;
      using System.Web.Services;
      using System.Text;
 
@@ -28,17 +26,17 @@
              if (p_password == null)
                  return null;
 
-             foreach (Librarian t_librarian in Library.a_librarians)
+             foreach (Librarian t_librarian in Library.Librarians)
                  if (t_librarian.ID == p_id && t_librarian.Password.Equals(p_password))
                  {
-                     Library.a_connections.Add(t_librarian);
+                     Library.Connections.Add(t_librarian);
                      return t_librarian;
                  }
 
-             foreach (Subscriber t_subscriber in Library.a_subscribers)
+             foreach (Subscriber t_subscriber in Library.Subscribers)
                  if (t_subscriber.ID == p_id && t_subscriber.Password.Equals(p_password))
                  {
-                     Library.a_connections.Add(t_subscriber);
+                     Library.Connections.Add(t_subscriber);
                      return t_subscriber;
                  }
 
@@ -57,10 +55,10 @@
              if (p_password == null)
                  return null;
 
-             foreach (Librarian t_librarian in Library.a_librarians)
+             foreach (Librarian t_librarian in Library.Librarians)
                  if (t_librarian.ID == p_id && t_librarian.Password.Equals(p_password))
                  {
-                     Library.a_connections.Add(t_librarian);
+                     Library.Connections.Add(t_librarian);
                      return t_librarian;
                  }
 
@@ -79,10 +77,10 @@
              if (p_password == null)
                  return null;
 
-             foreach (Subscriber t_subscriber in Library.a_subscribers)
+             foreach (Subscriber t_subscriber in Library.Subscribers)
                  if (t_subscriber.ID == p_id && t_subscriber.Password.Equals(p_password))
                  {
-                     Library.a_connections.Add(t_subscriber);
+                     Library.Connections.Add(t_subscriber);
                      return t_subscriber;
                  }
 
@@ -97,7 +95,7 @@
          public void Disconnect(User p_user)
          {
              if(Library.IsValid(p_user))
-                 Library.a_connections.Remove(p_user);
+                 Library.Connections.Remove(p_user);
          }
 
          /// <summary>
@@ -110,7 +108,7 @@
          public Book SearchBookByISBN(User p_User, int p_isbn)
          {
              if (Library.IsValid(p_User))
-                 foreach (Book t_book in Library.a_books)
+                 foreach (Book t_book in Library.Books)
                      if (t_book.ISBN == p_isbn)
                          return t_book;
 
@@ -130,7 +128,7 @@
              {
                  List<Book> t_books = new List<Book>();
 
-                 foreach (Book t_book in Library.a_books)
+                 foreach (Book t_book in Library.Books)
                      if (t_book.Author.Equals(p_author))
                          t_books.Add(t_book);
 
@@ -151,7 +149,7 @@
              {
                  StringBuilder r_books = new StringBuilder();
 
-                 foreach (Book t_book in Library.a_books)
+                 foreach (Book t_book in Library.Books)
                  {
                      r_books.Append(t_book.ToString());
                      r_books.Append(Environment.NewLine);
@@ -221,7 +219,7 @@
          public String GetBookDescription(User p_user, int p_isbn)
          {
              if (Library.IsValid(p_user))
-                 foreach (Book t_book in Library.a_books)
+                 foreach (Book t_book in Library.Books)
                      if (t_book.ISBN == p_isbn)
                          return t_book.ToString();
 
@@ -243,7 +241,7 @@
          {
              if (Library.IsValid(p_librarian) && (p_librarian.GetType().Name.Equals("Librarian")))
              {
-                 Library.a_books.Add(new Book(p_title, p_author, p_isbn, p_stock, p_editor));
+                 Library.Books.Add(new Book(p_title, p_author, p_isbn, p_stock, p_editor));
                  return true;
              }
              else
@@ -264,10 +262,10 @@
              if (!Library.IsValid(p_subscriber) || (p_description == null) || (!p_subscriber.GetType().Name.Equals("Subscriber")))
                  return false;
 
-             for (int t_index = 0; t_index < Library.a_books.Count; t_index++)
-                 if (Library.a_books[t_index].ISBN == p_isbn)
+             for (int t_index = 0; t_index < Library.Books.Count; t_index++)
+                 if (Library.Books[t_index].ISBN == p_isbn)
                  {
-                     Library.a_books[t_index].Comment(p_subscriber, p_description);
+                     Library.Books[t_index].Comment(p_subscriber, p_description);
                      return true;
                  }
 

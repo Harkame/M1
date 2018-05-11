@@ -2,41 +2,15 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Web;
     using System.Text;
 
     public abstract class User
     {
-        private static int g_id = 0;
+        private static int G_ID = 0;
 
-        private int a_id;
+        public int ID { get; set; }
 
-        private String a_password;
-
-        public int ID
-        {
-            get
-            {
-                return a_id;
-            }
-            set
-            {
-                a_id = value;
-            }
-        }
-
-        public String Password
-        {
-            get
-            {
-                return a_password;
-            }
-            set
-            {
-                a_password = value;
-            }
-        }
+        public String Password { get; set; }
 
         public User()
         {
@@ -44,9 +18,9 @@
 
         public User(String p_password)
         {
-            a_id = g_id++;
+            ID = G_ID++;
 
-            a_password = p_password;
+            Password = p_password;
         }
 
         public override bool Equals(object p_subscriber)
@@ -72,6 +46,14 @@
             r_to_string.Append(Password);
 
             return r_to_string.ToString();
+        }
+
+        public override int GetHashCode()
+        {
+            var hashCode = 1964481176;
+            hashCode = hashCode * -1521134295 + ID.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Password);
+            return hashCode;
         }
     }
 }

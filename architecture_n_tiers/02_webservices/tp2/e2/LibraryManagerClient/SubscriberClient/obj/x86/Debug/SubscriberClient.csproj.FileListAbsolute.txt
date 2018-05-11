@@ -9,3 +9,4 @@ D:\workspace\M1\architecture_n_tiers\02_webservices\tp2\e2\LibraryManagerClient\
 D:\workspace\M1\architecture_n_tiers\02_webservices\tp2\e2\LibraryManagerClient\SubscriberClient\obj\x86\Debug\LibraryManager.exe
 D:\workspace\M1\architecture_n_tiers\02_webservices\tp2\e2\LibraryManagerClient\SubscriberClient\obj\x86\Debug\LibraryManager.pdb
 D:\workspace\M1\architecture_n_tiers\02_webservices\tp2\e2\LibraryManagerClient\SubscriberClient\obj\x86\Debug\SubscriberClient.csprojResolveAssemblyReference.cache
+D:\workspace\M1\architecture_n_tiers\02_webservices\tp2\e2\LibraryManagerClient\SubscriberClient\obj\x86\Debug\SubscriberClient.csproj.CoreCompileInputs.cache
