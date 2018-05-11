@@ -53,7 +53,7 @@ Exercice n° 4 :
   (Voir 2012)
 
   Question n°13 :
-    Activer les metadata, puis generer le fichier meta
+    (Voir generation des meta-data)
 
   Question n°14 :
     (Voir 2012)
