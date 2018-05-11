@@ -7,7 +7,7 @@ Question n°4 : TODO
 
 Question n°5 :
   javac -d <destination> <sources>...
-  java ./<classe> -Djava.security.policy="path/to/policy"
+  java ./<classe> -Djava.security.manager -Djava.security.policy="path/to/file.policy" -Djava.rmi.server.codebase="path/to/codebase"
 
 Question n°6 :
 Il faut creer un registre sur un port donné
@@ -23,7 +23,7 @@ sur ce démon.
 Exercice n°3 :
 
 Question 7 :
-  .Net remoting RPC pour C#
+  .Net remoting : RPC pour C#
   RMI : RPC pour Java
 
   (Voir photo)
