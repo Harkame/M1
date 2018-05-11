@@ -4,13 +4,14 @@ Question n°1 : Ce code permet-il de gérer un seul cabinet vétérinaire ou plu
 
 Un seul cabinet car : registry.bind(”miniCab”, miniCab );
 Si en veut plusieurs, faire plusieurs bind.
-(Check rebind)
+(Voir rebind)
 
 Question n°2 :
 
 La méthode getDossierByOwnerName retourne une ArrayList de DossierImpl. Lors
 de l’appel de cette méthode dans le main du client, de quel type dynamique est le
 résultat obtenu ?
+
 Expliquer pourquoi le type reçu n’est pas le type envoyé et à quel endroit a pu avoir
 lieu le “changement
 de type”.
@@ -19,15 +20,15 @@ Envoi : DossierImpl
 Reception : Proxy
 
 Car le client ne connait pas la classe DossierImpl, il n'a que l'interface Dossier.
-L'interface hérite de Remote, donc le type dynamique est Proxy generé par RMI.
+L'interface hérite de Remote, donc le type dynamique est Proxy géré par RMI.
 
 Question n°3 :
 
-TODO
+(A tester)
 
 Question n°4 :
 
-Yolo.
+Corba ?
 
 Exercice n°2 :
 
@@ -82,7 +83,7 @@ Question n°9 :
 
   Valeur :
     Copie de l'objet envoyé au client
-    Appel de méthode en local
+    Appel de méthode en local (A verifier)
     Modification de l'objet en local
     Pour modifier l'objet, le renvoyer au serveur (Possible collision)
 
@@ -92,7 +93,6 @@ Question n°9 :
     Modification de l'objet directe
 
   b)
-
     Non, WCF ne gère que par copie
 
   Question n°10 :
@@ -107,7 +107,7 @@ Question n°9 :
 
   Question n°11 :
   Mode d'instanciation non défini explicitement
-  Le mode par defaut est PerSession
+  Le mode par defaut est PerSession, donc deux (A verifier)
 
   Question n°12 :
     Foo -> Bar bar
