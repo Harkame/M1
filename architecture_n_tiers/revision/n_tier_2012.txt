@@ -3,7 +3,7 @@ Exercice n°1 :
 Question n°1 : Ce code permet-il de gérer un seul cabinet vétérinaire ou plusieurs ? Justifier.
 
 Un seul cabinet car : registry.bind(”miniCab”, miniCab );
-Si en veut plusieurs, faire plusieurs bind.
+Si pn en veut plusieurs, faire plusieurs bind, avec des clées différentes.
 (Voir rebind)
 
 Question n°2 :
@@ -21,6 +21,7 @@ Reception : Proxy
 
 Car le client ne connait pas la classe DossierImpl, il n'a que l'interface Dossier.
 L'interface hérite de Remote, donc le type dynamique est Proxy géré par RMI.
+Changement au moment de l'instanciation de l'objet de type statique Dossier
 
 Question n°3 :
 
