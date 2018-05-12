@@ -25,7 +25,7 @@ Changement au moment de l'instanciation de l'objet de type statique Dossier
 
 Question n°3 :
 
-(A tester)
+Oui, car un DossierImpl et un Dossier, le client n'a pas besoin de connaître la classe dynamique, uniquement l'interface
 
 Question n°4 :
 
