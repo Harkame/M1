@@ -4,11 +4,13 @@
      using System.Collections.Generic;
      using System.Web.Services;
      using System.Text;
+    using System.ServiceModel;
 
-     [WebService(Namespace = "http://tempuri.org/")]
-     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
+    [WebService(Namespace = "http://tempuri.org/")]
+    [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
 
-     public class Service : System.Web.Services.WebService
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerCall)]
+    public class Service : WebService
      {
          public Service()
          {

@@ -34,8 +34,6 @@
 
             Console.WriteLine("");
 
-            String t_commands = a_proxy.GetCommands(t_librarian);
-
             /*
              * All the tempory variables who can be necessary
              */
