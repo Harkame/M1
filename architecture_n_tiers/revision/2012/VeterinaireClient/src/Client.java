@@ -13,13 +13,19 @@ public class Client
 			Registry registry = LocateRegistry.getRegistry(2000);
 			CabinetVeterinaire miniCab = (CabinetVeterinaire) registry.lookup("miniCab");
 			ArrayList<Dossier> dossierTintin = miniCab.getDossierByOwnerName("Tintin");
-			
-			
+					
 			System.out.println("registry.class : " + registry.getClass().toString());
 			System.out.println("miniCab.class : " + miniCab.getClass().toString());
 			System.out.println("dossierIntin.class : " + dossierTintin.getClass().toString());	
 			System.out.println("dossierIntin.get(0).class : " + dossierTintin.get(0).getClass().toString());
 
+			UnTruc unTruc = miniCab.getUnTreuc();
+			System.out.println("unTruc.class : " + unTruc.getClass().toString());
+			
+			Dossier dossier = miniCab.getDossier();
+			System.out.println("dossier.class : " + dossier.getClass().toString());
+			
+			
 			for(Dossier d : dossierTintin)
 				System.out.println(d.getAnimalName());
 			

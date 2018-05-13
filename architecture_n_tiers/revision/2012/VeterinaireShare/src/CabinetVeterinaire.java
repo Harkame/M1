@@ -5,4 +5,8 @@ import java.util.ArrayList;
 public interface CabinetVeterinaire extends Remote
 {
 	ArrayList<Dossier> getDossierByOwnerName(String ownerNam) throws RemoteException;
+	
+	Dossier getDossier() throws RemoteException;
+	
+	UnTruc getUnTreuc() throws RemoteException;
 }
