@@ -117,5 +117,5 @@ Question n°9 :
     a : bar.bar0
     b : bar.bar12
     c : 0
-    d : bar.bar : 3
+    d : bar.bar : 0
     e : barbis.bar : 0
