@@ -1,0 +1,11 @@
+C:\Users\Harkame\source\repos\RevisionWCF\Service\bin\Debug\Service.dll.config
+C:\Users\Harkame\source\repos\RevisionWCF\Service\bin\Debug\Service.dll
+C:\Users\Harkame\source\repos\RevisionWCF\Service\bin\Debug\Service.pdb
+C:\Users\Harkame\source\repos\RevisionWCF\Service\bin\Debug\Share.dll
+C:\Users\Harkame\source\repos\RevisionWCF\Service\bin\Debug\Share.pdb
+C:\Users\Harkame\source\repos\RevisionWCF\Service\bin\Debug\Share.dll.config
+C:\Users\Harkame\source\repos\RevisionWCF\Service\obj\Debug\Service.csprojResolveAssemblyReference.cache
+C:\Users\Harkame\source\repos\RevisionWCF\Service\obj\Debug\Service.csproj.CoreCompileInputs.cache
+C:\Users\Harkame\source\repos\RevisionWCF\Service\obj\Debug\Service.csproj.CopyComplete
+C:\Users\Harkame\source\repos\RevisionWCF\Service\obj\Debug\Service.dll
+C:\Users\Harkame\source\repos\RevisionWCF\Service\obj\Debug\Service.pdb

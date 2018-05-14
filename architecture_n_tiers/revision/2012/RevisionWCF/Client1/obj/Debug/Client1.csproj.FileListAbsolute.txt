@@ -1,0 +1,11 @@
+C:\Users\Harkame\source\repos\RevisionWCF\Client1\obj\Debug\Client1.csprojResolveAssemblyReference.cache
+C:\Users\Harkame\source\repos\RevisionWCF\Client1\obj\Debug\Client1.csproj.CoreCompileInputs.cache
+C:\Users\Harkame\source\repos\RevisionWCF\Client1\bin\Debug\Client1.exe.config
+C:\Users\Harkame\source\repos\RevisionWCF\Client1\bin\Debug\Client1.exe
+C:\Users\Harkame\source\repos\RevisionWCF\Client1\bin\Debug\Client1.pdb
+C:\Users\Harkame\source\repos\RevisionWCF\Client1\bin\Debug\Share.dll
+C:\Users\Harkame\source\repos\RevisionWCF\Client1\bin\Debug\Share.pdb
+C:\Users\Harkame\source\repos\RevisionWCF\Client1\bin\Debug\Share.dll.config
+C:\Users\Harkame\source\repos\RevisionWCF\Client1\obj\Debug\Client1.csproj.CopyComplete
+C:\Users\Harkame\source\repos\RevisionWCF\Client1\obj\Debug\Client1.exe
+C:\Users\Harkame\source\repos\RevisionWCF\Client1\obj\Debug\Client1.pdb

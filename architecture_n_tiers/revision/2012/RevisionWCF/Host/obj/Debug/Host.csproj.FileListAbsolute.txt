@@ -1,0 +1,14 @@
+C:\Users\Harkame\source\repos\RevisionWCF\Host\obj\Debug\Host.csproj.CoreCompileInputs.cache
+C:\Users\Harkame\source\repos\RevisionWCF\Host\bin\Debug\Host.exe.config
+C:\Users\Harkame\source\repos\RevisionWCF\Host\bin\Debug\Host.exe
+C:\Users\Harkame\source\repos\RevisionWCF\Host\bin\Debug\Host.pdb
+C:\Users\Harkame\source\repos\RevisionWCF\Host\bin\Debug\Service.dll
+C:\Users\Harkame\source\repos\RevisionWCF\Host\bin\Debug\Share.dll
+C:\Users\Harkame\source\repos\RevisionWCF\Host\bin\Debug\Service.pdb
+C:\Users\Harkame\source\repos\RevisionWCF\Host\bin\Debug\Service.dll.config
+C:\Users\Harkame\source\repos\RevisionWCF\Host\bin\Debug\Share.pdb
+C:\Users\Harkame\source\repos\RevisionWCF\Host\bin\Debug\Share.dll.config
+C:\Users\Harkame\source\repos\RevisionWCF\Host\obj\Debug\Host.csprojResolveAssemblyReference.cache
+C:\Users\Harkame\source\repos\RevisionWCF\Host\obj\Debug\Host.csproj.CopyComplete
+C:\Users\Harkame\source\repos\RevisionWCF\Host\obj\Debug\Host.exe
+C:\Users\Harkame\source\repos\RevisionWCF\Host\obj\Debug\Host.pdb
