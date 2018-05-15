@@ -20,6 +20,8 @@ namespace Foobar_service
         public void SetBar(Bar bar)
         {
             this.bar = bar;
+
+            return;
         }
     }
 

@@ -17,7 +17,7 @@ namespace Client1
         {
             ChannelFactory<IFoo> myChannelFactory = new ChannelFactory<IFoo>("Foo");
             IFoo proxy = myChannelFactory.CreateChannel();
-            IFoo proxybis = myChannelFactory.CreateChannel();
+           // IFoo proxybis = myChannelFactory.CreateChannel();
 
             Bar bar = proxy.GetBar();
             Console.WriteLine("bar.bar" + bar.bar);//a
@@ -28,13 +28,12 @@ namespace Client1
             Bar barbis = proxy.GetBar();
             Console.WriteLine(barbis.bar);//c
 
-            barbis = proxybis.GetBar();
+            //barbis = proxybis.GetBar();
 
             proxy.SetBar(new Bar(3));
-            proxybis.SetBar(new Bar(3));
             bar = proxy.GetBar();
             Console.WriteLine("bar.bar:" + bar.bar);//d
-            Console.WriteLine("barbis.bar:" + barbis.bar);//e
+            //Console.WriteLine("barbis.bar:" + barbis.bar);//e
 
             Console.ReadLine();
         }
