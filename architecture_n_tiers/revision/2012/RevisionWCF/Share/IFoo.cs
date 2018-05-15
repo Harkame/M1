@@ -1,7 +1,7 @@
 ﻿using System.Runtime.Serialization;
 using System.ServiceModel;
 
-namespace FoobarService
+namespace Foobar_service
 {
     [ServiceContract]
     public interface IFoo

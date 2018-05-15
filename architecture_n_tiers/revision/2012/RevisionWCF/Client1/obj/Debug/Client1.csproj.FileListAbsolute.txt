@@ -9,3 +9,14 @@ C:\Users\Harkame\source\repos\RevisionWCF\Client1\bin\Debug\Share.dll.config
 C:\Users\Harkame\source\repos\RevisionWCF\Client1\obj\Debug\Client1.csproj.CopyComplete
 C:\Users\Harkame\source\repos\RevisionWCF\Client1\obj\Debug\Client1.exe
 C:\Users\Harkame\source\repos\RevisionWCF\Client1\obj\Debug\Client1.pdb
+D:\workspace\M1\architecture_n_tiers\revision\2012\RevisionWCF\Client1\obj\Debug\Client1.csprojResolveAssemblyReference.cache
+D:\workspace\M1\architecture_n_tiers\revision\2012\RevisionWCF\Client1\obj\Debug\Client1.csproj.CoreCompileInputs.cache
+D:\workspace\M1\architecture_n_tiers\revision\2012\RevisionWCF\Client1\obj\Debug\Client1.pdb
+D:\workspace\M1\architecture_n_tiers\revision\2012\RevisionWCF\Client1\bin\Debug\Client1.exe.config
+D:\workspace\M1\architecture_n_tiers\revision\2012\RevisionWCF\Client1\bin\Debug\Client1.exe
+D:\workspace\M1\architecture_n_tiers\revision\2012\RevisionWCF\Client1\bin\Debug\Client1.pdb
+D:\workspace\M1\architecture_n_tiers\revision\2012\RevisionWCF\Client1\bin\Debug\Share.dll
+D:\workspace\M1\architecture_n_tiers\revision\2012\RevisionWCF\Client1\bin\Debug\Share.pdb
+D:\workspace\M1\architecture_n_tiers\revision\2012\RevisionWCF\Client1\bin\Debug\Share.dll.config
+D:\workspace\M1\architecture_n_tiers\revision\2012\RevisionWCF\Client1\obj\Debug\Client1.csproj.CopyComplete
+D:\workspace\M1\architecture_n_tiers\revision\2012\RevisionWCF\Client1\obj\Debug\Client1.exe

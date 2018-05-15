@@ -50,8 +50,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Share\Share.csproj">
-      <Project>{2e0ae572-1779-44dc-a4e8-90ec09ab10b3}</Project>
+    <ProjectReference Include="..\Share\Share.csproj">
+      <Project>{0ac82fb5-37c6-4499-b9ba-8b537a1870b7}</Project>
       <Name>Share</Name>
     </ProjectReference>
   </ItemGroup>

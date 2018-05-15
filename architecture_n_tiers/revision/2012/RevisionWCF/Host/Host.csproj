@@ -50,13 +50,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Share\Share.csproj">
-      <Project>{2e0ae572-1779-44dc-a4e8-90ec09ab10b3}</Project>
-      <Name>Share</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Service\Service.csproj">
       <Project>{71a50c40-ac04-4a79-bfb0-7b2d0bf17172}</Project>
       <Name>Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Share\Share.csproj">
+      <Project>{0ac82fb5-37c6-4499-b9ba-8b537a1870b7}</Project>
+      <Name>Share</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

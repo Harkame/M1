@@ -9,3 +9,14 @@ C:\Users\Harkame\source\repos\RevisionWCF\Service\obj\Debug\Service.csproj.CoreC
 C:\Users\Harkame\source\repos\RevisionWCF\Service\obj\Debug\Service.csproj.CopyComplete
 C:\Users\Harkame\source\repos\RevisionWCF\Service\obj\Debug\Service.dll
 C:\Users\Harkame\source\repos\RevisionWCF\Service\obj\Debug\Service.pdb
+D:\workspace\M1\architecture_n_tiers\revision\2012\RevisionWCF\Service\obj\Debug\Service.csprojResolveAssemblyReference.cache
+D:\workspace\M1\architecture_n_tiers\revision\2012\RevisionWCF\Service\obj\Debug\Service.csproj.CoreCompileInputs.cache
+D:\workspace\M1\architecture_n_tiers\revision\2012\RevisionWCF\Service\obj\Debug\Service.dll
+D:\workspace\M1\architecture_n_tiers\revision\2012\RevisionWCF\Service\obj\Debug\Service.pdb
+D:\workspace\M1\architecture_n_tiers\revision\2012\RevisionWCF\Service\bin\Debug\Service.dll.config
+D:\workspace\M1\architecture_n_tiers\revision\2012\RevisionWCF\Service\bin\Debug\Service.dll
+D:\workspace\M1\architecture_n_tiers\revision\2012\RevisionWCF\Service\bin\Debug\Service.pdb
+D:\workspace\M1\architecture_n_tiers\revision\2012\RevisionWCF\Service\bin\Debug\Share.dll
+D:\workspace\M1\architecture_n_tiers\revision\2012\RevisionWCF\Service\bin\Debug\Share.pdb
+D:\workspace\M1\architecture_n_tiers\revision\2012\RevisionWCF\Service\bin\Debug\Share.dll.config
+D:\workspace\M1\architecture_n_tiers\revision\2012\RevisionWCF\Service\obj\Debug\Service.csproj.CopyComplete
