@@ -51,13 +51,13 @@ Exercice n° 4 :
   Sinon si sérializable -> Copie
 
   Question n°10 :
-  ?
+  Query est trop générique, il vaut mieux preciser (Get, Post, etc)
 
   Question n°11-12 :
   (Voir 2012)
 
   Question n°13 :
-    (Voir generation des meta-data)
+  Utiliser la methode StrategyList
 
   Question n°14 :
     (Voir 2012)
