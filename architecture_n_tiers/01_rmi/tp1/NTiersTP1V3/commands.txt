@@ -1,9 +1,9 @@
-#Windows
+#Windows - Bash
 #Server
-clear; javac -d ./ ../src/*.java ../../TP1Share/src/*.java; java -Djava.security.manager -Djava.security.policy=file:D:\\workspace\\RMI\\TP1Server\\server.policy -Djava.rmi.server.codebase=file:D:\\workspace\\RMI\\TP1Client\\bin\\ Server
+clear; javac -d ./ ../src/*.java ../../TP1Share/src/*.java; java -Djava.security.manager -Djava.security.policy=file:D:../server.policy -Djava.rmi.server.codebase=file:D:../../TP1Client/bin/ Server
 
 #Client
-clear; javac -d ./ ../src/*.java ../../TP1Share/src/*.java; java -Djava.security.manager -Djava.security.policy=file:D:\\workspace\\RMI\\TP1Client\\client.policy -Djava.rmi.server.codebase=file:D:\\workspace\\RMI\\TP1Server\\bin\\ Client
+clear; javac -d ./ ../src/*.java ../../TP1Share/src/*.java; java -Djava.security.manager -Djava.security.policy=file:../client.policy -Djava.rmi.server.codebase=file:../../TP1server/bin/ Client
 
 #Linux
 #Server
