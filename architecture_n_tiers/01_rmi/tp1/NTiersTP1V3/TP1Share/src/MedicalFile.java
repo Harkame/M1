@@ -1,9 +1,9 @@
 
 
-import java.io.Serializable;
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 
-public class MedicalFile implements InterfaceMedicalFile, Serializable
+public class MedicalFile extends UnicastRemoteObject implements InterfaceMedicalFile
 {
 	private static final long serialVersionUID = 1L;
 	

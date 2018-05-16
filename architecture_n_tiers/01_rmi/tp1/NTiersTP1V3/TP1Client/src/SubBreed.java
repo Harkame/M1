@@ -1,7 +1,6 @@
-import java.io.Serializable;
 import java.rmi.RemoteException;
 
-public class SubBreed extends Breed implements InterfaceSubBreed, Serializable
+public class SubBreed extends Breed implements InterfaceSubBreed
 {
 	private static final long serialVersionUID = 1L;
 
@@ -9,10 +8,9 @@ public class SubBreed extends Breed implements InterfaceSubBreed, Serializable
 	{
 		super(p_name, p_life);
 	}
-	
+
 	@Override
-	public void yolo()
+	public void yolo() throws RemoteException
 	{
-		System.out.println("Yolo !");
 	}
 }

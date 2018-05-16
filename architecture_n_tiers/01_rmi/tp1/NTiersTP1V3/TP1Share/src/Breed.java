@@ -1,7 +1,8 @@
-import java.io.Serializable;
-import java.rmi.RemoteException;
 
-public class Breed implements InterfaceBreed, Serializable
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+
+public class Breed extends UnicastRemoteObject implements InterfaceBreed
 {
 	private static final long serialVersionUID = 1L;
 	
