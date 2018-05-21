@@ -28,3 +28,13 @@ D:\workspace\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeS
 D:\workspace\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeService\obj\Debug\RecipeService.csproj.CopyComplete
 D:\workspace\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeService\obj\Debug\RecipeService.dll
 D:\workspace\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeService\obj\Debug\RecipeService.pdb
+C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeService\bin\RecipeService.dll.config
+C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeService\bin\RecipeService.dll
+C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeService\bin\RecipeService.pdb
+C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeService\bin\RecipeShare.dll
+C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeService\bin\RecipeShare.pdb
+C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeService\obj\Debug\RecipeService.csprojResolveAssemblyReference.cache
+C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeService\obj\Debug\RecipeService.csproj.CoreCompileInputs.cache
+C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeService\obj\Debug\RecipeService.csproj.CopyComplete
+C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeService\obj\Debug\RecipeService.dll
+C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeService\obj\Debug\RecipeService.pdb

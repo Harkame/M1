@@ -13,3 +13,9 @@ D:\workspace\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeS
 D:\workspace\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeShare\obj\Debug\RecipeShare.csproj.CoreCompileInputs.cache
 D:\workspace\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeShare\obj\Debug\RecipeShare.dll
 D:\workspace\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeShare\obj\Debug\RecipeShare.pdb
+C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeShare\bin\Debug\RecipeShare.dll
+C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeShare\bin\Debug\RecipeShare.pdb
+C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeShare\obj\Debug\RecipeShare.csprojResolveAssemblyReference.cache
+C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeShare\obj\Debug\RecipeShare.csproj.CoreCompileInputs.cache
+C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeShare\obj\Debug\RecipeShare.dll
+C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeShare\obj\Debug\RecipeShare.pdb

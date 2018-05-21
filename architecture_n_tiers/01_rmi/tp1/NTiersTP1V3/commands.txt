@@ -1,13 +1,8 @@
 #Windows - Bash
 #Server
-clear; javac -d ./ ../src/*.java ../../TP1Share/src/*.java; java -Djava.security.manager -Djava.security.policy=file:D:../server.policy -Djava.rmi.server.codebase=file:D:../../TP1Client/bin/ Server
+cd ~/Documents/GitHub/M1/architecture_n_tiers/01_rmi/tp1/NTiersTP1V3/TP1Server/bin;
+clear; javac -d ./ ../src/*.java ../../TP1Share/src/*.java; java -Djava.security.manager -Djava.security.policy=file:../server.policy -Djava.rmi.server.codebase=file:D:../../TP1Client/bin/ Server
 
 #Client
+cd ~/Documents/GitHub/M1/architecture_n_tiers/01_rmi/tp1/NTiersTP1V3/TP1Client/bin;
 clear; javac -d ./ ../src/*.java ../../TP1Share/src/*.java; java -Djava.security.manager -Djava.security.policy=file:../client.policy -Djava.rmi.server.codebase=file:../../TP1server/bin/ Client
-
-#Linux
-#Server
-clear; javac -d ./ ../src/*.java ../../TP1Share/src/*.java; java -Djava.security.manager -Djava.security.policy=file:../server.policy -Djava.rmi.server.codebase=file:../../TP1Client/bin/ Server
-
-#Client
-clear; javac -d ./ ../src/*.java ../../TP1Share/src/*.java; java -Djava.security.manager -Djava.security.policy=file:../client.policy -Djava.rmi.server.codebase=file:../../TP1Server/bin/ Client

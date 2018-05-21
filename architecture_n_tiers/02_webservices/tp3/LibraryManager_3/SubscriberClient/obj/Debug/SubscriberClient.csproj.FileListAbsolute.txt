@@ -8,3 +8,13 @@ D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager_3\Subscri
 D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager_3\SubscriberClient\obj\Debug\SubscriberClient.csproj.CopyComplete
 D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager_3\SubscriberClient\obj\Debug\SubscriberClient.exe
 D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager_3\SubscriberClient\obj\Debug\SubscriberClient.pdb
+C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager_3\SubscriberClient\bin\Debug\SubscriberClient.exe.config
+C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager_3\SubscriberClient\bin\Debug\SubscriberClient.exe
+C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager_3\SubscriberClient\bin\Debug\SubscriberClient.pdb
+C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager_3\SubscriberClient\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager_3\SubscriberClient\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager_3\SubscriberClient\obj\Debug\SubscriberClient.csprojResolveAssemblyReference.cache
+C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager_3\SubscriberClient\obj\Debug\SubscriberClient.csproj.CoreCompileInputs.cache
+C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager_3\SubscriberClient\obj\Debug\SubscriberClient.csproj.CopyComplete
+C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager_3\SubscriberClient\obj\Debug\SubscriberClient.exe
+C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager_3\SubscriberClient\obj\Debug\SubscriberClient.pdb

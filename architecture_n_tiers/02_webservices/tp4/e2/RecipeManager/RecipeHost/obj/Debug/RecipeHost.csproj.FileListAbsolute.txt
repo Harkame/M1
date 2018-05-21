@@ -37,3 +37,16 @@ D:\workspace\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeH
 D:\workspace\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeHost\obj\Debug\RecipeHost.csproj.CopyComplete
 D:\workspace\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeHost\obj\Debug\RecipeHost.exe
 D:\workspace\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeHost\obj\Debug\RecipeHost.pdb
+C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeHost\bin\Debug\RecipeHost.exe.config
+C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeHost\bin\Debug\RecipeHost.exe
+C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeHost\bin\Debug\RecipeHost.pdb
+C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeHost\bin\Debug\RecipeService.dll
+C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeHost\bin\Debug\RecipeShare.dll
+C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeHost\bin\Debug\RecipeService.pdb
+C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeHost\bin\Debug\RecipeService.dll.config
+C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeHost\bin\Debug\RecipeShare.pdb
+C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeHost\obj\Debug\RecipeHost.csprojResolveAssemblyReference.cache
+C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeHost\obj\Debug\RecipeHost.csproj.CoreCompileInputs.cache
+C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeHost\obj\Debug\RecipeHost.csproj.CopyComplete
+C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeHost\obj\Debug\RecipeHost.exe
+C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp4\e2\RecipeManager\RecipeHost\obj\Debug\RecipeHost.pdb
