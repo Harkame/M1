@@ -2,20 +2,17 @@ http://localhost:31101/oauth2/token
 grant_type=password&username=subscriber1&password=password123
 
 
-http://localhost:31101/api/librarians/AddLibrarian
+http://localhost:31101/api/librarians/PostLibrarian
 {
-
-"ID" : 9,
-"UserName" : "librarian1",
-
+"ID" : 0,
+"UserName" : "librarian0",
 "Password" : "password123"
-
 }
 
-http://localhost:31101/api/subscribers/AddSubscriber
+http://localhost:31101/api/subscribers/PostSubscriber
 {
-	"ID" : 4,
-	"UserName" : "subscriber3",
+	"ID" : 0,
+	"UserName" : "subscriber0",
 	"Password" : "password123"
 }
 

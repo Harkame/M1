@@ -24,7 +24,8 @@ namespace LibraryManager.Controllers
             r_commands.Add("[2] : Search book by ID");
             r_commands.Add("[3] : Search book by Author");
             r_commands.Add("[4] : Add book");
-            r_commands.Add("[5] : Disconnect");
+            r_commands.Add("[5] : Remove book");
+            r_commands.Add("[6] : Disconnect");
 
             return Ok(r_commands);
         }

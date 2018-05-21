@@ -56,9 +56,6 @@ namespace LibraryManager.Database
                     
                 };
 
-                await libraryUserManager.CreateAsync(new IdentityUser { UserName = "subscriber1" }, "password123");
-                await libraryUserManager.CreateAsync(new IdentityUser { UserName = "subscriber2" }, "password321");
-
                 var result = await libraryUserManager.CreateAsync(user, subscriber.Password);
 
                 var role = libraryContext.Roles.SingleOrDefault(r => r.Name == "Subscriber");
@@ -96,7 +93,7 @@ namespace LibraryManager.Database
 
                 var result = await libraryUserManager.CreateAsync(user, librarian.Password);
 
-                var role = libraryContext.Roles.SingleOrDefault(r => r.Name == "Librarian");
+                var role = libraryContext.Roles.Single(r => r.Name == "Librarian");
                 user.Roles.Add(new IdentityUserRole { RoleId = role.Id });
 
                 await libraryUserManager.UpdateAsync(user);

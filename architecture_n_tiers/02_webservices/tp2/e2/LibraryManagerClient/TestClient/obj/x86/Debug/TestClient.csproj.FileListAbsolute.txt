@@ -10,3 +10,10 @@ D:\workspace\M1\architecture_n_tiers\02_webservices\tp2\e2\LibraryManagerClient\
 D:\workspace\M1\architecture_n_tiers\02_webservices\tp2\e2\LibraryManagerClient\TestClient\obj\x86\Debug\LibraryTest.pdb
 D:\workspace\M1\architecture_n_tiers\02_webservices\tp2\e2\LibraryManagerClient\TestClient\obj\x86\Debug\TestClient.csprojResolveAssemblyReference.cache
 D:\workspace\M1\architecture_n_tiers\02_webservices\tp2\e2\LibraryManagerClient\TestClient\obj\x86\Debug\TestClient.csproj.CoreCompileInputs.cache
+C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp2\e2\LibraryManagerClient\TestClient\bin\Debug\LibraryTest.exe.config
+C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp2\e2\LibraryManagerClient\TestClient\bin\Debug\LibraryTest.exe
+C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp2\e2\LibraryManagerClient\TestClient\bin\Debug\LibraryTest.pdb
+C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp2\e2\LibraryManagerClient\TestClient\obj\x86\Debug\TestClient.csprojResolveAssemblyReference.cache
+C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp2\e2\LibraryManagerClient\TestClient\obj\x86\Debug\TestClient.csproj.CoreCompileInputs.cache
+C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp2\e2\LibraryManagerClient\TestClient\obj\x86\Debug\LibraryTest.exe
+C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp2\e2\LibraryManagerClient\TestClient\obj\x86\Debug\LibraryTest.pdb

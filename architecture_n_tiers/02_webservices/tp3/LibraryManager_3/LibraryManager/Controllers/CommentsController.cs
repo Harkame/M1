@@ -1,10 +1,13 @@
 ﻿using System.Data;
 using System.Linq;
+using System.Net.Http;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using LibraryManager.Database;
 using LibraryManager.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace LibraryManager.Controllers
 {
@@ -24,18 +27,12 @@ namespace LibraryManager.Controllers
         [ResponseType(typeof(Comment))]
         public async Task<IHttpActionResult> PostComment(Comment comment)
         {
-            //Problem with SQL integrity, we manage it here
-            //If comment (BookID + SubscriberId) already exist, update the description, else add it
-            /*
-            var t_comment = db.Comments.Where(c => c.BookID == comment.BookID && c.SubscriberID == comment.SubscriberID).ToArray();
+            var t_comment = db.Comments.Where(c => c.BookID == comment.BookID && c.SubscriberUserName.ToLower().Equals(comment.SubscriberUserName.ToLower())).ToArray();
 
             if (t_comment.Length == 0)
                 db.Comments.Add(comment);
             else
                 t_comment[0].Description = comment.Description;
-            */
-
-            db.Comments.Add(comment);
 
             await db.SaveChangesAsync();
 

@@ -32,15 +32,18 @@ namespace LibrarianClient
             Dictionary<String, String> t_parameters; //Parameters of HTTP Post request
             HttpRequestResult t_http_request_result = new HttpRequestResult { State = HttpStatusCode.NotFound }; //Initialize (All but not HttpStatusCode.OK)
 
+            string t_username = null;
+            string t_password = null;
+
             while (t_http_request_result.State != HttpStatusCode.OK)
             {
                 Console.Write("Username : ");
 
-                string t_username = Console.ReadLine();
+                t_username = Console.ReadLine();
 
                 Console.Write("Password : ");
 
-                String t_paswword = Console.ReadLine();
+                t_password = Console.ReadLine();
 
                 t_uri_builder = new UriBuilder(TOKEN_URL);
 
@@ -48,7 +51,7 @@ namespace LibrarianClient
                         {
                             {"grant_type", "password"},
                             {"username", t_username},
-                            {"password", t_paswword}
+                            {"password", t_password}
                         };
 
 
@@ -132,7 +135,8 @@ namespace LibrarianClient
                         {
                             {"ID", 0 + ""}, //If not, parse error
                             {"Description", t_comment},
-                            {"BookID", t_book_id + ""}
+                            {"BookID", t_book_id + ""},
+                            {"SubscriberUsername", t_username}
                         };
 
                         Console.WriteLine(SendPostRequest(t_uri_builder.Uri, new FormUrlEncodedContent(t_parameters)).Result.Content);

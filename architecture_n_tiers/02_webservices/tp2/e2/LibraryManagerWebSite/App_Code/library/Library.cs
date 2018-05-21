@@ -20,14 +20,11 @@
             Library.Books.Add(new Book("book4", "author3", 3, 9, "editor3"));
             Library.Books.Add(new Book("book5", "author4", 4, 0, "editor2"));
 
-            Library.Librarians.Add(new Librarian("123"));
-            Library.Librarians.Add(new Librarian("toto"));
+            Library.Librarians.Add(new Librarian("password123"));
+            Library.Librarians.Add(new Librarian("password321"));
             
-            Library.Subscribers.Add(new Subscriber("123"));
-            Library.Subscribers.Add(new Subscriber("toto"));
-            Library.Subscribers.Add(new Subscriber("yolo"));
-            Library.Subscribers.Add(new Subscriber("test"));
-            Library.Subscribers.Add(new Subscriber("password"));
+            Library.Subscribers.Add(new Subscriber("password123"));
+            Library.Subscribers.Add(new Subscriber("password321"));
         }
 
         public static bool IsValid(User p_user)

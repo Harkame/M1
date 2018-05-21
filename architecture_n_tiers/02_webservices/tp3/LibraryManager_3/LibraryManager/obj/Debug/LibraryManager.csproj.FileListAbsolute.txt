@@ -114,7 +114,6 @@ D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager_3\Library
 D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager_3\LibraryManager\obj\Debug\LibraryManager.dll
 D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager_3\LibraryManager\obj\Debug\LibraryManager.pdb
 D:\workspace\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager_3\LibraryManager\obj\Debug\LibraryManager.csprojResolveAssemblyReference.cache
-C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager_3\LibraryManager\obj\Debug\LibraryManager.csprojResolveAssemblyReference.cache
 C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager_3\LibraryManager\obj\Debug\LibraryManager.Database.LibraryManager.resources
 C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager_3\LibraryManager\obj\Debug\LibraryManager.csproj.GenerateResource.cache
 C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager_3\LibraryManager\obj\Debug\LibraryManager.csproj.CoreCompileInputs.cache
@@ -230,3 +229,4 @@ C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp3\Lib
 C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager_3\LibraryManager\bin\fr\System.Web.Http.resources.dll
 C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager_3\LibraryManager\bin\fr\System.Web.Http.WebHost.resources.dll
 C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager_3\LibraryManager\obj\Debug\LibraryManager.csproj.CopyComplete
+C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager_3\LibraryManager\obj\Debug\LibraryManager.csprojResolveAssemblyReference.cache

@@ -68,7 +68,7 @@ namespace LibraryManager.Controllers
             return Ok(query.ToList());
         }
 
-        //[Authorize(Roles="Librarian")]
+        [Authorize(Roles="Librarian")]
         [Route("api/books/PostBook/"), HttpPost]
         [ResponseType(typeof(Book))]
         public async Task<IHttpActionResult> PostBook(Book book)

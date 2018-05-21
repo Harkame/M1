@@ -145,9 +145,23 @@ namespace LibrarianClient
                             {"Stock", t_stock + ""},
                             {"Editor", t_editor}
                         };
+
+                        Console.WriteLine(SendPostRequest(t_uri_builder.Uri, new FormUrlEncodedContent(t_parameters)).Result.State);
                         break;
 
-                    case 5: //Quit the program
+                    case 5: //Remove book
+                        Console.Write("Book ID : ");
+
+                        t_id = Convert.ToInt32(Console.ReadLine());
+
+                        Console.WriteLine("");
+
+                        t_uri_builder = new UriBuilder(BOOKS_CONTROLLER_URL + "DeleteBook/" + t_id);
+                        Console.WriteLine(SendDeleteRequest(t_uri_builder.Uri).Result.State);
+
+                        break;
+
+                    case 6: //Quit the program
                         goto end_of_loop;
                 }
             }
@@ -171,6 +185,25 @@ namespace LibrarianClient
         public async static Task<HttpRequestResult> SendGetRequest(Uri p_uri)
         {
             using (HttpResponseMessage t_response = await g_client.GetAsync(p_uri))
+            {
+                HttpRequestResult httpRequestResult = new HttpRequestResult();
+
+                httpRequestResult.State = t_response.StatusCode;
+
+                httpRequestResult.Content = await t_response.Content.ReadAsStringAsync();
+
+                return httpRequestResult;
+            }
+        }
+
+        /// <summary>
+        /// Send an Get request et return the response state and content
+        /// </summary>
+        /// <param name="p_uri">URL of the request (Don't forgot to include the parameters into the URL)</param>
+        /// <returns>An Task of HttpRequestResult</returns>
+        public async static Task<HttpRequestResult> SendDeleteRequest(Uri p_uri)
+        {
+            using (HttpResponseMessage t_response = await g_client.DeleteAsync(p_uri))
             {
                 HttpRequestResult httpRequestResult = new HttpRequestResult();
 

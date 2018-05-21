@@ -19,14 +19,8 @@ namespace LibraryManager.Models
         [JsonIgnore]
         public Book Book { get; set; }
 
-        /*
-        [Key, Column(Order = 1)]
-        [ForeignKey("Subscriber")]
         [Required]
-        public int SubscriberID { get; set; }
-        [JsonIgnore]
-        public Subscriber Subscriber { get; set; }
-        */
+        public string SubscriberUserName { get; set; }
 
         public Comment()
         {

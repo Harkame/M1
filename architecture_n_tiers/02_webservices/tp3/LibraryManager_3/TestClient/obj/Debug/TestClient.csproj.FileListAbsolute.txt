@@ -13,8 +13,8 @@ C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp3\Lib
 C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager_3\TestClient\bin\Debug\TestClient.pdb
 C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager_3\TestClient\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager_3\TestClient\bin\Debug\Newtonsoft.Json.xml
-C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager_3\TestClient\obj\Debug\TestClient.csprojResolveAssemblyReference.cache
 C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager_3\TestClient\obj\Debug\TestClient.csproj.CoreCompileInputs.cache
 C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager_3\TestClient\obj\Debug\TestClient.csproj.CopyComplete
 C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager_3\TestClient\obj\Debug\TestClient.exe
 C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager_3\TestClient\obj\Debug\TestClient.pdb
+C:\Users\Harkame\Documents\GitHub\M1\architecture_n_tiers\02_webservices\tp3\LibraryManager_3\TestClient\obj\Debug\TestClient.csprojResolveAssemblyReference.cache
