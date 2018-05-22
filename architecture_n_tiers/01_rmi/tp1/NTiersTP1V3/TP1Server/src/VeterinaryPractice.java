@@ -32,17 +32,17 @@ public class VeterinaryPractice extends UnicastRemoteObject implements Interface
 		{
 			case 1 :
 				for(InterfaceVeterinary t_veterinary : a_veterinarys)
-					t_veterinary.alert(System.getProperty("line.separator") + " population faible : " + a_animals.size());
+					t_veterinary.alert(System.getProperty("line.separator") + " population faible : " + a_animals.size() + " - " + p_animal_to_add.getName());
 			break;
 				
 			case 2:
 				for(InterfaceVeterinary t_veterinary : a_veterinarys)
-					t_veterinary.alert(System.getProperty("line.separator") + "  population moyenne " + a_animals.size());
+					t_veterinary.alert(System.getProperty("line.separator") + "  population moyenne " + a_animals.size() + " - " + p_animal_to_add.getName());
 			break;
 				
 			case 3:
 				for(InterfaceVeterinary t_veterinary : a_veterinarys)
-					t_veterinary.alert(System.getProperty("line.separator") + "  population forte " + a_animals.size());
+					t_veterinary.alert(System.getProperty("line.separator") + "  population forte " + a_animals.size() + " - " + p_animal_to_add.getName());
 			break;
 			
 			default:

@@ -1,6 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2043
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "LibraryManagerWebSite", "..\LibraryManagerWebSite\", "{80503440-753D-4D61-B06C-9DEF80912FDA}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
@@ -19,6 +21,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "LibraryManagerWebSite", "..
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "22156"
+		SlnRelativePath = "..\LibraryManagerWebSite\"
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibrarianClient", "LibrarianClient\LibrarianClient.csproj", "{060FC2B0-AA05-4B46-BE76-B53D3E330F35}"
@@ -27,8 +30,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibrarianClient", "Libraria
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubscriberClient", "SubscriberClient\SubscriberClient.csproj", "{9F8A590F-826F-494D-A6AA-154AA8AD69D5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{80503440-753D-4D61-B06C-9DEF80912FDA} = {80503440-753D-4D61-B06C-9DEF80912FDA}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestClient", "TestClient\TestClient.csproj", "{F5D5517A-0089-4A11-948B-EAD8CA59640A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{80503440-753D-4D61-B06C-9DEF80912FDA} = {80503440-753D-4D61-B06C-9DEF80912FDA}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,5 +92,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {76A8FA6F-4B0F-42B0-BFAB-8D2DB257E005}
 	EndGlobalSection
 EndGlobal

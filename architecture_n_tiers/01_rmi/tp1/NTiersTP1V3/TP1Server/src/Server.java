@@ -29,10 +29,10 @@ public class Server
 
 		try
 		{
-			System.setProperty(JAVA_PROPERTY_POLICY, JAVA_SECURITY_POLICY_SERVER);
+			//System.setProperty(JAVA_PROPERTY_POLICY, JAVA_SECURITY_POLICY_SERVER);
 			//System.setProperty(JAVA_PROPERTY_CODEBASE, JAVA_POLICY_CODEBASE_VALUE);
 						
-			System.setSecurityManager(new SecurityManager());
+			//System.setSecurityManager(new SecurityManager());
 		
 			Registry t_registry = LocateRegistry.createRegistry(DEFAULT_PORT);
 

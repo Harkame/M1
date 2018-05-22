@@ -35,7 +35,7 @@ public class Client
 			
 			System.out.println("[Add animal]");
 			System.out.print("Animal name : ");
-			String t_animal_name =t_keyboard.nextLine();
+			String t_animal_name = t_keyboard.nextLine();
 			System.out.println("");
 			t_veterinary_practice.addAnimal(new Animal(t_animal_name, "Jean-Kevin", "Pokemon", new Breed("Eau", 42), new MedicalFile("Ok.")));	
 			System.out.println("[Animal added]");
@@ -47,7 +47,7 @@ public class Client
 
 			System.out.println("[Add animal with SubBreed (Client only)]");
 			System.out.print("Animal name : ");
-			t_animal_name =t_keyboard.nextLine();
+			t_animal_name = t_keyboard.nextLine();
 			System.out.println("");
 			t_veterinary_practice.addAnimal(new Animal(t_animal_name, "Jean-Kevin", "Pokemon", new SubBreed("Eau", 42), new MedicalFile("Ok.")));
 			System.out.println("[Animal added]");
@@ -55,6 +55,7 @@ public class Client
 			System.out.println("Please, press enter to continue");
 			t_keyboard.nextLine();
 			t_keyboard.close();
+			System.exit(0);
 		}	
 		catch(Exception t_exception)
 		{
